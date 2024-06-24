@@ -531,6 +531,4 @@ Shorcuts specific to GUI terminal window:
 
 <!-- # References -->
 
-[^shotts]: [William Shotts - The Linux Command Line, updated 2019](http://linuxcommand.org/tlcl.php)
-
 [^raymond]: [Eric Steven Raymond - The Art of Unix Programming, published 2003](https://www.arp242.net/the-art-of-unix-programming/)

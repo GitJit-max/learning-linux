@@ -313,8 +313,6 @@ The **` /var/ `** (Variable) directory tree is used to store the application *da
 
 [^fhs-log]: [Filesystem Hierarchy Standard - Log files and directories](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varlogLogFilesAndDirectories)
 
-[^fhs-lib]: [Filesystem Hierarchy Standard - Variable state information](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varlibVariableStateInformation)
-
 [^fhs-cache]: [Filesystem Hierarchy Standard - Application cache data](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varcacheApplicationCacheData)
 
 ### RAM disk [^ramdisk]
