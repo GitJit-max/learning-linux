@@ -373,7 +373,7 @@ In unix "everything is a file". Directories are files. Files are files. Printer,
 
 For example to find information about your CPU, you don’t need a special command that tells you your CPU info. You can just read the contents of ` /proc/cpuinfo ` "file". You can use standard commands to print this file’s contents to the terminal. Or you can open ` /proc/cpuinfo ` in a text editor to view its contents.
 
-> [!Note]
+> [!NOTE]
 > Note that ` /proc/cpuinfo ` isn’t actually a text file. The os kernel and the ` /proc/ ` directory or file system are exposing this information to us as a "file". This allows us to use familiar tools to view and work with the information. The /proc directory also contains other similar "files" such as ` /proc/uptime ` and ` /proc/version `.
 
 <a id="device-files"></a>
