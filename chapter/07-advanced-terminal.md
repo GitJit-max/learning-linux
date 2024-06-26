@@ -97,7 +97,7 @@ The bash shell can perform expansions and substitutions (as show by examples bel
 - Double quotes ` "..." ` suppress some expansions.
 - Single quotes ` '...' ` suppress all expansions.
 
-|   | Example | Un<br>quoted | "Double"<br>quoted | 'Single'<br>quoted |
+|   | Example | Un<br>quoted | "Double" <br>quoted | 'Single' <br>quoted |
 |:--- |:--- |:--- |:--- |:--- |
 | Simple string | text | text | text | text |
 | Filepath and **tilde expansion** | ~/\*.txt | **/home/margaret/\*.txt** | ~/\*.txt | ~/\*.txt |
@@ -145,7 +145,7 @@ When used interactively, the shell prompts with the value of ` PS1 ` before read
 Let's examine the default ` PS1 ` prompt in Solus ` $ echo $PS1↵ `:
 
 | Code | Function |
-| --- | --- |
+|:--- |:--- |
 | \\\[  \\033[**38;5;081**m  \\\] | Will change color to aqua |
 | \\u | Current username |
 | \\\[  \\033[**38;5;245**m  \\\] | Will change color to grey |
@@ -169,7 +169,7 @@ Lets replace the default PS1 with something different:
 $ export PS1='[\D{%d/%m/%Y %H:%M:%S} \u@\h \W]§'↵
 [16/06/2024 18:34:38 margaret@mamas-machine ~]§
 
-$ export PS2='\[\033[38;5;081m\]> \[\e[0m\]'    # The PS2 on Solus could use some colour and a space at the end :)
+$ export PS2='\[\033[38;5;081m\]> \[\e[0m\]'↵    # The PS2 on Solus could use some colour and a space at the end :)
 ```
 
 > [!NOTE]

@@ -191,7 +191,7 @@ The **` $ chown `** command stands for Change Ownership (of a file or directory)
 ## 9.4 Permission attributes (of files and directories)
 
 | SymBinOct | Permission on a FILE | Permission on a DIRECTORY |
-| --- | --- | --- |
+|:--- |:--- |:--- |
 | `--- 000 0` | Denied from opening the file. | Denied from listing files stored in the directory. |
 | `--x 001 1` | \<unfit\> | \<unfit\> |
 | `-w- 010 2` | \<unfit\> | \<unfit\> |
