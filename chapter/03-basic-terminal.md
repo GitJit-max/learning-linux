@@ -75,6 +75,7 @@ Three conventions for command-line options exist
 
 > [!IMPORTANT]
 > To separate directories
+>
 > - Unices use the forward slash **` / `**
 > - Windows uses the backward slash **` \ `**
 
@@ -264,11 +265,13 @@ The use of whitespace (such as spaces) in filenames creates the need for quoting
 - b) Double quotes ` "..." ` with such filenames:
     ```
     $ rm 'A Dragged Link from Firefox.desktop'↵
+
     $ rm "A Dragged Link from Firefox.desktop"↵
     ```
 - c) Alternatively one can use a backslash (\):
     ```
     $ rm "A\ Dragged\ Link\ from\ Firefox.desktop"↵
+
     ```
 
 ### Types of documentation [^raymond]
