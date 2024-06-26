@@ -108,6 +108,7 @@ You don’t need to choose a shell. Your operating system chooses your default s
 
 > [!TIP]
 > Stopping the current program or operation in a terminal session could be overwhelming when you are new to the terminal emulator. You may try the following keyboard shortcuts to exit some commandline situations:
+>
 > | Keys | Use case |
 > | --- | --- |
 > | ` Ctrl + D ` | End text input |
