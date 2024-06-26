@@ -274,7 +274,7 @@ Commands (including the scripts and shell functions we write) issue a value to t
 - Many programs simply exit with a value of 1 upon failure. But some programs (such as RAR for Linux below) use different exit status values to provide diagnostics for errors. Man pages often include a section entitled “Exit Status,” describing what codes are used.
 
 | Code | Description |
-| ---:| --- |
+| ---:|:--- |
 | 0 | Successful operation. |
 | 1 | Warning. Non fatal error(s) occurred. |
 | 2 | A fatal error occurred. |
