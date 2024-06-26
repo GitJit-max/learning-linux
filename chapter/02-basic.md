@@ -110,7 +110,7 @@ You don’t need to choose a shell. Your operating system chooses your default s
 > Stopping the current program or operation in a terminal session could be overwhelming when you are new to the terminal emulator. You may try the following keyboard shortcuts to exit some commandline situations:
 >
 > | Keys | Use case |
-> | --- | --- |
+> |:--- |:--- |
 > | ` Ctrl + D ` | End text input |
 > | ` Ctrl + C ` | Interrupt current process |
 > | ` q ` | Quit ` $ less ` and ` $ more ` |
@@ -234,7 +234,7 @@ In the old days critical system binaries, or simply default minimal required bin
 Applications installed through package management reside under **` /usr/ `** (Unix Shared Resources). The ` /usr/ ` directory contains only shareable and read-only data, no settings, no log data. Any information that is host-specific or varies with time is stored elsewhere. The most important subdirectories are:
 
 | Dir | Use |
-| --- | --- |
+|:--- |:--- |
 | **` /usr/sbin/ `** = **` /sbin/ `** | <ins>Most root user commands/executables</ins> reside in ` /usr/sbin/ `. There must be no subdirectories here. [^fhs-sbin] [^fhs-usr-sbin] |
 | **` /usr/bin/ `** = **` /bin/ `** | <ins>Most user commands/executables</ins> reside in ` /usr/bin/ `, which is the primary directory of executable commands on the system. There must be no subdirectories here. [^fhs-bin] [^fhs-usr-bin] |
 | **` /usr/lib/ `** = **` /lib/ `** | There are lots of shared **libraries** available in a GNU / Linux system, capable of doing a lot of useful things. And many of those libraries can be reused by other programs. The libraries, object files and possibly even binaries under ` /usr/lib/ ` are not intended to be executed directly by users or shell scripts. Applications may use a single subdirectory. [^fhs-usr-lib] [^fhs-lib] |
@@ -287,7 +287,7 @@ When the user types a CLI command, the system looks for the requested binary exe
 The **` /var/ `** (Variable) directory tree is used to store the application *data that is likely to change* such as log files, various databases and user mail. Applications must generally not add directories to the top level of ` /var/ `. Instead following subdirectories, or symbolic links are used:
 
 | Dir | Use | RAM Disk |
-| --- | --- | --- |
+|:--- |:--- |:--- |
 | **` /var/cache/ `** | Application **cache** means <ins>data stored to serve future requests faster</ins>. The data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. [^fhs-cache][^wiki-cache] |
 | **` /var/lib/ `** | **Variable state information** is data that programs modify while they run, <ins>that must not be exposed to regular users</ins>. An application (or a group of inter-related applications) should generally use a subdirectory for its data. There is one required subdirectory ` /var/lib/misc/ ` which is intended for state files that don't need a subdirectory. [^fhs-lib] |
 | ` /var/lock/ ` <br>= **` /run/lock/ `** | Some programs follow a convention to create a **lock file** for example (but not limited to) to <ins>indicate use of a particular device or file</ins>, so other programs can take care not to use the locked device or file simultaneously. [^fhs-lock][^tldp-var] | :heavy_check_mark: |
@@ -340,7 +340,7 @@ is available is just upper limit as to how much RAM it may use.
 [^wiki-mount]: [Wikipedia - Mount (computing)](https://en.wikipedia.org/wiki/Mount_%28computing%29)
 
 | Dir | Use |
-| --- | --- |
+|:--- |:--- |
 | **` /media/ `** or ` /run/media/ ` | Mount points for physical media such as a Blu-ray disc or a USB flash drive. [^fhs-media] |
 | **` /mnt/ `** | Mount points for a temporarily mounted filesystems such as a network directory or a [VMware Shared Folder](https://docs.vmware.com/en/VMware-Workstation-Pro/17/com.vmware.ws.using.doc/GUID-D6D9A5FD-7F5F-4C95-AFAB-EDE9335F5562.html) (i.e. a directory shared between a local virtual machine and the host system) [^fhs-mnt] |
 
@@ -351,7 +351,7 @@ is available is just upper limit as to how much RAM it may use.
 ### Hardware connection points
 
 | Dir | Use |
-| --- | --- |
+|:--- |:--- |
 | **` /sys/ `** (System) | A virtual directory exposing some hardware, driver and kernel features. [^fhs-sys] |
 | **` /dev/ `** (Devices) | A virtual directory that describes hardware devices such as internal storage drives and exposes some special "devices". [^fhs-dev] See [Section: Device files](#device-files) and [Section: Special device files](#special-device-files) for more information . |
 
@@ -399,7 +399,7 @@ Device access in unix is very different from Windows, where the internal storage
 The ` /dev/ ` directory doesn’t just contain "files" that represent physical devices. Here are three of the most notable special "devices" it also contains:
 
 | File | Use |
-| --- | --- |
+|:--- |:--- |
 | **` /dev/random `** | Is a random number generator you and all the applications can tap into. Truly random numbers are challenging to generate. The ` /dev/random ` on linux can promise up to 256 bits of security, if you wanted a source of randomness for generating cryptographic keys. [^man7-random] |
 | **` /dev/zero `** | A read from "device" ` /dev/zero ` will return as many bytes containing the value zero as was requested. [^fhs-special] |
 | **`/dev/null `** | All data written to "device" `/dev/null ` is discarded. Think of it as a black hole. [^fhs-special] [^hoffman-2016] |
@@ -486,7 +486,7 @@ When a unix program starts up, the environment accessible to it includes <ins>a 
 There are a number of well-known environment variables you can expect to find defined on startup of a program from the unix shell. These (especially ` HOME `) will often need to be evaluated before you read a local dotfile.
 
 | Name | Use |
-| --- | --- |
+|:--- |:--- |
 | ` USER ` | Login name of the account under which this session is logged in (BSD convention). |
 | ` LOGNAME ` | Login name of the account under which this session is logged in (System V convention). |
 | ` HOME ` | Home directory of the user running this session. The ` HOME ` variable is especially important, because many programs use it to find the calling user's dotfiles. |

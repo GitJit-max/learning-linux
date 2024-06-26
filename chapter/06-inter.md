@@ -76,7 +76,7 @@ Programs such as ` $ ls ` actually send their results to a *special file* called
 The **redirection operator ` > `** connects a command with a file. Using the **append operator ` >> `** will result in the output being appended to the file. If the file does not already exist, it is created just as though the ` > ` operator had been used.
 
 | Operator | Redirection |
-| --- | --- |
+|:--- |:--- |
 | **` 1> `** or **` > `** | Redirect stdout to file by overwriting. |
 | **` 1>> `** or **` >> `** | Redirect stdout to file by appending. |
 | **` 2> `** | Redirect stderr to file by overwriting. |
@@ -215,7 +215,7 @@ Path not found
 
 #### Asynchronous execution
 
-**Trailing ampersand `  & `** directs the shell to run the command(s) in the background, in a separate sub-shell, as a job, asynchronously. This way you can continue using the shell, and not have to wait for the command(s) to terminate.
+**Trailing ampersand `  & `** directs the shell to run the command(s) in the background, in a separate sub-shell, as a job, asynchronously. This way you can continue using the shell, and not have to wait for the command(s) to terminate.
 
 For example:
 
@@ -293,8 +293,7 @@ Commands (including the scripts and shell functions we write) issue a value to t
 > [!NOTE]
 > The shell provides two extremely simple builtin commands that do nothing except terminate with either exit status 0 or 1. The **` $ true↵ `** command always executes successfully (0) and the **` $ false↵ `** command always executes unsuccessfully (1). There is also an **` $ exit #↵ `** command which accepts a single, optional argument, which becomes the script’s exit status. When no argument is passed, the exit status defaults to the exit status of the last command executed. Using ` $ exit ` command in this way allows a script to indicate failure. The exit command appearing on the last line of the script is a formality though, because when a script runs off the end (i.e. reaches end of file), it terminates with an exit status of the last command executed. Similarly, shell functions can return an exit status by including an integer argument to the **` $ return #↵ `** command.
 
-> The unix API doesn't use exceptions. Even the C language lacks a facility for throwing named exceptions with attached data. Thus, the C functions in the unix API indicate errors by returning a distinguished value (usually −1 or a NULL character pointer) and setting a global errno variable.
-> - In retrospect, this is the source of many subtle errors. Programmers in a hurry often neglect to check return values.
+> The unix API doesn't use exceptions. Even the C language lacks a facility for throwing named exceptions with attached data. Thus, the C functions in the unix API indicate errors by returning a distinguished value (usually −1 or a NULL character pointer) and setting a global errno variable. In retrospect, this is the source of many subtle errors. Programmers in a hurry often neglect to check return values.
 
 <a id="sockets"></a>
 

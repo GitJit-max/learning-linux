@@ -98,7 +98,7 @@ The bash shell can perform expansions and substitutions (as show by examples bel
 - Single quotes ` '...' ` suppress all expansions.
 
 |   | Example | Un<br>quoted | "Double"<br>quoted | 'Single'<br>quoted |
-| --- | --- | --- | --- | --- |
+|:--- |:--- |:--- |:--- |:--- |
 | Simple string | text | text | text | text |
 | Filepath and **tilde expansion** | ~/\*.txt | **/home/margaret/\*.txt** | ~/\*.txt | ~/\*.txt |
 | **Brace expansion** | {a,b}<br>{001..003} | **a b**<br>**001 002 003** | {a,b}<br>{001..003} | {a,b}<br>{001..003} |
