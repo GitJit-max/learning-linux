@@ -260,10 +260,11 @@ The third less-used setting is the **Set user ID** bit (or setuid bit = octal 40
 
 A **setuid program** runs not with the privileges of the user calling it, but with the privileges of the owner of the executable. This feature can be used to give restricted, program-controlled access to things like the password file that non-administrators should not be allowed to modify directly.
 - The setuid bit answers the question: How can a low privilege users change their password, when it is stored in a file only accessible by the root user?
-    ```
-    $ ls -la /etc/shadow↵
-    -rw------- 1 root root 787 13. 9. 16:05 /etc/shadow
-    ```
+```
+$ ls -la /etc/shadow↵
+-rw------- 1 root root 787 13. 9. 16:05 /etc/shadow
+```
+
 - The answer is the **setuid concept** through the *Set user ID* bit. A setuid program (such as ` $ passwd `) is run with the program owner’s privilege (without a password). Just like any other program, except it has that special marking. You may search for other files with setuid permission by typing ` $ sudo find / -user root -perm -4000 -exec ls -ldb {} \;↵ `. The search results include ` $ mount ` and ` $ umount `.
 
 Every process has two User IDs: 1) **Real User ID (RUID)** which identifies the real owner of a process. 2) **Effective User ID (EUID)** which identifies the privilege of a process. Access control is based on EUID:
@@ -274,16 +275,20 @@ Every process has two User IDs: 1) **Real User ID (RUID)** which identifies the 
 
 ## 9.5 Single User Mode
 
-Single (user) mode is a recovery or maintenance mode to gain super user root access without any credentials or password. For this you need to have physical access to the machine. To enter single user mode, temporarily append `  single  ` to your boot options:
+Single (user) mode is a recovery or maintenance mode to gain super user root access without any credentials or password. For this you need to have physical access to the machine. To enter single user mode, temporarily append ` single ` to your boot options:
 
 1. By default, (U)EFI installations will not show the boot menu, and boot directly into the operating system (such as Solus).
     - a) By hitting ` Space ` bar (repeatedly) during boot, the boot menu should appear. It may take a couple of goes to get the timing right.
     - b) You may wish to configure your operating system to display the boot menu by default (on every startup):
-        ```
-        $ sudo clr-boot-manager set-timeout 30↵  # These are for (U)EFI only,
-        $ sudo clr-boot-manager update↵          # not GRUB / legacy-BIOS.
-        ```
-2. Once in the boot menu (UEFI or GRUB) highlight the desired kernel and press ` E ` key. Find a good spot to append `  single  ` (such as rigth next to ` quiet `). Finally press the ` Enter ` key on UEFI or ` F10 ` on GRUB / legacy-BIOS.
+
+```
+$ sudo clr-boot-manager set-timeout 30↵
+$ sudo clr-boot-manager update↵
+# These are for (U)EFI only,
+# not GRUB / legacy-BIOS.
+```
+
+2. Once in the boot menu (UEFI or GRUB) highlight the desired kernel and press ` E ` key. Find a good spot to append ` single ` (such as rigth next to ` quiet `). Finally press the ` Enter ` key on UEFI or ` F10 ` on GRUB / legacy-BIOS.
 
 > [!NOTE]
 > These changes to boot parameters are not persistent. Any change to the kernel boot options made this way will only affect the current boot.
