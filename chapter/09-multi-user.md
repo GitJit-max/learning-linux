@@ -294,10 +294,14 @@ $ sudo clr-boot-manager update↵
 > These changes to boot parameters are not persistent. Any change to the kernel boot options made this way will only affect the current boot.
 
 3. When you get to the shell prompt in single user mode, the hard drive is propably mounted read only. The recommended method is to run file system check to ensure nothing is corrupted. ). Then remount to enable write.
-    ```
-    # fsck -fy↵       # Force a check even if journalling is enabled, and answers Yes to any requests to fix any problems found.
-    # mount -uw /↵
-    ```
+
+```
+# fsck -fy↵       # Force a check even if journalling
+                  # is enabled , and answers Yes to any
+                  # requests to fix any problems found.
+# mount -uw /↵
+```
+
 4. Finally you should be able to do what you need to do (such as reset a forgotten user password: ` # passwd margaret↵ `).
 
 > [!WARNING]

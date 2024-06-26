@@ -26,10 +26,10 @@
 Many terminal commands will print a message only if something goes wrong. Often times as you insert a command and hit enter, the command gets executed but you do not see a result. The copy command ` $ cp `will overwrite existing files silently. The ` $ rm ` command removes files from the system without confirmation. This is because the unix shell is unobtrusive and silent by design (see [Chapter 2, Section: Design tropes of unix shell utilities](02-basic.md#design-tropes-of-unix)). By default most commands will not print confirmation messages upon success. However, many commands accept the ` -v ` parameter to change this behaviour (v is hort for verbose):
 
 ```
-$ mkdir -v Aaaa
+$ mkdir -v Aaaa↵
 mkdir: created directory 'Aaaa'
 
-$ rmdir -v Aaaa
+$ rmdir -v Aaaa↵
 rmdir: removing directory, 'Aaaa'
 ```
 
@@ -185,13 +185,14 @@ If you want to create a hash same way ` /etc/shadow ` stores it:
     - If the two characters are $5, your password is encrypted with SHA256.
     - If the two characters are $6, your password is encrypted with SHA512.
 2. Then use commands like:
-    ```
-    $ openssl passwd -6 -salt PPfs6aO9wVajlGSb↵
-    Password:  my_poor_password↵
 
-    $ mkpasswd --method=sha-512 --salt=PPfs6aO9wVajlGSb↵
-    Password:  my_poor_password↵
-    ```
+```
+$ openssl passwd -6 -salt PPfs6aO9wVajlGSb↵
+Password:  my_poor_password↵
+
+$ mkpasswd --method=sha-512 --salt=PPfs6aO9wVajlGSb↵
+Password:  my_poor_password↵
+```
 
 > [!NOTE]
 > The ` $ mkpasswd ` utility is part of the ` whois ` package. So you will need to install that first.
