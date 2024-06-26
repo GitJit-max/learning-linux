@@ -127,6 +127,7 @@ What is the origin of the UNIX dollar prompt?
 - Back in 6th edition days and before, UNIX was distributed with full source code included; Before UNIX was sold commercially. So the switch to a dollar sign could be related to commercialisation of UNIX and it's <span>$</span>hell.
 
 > The Unix **Shell Prompt** is the equivalent of the Windows **Command Prompt**
+>
 > - **Shell** = the outer layer
 > - **Prompt** = to encourage somebody to speak
 > - **Command** = an order given
