@@ -248,6 +248,7 @@ $           # You can continue typing here straight away
 
 > [!NOTE]
 > The regex syntax is beyond the scope of this tutorial. But those interested to learn more can start with the official Perl Documentation:
+>
 > - [Metacharacters](https://perldoc.perl.org/perlre#Metacharacters)
 > - [Character Classes and other Special Escapes](https://perldoc.perl.org/perlre#Character-Classes-and-other-Special-Escapes)
 

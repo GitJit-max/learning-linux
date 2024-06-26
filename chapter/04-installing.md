@@ -277,7 +277,7 @@ Finally, compile the code:
 ```
 $ cd ~/Downloads/gambas-stable/↵
 $ ./reconf-all↵
-$ ./configure -C --disable-qt4
+$ ./configure -C --disable-qt4↵
 $ make -j $(nproc)↵
 $ sudo make install↵
 ```
