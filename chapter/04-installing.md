@@ -246,11 +246,11 @@ Trash-cli is great for trying out different install options:
 
 ## 4.6 Compiling from source
 
-**SourceForge** (https://sourceforge.net) built up a lot of goodwill in the past, being a centralized place for downloading open-source software and hosting software repositories. Over the years, more projects have moved to other repository-hosting services like GitHub. SourceForge's reputation was tarnished by the addition of adware and malware to free source installation packages.
+**SourceForge** (<https://sourceforge.net>) built up a lot of goodwill in the past, being a centralized place for downloading open-source software and hosting software repositories. Over the years, more projects have moved to other repository-hosting services like GitHub. SourceForge's reputation was tarnished by the addition of adware and malware to free source installation packages.
 
-**GNU Savannah** (http://savannah.gnu.org) serves as a collaborative software development management system for free software projects. It is a project of the Free Software Foundation. Unlike GitHub or SourceForge, Savannah's focus is for free software and has very strict hosting policies (including a ban against the use of non-free formats).
+**GNU Savannah** (<http://savannah.gnu.org>) serves as a collaborative software development management system for free software projects. It is a project of the Free Software Foundation. Unlike GitHub or SourceForge, Savannah's focus is for free software and has very strict hosting policies (including a ban against the use of non-free formats).
 
-**GitHub** (https://github.com) serves as a leading collaborative software development management system for open source projects. On October 26, 2018, Microsoft acquired GitHub for US$7.5 billion. Early on, a lot of developers worried that Microsoft would reduce its free offerings to squeeze more money out of it. But instead, GitHub expanded its free service and has continued to embrace open source developers. [^git-2022]
+**GitHub** (<https://github.com>) serves as a leading collaborative software development management system for open source projects. On October 26, 2018, Microsoft acquired GitHub for US$7.5 billion. Early on, a lot of developers worried that Microsoft would reduce its free offerings to squeeze more money out of it. But instead, GitHub expanded its free service and has continued to embrace open source developers. [^git-2022]
 
 [^git-2022]: [Frederic Lardinois - Microsoft says GitHub now has 90M active users, published 2022](https://techcrunch.com/2022/10/25/microsoft-says-github-now-has-a-1b-arr-90m-active-users)
 
