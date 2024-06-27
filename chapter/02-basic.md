@@ -235,9 +235,9 @@ Applications installed through package management reside under **` /usr/ `** (Un
 
 | Dir | Use |
 |:--- |:--- |
-| **` /usr/sbin/ `** = **` /sbin/ `** | <ins>Most root user commands/executables</ins> reside in ` /usr/sbin/ `. There must be no subdirectories here. [^fhs-sbin] [^fhs-usr-sbin] |
-| **` /usr/bin/ `** = **` /bin/ `** | <ins>Most user commands/executables</ins> reside in ` /usr/bin/ `, which is the primary directory of executable commands on the system. There must be no subdirectories here. [^fhs-bin] [^fhs-usr-bin] |
-| **` /usr/lib/ `** = **` /lib/ `** | There are lots of shared **libraries** available in a GNU / Linux system, capable of doing a lot of useful things. And many of those libraries can be reused by other programs. The libraries, object files and possibly even binaries under ` /usr/lib/ ` are not intended to be executed directly by users or shell scripts. Applications may use a single subdirectory. [^fhs-usr-lib] [^fhs-lib] |
+| **` /usr/sbin/ `** <br>= **` /sbin/ `** | <ins>Most root user commands/executables</ins> reside in ` /usr/sbin/ `. There must be no subdirectories here. [^fhs-sbin] [^fhs-usr-sbin] |
+| **` /usr/bin/ `** <br>= **` /bin/ `** | <ins>Most user commands/executables</ins> reside in ` /usr/bin/ `, which is the primary directory of executable commands on the system. There must be no subdirectories here. [^fhs-bin] [^fhs-usr-bin] |
+| **` /usr/lib/ `** <br>= **` /lib/ `** | There are lots of shared **libraries** available in a GNU / Linux system, capable of doing a lot of useful things. And many of those libraries can be reused by other programs. The libraries, object files and possibly even binaries under ` /usr/lib/ ` are not intended to be executed directly by users or shell scripts. Applications may use a single subdirectory. [^fhs-usr-lib] [^fhs-lib] |
 | **` /usr/include/ `** | **Header files** included by mostly C programs reside here. Header files usually have a *.h* extension, but you will occasionally see them with other extensions such as *.hpp* or *.d* or no extension at all. The topic of header files can seem daunting for those unfamiliar with C language. A header file contains function declarations, type definitions, and other global declarations that are shared across multiple source files. It allows to separate the interface (function prototypes) from the implementation (function definitions). [^fhs-usr-include] |
 | **` /usr/share/ `** | The processor architecture-independent i.e. non executable, static data files of applications are **shareable** among all architecture platforms of a given OS. Not to be confused being shared by different OSes or by different releases of the same OS. That is most <ins>data required by programs, that doesn't need to be modified</ins> reside here. The data stored in ` /usr/share/ ` must be purely static such as manual pages, word lists for various languages (i.e. vocabulary), XML and HTML doctype declarations, postScript printer definition files, ICC color management files. Any modifiable data is stored elsewhere. [^fhs-usr-share] |
 
@@ -287,13 +287,13 @@ When the user types a CLI command, the system looks for the requested binary exe
 The **` /var/ `** (Variable) directory tree is used to store the application *data that is likely to change* such as log files, various databases and user mail. Applications must generally not add directories to the top level of ` /var/ `. Instead following subdirectories, or symbolic links are used:
 
 | Dir | Use | RAM Disk |
-|:--- |:--- |:--- |
+|:--- |:--- | --- |
 | **` /var/cache/ `** | Application **cache** means <ins>data stored to serve future requests faster</ins>. The data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. [^fhs-cache][^wiki-cache] |
 | **` /var/lib/ `** | **Variable state information** is data that programs modify while they run, <ins>that must not be exposed to regular users</ins>. An application (or a group of inter-related applications) should generally use a subdirectory for its data. There is one required subdirectory ` /var/lib/misc/ ` which is intended for state files that don't need a subdirectory. [^fhs-lib] |
-| ` /var/lock/ ` <br>= **` /run/lock/ `** | Some programs follow a convention to create a **lock file** for example (but not limited to) to <ins>indicate use of a particular device or file</ins>, so other programs can take care not to use the locked device or file simultaneously. [^fhs-lock][^tldp-var] | :heavy_check_mark: |
+| ` /var/lock/ ` <br>= **` /run/lock/ `** | Some programs follow a convention to create a **lock file** for example (but not limited to) to <ins>indicate use of a particular device or file</ins>, so other programs can take care not to use the locked device or file simultaneously. [^fhs-lock][^tldp-var] | ✓ |
 | **` /var/log/ `** | Most logs are stored to this directory or an appropriate subdirectory. **Log messages** <ins>can be used to debug problems, monitor and understand the operation</ins> of the system. [^fhs-log]  |
 | **` /var/opt/ `** | <ins>Variable data of the *option packages*</ins> installed in ` /opt/ ` are stored in a subdirectory named after the add-on software package. [^fhs-opt] |
-| ` /var/run/ ` <br>= **` /run/ `** | <ins>Data relevant to running processes</ins> in ` /run/ ` is not stored on disk, but <ins>kept in memory (or disk-based swap)</ins>, that takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^fhs-run] [^sandra] | :heavy_check_mark: |
+| ` /var/run/ ` <br>= **` /run/ `** | <ins>Data relevant to running processes</ins> in ` /run/ ` is not stored on disk, but <ins>kept in memory (or disk-based swap)</ins>, that takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^fhs-run] [^sandra] | ✓ |
 | **` /var/spool/ `** | **Spool** data <ins>is application data which awaits further processing</ins> such as printer queues. Often spool data is deleted after it has been processed. [^fhs-spool] |
 | **` /var/tmp/ `** | **Temporary** application <ins>data preserved between system reboot</ins>s. [^fhs-tmp] |
 
@@ -341,7 +341,7 @@ is available is just upper limit as to how much RAM it may use.
 
 | Dir | Use |
 |:--- |:--- |
-| **` /media/ `** or ` /run/media/ ` | Mount points for physical media such as a Blu-ray disc or a USB flash drive. [^fhs-media] |
+| **` /media/ `** or <br>` /run/media/ ` | Mount points for physical media such as a Blu-ray disc or a USB flash drive. [^fhs-media] |
 | **` /mnt/ `** | Mount points for a temporarily mounted filesystems such as a network directory or a [VMware Shared Folder](https://docs.vmware.com/en/VMware-Workstation-Pro/17/com.vmware.ws.using.doc/GUID-D6D9A5FD-7F5F-4C95-AFAB-EDE9335F5562.html) (i.e. a directory shared between a local virtual machine and the host system) [^fhs-mnt] |
 
 [^fhs-media]: [Filesystem Hierarchy Standard - Mount point for removable media](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#mediaMountPoint)

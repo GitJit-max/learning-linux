@@ -207,7 +207,7 @@ The **backslash ` \ `** is used to
 [^wiki-caret]: [Wikipedia - Caret notation, accessed 2024](https://en.wikipedia.org/wiki/Caret_notation)
 
 | Dec | Hex | Abr | CN | Keyboard shortcut + Use |
-|:---:|:---:|:---:| --- | --- |
+|:---:|:---:|:---:|:---:|:--- |
 | 0 | 00 | NUL |  | ` Ctrl + @ ` or ` Ctrl + Space ` **Null** was typically used to reserve space, either for correcting errors or for inserting information that would be available at a later time or in another place. It adapted to mark end of string.
 | 1 | 01 | SOH | ^A | ` Ctrl + A ` **Start of Heading** was to mark a non-data section of a data stream. |
 | 2 | 02 | STX | ^B| ` Ctrl + B ` **Start of Text** marked the end of the header, and the start of the textual part of a stream. |
@@ -506,7 +506,7 @@ In a bash shell prompt, as you are typing a command, filename, directory or even
 You may try the following to exit some commandline situations:
 
 | Keys | Use case |
-| --- | --- |
+|:--- |:--- |
 | ` Ctrl + D ` | End text input |
 | ` Ctrl + C ` | Interrupt current process |
 | ` q ` | Quit ` $ less ` and ` $ more ` |
@@ -518,7 +518,7 @@ You may try the following to exit some commandline situations:
 How to clear or delete the current line in a terminal:
 
 | Keys | Use case |
-| --- | --- |
+|:--- |:--- |
 | ` Ctrl + C ` | Cancel |
 | ` Ctrl + W ` | Delete just a word. |
 | ` Ctrl + U ` | Clear up to the beginning. |
@@ -528,7 +528,7 @@ How to clear or delete the current line in a terminal:
 Shorcuts specific to GUI terminal window:
 
 | Keys | Use case |
-| --- | --- |
+|:--- |:--- |
 | ` F11 ` | Toggle fullscreen |
 | ` Control + Shift + F ` | Search or find for text displayed on current terminal window. |
 
