@@ -288,14 +288,14 @@ The **` /var/ `** (Variable) directory tree is used to store the application *da
 
 | Dir | Use | RAM Disk |
 |:--- |:--- | --- |
-| **` /var/cache/ `** | Application **cache** means <ins>data stored to serve future requests faster</ins>. The data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. [^fhs-cache][^wiki-cache] |
-| **` /var/lib/ `** | **Variable state information** is data that programs modify while they run, <ins>that must not be exposed to regular users</ins>. An application (or a group of inter-related applications) should generally use a subdirectory for its data. There is one required subdirectory ` /var/lib/misc/ ` which is intended for state files that don't need a subdirectory. [^fhs-lib] |
+| **` /var/cache/ `** | Application **cache** means <ins>data stored to serve future requests faster</ins>. The data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. [^fhs-cache][^wiki-cache] |   |
+| **` /var/lib/ `** | **Variable state information** is data that programs modify while they run, <ins>that must not be exposed to regular users</ins>. An application (or a group of inter-related applications) should generally use a subdirectory for its data. There is one required subdirectory ` /var/lib/misc/ ` which is intended for state files that don't need a subdirectory. [^fhs-lib] |   |
 | ` /var/lock/ ` <br>= **` /run/lock/ `** | Some programs follow a convention to create a **lock file** for example (but not limited to) to <ins>indicate use of a particular device or file</ins>, so other programs can take care not to use the locked device or file simultaneously. [^fhs-lock][^tldp-var] | ✓ |
-| **` /var/log/ `** | Most logs are stored to this directory or an appropriate subdirectory. **Log messages** <ins>can be used to debug problems, monitor and understand the operation</ins> of the system. [^fhs-log]  |
-| **` /var/opt/ `** | <ins>Variable data of the *option packages*</ins> installed in ` /opt/ ` are stored in a subdirectory named after the add-on software package. [^fhs-opt] |
+| **` /var/log/ `** | Most logs are stored to this directory or an appropriate subdirectory. **Log messages** <ins>can be used to debug problems, monitor and understand the operation</ins> of the system. [^fhs-log] |   |
+| **` /var/opt/ `** | <ins>Variable data of the *option packages*</ins> installed in ` /opt/ ` are stored in a subdirectory named after the add-on software package. [^fhs-opt] |   |
 | ` /var/run/ ` <br>= **` /run/ `** | <ins>Data relevant to running processes</ins> in ` /run/ ` is not stored on disk, but <ins>kept in memory (or disk-based swap)</ins>, that takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^fhs-run] [^sandra] | ✓ |
-| **` /var/spool/ `** | **Spool** data <ins>is application data which awaits further processing</ins> such as printer queues. Often spool data is deleted after it has been processed. [^fhs-spool] |
-| **` /var/tmp/ `** | **Temporary** application <ins>data preserved between system reboot</ins>s. [^fhs-tmp] |
+| **` /var/spool/ `** | **Spool** data <ins>is application data which awaits further processing</ins> such as printer queues. Often spool data is deleted after it has been processed. [^fhs-spool] |   |
+| **` /var/tmp/ `** | **Temporary** application <ins>data preserved between system reboot</ins>s. [^fhs-tmp] |   |
 
 [^wiki-cache]: [Wikipedia - Cache (computing)](https://en.wikipedia.org/wiki/Cache_(computing))
 
