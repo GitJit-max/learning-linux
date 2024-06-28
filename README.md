@@ -3,7 +3,7 @@
 
 # First steps in learning linux
 
-Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this online tutorial be your first step in learning linux. Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
+Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this book be your first step in learning linux. Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
 
 ----------------
 
