@@ -408,32 +408,23 @@ $ bind --help↵
 bind: usage: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [keyseq:readline-function or readline-command]
 
 $ help bind↵
-bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [keyseq:readline-function or readline-command]
+bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q ...
     Set Readline key bindings and variables.
 
-    Bind a key sequence to a Readline function or a macro, or set a
-    Readline variable.  The non-option argument syntax is equivalent to
-    that found in ~/.inputrc, but must be passed as a single argument:
-    e.g., bind '"\C-x\C-r": re-read-init-file'.
+    Bind a key sequence to a Readline function or a macro,
+    or set a Readline variable.  The non-option argument
+    syntax is equivalent to that found in ~/.inputrc, but
+    must be passed as a single argument.
 
     Options:
-      -m  keymap         Use KEYMAP as the keymap for the duration of this command.  Acceptable keymap names are emacs, emacs-standard, emacs-meta, emacs-ctlx, vi, vi-move, vi-command, and vi-insert.
+      -m  keymap         Use KEYMAP as the keymap for...
       -l                 List names of functions.
-      -P                 List function names and bindings.
-      -p                 List functions and bindings in a form that can be reused as input.
-      -S                 List key sequences that invoke macros and their values
-      -s                 List key sequences that invoke macros and their values in a form that can be reused as input.
-      -V                 List variable names and values
-      -v                 List variable names and values in a form that can be reused as input.
-      -q  function-name  Query about which keys invoke the named function.
-      -u  function-name  Unbind all keys which are bound to the named function.
-      -r  keyseq         Remove the binding for KEYSEQ.
-      -f  filename       Read key bindings from FILENAME.
-      -x  keyseq:shell-command  Cause SHELL-COMMAND to be executed when KEYSEQ is entered.
-      -X                 List key sequences bound with -x and associated commands in a form that can be reused as input.
-
-    Exit Status:
-      bind returns 0 unless an unrecognized option is given or an error occurs.
+      -P                 List function names and bind...
+      -p                 List functions and bindings ...
+      -S                 List key sequences that invo...
+      -s                 List key sequences that invo...
+      -V                 List variable names and valu...
+      -v                 List variable names and valu...
 ```
 
 ### Shell script

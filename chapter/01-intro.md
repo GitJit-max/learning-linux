@@ -249,7 +249,7 @@ In China, we might soon see a large spike in the number of people using Linux de
 
 If you can have your full productivity (without any problems) using GNU / Linux, then by all means, switching to GNU / Linux is a good, smart choice. Alas, for many people, this is science fiction. And stating *just use linux* for every one is a wishful dream. Many can't cope with the switch. Hardware question is a gamble and at the end of the day, there are applications that you don't get. [^dedo-2019] However compromising for ideology could be worth it (see [Section: Philosophy of the GNU project](#gnu-philosophy)).
 
-[^dedo-2019]: [Igor Ljubuncic aka Dedoimedo - Windows 7 End of Support: What Next?, published 2019](https://www.dedoimedo.com/computers/windows-7-end-of-support-guide.html)
+[^dedo-2019]: [Igor Ljubuncic - Windows 7 End of Support: What Next?, published 2019](https://www.dedoimedo.com/computers/windows-7-end-of-support-guide.html)
 
 ### Toolchains over products [^raymond]
 
@@ -269,15 +269,15 @@ The unix people can turn aside from this, and remain a priesthood appealing to a
 
 GNU / Linux accounts for a tiny percentage of the overall desktop market share. The perennial one or two percent has been around roughly since 2005, and even if the actual share is higher than that, it's still a small and largely insignificant fraction. And yet, there are hundreds of GNU / Linux distributions (see [Section: The GNU / Linux family](#distro-family)) populating this narrow, crowded arena. For an operating system with less than a few hundred million users worldwide, it's so fragmented, you could build a mosaic. There are a billion linux implementations and incarnations, all of which almost entirely privately funded, run by a small team of people, and with uncertain future. [^dedo-2018]
 
-[^dedo-2018]: [Igor Ljubuncic aka Dedoimedo - Linux Fragmentation, published 2018](https://www.dedoimedo.com/computers/linux-fragmentation-sum-egos.html)
+[^dedo-2018]: [Igor Ljubuncic - Linux Fragmentation, published 2018](https://www.dedoimedo.com/computers/linux-fragmentation-sum-egos.html)
 
 Most distributions are just volunteer efforts by passionate people working on what is essentially their hobby. There's absolutely nothing wrong with that. It's actually very cool that people can express themselves in a fun way. The problem is when these efforts are offered to the general public. Most people expect consumer products. Linux distributions are not made as consumer products, and going from a joint fun effort to a serious product takes huge amounts of time and effort. [^dedo-2020]
 
-[^dedo-2020]: [Igor Ljubuncic aka Dedoimedo - Linux Dissatisfaction, published 2020](https://www.dedoimedo.com/computers/linux-year-of-dissatisfaction.html)
+[^dedo-2020]: [Igor Ljubuncic - Linux Dissatisfaction, published 2020](https://www.dedoimedo.com/computers/linux-year-of-dissatisfaction.html)
 
 While the technology landscape feels big, complex and colorful, the actual variation in creativity and uniqueness isn’t that huge. Often, ideas build upon other ideas, with small changes and incremental improvements. This is also true of GNU / Linux, with its towering pyramid of distros and forks and still more forks, a whole cutlery division. Lots of stuff but not necessarily variety. [^dedo-ocsmag]
 
-[^dedo-ocsmag]: [Igor Ljubuncic aka Dedoimedo - Magnificent Seven unique Linux projects, published 2018](https://www.ocsmag.com/the-magnificent-seven-unique-linux-projects/)
+[^dedo-ocsmag]: [Igor Ljubuncic - Magnificent Seven unique Linux projects, published 2018](https://www.ocsmag.com/the-magnificent-seven-unique-linux-projects/)
 
 Lack of resources is always quoted as a big problem in the distro world, when it's almost entirely a self-imposed problem. Linux desktop distributions are mostly developed by non-professionals (the word amateur is wrong here), who do so mostly in their spare time, to the best of their available abilities (financial, technical, temporal). Most of the projects have 3 to 4 people in the team in the best case. You often hear about new distros forking, because A didn't get along with B. But how many times do you hear of a distro voluntarily relinquishing its manpower and code in favor of another? How often do distros merge? Imagine what happens if you ax distros 11-100 on DistroWatch list and distribute their resources among the top ten. You now have hundreds of people to work on the same project. [^dedo-2018]
 
@@ -299,7 +299,7 @@ Lack of resources is always quoted as a big problem in the distro world, when it
 
 [^browny]: [User browny_amiga - Comment on linuxquestions.org, published 2011](https://www.linuxquestions.org/questions/linux-software-2/gui-web-interactive-etc-sudoers-editor-556310/)
 
-[^dedo-pavilion]: [Igor Ljubuncic aka Dedoimedo - Ten year old HP doesn't boot modern distros, published 2021](https://www.dedoimedo.com/computers/hp-pavilion-linux-modern-distros.html)
+[^dedo-pavilion]: [Igor Ljubuncic - Ten year old HP doesn't boot modern distros, published 2021](https://www.dedoimedo.com/computers/hp-pavilion-linux-modern-distros.html)
 
 <a id="why-switch"></a>
 
