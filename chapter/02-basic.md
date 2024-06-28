@@ -286,7 +286,7 @@ When the user types a CLI command, the system looks for the requested binary exe
 
 The **` /var/ `** (Variable) directory tree is used to store the application *data that is likely to change* such as log files, various databases and user mail. Applications must generally not add directories to the top level of ` /var/ `. Instead following subdirectories, or symbolic links are used:
 
-| Dir | Use | RAM Disk |
+| Dir | Use | RAM<br>Disk |
 |:--- |:--- | --- |
 | **` /var/cache/ `** | Application **cache** means <ins>data stored to serve future requests faster</ins>. The data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere. [^fhs-cache][^wiki-cache] |   |
 | **` /var/lib/ `** | **Variable state information** is data that programs modify while they run, <ins>that must not be exposed to regular users</ins>. An application (or a group of inter-related applications) should generally use a subdirectory for its data. There is one required subdirectory ` /var/lib/misc/ ` which is intended for state files that don't need a subdirectory. [^fhs-lib] |   |
