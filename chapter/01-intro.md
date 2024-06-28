@@ -13,7 +13,7 @@
 
 # Chapter 1 - Introduction
 
-Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this online help be your first step in learning linux. Knowing about the past helps understand how things are today. So let's start with a fair bit of history, along some views and opinions of a few select persona.
+Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this book be your first step in learning linux. Knowing about the past helps understand how things are today. Let's start with the history of linux and the views and opinions of a few selected individuals.
 
 <a id="branching"></a>
 

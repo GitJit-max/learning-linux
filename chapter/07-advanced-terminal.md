@@ -159,9 +159,7 @@ Let's examine the default ` PS1 ` prompt in Solus ` $ echo $PS1↵ `:
 | \\\[  **\\e[0m**  \\\] | Removes all attributes (formatting and colors). |
 
 > [!NOTE]
-> **` \[ `** = Begins a sequence of non-printing characters (like color escape sequences).
->
-> **` \] `** = Ends a sequence of non-printing characters.
+> Note that **` \[ `** begins a sequence of non-printing characters (like color escape sequences) and **` \] `** ends a sequence of non-printing characters.
 
 Lets replace the default PS1 with something different:
 

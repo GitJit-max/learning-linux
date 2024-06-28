@@ -188,7 +188,6 @@ ExifTool does not need to be installed to run. However, installation makes it av
 The nonprofit [Python Software Foundation](https://www.python.org/psf-landing/) recommends using ` $ pip ` or ` $ pip3 ` for installing *Python applications* and its dependencies. Pip connects to an online repository of public packages. **Pip** is a recursive acronym for Pip Installs Packages.
 
 > [!IMPORTANT]
->
 > Downloading and installing *Python applications* is a breeze, but requires the *Python development environment* installed first through the distribution's package management. These packages, like any other packages, can have differing names between the distributions such as ` pip ` for Solus and ` python3-pip ` for Linux Mint.
 > ```
 > $ sudo eopkg install pip↵ # Install Python Development Environment
