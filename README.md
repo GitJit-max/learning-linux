@@ -146,9 +146,9 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 
 | Version | Date | Description |
 | ---:| --- | --- |
-| 1.0 | 28.06.2024 | 2<sup>nd</sup> pdf edition |
-| 1.0 | 16.06.2024 | 1<sup>st</sup> github edition |
-| 0.9 | 13.04.2021 | 1<sup>st</sup> pdf edition |
+| 1.0 | 28.06.2024 | <!--2<sup>nd</sup>--> Second pdf edition |
+| 1.0 | 16.06.2024 | <!--1<sup>st</sup>--> First github edition |
+| 0.9 | 13.04.2021 | <!--1<sup>st</sup>--> First pdf edition |
 
 ### Contribution guidelines
 
