@@ -11,17 +11,63 @@
 
 <!-- End of auto generated content -->
 
-# Chapter 10 - Additional hints, tweaks and information
+# Chapter 10 - Appendix
+
+<a id="installing-gnu-linux"></a>
+
+## 10.1 Installing GNU / Linux
+
+A linux distribution (or several of them) can be installed in place of, or alongside Microsoft Windows and Apple macOS. You can have multiple operating systems installed on one computer. This setup is often referred to as dual-booting or multi-booting. With multiple operating systems installed, you will typically see a boot menu when you start your computer. This menu allows you to choose which operating system to boot into.
+
+Installation of a GNU / Linux typically starts with the creation of a bootable USB drive, but most distributions can be run directly from such bootable USB drives without installing (onto the computer's internal storage drive). This allows users to try out GNU / Linux and it's various distributions without making any changes to their existing system. It’s a way to experiment, recover data from a broken system, or have a portable operating system that one can use on different machines.
+
+### Create a bootable USB drive
+
+Creating a bootable USB drive is not trivial, and requires installing a boot drive creation utility such as [Rufus](https://rufus.ie/en/), [Balena Etcher](https://etcher.balena.io) or [Ventoy](https://www.ventoy.net/). In addition, you must download the correct ISO file from the official website of the distribution you want to (see [Chapter 1, Section: Suggested Distributions](01-intro.md#suggested-distributions)). The ISO file must be copied to a USB drive in a way that makes it bootable, using afore mentioned software.
+
+### Boot from a USB drive
+
+Booting a computer from a USB drive may not trivial, as it usually requires changing some UEFI/BIOS system settings. Some GNU / Linux distributions cannot be installed unless the Secure Boot feature is disabled. Installation continues by changing the boot order to favor USB before the computer's internal boot drive. The UEFI/BIOS settings can usually be accessed by pressing a hardware-specific key such as Del, Esc, F2, F10, F12 during boot-up. Ease of access to system settings also depends on the existing UEFI/BIOS settings. You may have the post boot delay time set to zero, during which pressing the hardware-specific key proves impossible - In which case you will never get in. You can try to instruct and already running computer to boot into UEFI/BIOS from from the Windows command line (` Win + R ` + ` cmd.exe↵ `) with the command ` shutdown /r /fw↵ ` or a linux terminal with the command ` $ sudo systemctl reboot --firmware-setup↵ `. [^koodikanava]
+
+[^koodikanava]: [Koodi Kanava, Kimmo Kujansuu - Helpolla komennolla pääset biosiin, accessed 2025](https://www.youtube.com/watch?v=YbKrDbHRsTg)
+
+<a id="disk-partitioning"></a>
+
+### Disk partitioning
+
+After a successful boot with the USB drive, you should arrive to a graphical user interface of the GNU / Linux operating system referred to as a live session. Live mode session is almost like a fully functioning instance of the operating system. In live mode, you have access to most of the features and applications as if you had installed it on your internal storage drive. Follow the on-screen prompts to begin the installation process. If not prompted, installation continues by finding the installer. Most live sessions have an "Install" icon on the desktop for this. Progressing from here requires some understanding of disk partitioning.
+
+> [!WARNING]
+> When partitioning a storage disk for GNU / Linux, it is strongly encouraged to expand the (U)EFI FAT32 boot partition to at least 500 MB. The 100 MB created by Windows will most likely prove too low in the long run. Problems may occur when the Linux kernel is updated. Everything may seem to work, but the Linux kernel, doesn't update, and you might not even get an error message about it.
+
+- **EXT4** (Fourth Extended Filesystem) is a good choice and the default filesystem for most GNU / Linux distributions. More advanced users may prefer the BTRFS (B-Tree File System) for its additional features such as snapshots - However BTRFS is slower than EXT4 especially when dealing with large data writes.
+
+- **exFAT** (Extensible File Allocation Table) and **NTFS** (New Technology File System) are good file system alternatives for partitions to be shared between different operating systems such as GNU / Linux and Microsoft Windows. Of these, exFAT is the most straightforward and the best performing. NTFS is the default file system for the Windows operating system, but Windows-level NTFS performance is currently not achievable in GNU / Linux.
+
+- Otherwise, the complex disk partitioning traditionally used in GNU / Linux distributions (even single-disk configurations) is no longer necessary on today's home computers; And it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
+
+> The first function created for Linux at the request of an outsider was the ability to extend main memory with **swap memory**, completed on Christmas Day 1991. Torvalds ’own 386 machine (which was assembled from parts, unbranded) had four megabytes of memory, but users with a smaller number (especially one German user who originally made the request) were in trouble with the lack of main memory. This feature was significant in early 1992 because it played a major role in system performance and contributed positively to the Linux kernel. In Linux, the swap space has traditionally been located on a separate hard disk partition with its own file system optimized for swap use. The speed advantage achieved in this way is now so marginal that the same can be done well by taking the space available for virtual memory from a standard disk partition. In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading.
+
+> [!TIP]
+> Partitions can be resized, moved, deleted and created with `$ gparted ` in GNU / Linux and with ` diskmgmt.exe ` in Microsoft Windows (` Win + X ` + Disk Management).
 
 <a id="terminal-stuff"></a>
 
-## 10.1 Terminal related
+## 10.2 Additional tips with the terminal
+
+### Suspend to RAM
 
 ` $ systemctl suspend↵ ` = Suspend to RAM. Works by cutting off power to most parts of the machine aside from the RAM, which is required to restore the machine's state. Because of the large power savings, it is advisable for laptops to automatically enter this mode when the computer is running on batteries and the lid is closed (or the user is inactive for some time).
 
+### Boot time
+
 ` $ systemd-analyze↵ ` = Display the system boot up time to find out how long does it take to boot your GNU / Linux system. Append the ` blame ` flag for additional details.
 
+### Screen brightness
+
 ` $ sudo light -S 30.0 -s sysfs/backlight/auto↵ ` = Decreases the screen brightness. The figure is a percentage 00.0...100.0
+
+### Confirmation messages
 
 Many terminal commands will print a message only if something goes wrong. Often times as you insert a command and hit enter, the command gets executed but you do not see a result. The copy command ` $ cp `will overwrite existing files silently. The ` $ rm ` command removes files from the system without confirmation. This is because the unix shell is unobtrusive and silent by design (see [Chapter 2, Section: Design tropes of unix shell utilities](02-basic.md#design-tropes-of-unix)). By default most commands will not print confirmation messages upon success. However, many commands accept the ` -v ` parameter to change this behaviour (v is hort for verbose):
 
@@ -32,6 +78,8 @@ mkdir: created directory 'Aaaa'
 $ rmdir -v Aaaa↵
 rmdir: removing directory, 'Aaaa'
 ```
+
+### Analyze disk space usage
 
 The following command will display how much space is being used by folders under the root ` / ` directory:
 
@@ -60,7 +108,7 @@ $ sudo du -hsx /* | sort -rh | head -n 40↵
 
 <a id="desktop-stuff"></a>
 
-## 10.2 Desktop related
+## 10.3 Additional tips for the desktop interface
 
 ### Program file names
 
@@ -82,54 +130,6 @@ Graphical dekstop environments tend to hide the file names of programs. One way 
 
 > [!NOTE]
 > The signs ` + `, ` - ` and ` 0 ` must be pressed next to the letter keys. The corresponding characters on the numeric keypad do not work with the default settings.
-
-<a id="edit-sudoers"></a>
-
-## 10.3 Editing sudo configuration
-
-### The sudo configuration files
-
-To manage the *sudo's configuration file(s)* or *the sudoers file(s)* it is possible to a) edit the primary configuration file ` /etc/sudoers ` or b) make a new configuration file under the ` /etc/sudoers.d/ ` directory.
-
-> It is recommended to put custom configuration into files in the ` /etc/sudoers.d/ ` directory, because typically ` /etc/sudoers ` is under control of the package manager, and if the package manager wants to upgrade it, one has to manually inspect any local changes and approve how they are merged into the new version. Modifications done directly in the ` /etc/sudoers ` file may even break updates. By placing local changes into a file in the ` /etc/sudoers.d/ ` directory, one garantees that upgrades can proceed automatically. And any changes made to files in ` /etc/sudoers.d ` remain in place if after system upgrade. This can prevent user lockouts when the system is upgraded. The ability to have stand alone files makes it simple for an application to enable sudo capability on installation and remove them when it is uninstalled. Automated configuration tools can also use this capability.
-- Exceptions are files that end with the tilde ` ~ ` character or contain the period ` . ` character. This convention of ignored files is done for the convenience of package managers and also so that backup files from editors are ignored.
-- Sudo defines that in case of multiple lines matching for a user, the last one stands. That is any files under ` /etc/sudoers.d/ ` are parsed after ` /etc/sudoers ` file. So potentially a file in ` /etc/sudoers.d/ ` could restrict permissions for someone.
-
-> [!IMPORTANT]
-> Make sure the /etc/sudoers file contains the line:
-> ```
-> #includedir /etc/sudoers.d
-> ```
-> Most likely the default ` /etc/sudoers ` file created on installation (of the operating system) includes this directive. However, if not then you must add it yourself. Only then will the sudo program read configuration files from the ` /etc/sudoers.d/ ` directory.
-
-### Format for user privilege specification
-
-```
-margaret ALL = (root) NOPASSWD: /usr/bin/eopkg up
-   |      |      |      |                |
- Who?   Where?   | Without need to   This command
-   |      |      | type a password?
-User(s) Host(s)  |
-                 |
-    Under an assumed identity of (user root)
-```
-
-1. The **user specifier** accepts ` user_names `, ` %group_names ` and ` #uids `.
-    - One may specify a single user or group or a list of them separated by a comma ` , `
-2. ` ALL ` is a common choice for the **host list**.
-3. The **command specifier** accepts a path to an executable,
-    - Followed by optional allowed arguments such as
-        - ` /usr/bin/some-app ` = Any arguments allowed.
-        - ` /usr/bin/some-app "" ` = No arguments allowed at all.
-        - ` /usr/bin/some-app some-argument ` = Only "some-argument" allowed as argument.
-    - One may specify a single command or several separated by a comma ` , `
-
-### Safety
-
-A comment ` # This file MUST be edited with the 'visudo' command ` on the ` /etc/sudoers ` file states you should not edit sudoers directly, by opening it in a text editor, but instead edit it with ` $ visudo `, which prevents editing conflicts and checks for syntax errors before saving the modifications to disk. By default, visudo doesn't honor the ` VISUAL ` or ` EDITOR ` environment variables, used by many programs to determine the default text editor. There is a hard-coded list of one or more editors that visudo uses. The default is ` $ vi ` (hence the name visudo).
-
-> [!TIP]
-> In reality, you don't have to use the cumbersome ` $ visudo `. You can use a text editor of your choice such as ` $ gedit ` or ` $ ne `. It is possible to wall your self out of the system if the ` /etc/sudoers ` file or any file under ` /etc/sudoers.d/ ` directory is malformed. Sufficient safety can be achieved by having a second terminal instance running as root ` $ sudo su↵ `. There is no need for the sudo command once you are logged in as root as indicated by the ` # ` prompt. And any changes can be tested on another terminal instance running as an ordinary user. This way you can verify, that whatever you just did, left sudo running properly. If not, you have the root window to fix it.
 
 <a id="edit-shadow"></a>
 

@@ -350,6 +350,9 @@ Some GNU / Linux desktop distributions worth considering:
 
 Some companies and institutions have their own in-house distribution unavailable to outsiders.
 
+> [!NOTE] 
+> Detailed distribution specific installation instructions are beyond the scope of this book. However a high-level overview of an installation process for a generic linux distribution is provided in [Chapter 10, Section: Installing GNU / Linux](10-additional.md#installing-gnu-linux).
+
 ### Things to consider
 
 **Stable** means unchanging. As a consequence most packages are dated, even 2-3 years old. Debian is considered one of the stability kings, running very old apps, sometimes even with bugs fixed long ago. Stable does not mean that there are less crashes on the system. Or that the updates are less frequent or smaller in size.

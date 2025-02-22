@@ -25,7 +25,7 @@ Package managers simplify the process of adding, removing and updating software.
 
 Traditionally one of the most significant differences with other operating systems has been related to the open source ecosystem, and the existence of the digital distribution service like package management.
 
-Package managers like dpkg have existed as early as 1994, and was originally a shell script. But the meaning of the phrase has evolved significantly. Package management systems became almost equivalent to other digital distribution services created much later such as the Google Play Store.
+Package managers like dpkg have existed as early as 1994 (originally as a shell script). But the meaning of the phrase has evolved significantly. Package management systems became almost equivalent to other digital distribution services created much later such as the Google Play Store.
 
 Traditionally all software offered through package management has been free and open source. But some distributions include select closed source software.
 
@@ -135,31 +135,25 @@ You can find deb packages in the download section of a software provider’s web
 
 ## 4.4 Tarball
 
-In computing, **` $ tar `** is a computer software utility for collecting many files into one archive file, often referred to as a **tarball**, for distribution or backup purposes. The name is derived from "tape archive", as it was originally developed to write data to sequential I/O devices with no file system of their own, such as devices that use magnetic tape. [^wiki-tar]
+In computing, **` $ tar `** is a computer software utility for collecting many files into one archive file, often referred to as a **tarball**, for distribution or backup purposes.
+
+> The name ` tar ` is derived from "tape archive", as it was originally developed to write data to sequential I/O devices with no file system of their own, such as devices that use magnetic tape. [^wiki-tar]
 
 [^wiki-tar]: [Wikipedia - tar (computing), accessed 2024](https://en.wikipedia.org/wiki/Tar_(computing))
 
-### Install exiftool
+### Install pandoc
 
-**ExifTool** (free and open-source) is a command line app for handling metadata of image files <https://www.exiftool.org/>
+**Pandoc** is a markup format converter. It can take a document in one of the supported formats and convert its markup to another format. Maintaining the look and feel of the document is not a priority. <https://github.com/jgm/pandoc/>
 
-ExifTool does not need to be installed to run. However, installation makes it available to all users by placing exiftool files in the correct directories such as the main executable to ` /usr/bin/ `, documentation to `/usr/share/man ` and API libraries to ` /usr/lib64/ `.
+1. Download and extract <https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-linux-amd64.tar.gz> or locate a more up to date file from <https://github.com/jgm/pandoc/releases/>
 
-1. Download and extract: <br><https://www.exiftool.org/Image-ExifTool-12.86.tar.gz>
-
-2. Run commands:
-
-    ```
-    $ cd ~/Downloads/Image-ExifTool-12.86/↵
-    $ perl Makefile.PL↵
-    $ sudo make install↵
-    ```
-
+2. Move the files to the correct directories such as the executable to ` /usr/bin/ ` and documentation to `/usr/share/man/ `. 
+    
 ### Install RAR for Linux
 
 **RAR for Linux** (paid after trial period) is a command line app for handling rar files <https://www.rarlab.com/>
 
-1. Download and extract: <https://www.rarlab.com/rar/rarlinux-x64-701.tar.gz>
+1. Download and extract: <https://www.rarlab.com/rar/rarlinux-x64-710.tar.gz> or locate a more up to date file from <https://www.rarlab.com/download.htm>
 
 2. Run the following commands (as instructed in the included ` makefile ` text file):
 
@@ -181,59 +175,80 @@ ExifTool does not need to be installed to run. However, installation makes it av
     # You may rename "rarreg.key" to ".rarreg.key" or ".rarregkey"
     ```
 
+### Install exiftool
+
+**ExifTool** (free and open-source) is a command line app for handling metadata of image files <https://www.exiftool.org/>
+
+ExifTool does not need to be installed to run. However, installation makes it available to all users by placing exiftool files in the correct directories such as the main executable to ` /usr/bin/ `, documentation to `/usr/share/man/ ` and API libraries to ` /usr/lib64/ `.
+
+1. Download and extract <https://www.exiftool.org/Image-ExifTool-13.21.tar.gz> or locate a more up to date file from <https://www.exiftool.org/>
+
+2. Run commands:
+
+    ```
+    $ cd ~/Downloads/Image-ExifTool-13.21/↵
+    $ perl Makefile.PL↵
+    $ sudo make install↵
+    ```
+
 <a id="python-applications"></a>
 
 ## 4.5 Python applications
 
-The nonprofit [Python Software Foundation](https://www.python.org/psf-landing/) recommends using ` $ pip ` or ` $ pip3 ` for installing *Python applications* and its dependencies. Pip connects to an online repository of public packages. **Pip** is a recursive acronym for Pip Installs Packages.
+### Pip
 
-> [!IMPORTANT]
-> Downloading and installing *Python applications* is a breeze, but requires the *Python development environment* installed first through the distribution's package management. These packages, like any other packages, can have differing names between the distributions such as ` pip ` for Solus and ` python3-pip ` for Linux Mint.
-> ```
-> $ sudo eopkg install pip↵ # Install Python Development Environment
->
-> $ sudo apt-get update↵ # First, update the package index
-> $ sudo apt install python3-pip↵ # Install Python Development Environment
-> ```
+The nonprofit [Python Software Foundation](https://www.python.org/psf-landing/) recommends using ` $ pip3 ` for installing *Python packages* and it's dependencies. **Pip** is a recursive acronym for Pip Installs Packages, and connects to an online repository of public packages. 
+- You can use ` $ pip3 list↵ ` to see which packages you have installed.
+- You can use ` $ pip3 list --outdated↵ ` to list all outdated packages.
+- You can update all installed packages with the following command:
+
+    ```
+    $ pip3 list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U↵
+    ```
+
+### Pipx
+
+Downloading and installing *Python applications* is a breeze with **` $ pipx `**. It's aimed at end-users instead of programmers and can be seen as an automation wrapper around lower level tools such as ` $ pip3 ` and ` venv ` to install and manage Python packages that can be run from the command line directly as applications. ` $ pipx ` simplifies the management of isolated virtual environments, installation of applications and exposes their binaries in ` ~/.local/bin/ `. The management features makes it easy to add, upgrade, and remove python apps as you see fit. This way ` $ pipx ` works as a package manager, similar to ` $ apt ` and ` $ eopkg `.
+- You can use ` $ pipx list↵ ` to see which packages you have installed.
+- You can use ` $ pipx upgrade-all↵ ` to update all installed packages.
 
 ### Install trash-cli
 
-**` trash-cli `** (free and open-source) is a command line interface to the [FreeDesktop.org trash can](http://standards.freedesktop.org/trash-spec/trashspec-latest.html); The same trashcan used by Budgie, KDE, GNOME, XFCE and alike, but you can invoke it from the command line (and scripts). <https://github.com/andreafrancia/trash-cli/>
+**Trash-cli** (free and open-source) is a command line interface to the [FreeDesktop.org trash can](http://standards.freedesktop.org/trash-spec/trashspec-latest.html); The same trashcan used by Budgie, KDE, GNOME, XFCE and alike, but you can invoke it from the command line (and scripts). <https://github.com/andreafrancia/trash-cli/>
 
 Trash-cli is great for trying out different install options:
 
-1. Install for all users: <br>` /usr/bin/ `, ` /usr/lib/ `, ` /usr/share/man/ `
+1. Install for current user: <br>` ~/.local/bin/ `, ` ~/.local/lib/ `, ` ~/.local/share/man/ `
 
     ```
-    $ sudo pip install trash-cli↵
+    $ pipx install trash-cli↵
 
-    $ sudo pip uninstall trash-cli↵
+    $ pipx uninstall trash-cli↵
     ```
 
-2. Bleeding Edge (from sources) to for all users:
+2. Install for all users: <br>` /usr/bin/ `, ` /usr/lib/ `, ` /usr/share/man/ `
 
     ```
-    $ sudo pip install git+https://github.com/andreafrancia/trash-cli↵
+    $ sudo pip3 install trash-cli↵
 
-    $ sudo pip uninstall trash-cli↵
+    $ sudo pip3 uninstall trash-cli↵
     ```
 
-3. Install for current user: <br>` ~/.local/bin/ `, ` ~/.local/lib/ `, ` ~/.local/share/man/ `
+3. Bleeding Edge (from sources) for all users:
 
     ```
-    $ pip install trash-cli↵
+    $ sudo pip3 install git+https://github.com/andreafrancia/trash-cli↵
+
+    $ sudo pip3 uninstall trash-cli↵
+    ```
+
+4. Bleeding Edge (from sources) for current user:
+
+    ```
+    $ pip3 install git+https://github.com/andreafrancia/trash-cli↵
     $ export PATH=~/.local/bin:"$PATH"↵
 
-    $ pip uninstall trash-cli↵
-    ```
-
-4. Bleeding Edge (from sources) to current user:
-
-    ```
-    $ pip install git+https://github.com/andreafrancia/trash-cli↵
-    $ export PATH=~/.local/bin:"$PATH"↵
-
-    $ pip uninstall trash-cli↵
+    $ pip3 uninstall trash-cli↵
     ```
 
 > [!NOTE]
@@ -266,7 +281,7 @@ $ sudo eopkg install -c system.devel↵
 Second, install depencies:
 
 ```
-alsa-lib-devel, autoconf, automake, bzip2-devel, curl-devel, curl-gnutls, gcc, gdk-pixbuf-devel, git, glew-devel, glib2-devel, gmime-devel, gmp-devel, gsl-devel, gstreamer-1.0-devel, gstreamer-1.0-plugins-base-devel, gtkglext-devel, imlib2-devel, libcairo-devel, libffi-devel, libgnome-keyring-devel, libgnutls-devel, libgtk-2-devel, libgtk-3-devel, libgtk-4-devel, libgtkmm-2-devel, libgtkmm-3-devel, libpcre-devel, librsvg-devel, libtool-devel, libwebkit-gtk-devel, libwebkit-gtk41-devel, libwebkit-gtk5-devel, libxml2-devel, libxslt-devel, libxtst-devel, llvm-devel, mariadb-devel, ncurses-devel, openssl-11-devel, poppler-devel, poppler-devel, postgresql-devel, qt5-3d-devel, qt5-base-devel, qt5-svg-devel, qt5-webengine-devel, qt5-webkit-devel, qt5-websockets-devel, qt5-webview-devel, qt5-x11extras-devel, sane-backends-devel, sdl-ttf-devel, sdl1-devel, sdl1-image-devel, sdl1-image-devel, sdl1-mixer-devel, sdl1-sound-devel, sdl2-devel, sdl2-image-devel, sdl2-image-devel, sdl2-mixer-devel, sdl2-ttf-devel, sqlite3-devel, unixodbc-devel, v4l-utils-devel, zstd-devel
+alsa-lib-devel, autoconf, automake, bzip2-devel, curl-devel, curl-gnutls, gcc, gdk-pixbuf-devel, git, glew-devel, glib2-devel, gmime-devel, gmp-devel, gsl-devel, gstreamer-1.0-devel, gstreamer-1.0-plugins-base-devel, gtkglext-devel, imlib2-devel, libcairo-devel, libffi-devel, libgnome-keyring-devel, libgnutls-devel, libgtk-2-devel, libgtk-3-devel, libgtk-4-devel, libgtkmm-2-devel, libgtkmm-3-devel, libpcre-devel, librsvg-devel, libtool-devel, libwebkit-gtk-devel, libwebkit-gtk41-devel, libwebkit-gtk5-devel, libxml2-devel, libxslt-devel, libxtst-devel, llvm-devel, mariadb-devel, ncurses-devel, openssl-11-devel, poppler-devel, poppler-devel, poppler-qt5-devel, poppler-qt6-devel, postgresql-devel, qt5-3d-devel, qt5-base-devel, qt5-svg-devel, qt5-webengine-devel, qt5-webkit-devel, qt5-websockets-devel, qt5-webview-devel, qt5-x11extras-devel, qt6-base-devel, qt6-webengine-devel, qt6-svg-devel, sane-backends-devel, sdl-ttf-devel, sdl1-devel, sdl1-image-devel, sdl1-image-devel, sdl1-mixer-devel, sdl1-sound-devel, sdl2-devel, sdl2-image-devel, sdl2-image-devel, sdl2-mixer-devel, sdl2-ttf-devel, sqlite3-devel, unixodbc-devel, v4l-utils-devel, zstd-devel
 ```
 
 Third, download and extract the source code: <https://gitlab.com/gambas/gambas/-/archive/stable/gambas-stable.tar.bz2>
@@ -276,7 +291,7 @@ Finally, compile the code:
 ```
 $ cd ~/Downloads/gambas-stable/↵
 $ ./reconf-all↵
-$ ./configure -C --disable-qt4↵
+$ ./configure -C --disable-qt4 --disable-gtk --disable-gtk3 --disable-db.sqlite2 --disable-mongodb --disable-pdf↵
 $ make -j $(nproc)↵
 $ sudo make install↵
 ```

@@ -36,16 +36,15 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 <details>
 <summary>Chapter 2 - Basics <a href="chapter/02-basic.md">↩</a></summary>
 
-- [2.1 Disk partitioning](chapter/02-basic.md#disk-partitioning)
-- [2.2 Introduction to the text interface](chapter/02-basic.md#introduction-to-the-text-interface)
-- [2.3 Cut and paste](chapter/02-basic.md#cut-and-paste)
-- [2.4 Text selection](chapter/02-basic.md#text-selection)
-- [2.5 Directory structure](chapter/02-basic.md#directory-structure)
-- [2.6 Shell environment](chapter/02-basic.md#shell-environment)
-- [2.7 IO after startup](chapter/02-basic.md#io-after-startup)
-- [2.8 Design tropes of unix shell utilities](chapter/02-basic.md#design-tropes-of-unix)
-- [2.9 Textual formats](chapter/02-basic.md#textual-formats)
-- [2.10 Binary formats](chapter/02-basic.md#binary-formats)
+- [2.1 Introduction to the text interface](chapter/02-basic.md#introduction-to-the-text-interface)
+- [2.2 Cut and paste](chapter/02-basic.md#cut-and-paste)
+- [2.3 Text selection](chapter/02-basic.md#text-selection)
+- [2.4 Directory structure](chapter/02-basic.md#directory-structure)
+- [2.5 Shell environment](chapter/02-basic.md#shell-environment)
+- [2.6 IO after startup](chapter/02-basic.md#io-after-startup)
+- [2.7 Design tropes of unix shell utilities](chapter/02-basic.md#design-tropes-of-unix)
+- [2.8 Textual formats](chapter/02-basic.md#textual-formats)
+- [2.9 Binary formats](chapter/02-basic.md#binary-formats)
   
 </details>
 
@@ -125,15 +124,16 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 - [9.4 Permission attributes (of files and directories)](chapter/09-multi-user.md#permission-attributes)
 - [9.5 Single User Mode](chapter/09-multi-user.md#single-user-mode)
 - [9.6 Remote use](chapter/09-multi-user.md#remote-use)
+- [9.7 Editing sudo configuration](chapter/09-multi-user.md#edit-sudoers)
   
 </details>
 
 <details>
-<summary>Chapter 10 - Additional hints, tweaks and information <a href="chapter/10-additional.md">↩</a></summary>
+<summary>Chapter 10 - Appendix <a href="chapter/10-additional.md">↩</a></summary>
 
-- [10.1 Terminal related](chapter/10-additional.md#terminal-stuff)
-- [10.2 Desktop related](chapter/10-additional.md#desktop-stuff)
-- [10.3 Editing sudo configuration](chapter/10-additional.md#edit-sudoers)
+- [10.1 Installing GNU / Linux](chapter/10-additional.md#installing-gnu-linux)
+- [10.2 Additional tips with the terminal](chapter/10-additional.md#terminal-stuff)
+- [10.3 Additional tips for the desktop interface](chapter/10-additional.md#desktop-stuff)
 - [10.4 Encrypted password system](chapter/10-additional.md#edit-shadow)
   
 </details>
@@ -146,6 +146,7 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 
 | Version | Date | Description |
 | ---:| --- | --- |
+| 1.0.1 | 22.02.2025 | <!--1<sup>st</sup>--> Minor updates to git edition |
 | 1.0 | 28.06.2024 | <!--2<sup>nd</sup>--> [Second pdf edition](https://github.com/GitJit-max/learning-linux/releases/download/v1.0/learning-linux-v1.0.pdf) |
 | 1.0 | 16.06.2024 | <!--1<sup>st</sup>--> First github edition |
 | 0.9 | 13.04.2021 | <!--1<sup>st</sup>--> First pdf edition |
@@ -156,7 +157,7 @@ I would much appreciate any help with spell checking and proofreading.
 
 ### License
 
-Copyright © 2021-2024 Jarkko Tuovinen and learning-linux contributors
+Copyright © 2021-2025 Jarkko Tuovinen and learning-linux contributors
 
 Except where otherwise noted, this work is licensed under:
 

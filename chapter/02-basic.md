@@ -17,17 +17,9 @@ GNU / Linux has been considered difficult for beginners. Learning to use GNU / L
 
 [^linufi]: [Linux.fi ohjesivusto - Aloittelijalle, accessed 2021](https://www.linux.fi/wiki/Aloittelijalle)
 
-<a id="disk-partitioning"></a>
-
-## 2.1 Disk partitioning
-
-When partitioning a storage disk for GNU / Linux, it is important to give the (U)EFI boot partition at least 500 MB of space. The 100 MB created by Windows is too small. Problems may occur when the Linux kernel is updated. Everything may seem to work, but the Linux kernel, for example, doesn't update, and you don't even get an error message about it. Otherwise, the complex disk partitioning traditionally used in GNU / Linux distributions (even single-disk configurations) is no longer necessary on today's home computers; And it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
-
-> The first function created for Linux at the request of an outsider was the ability to extend main memory with swap memory, completed on Christmas Day 1991. Torvalds ’own 386 machine (which was assembled from parts, unbranded) had four megabytes of memory, but users with a smaller number (especially one German user who originally made the request) were in trouble with the lack of main memory. This feature was significant in early 1992 because it played a major role in system performance and contributed positively to the Linux kernel. In Linux, the swap space has traditionally been located on a separate hard disk partition with its own file system optimized for swap use. The speed advantage achieved in this way is now so marginal that the same can be done well by taking the space available for virtual memory from a standard disk partition. In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading.
-
 <a id="introduction-to-the-text-interface"></a>
 
-## 2.2 Introduction to the text interface
+## 2.1 Introduction to the text interface
 
 **Interface** is the sum of all the ways that a program communicates with human users and other programs. Much of Unix-community tradition about program interface design may seem odd and arbitrary when you encounter that tradition for the first time (or even downright regressive, in the era of graphical user interfaces). But in spite of various blemishes and irregularities, that tradition has an inner logic to it which is worth learning and understanding. It reflects heuristics accumulated over Unix's long history about ways to do effective communication both with human beings and with other programs. [^raymond]
 
@@ -143,7 +135,7 @@ When Linux first came to be in 1991, most things were still text. True, Windows 
 
 <a id="cut-and-paste"></a>
 
-## 2.3 Cut and paste
+## 2.2 Cut and paste
 
 > [!WARNING] 
 > You might have tried to use ` Ctrl + C ` and ` Ctrl + V ` to perform copy-paste inside a terminal window, and found out that they do not work. These control codes have different meanings to the shell and were assigned many years before the use of ` Ctrl + C ` to copy, and ` Ctrl + V ` to paste from session-wide clipboard, that was introduced by *Mac OS* in 1983 and *Microsoft Windows 3.x* in 1990.
@@ -166,7 +158,7 @@ In GNU / Linux there is also an alternative way to paste content, the click of t
 
 <a id="text-selection"></a>
 
-## 2.4 Text selection
+## 2.3 Text selection
 
 Younger readers may not be aware that terminals used to print. On paper. Very slowly. When the constraint of the slow printing terminals of 1969 was gone, Unix evolved in a world of video display terminals; Many of which still had no arrow keys, or function keys. One can highlight text only on modern GUI terminal emulator software and even then only with a mouse. Still even today some users might encounter instances when they can’t use the mouse (to highlight text). And if you can’t highlight any text, how can you copy and paste it? Whatever situation you find yourself in when using a linux computer, there will be a way to "copy and paste". You have options. Some of them are strange, but at least there are options.
 
@@ -193,7 +185,7 @@ Making use of this history can be a lot more powerful than one might realize:
 
 <a id="directory-structure"></a>
 
-## 2.5 Directory structure
+## 2.4 Directory structure
 
 As you get acquainted with the GNU / Linux world, perhaps the biggest confusion, for those accustomed to Windows, is the unix-style directory structure. Unix and it's derivates do not use Microsoft way of grouping directories under drives and hard disk partitions (such as C, D, E and so on). For example, when reading (and writing to) a compact-disc, one does not refer directly to the drive but under the mount point to the directory ` /media/ `. The Unix-style directory structure was originally based on the assumption that each directory can have its own hard drive, and for a home user, this may seem absurd. Some directories are virtual such as the ` /sys/ ` interface, that describes connections between hardware and drivers. Even the printer, mouse and keyboard are files. All his understandably adds to confusion. The fact that everything is a file, can be first understood and finally appropriated, from a programming perspective.
 
@@ -413,7 +405,7 @@ The ` /dev/ ` directory doesn’t just contain "files" that represent physical d
 
 <a id="shell-environment"></a>
 
-## 2.6 Shell environment [^raymond]
+## 2.5 Shell environment [^raymond]
 
 ### Configuration files
 
@@ -506,7 +498,7 @@ There are a number of well-known environment variables you can expect to find de
 
 <a id="io-after-startup"></a>
 
-## 2.7 IO after startup [^raymond]
+## 2.6 IO after startup [^raymond]
 
 After startup, programs normally get input or commands from
 1. Data and commands presented on the program's [standard input](06-inter.md#file-descriptor).
@@ -521,7 +513,7 @@ Commands (including the scripts and shell functions we write) issue a value to t
 
 <a id="design-tropes-of-unix"></a>
 
-## 2.8 Design tropes of unix shell utilities [^raymond]
+## 2.7 Design tropes of unix shell utilities [^raymond]
 
 The initial release of Unix (in the 1960’s) had some important design attributes that live on today. With unix shell utilities the theme is, and has been, to:
 1. <ins>Break the system into independent components.</ins> Small, modular utilities, that do one thing, and do them well. These programs are rock solid because they can be debugged and improved separately. Simple utilities (that do one thing) can be combined (in different ways) to do complicated things. To do a new job, build an additional component, rather than complicate old programs with new features.
@@ -538,7 +530,7 @@ The initial release of Unix (in the 1960’s) had some important design attribut
 
 <a id="textual-formats"></a>
 
-## 2.9 Textual formats [^raymond]
+## 2.8 Textual formats [^raymond]
 
 There are long-standing Unix traditions about how textual data formats ought to look.
 1. <ins>One record per line</ins> makes it easy to extract records with text-stream tools.
@@ -571,7 +563,7 @@ XML can be a simplifying choice or a complicating one:
 
 <a id="binary-formats"></a>
 
-## 2.10 Binary formats [^raymond]
+## 2.9 Binary formats [^raymond]
 
 a) Whenever you face a design problem that involves editing some kind of complex binary object, the unix tradition encourages asking first off whether you can write a tool analogous to ` $ sng ` or the ` $ tic ` / ` $ infocmp ` pair, that can do a <ins>lossless mapping to an editable textual format and back</ins>. There is no established term for programs of this kind, but we'll call them **textualizers**.
 

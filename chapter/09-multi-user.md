@@ -6,7 +6,7 @@
 <p align="center">
   <a href="08-text-editors.md">&lt;&lt; Previous Chapter: 8 - Text editors</a>
      |
-  <a href="10-additional.md">Next&nbsp;Chapter:&nbsp;10&nbsp;&#8209;&nbsp;Additional&nbsp;hints,&nbsp;tweaks&nbsp;and&nbsp;information&nbsp;&gt;&gt;</a>
+  <a href="10-additional.md">Next&nbsp;Chapter:&nbsp;10&nbsp;&#8209;&nbsp;Appendix&nbsp;&gt;&gt;</a>
 </p>
 
 <!-- End of auto generated content -->
@@ -330,6 +330,54 @@ The term **terminal** or **console** refers to a device connected to a computer 
 ### SSH
 
 For many years, unix-like operating systems have had the ability to be administered remotely. In the early days, before the general adoption of the internet, there were a couple of popular programs used to log in to remote hosts. These were the rlogin and telnet programs. These insecure programs used to transmit all their communications (including login names and passwords) in cleartext. This made them wholly inappropriate for use in the internet age. To address this problem, a new protocol called Secure Shell (SSH) was developed. SSH authenticates that the remote host is who it says it is (thus preventing man-in-the-middle attacks) and encrypts all of the communications. [^shotts]
+
+<a id="edit-sudoers"></a>
+
+## 9.7 Editing sudo configuration
+
+### The sudo configuration files
+
+To manage the *sudo's configuration file(s)* or *the sudoers file(s)* it is possible to a) edit the primary configuration file ` /etc/sudoers ` or b) make a new configuration file under the ` /etc/sudoers.d/ ` directory.
+
+> It is recommended to put custom configuration into files in the ` /etc/sudoers.d/ ` directory, because typically ` /etc/sudoers ` is under control of the package manager, and if the package manager wants to upgrade it, one has to manually inspect any local changes and approve how they are merged into the new version. Modifications done directly in the ` /etc/sudoers ` file may even break updates. By placing local changes into a file in the ` /etc/sudoers.d/ ` directory, one garantees that upgrades can proceed automatically. And any changes made to files in ` /etc/sudoers.d ` remain in place if after system upgrade. This can prevent user lockouts when the system is upgraded. The ability to have stand alone files makes it simple for an application to enable sudo capability on installation and remove them when it is uninstalled. Automated configuration tools can also use this capability.
+- Exceptions are files that end with the tilde ` ~ ` character or contain the period ` . ` character. This convention of ignored files is done for the convenience of package managers and also so that backup files from editors are ignored.
+- Sudo defines that in case of multiple lines matching for a user, the last one stands. That is any files under ` /etc/sudoers.d/ ` are parsed after ` /etc/sudoers ` file. So potentially a file in ` /etc/sudoers.d/ ` could restrict permissions for someone.
+
+> [!IMPORTANT]
+> Make sure the /etc/sudoers file contains the line:
+> ```
+> #includedir /etc/sudoers.d
+> ```
+> Most likely the default ` /etc/sudoers ` file created on installation (of the operating system) includes this directive. However, if not then you must add it yourself. Only then will the sudo program read configuration files from the ` /etc/sudoers.d/ ` directory.
+
+### Format for user privilege specification
+
+```
+margaret ALL = (root) NOPASSWD: /usr/bin/eopkg up
+   |      |      |      |                |
+ Who?   Where?   | Without need to   This command
+   |      |      | type a password?
+User(s) Host(s)  |
+                 |
+    Under an assumed identity of (user root)
+```
+
+1. The **user specifier** accepts ` user_names `, ` %group_names ` and ` #uids `.
+    - One may specify a single user or group or a list of them separated by a comma ` , `
+2. ` ALL ` is a common choice for the **host list**.
+3. The **command specifier** accepts a path to an executable,
+    - Followed by optional allowed arguments such as
+        - ` /usr/bin/some-app ` = Any arguments allowed.
+        - ` /usr/bin/some-app "" ` = No arguments allowed at all.
+        - ` /usr/bin/some-app some-argument ` = Only "some-argument" allowed as argument.
+    - One may specify a single command or several separated by a comma ` , `
+
+### Safety
+
+A comment ` # This file MUST be edited with the 'visudo' command ` on the ` /etc/sudoers ` file states you should not edit sudoers directly, by opening it in a text editor, but instead edit it with ` $ visudo `, which prevents editing conflicts and checks for syntax errors before saving the modifications to disk. By default, visudo doesn't honor the ` VISUAL ` or ` EDITOR ` environment variables, used by many programs to determine the default text editor. There is a hard-coded list of one or more editors that visudo uses. The default is ` $ vi ` (hence the name visudo).
+
+> [!TIP]
+> In reality, you don't have to use the cumbersome ` $ visudo `. You can use a text editor of your choice such as ` $ gedit ` or ` $ ne `. It is possible to wall your self out of the system if the ` /etc/sudoers ` file or any file under ` /etc/sudoers.d/ ` directory is malformed. Sufficient safety can be achieved by having a second terminal instance running as root ` $ sudo su↵ `. There is no need for the sudo command once you are logged in as root as indicated by the ` # ` prompt. And any changes can be tested on another terminal instance running as an ordinary user. This way you can verify, that whatever you just did, left sudo running properly. If not, you have the root window to fix it.
 
 <!-- # References -->
 
