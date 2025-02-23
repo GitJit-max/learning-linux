@@ -19,7 +19,7 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 
 ## 1.1 Branching
 
-In 1983 an american programmer and human rights activist Richard Stallman launched the Free Software movement, with a plan to develop a complete free operating system (named GNU). GNU was not reinventing the wheel, but a free clone of Unix, an existing but proprietary operating system. GNU has the same commands and system calls as a Unix and all parts of GNU were made compatible with an original Unix. People who used the an original Unix could switch over easily.
+In 1983 an American programmer and human rights activist Richard Stallman launched the Free Software movement, with a plan to develop a complete free operating system (named GNU). GNU was not reinventing the wheel, but a free clone of Unix, an existing but proprietary operating system. GNU has the same commands and system calls as a Unix and all parts of GNU were made compatible with an original Unix. People who used the an original Unix could switch over easily.
 
 > The name GNU came from a tradition of the time. The tradition was: if there was an existing program and you wrote something similar to it, inspired by it, you could give credit by giving your program a name that's a recursive acronym saying it's not the other one. So Stallman gave credit to Unix for the technical ideas with the name **GNU**, a recursive acronym for *GNU's Not Unix*.
 
