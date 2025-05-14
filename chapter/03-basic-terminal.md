@@ -4,20 +4,26 @@
 > The table of contents can be accessed by pressing the unordered list icon ![octicon](../asset/octicon-list-unordered.svg) on top the right corner.
 
 <p align="center">
-  <a href="02-basic.md">&lt;&lt; Previous Chapter: 2 - Basics</a>
+  <a href="02-basic.md">&lt;&lt; Previous Chapter: 2 - Basics of linux system design</a>
      |
   <a href="04-installing.md">Next&nbsp;Chapter:&nbsp;4&nbsp;&#8209;&nbsp;Installing&nbsp;applications&nbsp;&gt;&gt;</a>
 </p>
 
 <!-- End of auto generated content -->
 
-# Chapter 3 - Basic terminal usage
+# Chapter 3 - Commandline crash course
+
+Get up to speed quickly with this intensive overview, designed to teach you the basics of commandline usage in a short amount of time. More advanced essentials will be discussed later in [Chapter 7](07-advanced-terminal.md#chapter-7---advanced-terminal-usage).
+
+<!--A crash course is a short, intensive learning program designed to teach the basics of a subject in a very limited amount of time. It's a rapid overview to get someone up to speed quickly.
+
+A crash course is a quick, intensive learning session designed to teach the essentials of a subject in a short amount of time. It's often used to rapidly get someone up to speed on a topic.-->
 
 <a id="clear-the-screen"></a>
 
 ## 3.1 Clear the screen
 
-- With scrollback-ability = **` $ clear↵ `**
+- With scrollback-ability = **` $ clear -x↵ `**
     - Keyboard shortcut **` Ctrl + L `** does the same thing.
 - Without scrollback-ability = **` $ reset↵ `**
     - This will actually reset and reinitialize the whole terminal state.
@@ -26,29 +32,55 @@
 
 ## 3.2 Special character: dash (-)
 
-The whole *command line* is considered as a space delimited list of command-line **arguments**. It would be up to the program code to decipher each token and decide what it is and how to work with it.
+> [!NOTE]
+> In typography and computing there are [different types of dash characters](https://en.wikipedia.org/wiki/Dash#Unicode_dash_characters). Here dash refers to the normal short hyphen ` - ` with ASCII code ` \x2D `, which is also the most commonly used form of hyphen in digital documents. On most keyboards, it is the only character that resembles a minus sign or a dash, so it is also used for these.
 
-**Double dash ` --* `** is used to specify one single command-line **option**. **Single dash ` -? `** is used to specify <ins>one or more</ins> command-line **options**.
+### Command-line argument
+
+The whole command-line is considered as a space delimited list of **command-line arguments**. The first argument is the filename of the executable, but most of the arguments are additional instructions that affect the operation of the program. It would be up to the program code to decipher each token and decide what it is and how to work with it.
+
+### Dash as an introducer for command-line options
+
+- **Double dash ` --* `** is used to specify one single command-line option.
+- **Single dash ` -? `** is used to specify <ins>one or more</ins> command-line options.
 
 > [!NOTE]
-> A file path as part of a shell command is not a command-line option, but an argument.
+> A file path as part of a shell command is not a command-line option, but an argument and a parameter.
 
-Many tools accept a **bare hyphen ` - `**, not associated with any option letter, as a pseudo-filename directing the application to read from standard input.
+### Dash as a reference to standard input
 
-It is also conventional to recognize a **bare double hyphen ` -- `**, not associated with any option word, as a signal to stop option interpretation and treat all following arguments literally.
-- So if for example you need to process a file whose name starts with one ore more dash charaters, you can put an additional double dash ` -- ` argument before the filename to signify the end of the options. Such conventions is respected by most shell commands.
+<!--Many tools accept a **bare dash ` - `**, not associated with any option letter, as a pseudo-filename directing the application to read from standard input (see [Chapter 6, Section: Standard streams](06-inter.md#standard-streams)).-->
 
-> [!NOTE]
-> For example to remove a file named ` -myfile.txt `, one must call:
+Dash can also indicate standard streams (see [Chapter 6, Section: Standard streams](06-inter.md#standard-streams)). Many tools accept a **bare dash ` ␣-␣ `**, not associated with any option letter, as a pseudo-filename directing the application to read from standard input. And some programs, that print to a file by default, can be made to print to a standard output by specifying **bare dash ` ␣-␣ `** as the filename.
+
+### Doubledash as end of options marker
+
+It is conventional to recognize a **bare double dash ` ␣--␣ `**, not associated with any option word, as a signal to stop option interpretation and treat all following arguments literally.
+
+> [!TIP]
+> If for example you need to process a file whose name starts with one or more dash characters, you can put an additional double dash ` -- ` argument before the filename to signify the end of the options. Alternatively, a relative reference to current working directory `./ ` can be added in front of the filename. Such convention is respected by most shell commands:
+>
 > ```
-> $ rm -- -myfile.txt↵
+> $ rm -- "--hard to remove.txt"↵  # Works
+> $ rm ./"--hard to remove.txt"↵   # Works
 > ```
 
 > [!WARNING]
-> Single or double quoting is not enough:
+> Single quoting ` '...' ` or double quoting ` "..." ` is not enough:
+>
 > ```
-> $ rm '--myfile.txt'↵
-> Unknown option --myfile.txt
+> $ rm "--hard to remove.txt"↵   # Does not work
+> rm: unrecognized option '--hard to remove.txt'
+> Try 'rm ./'--hard to remove.txt'' to remove the file
+> ```
+>
+> And on the other hand, quotation marks would be needed if the filename contains special characters such as spaces:
+> 
+> ```
+> $ rm -- --hard to remove.txt↵  # Does not work
+> rm: cannot remove '--hard': No such file or directory
+> rm: cannot remove 'to': No such file or directory
+> rm: cannot remove 'remove.txt': No such file or directory
 > ```
 
 <a id="command-line-options"></a>
@@ -58,50 +90,75 @@ It is also conventional to recognize a **bare double hyphen ` -- `**, not associ
 Three conventions for command-line options exist
 
 1. **Original Unix style** **` -? `**
-    - In the original unix tradition, command-line options are single letters preceded by a single hyphen. Mode-flag options that do not take following arguments can be ganged together. Thus, if ` -a ` and ` -b ` are mode options then ` -ab ` or ` -ba ` is also correct and enables both. The argument to an option, if any, follows it (optionally separated by whitespace).
+    - In the original unix tradition, command-line options are single letters preceded by a single hyphen. Mode-flag options that do not take following arguments can be ganged together. Thus, if ` -a ` and ` -b ` are mode options then ` -ab ` or ` -ba ` is also correct and enables both.
+    - A parameter to an option, if any, follows it, optionally separated by whitespace, such as ` -i input.odt -o output.pdf `.
     - In this style, lowercase options are preferred to uppercase. When uppercase options are used, it's good form for them to be special variants of the lowercase option.
 2. **GNU style** **` --* `**
-    - The GNU style uses option keywords (rather than keyword letters) preceded by two hyphens. GNU options are easier to read than the alphabet soup of older styles. GNU-style options cannot be ganged together without separating whitespace. An option argument (if any) can be separated by either whitespace or a single equal sign character ` = `. Even with programs using the GNU style, it is good practice to support single-letter equivalents for at least the most common options.
-    - The GNU project recommends [conventional meanings](https://www.gnu.org/prep/standards/standards.html#Option-Table) for a few double-dash options in the GNU coding standards. It also lists [long options](https://www.gnu.org/prep/standards/standards.html#Option-Table) which, though not standardized, are used in many GNU programs.
+    - The GNU style uses option keywords (rather than keyword letters) preceded by two hyphens. GNU options are easier to read than the alphabet soup of older styles. GNU-style options cannot be ganged together without separating whitespace.
+    - A parameter to an option, if any, can be separated by either whitespace or a single equal sign ` = `.
+    - Even with programs using the GNU style, it is good practice to support single-letter equivalents for at least the most common options. The GNU project recommends [conventional meanings](https://www.gnu.org/prep/standards/standards.html#Option-Table) for a few double-dash options in the GNU coding standards. It also lists [long options](https://www.gnu.org/prep/standards/standards.html#Option-Table) which, though not standardized, are used in many GNU programs.
 3. **X toolkit style** **` -* `** (not recommended)
     - The X toolkit style, uses a single hyphen and keyword options. The X toolkit style is not properly compatible with either the classic Unix or GNU styles, and should not be used in new programs.
 
+### Commandline option: -h
+
 > [!NOTE]
-> The commandline option ` --help ` will display a help message and exit. It is not to be confused with ` -h `. The plain ` -h ` commandline option without an argument traditionally meant Headers and not Help. This is actually less common than one might expect offhand. For much of Unix's early history developers tended to think of "on-line" help as memory-footprint overhead they couldn't afford. Instead they wrote manual pages. Headers enable, suppress, or modify headers on a tabular report generated by the program (such as ` $ ps -h↵ ` or ` $ pr -h <file>↵ `). Option ` -h `may also have other meanings such as formatting filesize to be "human readable" by the ` $ ls ` command.
+> The commandline option ` --help ` will display a help message and exit. It is not to be confused with ` -h `. The plain ` -h ` commandline option without an argument traditionally meant headers and not help .
+
+Support for help-option is actually less common than one might expect offhand. For much of Unix's early history developers tended to think of "on-line" help as memory-footprint overhead they couldn't afford. Instead they wrote manual pages (see [Section: Early unix documentation style](#early-unix-documentation-style)).
+
+Commandline option for headers enable, suppress, or modify **headers** on a tabular report generated by the program (such as ` $ ps -h↵ `).
+
+Option ` -h ` may also have other meanings such as formatting filesize to be **human readable** by the ` $ ls -la -h↵ ` command.
 
 <a id="navigating-directories"></a>
 
 ## 3.4 Navigating directories
 
 > [!IMPORTANT]
-> To separate directories
+> Those used to Windows may be annoyed that directory paths do not work as expected on unix-like systems. Namely, **unix like systems use forward slash ` / ` to separate directories**. Whereas Windows uses backslash ` \ ` to separate directories.
+
+<!--
+> [!IMPORTANT]
+> To separate directories:
 >
 > - Unices use the forward slash **` / `**
-> - Windows uses the backward slash **` \ `**
+> - Windows uses the backward slash **` \ `**-->
 
-- **` $ pwd↵ `** = Print Work Directory = Present Working Directory = Current Directory
-- **` $ cd <directory>↵ `** = Change Directory
+### Current directory
+
+- **` $ pwd↵ `** = **` $ echo $PWD↵ `** = print work directory = present working directory
+
+### Change directory
+
+- **` $ cd <directory>↵ `** = change directory
     - **` $ cd↵ `** (on its own) will take you to your home directory.
     - **` $ cd ~↵ `** will take you to your home directory.
     - **` $ cd $HOME↵ `** will also take you to your home directory.
     - **` $ cd -↵ `** will take you to the previous directory.
-    - **` ./ `** = Period refers to the active directory.
-        - Running scripts and other executables may require to type the file name along with its absolute or relative path.
     - **` ~ `** = The worm refers to current user home directory.
+    - **` ~matt `** = A way to refer to the home directory of another, named user.
     - **` ../../ `** = Two points move the index backwards (relative reference).
+    - **` ./ `** = Relative reference to current working directory.
     - **` / `** = Root directory (absolute reference)
         - This is where the directory structure begins.
+    
+### Make directory
+    
+- **` $ mkdir <directory(ies)>↵ `** = make directory
+    - Multiple directories can be created at once: ` $ mkdir dir1 dir2 dir3↵ `
+    - The **` -p `** flag lets you nest subdirectories: ` $ mkdir -p create/nested/dirs↵ `
+
+### List files
+
 - **` $ ls <options> <directory>↵ `** = List directory contents
     - Current working directory is used if not otherwise specified.
     - **` -a `** = List also hidden files.
     - **` -R `** = List also files in subdirectories.
     - **` -l `** = Show additional information such as filesize.
-- **` $ mkdir <directory(ies)>↵ `** = Make Directory
-    - Multiple directories can be created at once: ` $ mkdir dir1 dir2 dir3↵ `
-    - The **` -p `** flag lets you nest subdirectories: ` $ mkdir -p create/nested/dirs↵ `
-
+    
 > [!NOTE]
-> There are no headers on the output of the ` $ ls -l↵ ` command because of a unix tradition (see [Chapter 2, Section: Design tropes of unix shell utilities](02-basic.md#design-tropes-of-unix)).
+> There are no headers on the output of the ` $ ls -l↵ ` command because of a unix tradition. Unix command-line tools typically avoid adding cosmetic information and formatting that would complicate further programmatic processing of the output (see [Chapter 2, Section: Design tropes of unix shell utilities](02-basic.md#design-tropes-of-unix)).
 
 > [!TIP]
 > One can install alternative listing commands that support column headers such as ` $ exa `. The command ` $ exa -lh↵ ` will lists the entire contents of the current working directory with additional column headers.
@@ -110,82 +167,102 @@ Three conventions for command-line options exist
 
 ## 3.5 Finding executables
 
-The unix tooling comes with many commands for finding locations and information about files such as executables.
+The unix tooling comes with many commands for finding locations and information about files such as executables. The functionality is partly similar to the Properties window in Microsoft Windows.
 
 1. **` $ ls -li <file>↵ `** provides additional information about the desired file.
 1. **` $ stat <file or directory>↵ `** short for status (of the specified file or filesystem) is a command that reveals all that the system understands about a file and its attributes. It is a kind of souped-up version for an ` $ ls -li <file>↵ ` command.
-1. **` $ files <file or directory>↵ `** will try to determine the filetype (see [Section: File types and extensions](#file-types-and-extensions)).
-1. **` $ whatis <keyword>↵ `** displays the description line from the man page matching the specified keyword. Note that bash shell builtin commands don't have separate man pages (see [Section: Shell builtin command](#shell-builtin-command)).
-1. **` $ whereis `** and **` $ which <program_name>↵ `** help locate applications and scripts, that may reside in various directories unknown to the user.
-    - ` $ whereis ` searches for many different possibly useful files.
-    - ` $ which ` only works for executable programs, not builtins nor aliases (that are substitutes for actual executable programs). Also ` $ which ` searches executables only in the directories specified by the environment variable ` PATH `.
-    ```
-    $ whatis whatis whereis which↵
-    whatis - Display one-line manual page descriptions
-    whereis - Locate the binary, source, and manual page files of commands
-    which - Show the full path of shell commands
+1. **` $ files <file or directory>↵ `** will try to determine the filetype (see [Section: File types and extensions](#file-types-and-file-name-extensions-raymond)).
+1. **` $ whatis <keyword>↵ `** displays the description line from the man-page matching the specified keyword. Note that bash shell builtin commands don't have separate man-pages (see [Section: Shell builtin command](#shell-builtin-commands)).
+1. **` $ whereis <program_name>↵ `** help locate file paths to binary, data and man directories of the program. ` $ whereis ` searches for many different possibly useful files.
+1. and **` $ which <program_name>↵ `** help locate the entire file path of a program, by searching through the directories specified by the environment variable ` PATH `. ` $ which ` only works for executable programs, not builtins nor aliases (that are substitutes for actual executable programs).
+1. Package managers are able to list a lot of information about software installed through them, such as ` $ eopkg info -F firefox↵ `.
 
-    $ whereis firefox↵
-    /usr/bin/firefox
-    /usr/lib64/firefox
-    /usr/share/man/man1/firefox.1
+```
+$ whatis whatis whereis which↵
+whatis - Display one-line manual page descriptions
+whereis - Locate the binary, source, and manual page files of commands
+which - Show the full path of shell commands
 
-    $ which firefox↵
-    /usr/bin/firefox
+$ whereis firefox↵
+/usr/bin/firefox
+/usr/lib64/firefox
+/usr/share/man/man1/firefox.1
 
-    $ file HelloWorld.gambas↵
-    HelloWorld.gambas: a gbr3 script executable (binary data)
-    ```
-<!-- 5. The distribution specific package manager (such as eopkg) can also display information about packages ` $ eopkg info -F firefox↵ ` -->
+$ which firefox↵
+/usr/bin/firefox
+
+$ file HelloWorld.gambas↵
+HelloWorld.gambas: a gbr3 script executable (binary data)
+```
 
 <a id="special-character-period"></a>
 
 ## 3.6 Special character: period (.)
 
+### Period as mark to hide files
+
 > [!IMPORTANT]
 > The unix way to implement hidden files is likely to confuse those accustomed to Windows.
 
-On unix, filenames that begin with a period **` . `** are hidden. This means that a file manager (such as ` $ nemo `) or the ` $ ls ` command will not list them unless you say so. When your account was created, several hidden files were placed in your home directory to configure things for your account. The purpose of having these as hidden files is to reduce visible clutter on the filesystem by removing system and configuration files from view when they are not necessary.
+On unix, filenames that begin with a period **` . `** are hidden. This means that a file manager (such as ` $ nemo `) or the ` $ ls ` command will not list them unless you say so.
 
-To list hidden files and directories on command-line type ` $ ls -la↵ `
+When your account was created, several hidden files were placed in your home directory to configure things for your account. The purpose of having these as hidden files is to reduce visible clutter on the filesystem by removing system and configuration files from view when they are not necessary.
 
-To temporarily reveal or conceal hidden files and directories in a graphical file manager
-- a) Toggle ` Ctrl + H ` on your keyboard or
-- b) Toggle "Menu bar" > "View" > "Show hidden files"
+- To list hidden files and directories on command-line type ` $ ls -la↵ `
+
+- To temporarily reveal or conceal hidden files and directories in a graphical file manager
+    a) Toggle ` Ctrl + H ` on your keyboard or
+    b) Toggle ` Menu bar ` > ` View ` > ` Show hidden files `
 
 To permanently reveal or conceal a file or a directory, simply rename it.
-- To permanently hide a file such as ` sometext.txt ` rename it to ` .tekstiä.txt `.
-- To permanently unhide a file such as ` .sometext.txt ` rename it to ` tekstiä.txt `.
+- To permanently hide a file such as ` sometext.txt `<br>rename it to ` .sometext.txt `.
+- To permanently unhide a file such as ` .sometext.txt `<br>rename it to ` sometext.txt `.
+
+### Period as mark for current working directory
 
 > [!IMPORTANT]
 > Period ` . ` also refers to the current working directory (see [Section: Navigating directories](#navigating-directories)).
 
-You may have tried running a script or some other executable in the current working directory ` $ myscript.sh↵ ` only to end up with a *command not found* error. This happens because, by default the shell searches for an executable that matches with the given command only in the directories specified by the environment variable ` PATH `(see [Chapter 2, Section: Well-known environment variables](02-basic.md#well-known-variables)). The location of an estranged executable must be specified explicitly in connection with the executable.
-- To run a script in the current working directory one must type something like **` $ ./myscript.sh↵ `**. Where the single period ` . ` refers to the active directory. It is not as confusing if the executable is called from another directory like ` $ myscripts/myscript.sh↵ `
+You may have tried running a script or some other executable in the current working directory ` $ myscript.sh↵ ` only to end up with a *command not found* error. This happens because, by default the shell searches for an executable that matches with the given command only in the directories specified by the environment variable ` PATH `(see [Chapter 2, Section: Well-known environment variables](02-basic.md#well-known-variables)).
+
+The location of an estranged executable must be specified explicitly in connection with the executable. To run a script in the current working directory one must type something like **` $ ./myscript.sh↵ `**. Where the single period ` . ` refers to the active directory. It is not as confusing if the executable is called from another directory like ` $ myscripts/myscript.sh↵ `
 
 <a id="special-character-backslash"></a>
 
 ## 3.7 Special character: backslash (\\)
 
-The **backslash ` \ `** is used to
-- a) Either eliminate a special meaning of a character such as
-    - ` \" ` = double quotes ` " `
+> [!IMPORTANT]
+> The backslash ` \ ` is an **escape character**, and changes the meaning of the symbol that follows it.
+
+**Backslash ` \ `** escaping is used to:
+
+a) Eliminate the special function of a character that follows it such as:
     - ` \$ ` = dollar sign ` $ `
+    - ` \" ` = double quotes ` " `
+    - ` \* ` = asterisk ` * `
     - ` \\ ` = back slash ` \ `
-    - ` \  `  = space ` `
-    - For example cd into ` Directory with space characters `
+    - ` \  ` = space `   `
+    - Such as cd into ` Directory with space characters `
         - ` $ cd Directory\ with\ space\ characters/↵ `
-- b) Or insert a special character such as
-    - ` \n ` = newline, for example ` $ echo -e "Aaa\nBbb\nCcc"↵ `
+b) Insert symbols that could not be condensed on the keyboard, such as:
+    - ` \u???? ` = a [Unicode-symbol](https://en.wikipedia.org/wiki/List_of_Unicode_characters) by its hexadecimal value (base 16).
+    - ` \x?? ` = an [ASCII-symbol](https://www.ascii-code.com) by its hexadecimal value (base 16).
+    - ` \??? ` = an [ASCII-symbol](https://www.ascii-code.com) by its octal value (base 8).
+
+c) Insert characters that do not have a special symbol when printed, such as    :    
     - ` \t ` = horizontal tab
     - ` \v ` = vertical tab
-    - ` \0### ` = ascii character by octal notation (which can be 1 to 3 digits)
-    - ` \x## ` = ascii character by hexadecimal notation (1 or 2 digits)
-        - For more information visit <https://www.ascii-code.com/>
+    - ` \n ` = newline<!--, for example ` $ echo -e "Aaa\nBbb\nCcc"↵ `-->
+
+d) Insert control codes which do not appear even indirectly, such as:
     - ` \a ` = bell or a beep (see note below)
 
 > [!NOTE]
-> The **bell code** or **bell character** is a device-control code, originally sent to ring a small electro-mechanical bell. Later on, speakers and buzzers vere equipped to perform the same function. Modern terminal emulators often integrate the warnings to the desktop environment and migth offer a **silent visual bell feature** that flashes the terminal window briefly. In ASCII and Unicode the character with the value 7 is BEL. It can be referred to as ` Ctrl + G ` or ^G in caret notation. Some keyboards even had the G key located with a bell label. [^unibel]
+> The **bell code** or **bell character** is a device-control code, originally sent to ring a small electro-mechanical bell. Later on, speakers and buzzers vere equipped to perform the same function.
+>
+> Modern terminal emulators often integrate the warnings to the desktop environment and migth offer a **silent visual bell feature** that flashes the terminal window briefly.
+>
+> In ASCII and Unicode the character with the value 7 is BEL. It can be referred to by Keyboard shortcut ` Ctrl + V, Ctrl + G `, which is ^G in caret notation. Some keyboards even had the G-key located with a bell label. [^unibel]
 
 [^unibel]: [Unipedia Wiki - Bell, accessed 2021](https://unipedia.fandom.com/wiki/Bell)
 
@@ -193,117 +270,169 @@ The **backslash ` \ `** is used to
 
 ## 3.8 Control characters [^wiki-control]
 
+### Relic from history
+
 [^wiki-control]: [Wikipedia - Control character, accessed 2024](https://en.wikipedia.org/wiki/Control_character)
 
-**Control character** is a code point, in a character set, that does not represent a written character or symbol. Control characters are used as in-band signaling to cause effects other than the addition of a symbol to the text.
-- In the ASCII standard there are 33 control characters such as  carriage return (CR) and line feed (LF) used to separate lines of text. Control characters may also be described as doing something when the user inputs them, such as
-    - End of Text character (ETX, ^C, ` Ctrl + C `) to interrupt the running process.
-    - End of Transmission character (EOT, ^D, ` Ctrl + D `) to end text input on unix or to exit a unix shell.
+> [!IMPORTANT]
+> The basic ASCII character set (American Standard Code for Information Interchange) includes **control characters**, which usually have no visible representation. Control characters are used to cause effects, other than the insertion of a symbol into text. The purpose is to initiate some action that controls the hardware or data processing.
 
-**Caret notation** is a printable form for control characters specifically in [ASCII](https://en.wikipedia.org/wiki/ASCII). The notation assigns ^A to control-code 1, sequentially through the alphabet to ^Z assigned to control-code 26. The keys that produce control-codes outside of the range 1...26 vary between systems. Keyboards also typically have a few single keys which produce control character codes (such as Del, Backspace, Tab, Enter). [^wiki-caret]
-- Control characters generated using letter keys are displayed with the upper-case form of the letter. When the control key is held down, letter keys produce the same control characters regardless of the state of the shift or caps lock keys, it does not matter whether the key would have produced an upper-case or a lower-case letter.
-- There are also other ways to display these non-printing "characters" such as decimal code point, hexadecimal code point or a two or three letter abbreviation in capital letters.
+<!-- Control characters are a relic from history when computers were primitive. The concept (of a control character) had always been somewhat limiting, and became extremely so with new, much more flexible, hardware. ASCII was designed in the 1960s for teleprinters, telegraphy and some computing. Extended ASCII sets added many control codes. Total of 65 control codes were carried over to Unicode. And Unicode added more characters that could be considered controls, but makes a distinction between these *formatting characters* and the original 65 control characters. -->
+
+Control characters are a relic from history when computers were primitive. The ASCII character set is more than a list of symbols. It was developed in the 1960s as a notation and control coding for paperless typewriters and computer terminals. The ASCII control character set is a way of communicating between a terminal and a computer. [^wiki-ascii-fi] The ASCII standard has 33 control characters that can be described as doing something when the user enters them, such as
+- Interrupting an ongoing process with the end-of-text character (ETX, ^C, ` Ctrl + C `).
+- Indicating conclusion of text input, or exiting a shell by the end-of-transmission character (EOT, ^D, ` Ctrl + D `).
+
+[^wiki-ascii-fi]: [Wikipedia - ASCII, accessed 2025](https://fi.wikipedia.org/wiki/ASCII)
+
+### Caret notation
+
+**Caret notation** is a printable form for control characters specifically in [ASCII](https://en.wikipedia.org/wiki/ASCII), where the character (^) known as the circumflex, appears as an independent character, without the letter below it.
+- The notation assigns ^A to control-code 1, sequentially through the alphabet to ^Z assigned to control-code 26. The keys that produce control-codes outside of the range 1...26 vary between systems. Keyboards also typically have a few single keys which produce control character codes (such as Del, Backspace, Tab, Enter). [^wiki-caret]
+- Control characters generated using letter keys are displayed with the upper-case form of the letter. When the Ctrl-key is held down, letter keys produce the same control characters regardless of the state of the Shift- or Caps-keys. It does not matter, whether the key would have produced an upper-case or a lower-case letter.
+- There are also other ways to display these non-printing "characters" such as decimal code point, hexadecimal code point, or a two or three letter abbreviation in capital letters.
+
+### Traditional ASCII control characters
 
 [^wiki-caret]: [Wikipedia - Caret notation, accessed 2024](https://en.wikipedia.org/wiki/Caret_notation)
 
 | Dec | Hex | Abr | CN | Keyboard shortcut + Use |
 |:---:|:---:|:---:|:---:|:--- |
-| 0 | 00 | NUL |  | ` Ctrl + @ ` or ` Ctrl + Space ` **Null** was typically used to reserve space, either for correcting errors or for inserting information that would be available at a later time or in another place. It adapted to mark end of string.
-| 1 | 01 | SOH | ^A | ` Ctrl + A ` **Start of Heading** was to mark a non-data section of a data stream. |
-| 2 | 02 | STX | ^B| ` Ctrl + B ` **Start of Text** marked the end of the header, and the start of the textual part of a stream. |
-| 3 | 03 | ETX | ^C | ` Ctrl + C ` End of Text marked the end of the data of a message. |
-| 4 | 04 | EOT | ^D | ` Ctrl + D ` **End of Transmission** was used to indicate that a slave station has completed its transmission or the end of a block of data, where data was divided into blocks for transmission purposes. |
-| 5 | 05 | ENQ | ^E | ` Ctrl + E ` When a transmission medium could transmit in only one direction at a time, **Enquire** was used by a master station to ask a slave station to send its next message. |
-| 6 | 06 | ACK | ^F | ` Ctrl + F ` **Acknowledgment** was normally used as a flag to indicate no problem detected with current element. |
-| 7 | 07 | BEL | ^G | ` Ctrl + G ` **Bell** is intended to cause an audible signal in the receiving terminal. |
-| 8 | 08 | BS | ^H | ` Ctrl + H ` or **` Backspace `** moves the printing position one character space backwards. On printers, including hard-copy terminals, this is most often used so the printer can overprint characters to make other, not normally available, characters. On video terminals and other electronic output devices, there are often software (or hardware) configuration choices that allow a destructive backspace. |
-| 9 | 09 | HT | ^I | ` Ctrl + I ` **Horizontal Tab** cause the output device to move the printing position to the next tab stop in the direction of reading. Tab derives from the word tabulate, which means *to arrange data in a tabular, or table, form.* When a person wanted to type a table (of numbers or text) on a typewriter, there was a lot of time-consuming and repetitive use of the space bar and backspace key. To simplify this, a horizontal bar was placed in the mechanism called the tabulator rack. Pressing the tab key would advance the carriage to the next tabulator stop. [^wiki-tab] |
-| 10 | 0A | LF | ^J | ` Ctrl + J ` **Line Feed** causes the device to put the printing position on the <ins>next line</ins>. It may (or may not), depending on the device and its configuration, also move the printing position to the start of the next line (which would be the leftmost position for left-to-right scripts, such as the alphabets used for Western languages, and the rightmost position for right-to-left scripts such as the Hebrew and Arabic alphabets). |
-| 11 | 0B | VT | ^K | ` Ctrl + K ` **Vertical Tab** was used to speed up printer vertical movement. Some printers used special tab belts with various tab spots. |
-| 12 | 0C | FF | ^L | ` Ctrl + L ` **Form Feed** started a new sheet of paper. With the advent of computer terminals that did not physically print on paper and so offered more flexibility regarding screen placement, erasure, and so forth, printing control codes were adapted. Form feeds, for example, usually cleared the screen, there being no new paper page to move to. |
-| 13 | 0D | CR | ^M | ` Ctrl + M ` or ` Enter ` **Carriage Return** causes the device to put the character at the edge of the paper at which writing begins (it may, or may not, also move the printing position to the next line). |
-| 14 | 0E | SO | ^N | ` Ctrl + N ` **Shift Out** selected alternate character sets, fonts, underlining, or other printing modes. |
-| 15 | 0F | SI | ^O | ` Ctrl + O ` **Shift In** selected alternate character sets, fonts, underlining, or other printing modes. |
-| 16 | 10 | DLE | ^P | ` Ctrl + P ` or ` Delete ` **Data Link Escape** was intended to be a signal to the other end of a data link that the following character is a control character. |
-| 17 | 11 | DC1 | ^Q | ` Ctrl + Q ` **Device Control** codes (DC1 to DC4) were originally generic, to be implemented as necessary by each device. |
-| 18 | 12 | DC2 | ^R | ` Ctrl + R ` |
-| 19 | 13 | DC3 | ^S | ` Ctrl + S ` |
-| 20 | 14 | DC4 | ^T | ` Ctrl + T ` |
-| 21 | 15 | NAK | ^U | ` Ctrl + U `**Negative Acknowledge** is a definite flag for, usually, noting that reception was a problem, and, often, that the current element should be sent again. |
-| 22 | 16 | SYN | ^V| ` Ctrl + V ` **Synchronous idle** was originally sent by synchronous modems (which have to send data constantly) when there was no actual data to send. |
-| 23 | 17 | ETB | ^W| ` Ctrl + W ` End of Transmission
-| 24 | 18 | CAN | ^X | ` Ctrl + X ` **Cancel** signals that the previous element should be discarded. |
-| 25 | 19 | EM | ^Y | ` Ctrl + Y ` End of Medium |
-| 26 | 1A | SUB | ^Z | ` Ctrl + Z ` **Substitute was** intended to request a translation of the next character from a printable character to another value, usually by setting bit 5 to zero. This is handy because some media (such as sheets of paper produced by typewriters) can transmit only printable characters. |
-| 27 | 1B | ESC |  | ` Escape ` **Escape sequences** was intended to "quote" the next character. If it was another control character it would print it instead of performing the control function. ESC adapted to selecting alternate character sets, fonts, underlining, or other printing modes. |
+| 0 | 00 | NUL |  | **Null** was typically used to reserve space, either for correcting errors or for inserting information that would be available at a later time or in another place. It adapted to mark end of string. |
+| 1 | 01 | SOH | `^A` | **Start of Heading** was to mark a non-data section of a data stream. |
+| 2 | 02 | STX | `^B` | **Start of Text** marked the end of the header, and the start of the textual part of a stream. |
+| 3 | 03 | ETX | `^C` | ` Ctrl + C ` **End of Text** marked the end of the data of a message. |
+| 4 | 04 | EOT | `^D` | ` Ctrl + D ` **End of Transmission** was used to indicate that a slave station has completed its transmission, i.e. the end of an entire transmission or communication session to signal that no more data will follow. |
+| 5 | 05 | ENQ | `^E` | When a transmission medium could transmit in only one direction at a time, **Enquire** was used by a master station to ask a slave station to send its next message. |
+| 6 | 06 | ACK | `^F` | **Acknowledgment** was normally used as a flag to indicate no problem detected with current element. |
+| 7 | 07 | BEL | `^G` | ` Ctrl + G ` **Bell** is intended to cause an audible signal in the receiving terminal. |
+| 8 | 08 | BS | `^H` | ` Ctrl + H ` or **` Backspace `** moves the printing position one character space backwards. On printers, including hard-copy terminals, this is most often used so the printer can overprint characters to make other, not normally available, characters. On video terminals and other electronic output devices, there are often software (or hardware) configuration choices that allow a destructive backspace. |
+| 9 | 09 | HT | `^I` | ` Ctrl + V, Ctrl + I ` **Horizontal Tab** cause the output device to move the printing position to the next tab stop in the direction of reading. Tab derives from the word tabulate, which means: to arrange data in a tabular, or table, form. When a person wanted to type a table (of numbers or text) on a typewriter, there was a lot of time-consuming and repetitive use of the space bar and backspace key. To simplify this, a horizontal bar was placed in the mechanism called the tabulator rack. Pressing the tab key would advance the carriage to the next tabulator stop. [^wiki-tab] |
+| 10 | 0A | LF | `^J` | ` Ctrl + J ` **Line Feed** causes the device to put the printing position on the <ins>next line</ins>. In modern systems it also moves the printing position to the start of the line (which would be the leftmost position for left-to-right scripts, such as the alphabets used for Western languages, and the rightmost position for right-to-left scripts such as the Hebrew and Arabic alphabets). |
+| 11 | 0B | VT | `^K` | **Vertical Tab** was used to speed up printer vertical movement. Some printers used special tab belts with various tab spots. |
+| 12 | 0C | FF | `^L` | ` Ctrl + L ` **Form Feed** started a new sheet of paper. With the advent of computer terminals that did not physically print on paper and so offered more flexibility regarding screen placement, erasure, and so forth, printing control codes were adapted. Form feeds, for example, usually cleared the screen, there being no new paper page to move to. |
+| 13 | 0D | CR | `^M` | ` Ctrl + M ` or ` ↵ ` **Carriage Return** causes the device to put the character at the edge of the paper at which writing begins (which would be the leftmost position for left-to-right scripts, such as the alphabets used for Western languages, and the rightmost position for right-to-left scripts such as the Hebrew and Arabic alphabets). In modern systems it also moves the printing position to the next line. <!--**Carriage Return** returns the carriage return to the extreme left. In modern terminals, the carriage return usually moves to the next line at the same time.--> |
+| 14<br>15 | 0E<br>0F | SO<br>SI | `^N`<br>`^O` | The original purpose of ` Ctrl + N ` **Shift Out** and ` Ctrl + O ` **Shift In** control codes was to provide a way to shift the red and black ribbon, i.e. split on an electromechanical typewriter or teleprinter, in or out, to another colour. As the technology developed, the function adapted to switching to a different font or character set. |
+| 16 | 10 | DLE | `^P` | **Data Link Escape** was intended to be a signal to the other end of a data link that the following character is a control character such as STX or ETX. |
+| 17<br>18<br>19<br>20 | 11<br>12<br>13<br>14 | DC1<br>DC2<br>DC3<br>DC4 | `^Q`<br>`^R`<br>`^S`<br>`^T` | **Device Control** codes, DC1 to DC4, were originally generic, to be implemented as necessary by each device. |
+| 21 | 15 | NAK | `^U` | **Negative Acknowledge** is a definite flag for, usually, noting that reception was a problem, and, often, that the current element should be sent again. |
+| 22 | 16 | SYN | `^V` | **Synchronous idle** was originally sent by synchronous modems (which have to send data constantly) when there was no actual data to send. |
+| 23 | 17 | ETB | `^W`| **End of Transmission Block** used to signify the end of a block of data during transmission. It was employed in protocols where data was sent in blocks. |
+| 24 | 18 | CAN | `^X` | **Cancel** signals that the previous element should be discarded. |
+| 25 | 19 | EM | `^Y` | **End of Medium** signal warned that a recording medium such as tape had run out. |
+| 26 | 1A | SUB | `^Z` | **Substitute** was used to padding, so that data could be sent in fixed size blocks or in place of a character that could not be represented on another device. <!--**Substitute was** intended to request a translation of the next character from a printable character to another value, usually by setting bit 5 to zero. This was handy because some media (such as sheets of paper produced by typewriters) could transmit only printable characters.--> |
+| 27 | 1B | ESC | `^[` | **Escape sequences** were used to trigger a wide variety of instructions to control the behaviour of the terminal, such as moving the cursor, formatting text, switching LED lights and clearing the screen (see [VT100 User Guide - Commands and control sequences](http://www.braun-home.net/michael/info/misc/VT100_commands.htm)). |
 
 [^wiki-tab]: [Wikipedia - Tab key](https://en.wikipedia.org/wiki/Tab_key)
 
-Control characters are a relic from history when computers were primitive. The concept (of a control character) had always been somewhat limiting, and became extremely so with new, much more flexible, hardware. ASCII was designed in the 1960s for teleprinters, telegraphy and some computing. Extended ASCII sets added many control codes. Total of 65 control codes were carried over to Unicode. And Unicode added more characters that could be considered controls, but makes a distinction between these *formatting characters* and the original 65 control characters.
+### Inserting a control character
 
-Special characters can be inserted through **verbatim insert**. The concept of verbatim insert in unix refers to a functionality where you can insert control characters directly into the terminal.
+> [!TIP]
+> Special characters can be inserted through **verbatim insert**. <!-- The concept of verbatim insert in unix refers to a functionality where you can insert control characters directly into the terminal. -->
 
-1. Enter ` $ echo   ` (that is "echo" and a space)
-2. Press ` Ctrl + V `
-3. Press ` Ctrl + G `
-4. Press ` ↵ `
-- If echo prints the text ^G, then something went wrong.
-- If the echo prints a blank line and you hear a sound, then it worked.
-- You cannot type ` $ echo ^G↵ ` instead the same text must be obtained via ` Ctrl + V, Ctrl + G `.
+The bell control character **` BEL \a \x07 `** is suitable for illustrating *verbatim insert* functionality. Pressing the shortcut keys corresponding to the bell symbol ` Ctrl + G `, in a terminal window, generates the bell sound. Alternatively ` $ echo ` can be used to generate the sound of the bell character:
+1. Type the initial part of the command **` $ echo␣  `**; That is "echo " with a trailing space.
+2. press the keyboard shortcut keys **` Ctrl + V, Ctrl + G `** and the character ^G appears on the line. If you delete the character with the Backspace key, you will see that it is really a single character and not ^ and G in a row.
+3. Finally, press enter ` ↵ ` and you should hear a beep (also a blank line will be printed). If you don't hear a beep and the text ^G is printed, something went wrong. Functionality is not correct if you type the command manually ` $ echo ^G↵ `. The bell character should be inserted by pressing ` Ctrl + V, Ctrl + G `.
+
+> [!NOTE]
+> Of course, there are alternative ways to achieve the same functionality, such as ` $ echo -e "\x07"↵ ` (see [Section: Special character: backslash (\\)](#special-character-backslash)).
 
 <a id="special-character-space"></a>
 
 ## 3.9 Special character: space ( )
 
 > [!WARNING]
-> Every character except forward slash ` / ` and NUL, are allowed in filenames. However if you make any use of the shell, you will realize that there are many characters that will create a hassle – Most significantly space ` `, dash ` - `, asterisk ` * `, dollar sign ` $ `, exlamation mark ` ! `, ampersand ` & `, forwardslash ` / `, backslash ` \ `, curly brackets ` {...} `, tilde ` ~ `, at sign ` @ `, backquotes `` `...` ``.
+> Files system that are popular in GNU/Linux distributions such as EXT4 and BTRFS have far fewer restrictions on special characters than the Windows NTFS and exFAT file systems. Every character except forward slash ` / ` and NUL ` \0 `, are allowed in filenames. However if you make any use of the shell, you will realize that there are many characters that will create a hassle – Most significantly space ` `, dash ` - `, asterisk ` * `, dollar sign ` $ `, exlamation mark ` ! `, ampersand ` & `, forwardslash ` / `, backslash ` \ `, curly brackets ` {...} `, tilde ` ~ `, at sign ` @ `, backquotes `` `...` ``.
 
-The recommendation to not use spaces in filenames comes from the danger that they might be misinterpreted by software that poorly supports them. Arguably, such software is buggy. But also arguably, programming languages like shell scripting make it all too easy to write software that breaks when presented with filenames with spaces in them.
+### Recommendation to not use space in filenames
 
-The use of whitespace (such as spaces) in filenames creates the need for quoting with
-- a) Single quotes ` '...' ` or
-- b) Double quotes ` "..." ` with such filenames:
-    ```
-    $ rm 'A Dragged Link from Firefox.desktop'↵
+In the command interface, **the whole command-line is considered a space-separated list of command-line arguments** (see [Section: Special character: dash (-)](#special-character-dash--)).
+- This is why a whitespace in the filename creates the need to use either:
+    a) Double quotes supression ` "..." `
+    b) Single quote supression ` '...' `
+    c) Backslash escaping ` \? `
 
-    $ rm "A Dragged Link from Firefox.desktop"↵
-    ```
-- c) Alternatively one can use a backslash (\):
-    ```
-    $ rm "A\ Dragged\ Link\ from\ Firefox.desktop"↵
+```
+$ rm "A Dragged Link from Firefox.desktop"↵
 
-    ```
+$ rm 'A Dragged Link from Firefox.desktop'↵
+
+$ rm A\ Dragged\ Link\ from\ Firefox.desktop↵
+```
+
+> [!NOTE]
+> The recommendation to not use spaces in filenames comes from the danger that **they might be misinterpreted by software that poorly supports them**. Arguably, such software is buggy. But also arguably, programming languages like shell scripting make it all too easy to write software that breaks when presented with filenames with spaces in them.
 
 ### Types of documentation [^raymond]
 
-The Unix style of documentation (and documentation tools) has several technical and cultural traits that set it apart from the way documentation is done elsewhere. Understanding these signature traits first will create context for to understand why the programs and the practice look the way they do, and why the documentation reads the way it does.
+#### Early unix documentation style
 
-Unix's early history developers wrote manual pages (stored under ` /usr/share/ `and accessible by ` $ man ` command). Classic Unix documentation does not hold you by the hand, but it usually points in the right direction. The style assumes an active reader. This is because unix is in many ways better adapted to the needs of power users. The documentation that ships with unix systems has traditionally been written by programmers for their peers.
+The early Unix documentation style and tools have several technical and cultural traits that distinguish it from the way documentation is done elsewhere. In the early history of Unix, developers produced manual pages containing essential practical information. These were stored in the ` /usr/share/man/ ` directory and were accessible by the ` $man ` command, an interface to the system reference manuals.
+- The classic manual pages that came with Unix systems have traditionally been written by programmers for their peers. The style does not hold you by the hand, but it usually points in the right direction. The style assumes an active and experienced reader. This is because unix is in many ways better adapted to the needs of power users. 
 - Many times the manual page of a unix program even has a section called BUGS. In other cultures, technical writers try to make the product look good by omitting and skating over known bugs. In the unix culture, peers describe the known shortcomings of their software to each other in unsparing detail, and users consider a short but informative BUGS section to be an encouraging sign of quality work. Commercial Unix distributions euphemize it to a softer tag like LIMITATIONS or ISSUES or APPLICATION USAGE.
 
+#### Modern documentation style
+
 The best practices for writing documentation on modern unix program of any significant size suggest shipping three different kinds of documentation:
-1. **Man pages** should be command references for the traditional unix audience, in the traditional unix style, giving details of how the program is invoked, a quick summary and pointers to the manual incase the user needs to learn more about a specific feature or function. Huge man pages are viewed with some disfavor, and navigation within them can be difficult. All man pages follow a [common layout](https://en.wikipedia.org/wiki/Man_page) (that is optimized for presentation on a simple ASCII text display, possibly without any form of highlighting or font control); And it is recommend that you use the same for your man pages too.
-1. The **manual** should be a long-form documentation for nontechnical users. And often includes troubleshooting tips. It should be possible to use the manual as a reference guide when the user encounters difficulties or needs to learn more about a specific feature or function.
-1. List of **frequently asked questions** (FAQ) should be an evolving resource that grows as the software support group learns what the frequent questions are and how to answer them.
+- **Man pages** should be command references for the traditional unix audience, in the traditional unix style, giving details of how the program is invoked, a **quick summary** and pointers to the long-form manual incase the user needs to learn more about a specific feature or function. Huge man pages are viewed with some disfavor, and navigation within them can be difficult. All man pages follow a [common layout](https://en.wikipedia.org/wiki/Man_page) that is optimized for presentation on a simple ASCII text display, possibly without any form of highlighting or font control. <!--And it is recommend that you use the same for your man pages too.-->
+- The **long-form manual** should be a comprehensive documentation for nontechnical users. And often includes troubleshooting tips. It should be possible to use the long-form manual as a reference guide when the user encounters difficulties or needs to learn more about a specific feature or function.
+- List of **frequently asked questions** (FAQ) should be an evolving resource that grows as the software support group learns what the frequent questions are and how to answer them.
+
+#### In addition
+
+- A project should have a **website** to serve as a central point of distribution.
+
 - Extra **tutorials** can take many forms such as written articles, videos, or interactive software. A tutorial is intended to teach users how to perform a specific task or achieve a particular goal. A tutorial may include quizzes or other types of assessments to help the user gauge their understanding of the material.
 
-A project should have a website to serve as a central point of distribution. With the source code one can also expect to find a README-file (i.e. the standard metainformation file). A README file typically encompasses thing like installation instructions, configuration instructions, operating instructions, copyright and licensing information, contact information for the distributor or author.
-- The file's name is generally written in uppercase. On Unix-like systems in particular, this causes it to stand out; Both because lowercase filenames are more common, and because the ` $ ls ` command commonly sorts and displays files in ASCII-code order, in which uppercase filenames will appear first. [^wiki-readme]
+- With the source code, you can also expect to find a **README file**, which usually contains, installation instructions, configuration instructions, reference to user manuals, copyright and licence information, and contact details of the distributor or author. <!-- The file's name is generally written in uppercase. On Unix-like systems in particular, this causes it to stand out; Both because lowercase filenames are more common, and because the ` $ ls ` command commonly sorts and displays files in ASCII-code order, in which uppercase filenames will appear first.  --> [^wiki-readme]
 
 [^wiki-readme]: [Wikipedia - README, accessed 2024](https://en.wikipedia.org/wiki/README)
 
-<a id="file-types-and-extensions"></a>
+<a id="file-types-and-file-name-extensions"></a>
 
-## 3.10 File types and extensions [^raymond]
+## 3.10 File types and file name extensions [^raymond]
 
-**Extensions** are file name suffixes that start with a period. Usually, they are two or three letters long. Windows relies heavily on these file extensions, to know what to do with a file if you double-click it. Traditionally Unix has no concept of a file extension, like many other operating systems. While extensions are also used under modern unices in several cases, most utilities and applications do not care, and use different heuristics to figure out a file type. A Unix file is just a big bag of bytes, with no other attributes / metadata. <!-- In particular, there is no capability to store information about the file type or a pointer to an associated application program outside the file's actual data. --> Unix partisans preferred approaches that made file data self-describing, so that no metadata was needed to store within the file. Traditionally also the directory, where a file was placed, has been a good indication of the file type (see [Chapter 2, Section: Directory structure](02-basic.md#directory-structure)). The visual metaphor at the heart of modern GUIs, files represented by icons, and opened by clicking which invokes some designated handler program, typically able to create and edit these files, has proven both successful and long-lived. Unix long supported this metaphor only poorly and grudgingly. These days, although unix doesn’t use file extensions to determine the contents/purpose of files, many applications can and will. Because file extensions are not required on the unix file system, you may name files any way you like. One may also use the common file extensions if they like. Anyhow, the contents and/or purpose of a file is still today determined mostly by other means such as **` $ file <file or dir>↵ `**
+**Extensions** are file name suffixes that start with a period. Usually, they are two, three or four letters long. Extensions are used to distinguish between different types of files. For example, ` *.txt ` refers to a text file and ` *.jpg ` refers to an image file. [^wiki-tiedostopääte]
+
+[^wiki-tiedostopääte]: [Wikipedia - Tiedostopääte, accessed 2025](https://fi.wikipedia.org/wiki/Tiedostop%C3%A4%C3%A4te)
+
+### Unix tradition has no concept of file name extension
+
+Windows relies heavily on file name extensions to decide what to do with a file if it is double-clicked. In the Unix tradition, on the other hand, there is no concept of a file name extension. Although file extensions may be used in modern GNU/Linux distributions, most utilities and applications still ignore the file extension. Instead, various heuristics are used to determine the file type.
+
+Even the early Apple Macintosh computers did not use file name extensions. Instead the operating system stored information about the program that created the file in the file, in order to be able to launch the file later with the same program. In the Unix tradition, files did not contain such metadata either.
+
+Unix partisans preferred approaches that made file data self-describing, so that no metadata was needed to store within the file. Traditionally also the directory, where a file was placed, has been a good indication of the file type (see [Chapter 2, Section: Directory structure](02-basic.md#directory-structure)).
+
+### Even today filename name extensions are not required
+
+The visual metaphor at the heart of modern GUIs, files represented by icons, and opened by clicking which invokes some designated handler program, typically able to create and edit these files, has proven both successful and long-lived.
+- Unix long supported this metaphor only poorly and grudgingly.
+
+Even today, the filename name extensions are not required in the GNU/Linux desktop environment to determine the contents and purpose of files. For example, pdf- and odt-files get the right icon, and open in the right program, without a file name extension.
+- However, many applications can use a file name extension, and a file named with the wrong extension will no longer open correctly when clicked with the mouse.
+
+<!-- While extensions are also used under modern unices in several cases, most utilities and applications do not care, and use different heuristics to figure out a file type. A Unix file is just a big bag of bytes, with no other attributes / metadata. In particular, there is no capability to store information about the file type or a pointer to an associated application program outside the file's actual data. -->
+
+<!-- Because file extensions are not required on the unix file system, you may name files any way you like. One may also use the common file extensions if they like. Anyhow, the contents and/or purpose of a file is still today determined mostly by other means such as **` $ file <file or dir>↵ `** -->
+
+### Command to find out the file type
+
+In the command line interface, the contents and/or purpose of a file is, still today, determined mostly by other means such as **` $ file <file or dir>↵ `**:
 
 ```
-$ file SomeText.txt↵
-SomeText.txt: Unicode text, UTF-8 text
+$ file SomePlainText↵
+SomePlainText: Unicode text, UTF-8 text
 
-$ file HelloWorld.gambas↵
-HelloWorld.gambas: a gbr3 script executable (binary data)
+$ file SomeTextDocument↵
+SomeTextDocument: OpenDocument Text
+
+$ file the_beginners_handbook↵
+the_beginners_handbook: PDF document, version 1.5 (zip deflate encoded)
+
+$ file ~/Desktop/↵
+/home/user/Desktop/: directory
 
 $ file /sbin↵
 /sbin: symbolic link to usr/sbin
@@ -311,20 +440,28 @@ $ file /sbin↵
 $ file /dev/null↵
 /dev/null: character special (1/3)
 
+$ file HelloWorld.gambas↵
+HelloWorld.gambas: a gbr3 script executable (binary data)
+
 $ file /usr/bin/file↵
 /usr/bin/file: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /usr/lib64/ld-linux-x86-64.so.2, BuildID[sha1]=96eacae9627debefb5fa23ed58cf1ad83251f85c, for GNU/Linux 3.2.0, stripped
 ```
 
-Be sure to revisit [Section: Finding executables](#finding-executables) for information on similar commands such as ` $ stat `, ` $ whatis ` and ` $ whereis `.
+<!-- Be sure to revisit [Section: Finding executables](#finding-executables) for information on similar commands such as ` $ stat `, ` $ whatis ` and ` $ whereis `. -->
 
 > [!NOTE]
-> The file type **character special file** is an entity that handles data as a stream of bytes, such as /dev/null. The file type **block special file** is an entity that handles data in blocks, such as an optical drive.
+> The file type **character special file** is an entity that handles data as a stream of bytes, such as ` /dev/null `.
+>
+> The file type **block special file** is an entity that handles data in blocks, such as an optical drive.
+
+### Command types
 
 A command can be one of four different things:
-1. Executable (such as compiled binaries)
-2. Shell builtin command
-3. Shell script
-4. Alias
+
+a) A reference to an [executable program](#executable), i.e. a binary file containing machine code for execution by the computer, such as ` $ ls ` and ` $ em `.
+b) A reference to [an internal command found in the shell](#shell-builtin-commands) such as ` $ cd ` and ` $ echo `.
+c) A reference to a [script file](https://www.gnu.org/software/bash/manual/html_node/Shell-Scripts.html) written in the scripting language of the shell.
+d) [Alias](#alias), which creates an alternative name for another command.
 
 The shell builtin command **` $ type <command>↵ `** will show you how a specific command will be interpreted if used on the command line.
 
@@ -347,103 +484,133 @@ file is hashed (/usr/bin/file)
 
 ### Executable
 
-An **executable program** can be
-- <ins>A compiled binary</ins> such as all files in ` /usr/bin/ ` and programs written in a compiled language such as C or C++.
-- <ins>A program written with a scripting language</ins> such as the Shell, Python or Ruby. Scripts do not have to be compiled, to be executed. They are interpreted.
+An executable program can be:
 
-The standard ` $ <binary> --help↵ ` option should output a brief documentation for the specified binary. For example:
-
-```
-$ firefox --help↵
-Usage: /usr/lib64/firefox/firefox [ options ... ] [URL]
-       where options include:
-
-X11 options
-  --display=DISPLAY  X display to use
-  --sync             Make X calls synchronous
-  --g-fatal-warnings Make all warnings fatal
-
-Firefox options
-  -h or --help       Print this message.
-  -v or --version    Print Firefox version.
-...
-```
-
-The ` $ man <binary>↵ ` is an interface to the man pages stored under ` /usr/share/ `. For example:
+a) An **executable binary file** written in a translatable programming language (such as C or C++), and compiled into machine code. Hence the name of the ` /usr/bin/ ` directory (binaries).
+b) An **executable text file** written in a scripting language (such as Shell, Python or Ruby). Scripts do not need to be compiled in order to be executed. They are interpreted line by line at runtime. Despite the name, not all executable programs in the directory ` /usr/bin/ ` are binary files. The directory also contains programs written in scripting languages, as proved by running the command:
 
 ```
-$ man firefox↵
-FIREFOX(1)                                       Linux User's Manual
-
-NAME
-       firefox - a Web browser for X11 derived from the Mozilla browser
-
-SYNOPSIS
-       firefox [OPTIONS ...] [URL]
-
-       firefox-bin [OPTIONS] [URL]
-
-DESCRIPTION
-       Mozilla  Firefox  is an open-source web browser, designed for standards compliance, performance and portability.
-...
+$ file /usr/bin/* | cut -c 1-110 | awk '{print $0}' | sort -k2↵
 ```
+
+#### User-guides for program-files
+
+> [!TIP]
+> Many programs can print out a short instruction, when invoked with the command line options for requesting for help ` $ <executable> --help↵ ` such as:
+>
+> ```
+> $ firefox --help↵
+> Usage: /usr/lib64/firefox/firefox [ options ... ] [URL]
+>        where options include:
+> 
+> X11 options
+>   --display=DISPLAY  X display to use
+>   --sync             Make X calls synchronous
+>   --g-fatal-warnings Make all warnings fatal
+> 
+> Firefox options
+>   -h or --help       Print this message.
+>   -v or --version    Print Firefox version.
+> ...
+> ```
+
+> [!TIP]
+> Many programs come with man-pages, a type of documentation stored in the ` /usr/share/man/ ` directory. The ` $man <binary>↵ ` program is an interface to these manuals, such as
+> 
+> ```
+> $ man firefox↵
+> FIREFOX(1)         Linux User's Manual        FIREFOX(1)
+> 
+> NAME
+>        firefox  - a Web browser for X11 derived from the
+>        Mozilla browser
+> 
+> SYNOPSIS
+>        firefox [OPTIONS ...] [URL]
+> 
+>        firefox-bin [OPTIONS] [URL]
+> 
+> DESCRIPTION
+>        Mozilla Firefox is an  open-source  web  browser,
+>        designed  for  standards  compliance, performance
+>        and portability.
+> ...
+> ```
 
 <a id="shell-builtin-command"></a>
 
-### Shell builtin command <!--update internal links if changed-->
+### Shell builtin commands <!--update internal links if changed-->
 
-Bash supports many commands internally called **shell builtins** such as: ` $ cd `, ` $ pwd `, ` $ alias ` and ` $ kill `. Use ` $ compgen -b↵ ` to get a list of the all the shell builtin commands or visit [GNU Bash Features - Shell Builtin Commands](https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html).
+Some commands are built into the shell. These **shell builtins** are run directly in the shell, and not as external programs. They are built-in because they are such an essential part of the shell's operation, such as ` $ alias `, ` $ unalias `, ` $ echo `, ` $ printf `, ` $ logout `, ` $ cd `, ` $ pwd ` and ` $ kill `. Use ` $ compgen -b↵ ` to get a list of the all the shell builtin commands. <!-- or visit [GNU Bash Features - Shell Builtin Commands](https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html). -->
+
+#### User-guides for shell-builtin-commands
+
+> [!TIP]
+> Instructions for shell-builtin-commands are printed by running ` $ help <builtin_command>↵ `. Help itself is a shell builtin command, and these instructions are built into the shell itself, because they are such an integral part of the shell:
+> 
+> ```
+> $ help bind↵
+> bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q ...
+>     Set Readline key bindings and variables.
+> 
+>     Bind a key sequence to a Readline function or a macro,
+>     or set a Readline variable.  The non-option argument
+>     syntax is equivalent to that found in ~/.inputrc, but
+>     must be passed as a single argument.
+> 
+>     Options:
+>       -m  keymap         Use KEYMAP as the keymap for...
+>       -l                 List names of functions.
+>       -P                 List function names and bind...
+>       -p                 List functions and bindings ...
+>       -S                 List key sequences that invo...
+>       -s                 List key sequences that invo...
+>       -V                 List variable names and valu...
+>       -v                 List variable names and valu...
+> ```
 
 > [!NOTE]
-> Many bash shell builtin commands don't have separate man pages. Instead those may reside with the man pages for the shell it self, and are best accessed with the shell builtin command ` $ help `.
+> There are no man-pages for the shell builtin commands:
+> 
+> ```
+> $ type bind↵
+> bind is a shell builtin
+> 
+> $ whatis bind↵
+> bind: nothing appropriate.
+> 
+> $ man bind↵
+> No manual entry for bind
+> 
+> $ bind --help↵
+> bind: usage: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [keyseq:readline-function or readline-> command]
+> ```
 
-```
-$ whatis bind↵
-bind: nothing appropriate.
+### Shell scripting
 
-$ man bind↵
-No manual entry for bind
+The command line is already versatile on its own, but more complex processes are easier to implement using scripts. In particular, it is worth saving frequently used command-sequences in a file. **Shell scripting** enables the use of algorithms and structures specific to a programming languages (such as variables, conditional statements, loops and functions). Infact writing scripts for the shell to execute, can be referred to as **shell programming**.
+- Scripts do not need to be compiled in order to be executed. They are interpreted.
+- A script file is executed by calling it by the filename such as ` $ ./script.sh↵ `
+- A shell script file starts with the string ` #!/bin/bash `.
+- Scripts do not have to be saved to a file. They can also be written directly to the command line. In this case, a semicolon ` ; ` is placed between the commands.
+- In the Bash shell, variable names are preceded by the dollar sign ` $ `.
+- Commenting is important in any program. In shell programming, a comment is added as ` # comment `. Shell does not read lines that begin with a hash mark (#). Similarly, a hash mark at the beginning of a word will start a comment and cause the entire rest of the line to be ignored.
 
-$ bind --help↵
-bind: usage: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [keyseq:readline-function or readline-command]
+> [!TIP]
+> Comments are used for human readability.
+>
+> But you will also see lines in [configuration files](02-basic.md#configuration-files) that are commented out to prevent them from being used by the affected program. This is done to give the reader suggestions for possible configuration choices or examples of correct configuration syntax.
 
-$ help bind↵
-bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q ...
-    Set Readline key bindings and variables.
+<!-- **Shell functions** are miniature shell scripts incorporated into the environment. -->
 
-    Bind a key sequence to a Readline function or a macro,
-    or set a Readline variable.  The non-option argument
-    syntax is equivalent to that found in ~/.inputrc, but
-    must be passed as a single argument.
-
-    Options:
-      -m  keymap         Use KEYMAP as the keymap for...
-      -l                 List names of functions.
-      -P                 List function names and bind...
-      -p                 List functions and bindings ...
-      -S                 List key sequences that invo...
-      -s                 List key sequences that invo...
-      -V                 List variable names and valu...
-      -v                 List variable names and valu...
-```
-
-### Shell script
-
-**Scripts** do not have to be compiled, to be executed. They are interpreted.
-
-**Shell functions** are miniature shell scripts incorporated into the environment. The command-interpreter-scripts can store frequently used command-sequences (in a file). The commands of a script are executed by calling it in the shell with the name of the script file. Scripts enable structures and algorithms specific to a programming language; Actually the term used is **shell-programming**.
-- The script file starts with the string ` #!/bin/bash `
-- In the bash shell, variable names are preceded by a dollar sign ` $ `
-- Commenting is important in any program. In Shell programming, the syntax to add a comment is ` # comment `. Lines that begin with a hash sign ` # ` are not read by the shell. Likewise a hash sign ` # ` at the beginning of a word starts a comment and causes the rest of the line to be ignored.
-    - Comments are used for human readability. But you will also see lines in configuration files that are commented out to prevent them from being used by the affected program. This is done to give the reader suggestions for possible configuration choices or examples of correct configuration syntax.
 
 ### Alias
 
-1. **Aliases** are commands, built from other commands, which we define ourselves. For example ` $ alias up="sudo eopkg up"↵ ` will create an alias (called up).
+1. **Alias** is a shell builtin command that creates an alternative name for another command. For example ` $ alias up="sudo eopkg up"↵ ` creates an alias named up (as in update).
 
-2. Use the name of the alias to execute. For example ` $ up↵ ` will execute the command specified by the alias named up.
+2. The use of aliases makes command-line work easier and faster. For example, when invoking our newly created alias ` $ up↵ `, the shell executes the command specified for the alias, such as ` $ sudo eopkg up↵ `.
 
-3. Call ` $ alias↵ ` on its own to list all defined aliases:
+3. Calling ` $ alias↵ ` on its own will print a list of all available aliases, such as
 
     ```
     $ alias↵
@@ -451,12 +618,17 @@ bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q ...
     alias up='sudo eopkg up'
     ```
 
-4. Use unalias to remove a specific alias. For example ` $ unalias up↵ ` will remove the alias named up.
+4. Use unalias to remove a specific alias such as ` $ unalias up↵ `
+
+> [!TIP]
+> From time to time, you may need to use the original version of a command with the same name instead of a particular alias, by starting the command with a backward slash ` \ `. For example, the original monochrome version of ` $ \ls↵ ` is used instead of the alias ` $ ls -color=auto↵ `.
 
 > [!NOTE]
 > Aliases vanish as the shell session ends. To make an alias permanent add the alias creation command (such as ` alias up="sudo eopkg up" `) to a new line on ` ~/.bashrc `.
 >
-> Making the addition on commanline can be a bit tricky. But fortunately run control files can be modified using a graphical text editor (invoked from commandline) like this ` $ gedit ~/.bashrc↵ ` or this ` $ xed ~/.bashrc↵ ` (depending on the default text editor provided by the operating system).
+> Making the addition on commanline can be a bit tricky. But fortunately run control files can be modified using a graphical text editor. Invoke from commandline like this ` $ gedit ~/.bashrc↵ ` or this ` $ xed ~/.bashrc↵ ` depending on the default text editor provided by the operating system.
+
+### Alternative for aliases
 
 > [!TIP]
 > The optional ` xdotool ` package (if available to your system) can be used to create an elegant alternative for traditional aliases. Where the command specified by the alias gets typed on the shell prompt instead of being silently executed:
@@ -475,26 +647,35 @@ bind: bind [-lpsvPSVX] [-m keymap] [-f filename] [-q ...
 
 In a bash shell prompt, as you are typing a command, filename, directory or even command options, pressing the ` Tab ` key will either automatically complete what you were typing or show all the possible results for you. You may want to add to this behaviour, so it cycles through every possible suggestion with each repeated press on ` Tab `:
 
-1. Run command ` $ gedit /etc/inputrc↵ ` or ` $ xed /etc/inputrc↵ ` (depending on the default text editor provided by the operating system).
-3. Add lines
+1. Run command ` $ gedit /etc/inputrc↵ ` or ` $ xed /etc/inputrc↵ ` depending on the default text editor provided by the operating system.
+3. Add lines: [^stack-cycle]
 
     ```
-    # tweak auto completion
+    # Tweak auto completion
     set show-all-if-ambiguous on
     set show-all-if-unmodified on
     set menu-complete-display-prefix on
-    "\t": menu-complete			# Tab
-    "\e[Z": menu-complete-backward	# Shift + Tab
+    "\t": menu-complete             # Tab
+    "\e[Z": menu-complete-backward  # Shift + Tab
     ```
 
 3. Save as ` ~/.inputrc `, a different location to what was opened.
-4. Run command ` $ bind -f ~/.inputrc↵ `
+4. Run command ` $ bind -f ~/.inputrc↵ ` [^stack-inputrc]
+
+> [!NOTE]
+> The configuration files ` /etc/inputrc ` and ` ~/.inputrc ` are part of the GNU Readline &#8209;library, which allows users to customize how keyboard input is interpreted and processed in the Bash command-line interface and in applications that use Readline. [^softpano-inputrc]
+
+[^stack-cycle]: [Stackexchange.com - Terminal autocomplete: cycle through suggestions, accessed 2025](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
+
+[^stack-inputrc]: [Stackoverflow.com - Inputrc file cannot be loaded, accessed 2025](https://stackoverflow.com/questions/15027186/inputrc-file-cannot-be-loaded)
+
+[^softpano-inputrc]: [Softpanorama.org - Readline and inputrc, updated 2019](http://www.softpanorama.org/Scripting/Shellorama/Bash_as_command_interpreter/inputrc.shtml)
 
 <a id="some-keyboard-shortcuts"></a>
 
 ## 3.12 Some useful shortcuts
 
-You may try the following to exit some commandline situations:
+New users easily encounter situations, in the command interface, from which there seems to be no way out. You may try the following to exit some commandline situations:
 
 | Keys | Use case |
 |:--- |:--- |
@@ -503,17 +684,17 @@ You may try the following to exit some commandline situations:
 | ` q ` | Quit ` $ less ` and ` $ more ` |
 | ` Ctrl + X ` | Exit ` $ nano ` |
 | ` Ctrl + X, Ctrl + C ` | Exit ` $ emacs ` |
-| ` Esc, :qa!, Ent ` | Exit ` $ vi ` |
+| ` Esc, :qa!↵ ` | Exit ` $ vi ` |
 | ` Alt + F4 ` | Close current window |
 
-How to clear or delete the current line in a terminal:
+The current command line can be cleared by other means than just pressing the ` Backspace `:
 
 | Keys | Use case |
 |:--- |:--- |
 | ` Ctrl + C ` | Cancel |
 | ` Ctrl + W ` | Delete just a word. |
 | ` Ctrl + U ` | Clear up to the beginning. |
-| ` Ctrl + L ` | Clear the terminal screen (with scrollback-ability). <br>Typing ` $ clear↵ ` does the same thing. |
+| ` Ctrl + L ` | Clear the terminal screen (with scrollback-ability). <br>Typing ` $ clear -x↵ ` does the same thing. |
 | ` Alt + Shift + 3 ` | Turning current line to a comment ` # ` is especially useful if you want to keep and comment on bash history (see [Chapter 2, Section: Bash history](02-basic.md#bash-history)). |
 
 Shorcuts specific to GUI terminal window:

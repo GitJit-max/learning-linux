@@ -4,7 +4,7 @@
 > The table of contents can be accessed by pressing the unordered list icon ![octicon](../asset/octicon-list-unordered.svg) on top the right corner.
 
 <p align="center">
-  <a href="09-multi-user.md">&lt;&lt; Previous Chapter: 9 - Multiuser capability</a>
+  <a href="09-multi-user.md">&lt;&lt; Previous Chapter: 9 - Access management</a>
      |
   <a href="../README.md">Back&nbsp;to&nbsp;cover&nbsp;page&nbsp;&gt;&gt;</a>
 </p>
@@ -21,32 +21,46 @@ A linux distribution (or several of them) can be installed in place of, or along
 
 Installation of a GNU / Linux typically starts with the creation of a bootable USB drive, but most distributions can be run directly from such bootable USB drives without installing (onto the computer's internal storage drive). This allows users to try out GNU / Linux and it's various distributions without making any changes to their existing system. It’s a way to experiment, recover data from a broken system, or have a portable operating system that one can use on different machines.
 
-### Create a bootable USB drive
+### Create a bootable USB drive 
 
 Creating a bootable USB drive is not trivial, and requires installing a boot drive creation utility such as [Rufus](https://rufus.ie/en/), [Balena Etcher](https://etcher.balena.io) or [Ventoy](https://www.ventoy.net/). In addition, you must download the correct ISO file from the official website of the distribution you want to (see [Chapter 1, Section: Suggested Distributions](01-intro.md#suggested-distributions)). The ISO file must be copied to a USB drive in a way that makes it bootable, using afore mentioned software.
 
-### Boot from a USB drive
-
-Booting a computer from a USB drive may not trivial, as it usually requires changing some UEFI/BIOS system settings. Some GNU / Linux distributions cannot be installed unless the Secure Boot feature is disabled. Installation continues by changing the boot order to favor USB before the computer's internal boot drive. The UEFI/BIOS settings can usually be accessed by pressing a hardware-specific key such as Del, Esc, F2, F10, F12 during boot-up. Ease of access to system settings also depends on the existing UEFI/BIOS settings. You may have the post boot delay time set to zero, during which pressing the hardware-specific key proves impossible - In which case you will never get in. You can try to instruct and already running computer to boot into UEFI/BIOS from from the Windows command line (` Win + R ` + ` cmd.exe↵ `) with the command ` shutdown /r /fw↵ ` or a linux terminal with the command ` $ sudo systemctl reboot --firmware-setup↵ `. [^koodikanava]
+### Boot from a USB drive [^koodikanava]
 
 [^koodikanava]: [Koodi Kanava, Kimmo Kujansuu - Helpolla komennolla pääset biosiin, accessed 2025](https://www.youtube.com/watch?v=YbKrDbHRsTg)
 
+Booting a computer from a USB drive may not trivial, as it usually requires changing some UEFI/BIOS system settings. Some GNU / Linux distributions cannot be installed unless the Secure Boot feature is disabled. Installation continues by changing the boot order to favor USB before the computer's internal boot drive.
+
+The UEFI/BIOS settings can usually be accessed by pressing a hardware-specific key such as Del, Esc, F2, F10, F12 during boot-up. Ease of access to system settings also depends on the existing UEFI/BIOS settings. You may have the post boot delay time set to zero, during which pressing the hardware-specific key proves impossible - In which case you will never get in.
+
+You can try to instruct an already running computer to boot into UEFI/BIOS from:
+- The Windows command line ` Win + R ` + ` cmd.exe↵ `:
+    - With the command ` shutdown /r /fw↵ `
+- A linux terminal:
+    - With the command ` $ sudo systemctl reboot --firmware-setup↵ `
+
 <a id="disk-partitioning"></a>
 
-### Disk partitioning
+### Disk partitioning in live mode
 
 After a successful boot with the USB drive, you should arrive to a graphical user interface of the GNU / Linux operating system referred to as a live session. Live mode session is almost like a fully functioning instance of the operating system. In live mode, you have access to most of the features and applications as if you had installed it on your internal storage drive. Follow the on-screen prompts to begin the installation process. If not prompted, installation continues by finding the installer. Most live sessions have an "Install" icon on the desktop for this. Progressing from here requires some understanding of disk partitioning.
 
 > [!WARNING]
 > When partitioning a storage disk for GNU / Linux, it is strongly encouraged to expand the (U)EFI FAT32 boot partition to at least 500 MB. The 100 MB created by Windows will most likely prove too low in the long run. Problems may occur when the Linux kernel is updated. Everything may seem to work, but the Linux kernel, doesn't update, and you might not even get an error message about it.
 
-- **EXT4** (Fourth Extended Filesystem) is a good choice and the default filesystem for most GNU / Linux distributions. More advanced users may prefer the BTRFS (B-Tree File System) for its additional features such as snapshots - However BTRFS is slower than EXT4 especially when dealing with large data writes.
+**EXT4** (Fourth Extended Filesystem) is a good choice and the default filesystem for most GNU / Linux distributions. More advanced users may prefer the BTRFS (B-Tree File System) for its additional features such as snapshots - However BTRFS is slower than EXT4 especially when dealing with large data writes.
 
-- **exFAT** (Extensible File Allocation Table) and **NTFS** (New Technology File System) are good file system alternatives for partitions to be shared between different operating systems such as GNU / Linux and Microsoft Windows. Of these, exFAT is the most straightforward and the best performing. NTFS is the default file system for the Windows operating system, but Windows-level NTFS performance is currently not achievable in GNU / Linux.
+**exFAT** (Extensible File Allocation Table) and **NTFS** (New Technology File System) are good file system alternatives for partitions to be shared between different operating systems such as GNU / Linux and Microsoft Windows. Of these, exFAT is the most straightforward and the best performing. NTFS is the default file system for the Windows operating system, but Windows-level NTFS performance is currently not achievable in GNU / Linux.
 
-- Otherwise, the complex disk partitioning traditionally used in GNU / Linux distributions (even single-disk configurations) is no longer necessary on today's home computers; And it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
+#### Need for swap has decreased
 
-> The first function created for Linux at the request of an outsider was the ability to extend main memory with **swap memory**, completed on Christmas Day 1991. Torvalds ’own 386 machine (which was assembled from parts, unbranded) had four megabytes of memory, but users with a smaller number (especially one German user who originally made the request) were in trouble with the lack of main memory. This feature was significant in early 1992 because it played a major role in system performance and contributed positively to the Linux kernel. In Linux, the swap space has traditionally been located on a separate hard disk partition with its own file system optimized for swap use. The speed advantage achieved in this way is now so marginal that the same can be done well by taking the space available for virtual memory from a standard disk partition. In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading.
+The complex disk partitioning traditionally used in GNU / Linux (even single-disk configurations) is no longer necessary on today's home computers; And it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
+
+> The first function created for Linux at the request of an outsider was the ability to extend main memory with **swap memory**, completed on Christmas Day 1991. Torvalds ’own 386 machine (which was assembled from parts, unbranded) had four megabytes of memory, but users with a smaller number (especially one German user who originally made the request) were in trouble with the lack of main memory. This feature was significant in early 1992 because it played a major role in system performance and contributed positively to the Linux kernel.
+
+In Linux, the swap space has traditionally been located on a separate hard disk partition with its own file system optimized for swap use. The speed advantage achieved in this way is now so marginal that the same can be done well by taking the space available for virtual memory from a standard disk partition.
+
+In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading (see [Chapter 2, Section: RAM-disk](02-basic.md#ram-disk-ramdisk)).
 
 > [!TIP]
 > Partitions can be resized, moved, deleted and created with `$ gparted ` in GNU / Linux and with ` diskmgmt.exe ` in Microsoft Windows (` Win + X ` + Disk Management).
@@ -61,23 +75,18 @@ After a successful boot with the USB drive, you should arrive to a graphical use
 
 ### Boot time
 
-` $ systemd-analyze↵ ` = Display the system boot up time to find out how long does it take to boot your GNU / Linux system. Append the ` blame ` flag for additional details.
-
-### Screen brightness
-
-` $ sudo light -S 30.0 -s sysfs/backlight/auto↵ ` = Decreases the screen brightness. The figure is a percentage 00.0...100.0
-
-### Confirmation messages
-
-Many terminal commands will print a message only if something goes wrong. Often times as you insert a command and hit enter, the command gets executed but you do not see a result. The copy command ` $ cp `will overwrite existing files silently. The ` $ rm ` command removes files from the system without confirmation. This is because the unix shell is unobtrusive and silent by design (see [Chapter 2, Section: Design tropes of unix shell utilities](02-basic.md#design-tropes-of-unix)). By default most commands will not print confirmation messages upon success. However, many commands accept the ` -v ` parameter to change this behaviour (v is hort for verbose):
-
+There is a command to find out how long it took to boot your GNU / Linux system:
 ```
-$ mkdir -v Aaaa↵
-mkdir: created directory 'Aaaa'
-
-$ rmdir -v Aaaa↵
-rmdir: removing directory, 'Aaaa'
+$ systemd-analyze↵
+Startup finished in 8.299s (firmware) + 3.081s (loader) + 1.794s (kernel) + 2.202s (initrd) + 6.983s (userspace) = 22.362s 
 ```
+
+> [!TIP]
+> Append the ` blame ` flag for additional details.
+
+<!--### Screen brightness
+
+` $ sudo light -S 30.0 -s sysfs/backlight/auto↵ ` = Decreases the screen brightness. The figure is a percentage 00.0...100.0-->
 
 ### Analyze disk space usage
 
@@ -110,23 +119,29 @@ $ sudo du -hsx /* | sort -rh | head -n 40↵
 
 ## 10.3 Additional tips for the desktop interface
 
-### Program file names
+### Launching desktop applications from the commandline
 
 Sometimes, a program will fail to start up when launched from the graphical menu. By launching it from the command line instead, we may see an error message that will reveal the problem. Also, some graphical programs have interesting and useful command line options.
 
-Graphical dekstop environments tend to hide the file names of programs. One way to find out the file names of executables is to browse the *"Start Menu" shorcuts folder* at ` /usr/share/applications/ ` with a file manager, right click a shortcut file and choose open with text editor. Search for the line that begins with "Exec=" to find out the information you are looking for.
+Graphical dekstop environments tend to hide the file names of programs. One way to find out the file names of executables is to browse the ["Start Menu"](https://www.freedesktop.org/wiki/Specifications/menu-spec/) [shorcuts folder](05-links.md#drag-and-drop) at ` /usr/share/applications/ ` with a file manager, right click a shortcut file and choose open with text editor. Search for the line that begins with ` Exec= ` to find out the information you are looking for.
 
 ### Keyboard shortcuts
 
-- Hold ` Alt + Tab ` repeatedly = Cycle through open windows.
-- ` Ctrl + Alt + Right ` = Open the next virtual desktop.
-- ` Ctrl + Alt + Left ` = Return to the previous virtual desktop.
-- ` Alt + F2 ` = Run a Quick Command (instead of opening a terminal).
-    - Works also as a calculator in some distributions - But not Solus.
-- Zoom
-    - In = ` Ctrl + [+] `
-    - Out = ` Ctrl + [-] `
-    - Reset = ` Ctrl + 0 `
+Hold ` Alt + Tab ` repeatedly = Cycle through open windows.
+
+` Alt + F2 ` = Run a Quick Command (instead of opening a terminal). Works also as a calculator in some distributions - But not Solus.
+    
+#### Virtual desktops
+
+` Ctrl + Alt + Right ` = Open the next virtual desktop.
+
+` Ctrl + Alt + Left ` = Return to the previous virtual desktop.
+
+#### Zoom
+
+- In = ` Ctrl + [+] `
+- Out = ` Ctrl + [-] `
+- Reset = ` Ctrl + 0 `
 
 > [!NOTE]
 > The signs ` + `, ` - ` and ` 0 ` must be pressed next to the letter keys. The corresponding characters on the numeric keypad do not work with the default settings.
@@ -135,26 +150,38 @@ Graphical dekstop environments tend to hide the file names of programs. One way 
 
 ## 10.4 Encrypted password system
 
+Any computer system that requires password authentication must contain a database of passwords in some form. Because password databases are vulnerable to theft, storing passwords in plaintext is dangerous. Therefore most databases store only cryptographic hashes of the user's passwords.
+
 ### Hashing [^hashing]
 
 [^hashing]: [Taylor Hornby - How to Hash Passwords (The Right Way), accessed 2021](https://crackstation.net/hashing-security.htm)
 
-Passwords stored in the ` /etc/shadow ` file are actually hashes. The purpose of password hashing is not to protect the system from being breached, but to protect the passwords if a breach does occur. If a password database gets hacked, and the passwords are unprotected, then malicious hackers can use those passwords to compromise users' accounts on other services, as most people use the same password everywhere.
+Passwords stored in the ` /etc/shadow ` file are actually hashes. Even the authentication system can't determine what a user's password is by merely looking at the stored value. Instead authentication is determined, without ever actually decrypting the stored password on the system. 
+
+When a user enters a password for authentication, the system computes the hash value for the provided password, and that hash value is compared to the stored hash for that user. Authentication is successful if the two hashes match.
+
+<!-- When you sign in to a GNU / Linux, the authentication process compares the stored hash value of your password against a hashed version of the password you typed in. If the two checksums are identical, then the original password and what you typed in are identical. In other words, you entered the correct password. -->
+
+**Hashing** is a one-way process. The hashed result cannot be reversed to expose the original data. The checksum is a string of output that is a set size. Technically, this means that hashing is not encryption because encryption is intended to be reversed (decrypted).
+
+The purpose of password hashing is not to protect the system from being breached, but to protect the passwords if a breach does occur. If a password database gets hacked, and the passwords are unprotected, then malicious hackers can use those passwords to compromise users' accounts on other services, as most people use the same password everywhere.
 
 Cryptography has three goals:
 1. **Authenticity** = to prove where a file originated.
 2. **Integrity** = to prove that a file has not changed unexpectedly.
 3. **Confidentiality** = to keep the file content from being read by unauthorized users.
 
-Password cryptography uses hashing to confirm data is unchanged (integrity). **Hashing** is a one-way process. The hashed result cannot be reversed to expose the original data. The checksum is a string of output that is a set size. Technically, this means that hashing is not encryption because encryption is intended to be reversed (decrypted). In Linux, you're likely to interact with one of two hashing methods: MD5 and SHA512.
+In GNU / Linux, you're likely to interact with one of two hashing methods:
+1. **SHA-512** (secure hash algorithm) is suitable for cryptographic purposes such as password hashing, digital signatures and TLS/SSL certificate generation.
+2. **MD5** (message digest algorithm) can be used as a checksum to verify data integrity against unintentional corruption. Historically it was widely used as a cryptographic hash function, however it has been found to suffer from extensive vulnerabilities. It remains suitable for other non-cryptographic purposes. MD5 is still widely used for non-cryptographic tasks such as verifying the integrity of data files (e.g., comparing checksums for downloads), identifying duplicate files, as the hash values can quickly match identical content.
+    - Non-cryptographic [XXH64](https://github.com/Cyan4973/xxHash) hash function is a modern alternative for MD5, and is designed for speed and efficiency.
 
-Any computer system that requires password authentication must contain a database of passwords in some form. Because password databases are vulnerable to theft, storing passwords in plaintext is dangerous. Therefore most databases store only cryptographic hashes of the user's passwords. In such a system even the authentication system can't determine what a user's password is by merely looking at the stored value; Instead...
-- When a user enters a password for authentication, the system computes the hash value for the provided password, and that hash value is compared to the stored hash for that user. Authentication is successful if the two hashes match.
-- When you sign in to a GNU / Linux, the authentication process compares the stored hash value of your password against a hashed version of the password you typed in. If the two checksums are identical, then the original password and what you typed in are identical. In other words, you entered the correct password. This is determined, however, without ever actually decrypting the stored password on your system.
+<!-- Password cryptography uses hashing to confirm data is unchanged (integrity). -->
 
 ### Salting [^hashing]
 
-Hackers can crack plain hashes very quickly using lookup tables and rainbow tables. Randomizing the hashing using salt is the solution to the problem. And thus hashes in typical GNU / Linux are salted.
+> [!IMPORTANT]
+> Hackers can crack plain hashes very quickly using lookup tables and rainbow tables. Randomizing the hashing using salt is the solution to the problem. And thus hashes in typical GNU / Linux are salted.
 
 Salting is an extra step during hashing that adds an additional value to the end of the password, thereby changing the hash value produced. Salting can drastically reduce the chances of an attacker cracking passwords. The premise of salting is to protect and prevent precomputed hash attacks. Even though salts are stored in a database beside the hashes, salting adds another barrier for attackers, essentially complicating the password cracking process. This is useful when users have repeated passwords across multiple applications. The time taken for an attacker to execute a successful cracking is drastically increased with salted hashes.
 

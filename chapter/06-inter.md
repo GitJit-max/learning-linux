@@ -4,7 +4,7 @@
 > The table of contents can be accessed by pressing the unordered list icon ![octicon](../asset/octicon-list-unordered.svg) on top the right corner.
 
 <p align="center">
-  <a href="05-links.md">&lt;&lt; Previous Chapter: 5 - Links</a>
+  <a href="05-links.md">&lt;&lt; Previous Chapter: 5 - Links in the file system</a>
      |
   <a href="07-advanced-terminal.md">Next&nbsp;Chapter:&nbsp;7&nbsp;&#8209;&nbsp;Advanced&nbsp;terminal&nbsp;usage&nbsp;&gt;&gt;</a>
 </p>
@@ -21,59 +21,119 @@
 
 Unix has always provided several ways for processes to communicate relatively easy:
 
-1. The simplest of all design patterns is having no input and no output; Just a **numeric exit status** (see [Section: Exit status and comparison](#exit-status-and-comparison)). Good examples for use of such mechanic are commands ` $ test `, ` $ rm ` and ` $ touch `
-    - ` $ test -r <file>↵ ` = True if the file exists and is readable.
+### Numeric exit status
+
+The simplest of all design patterns is having no input and no output; Just a **numeric exit status** (see [Section: Exit status and comparison](#exit-status-and-comparison)). Good examples for use of such mechanic are commands ` $ test `, ` $ rm ` and ` $ touch `
+- ` $ test -r <file>↵ ` = Does the file exist and is it readable?
+- ` $ test -w <file>↵ ` = Does the file exist and is it writable?
+- ` $ test -u <file>↵ ` = Does the file exist and is the setuid bit set?
+- ` $ test -g <file>↵ ` = Does the file exist and the setgid bit is set?
+- ` $ test -k <file>↵ ` = Does the file exist and the sticky bit is set?
+
+<!--    - ` $ test -r <file>↵ ` = True if the file exists and is readable.
     - ` $ test -w <file>↵ ` = True if the file exists and is writable.
-    - ` -u `, ` -g `, ` -k ` = True if the file exists and has the setuid, setgid or sticky bit set.
+    - ` -u `, ` -g `, ` -k ` = True if the file exists and has the setuid, setgid or sticky bit set.-->
 
-2. Simple, transparent, **textual data formats** that can be passed through pipes and sockets, that enable the combined use of commands by first executing one command and then passing the output as input to the next command. Most shell programs have two I/O data streams available to it: **Standard input** and **standard output** (see [Section: File descriptor](#file-descriptor)).
+> [!NOTE]
+> The test command returns an exit status of 0 if the expression is true, 1 if the expression is false, or 2 if an error occurred.
+> 
+> Nothing gets printed on the screen though. The shell provides a parameter ` $? ` that we can use to examine the exit status. Or one can construct some form of if-then-clause. See [Chapter 7, Section: Square brackets](07-advanced-terminal.md#square-brackets). 
 
-3. <ins>Handing off tasks to specialist programs.</ins> They key point is that the specialist program does not handshake with the parent while they are running. Thus this is often called **shelling out** to the called program.
+### Text through standard streams
 
-4. The use of **tempfiles** as communications drops between cooperating programs is one of the oldest IPC technique there is. Despite drawbacks, tempfiles still have a niche over more elaborate methods. And sometimes, nothing else will do; The calling conventions of your child process may require that it be <ins>handed a file to operate on</ins>.
+Simple **textual information** can be passed through **standard streams**. Most shell programs have two I/O data streams available to it: standard input and standard output (see [Section: File descriptor](#file-descriptor)). They allow the combined use of commands. One command is executed first, and its output is passed to the next command as input. There is also a separate channel for errors: the standard error.
 
-5. One way for two processes on the same machine to communicate with each other is for one to send the other a signal. **Signals** were originally designed into unix as a way for the operating system to notify programs of certain errors and critical events (see [Chapter 7, Section: Kill signals](07-advanced-terminal.md#kill-signals)). Nevertheless, signals can be useful for some IPC situations (and the POSIX-standard signal set includes two signals, SIGUSR1 and SIGUSR2, intended for this use).
-    - A technique often used with signal IPC is the so-called **pidfile**. Programs that will need to be signaled will write a small file to a known location (often in /var/run or the invoking user's home directory) containing their process ID (PID). Other programs can read that file to discover that PID.
+### Handing off tasks to specialist programs
+
+Handing over a task to another program, such as a decision to leave out a text editor component in an email client program, and replace the functionality of writing a message by launching a separate general-purpose text editor for this task. The key point is that the specialist program does not handshake with the parent while they are running. The higher-level process temporarily relinquishes control to the subprocess to perform the operation, and only returns to resume execution when the subprogram closes. Calling an external program from inside a script, program or another shell in this manner is often called **shelling out** to the called program.
+
+<!--Handing off tasks to specialist programs.
+
+**Shelling out** refers to invoking an external program or command from within a script, program, or another shell. Essentially, it's when a process temporarily hands over control to the operating system shell to execute a command and then returns to continue its execution after the command has completed.-->
+
+### Use of tempfiles
+
+The use of **tempfiles** as communications drops between cooperating programs is one of the oldest IPC technique there is. Despite drawbacks, tempfiles still have a niche over more elaborate methods. And sometimes, nothing else will do; The calling conventions of your child process may require that it be handed a file to operate on.
+
+### POSIX-signals
+
+One way for two processes on the same machine to communicate with each other is for one to send the other a signal. Signals were originally designed into unix as a way for the operating system to notify programs of certain errors and critical events (see [Chapter 7, Section: Kill signals](07-advanced-terminal.md#kill-signals)). Nevertheless, signals can be useful for some IPC situations (and the POSIX-standard signal set includes two signals, SIGUSR1 and SIGUSR2, intended for this use).
+
+A technique often used with signal IPC is the so-called pidfile. Programs that will need to be signaled will write a small file to a known location (often in ` /var/run/ ` or the invoking user's home directory) containing their process ID (PID). Other programs can read that file to discover that PID.
 
 <a id="classic-shell-io"></a>
 
 ## 6.2 Classic shell IO
 
-### CLI interface patterns [^raymond]
+### Standard streams
 
-There can be different CLI interface design patterns for a) Novice and nontechnical end-users and b) Those which serve expert users and maximize scriptability. Unix is in many ways better adapted to the needs of power users.
+Traditional ability of unix programs to communicate and exchange information relies on passing through simple textual information via **standard streams**. Every program has initially available to it (at least) two I/O data streams called standard **input** and standard **output**. They allow the combined use of commands by first executing one command and then passing the output to the next command as input. There is also a separate channel for errors: the standard **error**. <!--Most shell programs have two I/O data streams available to it: standard input and standard output. -->
 
-Every program has initially available to it (at least) two I/O data streams called standard input and standard output.
-- A **source** program requires no input, it's output is controlled only by startup conditions. A classic example would be ` $ who `, ` $ ps ` and ` $ ls `.
-- A **filter** program takes data on standard input, transforms it in some fashion, and sends the result to standard output. A classic example would be ` $ grep `, which prints only those lines that match the pattern given.
-- A **sink** program is a filter-like program that consumes standard input, but emits nothing to standard output. This interface pattern is unusual, and there are few examples.
-- A **cantrip** program outputs only a numeric exit status. A classic example would be ` $ test `, ` $ rm ` and ` $ touch `.
+### Interface patterns based on standard streams [^raymond]
 
-All these patterns have very low interactivity. Programs don't get any more scriptable than this. In addition there are also interactive design patterns and many browser like and editor like programs, but they are not quite so scriptable (as in generating sequences of commands).
+<!-- There can be different CLI interface design patterns for a) Novice and nontechnical end-users and b) Those which serve expert users and maximize scriptability. Unix is in many ways better adapted to the needs of power users. -->
 
-### I/O redirection
+<!-- Every program has initially available to it (at least) two I/O data streams called standard input and standard output. -->
+
+There can be different CLI interface design patterns:
+- **Source:**
+    - Requires no input. It's output is controlled only by startup conditions.
+    - A classic example would be ` $ who `, ` $ ps ` and ` $ ls `.
+- **Filter:**
+    - Takes data on standard input, transforms it in some fashion, and sends the result to standard output.
+    - A classic example would be ` $ grep `, which prints only those lines that match the pattern given.
+- **Sink:**
+    - Is a filter-like program that consumes standard input, but emits nothing to standard output. <!--This interface pattern is unusual, and there are few examples.-->
+- **Cantrip:**
+    - Outputs only a numeric exit status (see [Section: Exit status and comparison](#exit-status-and-comparison)).
+    - A classic example would be ` $ test `, ` $ rm ` and ` $ touch `.
+
+> [!IMPORTANT]
+> All these patterns have very low interactivity. Programs don't get any more scriptable than this. In addition there are also interactive design patterns and many browser like and editor like programs, but they are not quite so scriptable (as in generating sequences of commands).
+
+> [!NOTE]
+> Some commands such as ` $ echo ` do not read their standard input.
+
+### Redirection of standard streams
+
+Programs such as ` $ ls ` actually send their results to a special file called standard output (often expressed as stdout) and their status messages to another special file called standard error (stderr). By default, both standard output and standard error are linked to the screen and not saved into a regular file. I/O redirection allows us to change where that output goes.
 
 <a id="file-descriptor"></a>
 
 #### File descriptor <!--update internal links if changed-->
 
-Every file has an associated **file descriptor (FD)** number. When a program is executed the output is sent to file descriptor of the screen, and you see program output on your monitor. If the output is sent to file descriptor of the printer, the program output will be printed.
+Standard streams are associated with an a **file descriptor** (FD). It is an identifier used by a processes to refer to an I/O resource such as a terminal window, pipe, or text file.
+- If the program output is sent to the printer's file descriptor, it is printed on paper (such as ` > /dev/usb/lp0 `).
+- If the program output is sent to a file descriptor of a terminal window, the program output is displayed on the terminal window (such as ` > /dev/pts/1 `).
+- You could also redirect output from one terminal window to another such as ` > /dev/pts/2 `.
 
 The shell file descriptors are:
-- FD 0 = **stdin** = Standard Input
-- FD 1 = **stdout** = Standard Output
-- FD 2 = **stderr** = Standard Error
+- **FD 0** = ` /dev/stdin ` = Standard Input
+- **FD 1** = ` /dev/stdout ` = Standard Output
+- **FD 2** = ` /dev/stderr ` = Standard Error
 
-Programs such as ` $ ls ` actually send their results to a *special file* called **standard output** (often expressed as stdout) and their status messages to another *special file* called **standard error** (stderr). By default, both standard output and standard error are linked to the screen and not saved into a regular file.
-- I/O redirection allows us to change where that output goes. To redirect standard output to a regular file instead of the screen, we use the redirection operator ` > `, followed by the target filepath.
-- The target file can be ` /dev/null ` to suppress messages from the command. The ` /dev/null ` is a special system file often referred to as the bit bucket, which accepts input and does nothing with it. Sometimes we don't want output from a command, we just want to throw it away. This applies particularly to error messages and status messages.
+> [!TIP]
+> You can verify file descriptors with the following command:
+>
+> ```
+> $ ls -l /proc/self/fd↵
+> total 0
+> lrwx------ 1 margaret 64 10. 5. 10:51 0 -> /dev/pts/1
+> lrwx------ 1 margaret 64 10. 5. 10:51 1 -> /dev/pts/1
+> lrwx------ 1 margaret 64 10. 5. 10:51 2 -> /dev/pts/1
+> lr-x------ 1 margaret 64 10. 5. 10:51 3 -> /proc/8468/fd
+> # /dev/pts stands for pseudo terminal slave
+> ```
 
-> [!NOTE]
-> Some commands such as ` $ echo ` do not read their standard input.
+<!-- Every file has an associated **file descriptor (FD)** number. When a program is executed the output is sent to file descriptor of the screen, and you see program output on your monitor. If the output is sent to file descriptor of the printer, the program output will be printed. -->
 
 #### Redirection to a file
 
-The **redirection operator ` > `** connects a command with a file. Using the **append operator ` >> `** will result in the output being appended to the file. If the file does not already exist, it is created just as though the ` > ` operator had been used.
+To redirect standard output to a regular file instead of the screen, we use the redirection operator ` > ` or ` >> `, followed by the target filepath.
+- The redirection operator **` > `** connects the command output with a text file, **overwriting** any existing content. If the file does not exist, it will be created.
+- The redirection operator **` >> `** connects the command output with a text file, **appending** and thus preserving any existing file content. If the file does not exist, it will be created.
+
+Sometimes we don't want output from a command, we just want to throw it away. This applies particularly to error messages and status messages. Redirection to target file ` > /dev/null ` will suppress and discard all output messages. This special system file is often referred to as the bit bucket. It accepts input, and does nothing with it.
 
 | Operator | Redirection |
 |:--- |:--- |
@@ -84,11 +144,9 @@ The **redirection operator ` > `** connects a command with a file. Using the **a
 | **` &> `** | Redirect both stdout and stderr to file by overwriting. |
 | **` &>> `** | Redirect both stdout and stderr to file by appending. |
 
-The numbers 1 and 2 are file descriptors (see [Section: File Descriptor](#file-descriptor))
-
 #### Input redirection and substitution
 
-By using the **input redirection** symbol **`  <  `**, you can take input data from a file instead of typing it:
+By using the **input redirection** symbol **`  <  `**, you can feed input data from a file, instead of typing it:
 
 ```
 $ echo ~/Documents/ > store-argument.txt↵
@@ -105,31 +163,41 @@ $ diff -y <(ls -la ~/MyProject/) <(ls -la ~/MyBackup/)↵
 
 The the vertical bar **pipe operator** **`  |  `** redirects the standard output of one command into the standard input of another. Piping is analogous to water pipes.
 
-Let's try piping with an example: ` $ ls -l /usr/bin | less↵ `
-- Now try up and down arrow keys to scroll through the content, and ` q ` to quit.
-- ` $ more ` and ` $ less ` are filters for paging text one screenful at a time. More is older and primitive. Less is the enhanced version of more. The naming is a pun: Less is more.
+Let's approach the topic with an example: ` $ ls -l /usr/bin | less↵ `, where the output of the list command ` $ ls ` is passed to a browser called ` $ less `. Now try up and down arrow keys to scroll through the content. Finally press press ` q ` to quit ` $ less `.
 
-Let's continue with another example: ` $ ls -l /usr/bin | tee list.txt | less↵ `
-- Here ` $ tee ` is used to capture the data between pipes. The tee command (from capital letter T) is named after plumbing terminology for a T-shaped pipe splitter. This splits or copies the standard input (i.e. the output of the previous command) to both 1) one or more files and 2) the standard output for use by the next command as input, allowing the data to continue down the pipeline.
+> [!NOTE]
+> Programs ` $ more ` and ` $ less ` are filters for paging text one screenful at a time. More is older and primitive. Less is the enhanced version of more. The naming is a pun: *less is more*.
 
-#### Xargs
+This second example ` $ ls -l /usr/bin | tee list.txt | less↵ ` uses ` $ tee ` to capture the data between pipes. The tee command (from capital letter T) is named after plumbing terminology for a T-shaped pipe splitter. This splits or copies the standard input, i.e. the output of the previous command, to both 1) one or more files and 2) the standard output for use by the next command as input, allowing the data to continue down the pipeline.
 
-Some programs such as ` $ echo ` and ` $ stat ` in ` -f ` mode do not read their standard input. If you need to pipe in a command that doesn’t accept standard input you may use ` $ xargs `, which performs an interesting function; It converts standard input into an argument list for another command. In most cases there are many alternatives to achieve the same goal such as:
+#### Xargs can replace standard input
+
+<!-- Some programs such as ` $ echo ` and ` $ stat ` in ` --file-system ` mode do not read their standard input. 
+
+In most cases there are many alternatives to achieve the same goal such as: -->
+
+Some programs such as ` $ echo ` and ` $ stat ` in ` --file-system ` mode do not read their standard input. Many programs accept the bare hyphen **` - `** as a pseudo-filename that directs to read the standard output. But not ` $ stat ` in ` --file-system ` mode. [^ieee-echo]
+
+[^ieee-echo]: [IEEE 1003.1 Standard: Utilities: echo, accessed 2025](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/echo.html#tag_20_37_06)
 
 ```
-# a) Will not work as intended
-$ which ls & stat -f -↵
+# This attempt will not work as intended:
+$ which ls & stat --file-system -↵
 standard input does not work in file system mode
 
-# b) Will not work as intended
-$ stat -f <(which ls)↵
+# This attempt will not work as intended:
+$ stat --file-system <(which ls)↵
   File: "/dev/fd/63"
     ID: e00000000 Namelen: 255     Type: pipefs
 Block size: 4096       Fundamental block size: 4096
 Blocks: Total: 0          Free: 0          Available: 0
 Inodes: Total: 0          Free: 0
+```
 
-# c, d, e) Will work as intended
+If you need to pipe in a command that doesn’t accept standard input you may use ` $ xargs `. <!--It performs an interesting function; --> It converts standard input into an argument list for another command.
+
+```
+# These alternatives achieve the same goal:
 $ which ls | xargs stat -f↵     # Equals: $ stat -f /usr/bin/ls
 $ which ls | stat -f `xargs`↵   # Equals: $ stat -f /usr/bin/ls
 $ which ls | stat -f $(xargs)↵  # Equals: $ stat -f /usr/bin/ls
@@ -140,7 +208,9 @@ Blocks: Total: 24159833   Free: 18766614   Available: 17527818
 Inodes: Total: 6176768    Free: 5672251
 ```
 
-One can use the ` -n # ` argument to delimit standard input by space, to make the specified command execute multiple times (with any initial arguments followed by items read from standard input):
+#### Xargs can divide series
+
+One can use the ` -n # ` argument to delimit standard input by space, to make the specified command execute multiple times with any initial arguments followed by items read from standard input:
 
 ```
 $ echo {2007..2009}-{01..12}↵
@@ -162,6 +232,8 @@ Row: 2007-07
 ...
 ```
 
+#### Xargs is able to ask for confirmation
+
 The ` -p ` option comes in handy for learning as it prompts before execution:
 
 ```
@@ -181,9 +253,10 @@ Inodes: Total: 6176768    Free: 5672206
 
 #### Sequential execution
 
-**Semicolon ` ; `** causes sequential execution of commands, with each one running <ins>even if the previous command failed</ins>. To demonstrate, the following command will cause an alert bell sound multiple times with a one second interval:
+**Semicolon ` ; `** causes sequential execution of commands, with each one running <ins>even if the previous command failed</ins>.
 
 ```
+# To demonstrate, the following command will cause an alert bell sound multiple times with a one second interval:
 $ echo -e "\a" ; sleep 1 ; echo -e "\a" ; sleep 1 ; echo -e "\a" ; sleep 1 ; echo -e "\a"↵
 ```
 
@@ -200,7 +273,7 @@ bash: /root/Bb.txt: Permission denied
 Cc
 ```
 
-**Double vertical bars ` || `** causes sequential execution of commands, with the last one running <ins>only if the first command failed</ins>. This type of construct is useful for handling errors in (scripts).
+**Double vertical bars ` || `** causes sequential execution of commands, with the last one running <ins>only if the first command failed</ins>. This type of construct is useful for handling errors in scripts.
 
 ```
 $ test -e ~/Desktop && echo "Path found" || echo "Path not found"↵
@@ -215,15 +288,13 @@ Path not found
 
 #### Asynchronous execution
 
-**Trailing ampersand `  & `** directs the shell to run the command(s) in the background, in a separate sub-shell, as a job, asynchronously. This way you can continue using the shell, and not have to wait for the command(s) to terminate.
-
-For example:
+**Trailing ampersand `  & `** directs the shell to run the command(s) in the background, in a separate sub-shell, as a job, asynchronously. This way you can continue using the shell, and not have to wait for the command(s) to terminate such as:
 
 ```
 $ sleep 4 & sleep 2 &↵
 [1] 12712
 [2] 12713
-$           # You can continue typing here straight away
+$ _         # You can continue typing here straight away
 ```
 
 Usually, if you run a text editor (such as gedit) from the terminal, you will be unable to continue using the terminal, until you close the text editor. But, by appending the ampersand operator, you can make it run in the background and continue to use the shell immediately:
@@ -237,22 +308,18 @@ $           # You can continue typing here straight away
 > [!NOTE]
 > After entering the command, the shell prompt returns, but some funny numbers are printed too. This message is part of the shell and kernel maintaining information about each process to help keep things organized. Each process is assigned a PID (Process Identity). Type ` $ ps↵ ` to show processes associated with the current terminal session.
 
-### Grep
+### GNU Grep
 
-**Grep** is short for Global Regular Expression Print.
 
-**Regular expressions** (regex or regexp) are search patterns supported in many programming languages, but also present in some software applications and commandline utilities; Especially with unix text-processing utilities. Regular expressions make it possible to concisely express complicated matching requirements. But they can be hard to read and write.
+[GNU Grep](https://www.gnu.org/software/grep/) is a command-line tool `$ grep ` that filters standard input (or text file contents) with a regular expression. The expression can be a simple string or a very complex pattern.
 
-**`$ grep `** filters standard input (or text file contents) with a regular expression, which can be a simple string or a very complex pattern.
-- GNU grep supports three regular expression syntaxes: Basic, Extended and Perl-compatible. To interpret the pattern as an extended regular expression, use the ` -E ` or ` -P ` option.
 
 > [!NOTE]
-> The regex syntax is beyond the scope of this tutorial. But those interested to learn more can start with the official Perl Documentation:
->
-> - [Metacharacters](https://perldoc.perl.org/perlre#Metacharacters)
-> - [Character Classes and other Special Escapes](https://perldoc.perl.org/perlre#Character-Classes-and-other-Special-Escapes)
+> GREP stands for Global Regular Expression Print. **Regular expression** (regex or regexp) is a notation for creating search, extraction, match and substitution patterns for text. Regex functionality is supported in many programming languages, but also present in some software applications and commandline utilities; Especially with unix text-processing utilities.
 
-The following example filters the home dir listing to files and directories starting with " D" or " P":
+GNU Grep supports three regular expression syntaxes: basic, extended and Perl-compatible. Especially when writing multi-system expressions, care must be taken as to which constructs are newer extensions. To interpret an expression as an extended regular expression, use the ` -E ` or ` -P ` command-line options. When writing expressions, care must also be taken as to whether the line break is treated as a regular character, only whether the input is treated line by line like GNU Grep.
+
+The following example filters the home directory listing to files and directories starting with **` ␣D `** or **` ␣P `**:
 
 ```
 $ grep -E '( D| P)' <(ls -la ~)↵
@@ -262,6 +329,13 @@ drwxr-xr-x  5 user user   4096 10. 6. 19:25 Downloads
 drwxr-xr-x  2 user user   4096 10. 6. 17:16 Pictures
 drwxr-xr-x  2 user user   4096 12.11.  2023 Public
 ```
+
+The regex syntax is beyond the scope of this tutorial. But those interested to learn more can start with the official Perl Documentation:
+- [Metacharacters](https://perldoc.perl.org/perlre#Metacharacters)
+- [Character Classes and other Special Escapes](https://perldoc.perl.org/perlre#Character-Classes-and-other-Special-Escapes)
+
+> [!TIP]
+> Regular expressions make it possible to concisely express complicated matching requirements. But they can be hard to read and write. Web browser based regex-tools (such as <https://regex101.com> and <https://regexr.com>) are useful for a wide range of users, from beginners to advanced. They simplify the creation, testing and debugging of regex patterns.
 
 <a id="exit-status-and-comparison"></a>
 
@@ -291,7 +365,19 @@ Commands (including the scripts and shell functions we write) issue a value to t
 | 255 | User stopped the process. |
 
 > [!NOTE]
-> The shell provides two extremely simple builtin commands that do nothing except terminate with either exit status 0 or 1. The **` $ true↵ `** command always executes successfully (0) and the **` $ false↵ `** command always executes unsuccessfully (1). There is also an **` $ exit #↵ `** command which accepts a single, optional argument, which becomes the script’s exit status. When no argument is passed, the exit status defaults to the exit status of the last command executed. Using ` $ exit ` command in this way allows a script to indicate failure. The exit command appearing on the last line of the script is a formality though, because when a script runs off the end (i.e. reaches end of file), it terminates with an exit status of the last command executed. Similarly, shell functions can return an exit status by including an integer argument to the **` $ return #↵ `** command.
+> Exit status is not printed to standard output and thus nothing gets printed on the screen. The shell provides a parameter ` $? ` that we can use to examine the exit status. Or one can construct some form of if-then-clause. See [Chapter 7, Section: Square brackets](07-advanced-terminal.md#square-brackets). 
+
+#### Commands: true, false, exit, return
+
+The shell provides two extremely simple builtin commands that do nothing except terminate with either exit status 0 or 1:
+1. The **` $ true↵ `** command always executes successfully: ` $? ` = 0.
+2. The **` $ false↵ `** command always executes unsuccessfully: ` $? ` = 1
+
+There is also an **` $ exit #↵ `** command which accepts a single, optional argument, which becomes the script’s exit status. When no argument is passed, the exit status defaults to the exit status of the last command executed. Using ` $ exit ` command in this way allows a script to indicate failure. The exit command appearing on the last line of the script is a formality though, because when a script runs off the end (i.e. reaches end of file), it terminates with an exit status of the last command executed.
+
+Similarly internal functions in shell scripts can return an exit value by including an integer as a parameter to the command **` $ return #↵ `**, which points to the return value of the variable ` $? ` and terminates the function (see [Linuxize.com - Bash Functions: Return Values](https://linuxize.com/post/bash-functions/#return-values)). [^bash-manual-funk]
+
+[^bash-manual-funk]: [GNU Bash Manual - Shell Functions, accessed 2025](https://www.gnu.org/software/bash/manual/html_node/Shell-Functions.html)
 
 > The unix API doesn't use exceptions. Even the C language lacks a facility for throwing named exceptions with attached data. Thus, the C functions in the unix API indicate errors by returning a distinguished value (usually −1 or a NULL character pointer) and setting a global errno variable. In retrospect, this is the source of many subtle errors. Programmers in a hurry often neglect to check return values.
 
@@ -299,30 +385,36 @@ Commands (including the scripts and shell functions we write) issue a value to t
 
 ## 6.3 Sockets
 
-All modern operating systems implement a version of the Berkeley socket interface that originated with a 1983 BSD Unix. It became the standard interface for applications running in the Internet. Even the Winsock implementation for Microsodt Windows, created by unaffiliated developers, closely followed the standard. [^wiki-bsd-sockets] The term socket is also used for the software endpoint of interprocess communication, which often uses the same API as a network socket. [^wiki-network-socket]
+All modern operating systems implement a POSIX or IEEE 1003.1 compliant version of the Berkeley socket interface for sending and receiving data between endpoints. The standard originated with BSD Unix in 1983. It became the standard interface for applications running on the Internet. Even the Winsock implementation for Microsoft Windows, created by unaffiliated developers, closely follows this standard (see [IEEE 1003.1 Standard: Sockets](https://pubs.opengroup.org/onlinepubs/9799919799/functions/V2_chap02.html#tag_16_10)). [^wiki-bsd-sockets] 
+The term socket is also used for the software endpoint of interprocess communication, which often uses the same API as a network socket. [^wiki-network-socket].
 
 [^wiki-bsd-sockets]: [Wikipedia - Berkeley sockets, accessed 2024](https://en.wikipedia.org/wiki/Berkeley_sockets)
 
 [^wiki-network-socket]: [Wikipedia - Network socket, accessed 2024](https://en.wikipedia.org/wiki/Network_socket)
 
-> [!NOTE]
-> The use of the term socket in software is analogous to the function of an electrical connector.
+POSIX sockets are usually the right thing to use for bidirectional IPC no matter where your cooperating processes are located. Sockets are supported on all modern operating systems such as GNU/Linux, Windows, and macOS.
 
-Sockets are usually the right thing to use for bidirectional IPC no matter where your cooperating processes are located. Sockets are supported in all recent unices, under Windows, and under classic macOS as well.
-- Two programs communicating over a socket typically see a bidirectional byte stream (there are other socket modes and transmission methods, but they are of only minor importance). The byte stream is both 1) sequenced (that is, even single bytes will be received in the same order sent) and 2) reliable (socket users are guaranteed that the underlying network will do error detection and retry to ensure delivery). [^raymond]
+> Two programs communicating over a socket typically see a bidirectional byte stream. There are other socket modes and transmission methods, but they are of only minor importance.
+>
+> The byte stream is sequenced and reliable. That is, even individual bytes are received in transmission order and socket users are guaranteed that the underlying network will perform error detection and retry if necessary to ensure delivery. [^raymond]
 
-<a id="d-bus"></a>
+<a id="dee-bus"></a>
 
 ### D-Bus [^free-bus]
 
 [^free-bus]: [Freedesktop Wiki - What is D-Bus?, accessed 2024](https://www.freedesktop.org/wiki/Software/dbus/)
 
-**D-Bus** is a <ins>message-oriented</ins> middleware mechanism that allows communication between multiple processes running concurrently on the same machine. D-Bus is part of the freedesktop.org project and many GNU / Linux applications have the ability to communicate with each other through D-Bus.
-- a) D-Bus can be a mediator for many programs. For example, information on an incoming voice-call received through Bluetooth or VoIP can be propagated and interpreted by any currently-running music player, which can react by muting the volume or by pausing playback until the call is finished.
+Many GNU/Linux applications can communicate with each other via D-Bus. **D-Bus** is a message-oriented middleware mechanism that allows communication between multiple processes running concurrently on the same machine. 
+
+> D-Bus is part of the [Freedesktop.org](https://www.freedesktop.org/wiki/Specifications/) project. The goal of Freedesktop.org is to create open standards and interoperability between different GNU/Linux-based desktop environments. Most Freedesktop.org projects are designed to be independent of any specific desktop environment, and improve their compatibility.
+
+a) D-Bus can be a mediator for many programs. For example, information on an incoming voice-call received through Bluetooth or VoIP can be propagated and interpreted by any currently-running music player, which can react by muting the volume or by pausing playback until the call is finished.
     - Clients should instruct the bus that they are interested in receiving certain signals from a particular object, since a D-Bus bus only passes signals to those processes with a registered interest in them.
-    - Browsing the existing bus names, objects, interfaces, methods and signals in a D-Bus bus using ` D-Feet ` package.
-- b) Also, the message bus can be used by any two apps to communicate directly without going through the message bus daemon.
-    - D-Bus makes it simple and reliable to code a "single instance" application, a program that restricts itself to running only one instance at a time. And a way for the second instance to pass any command line arguments to the original instance before exit.
+b) In addition, any two applications can use the communication bus to communicate with each other. <!--, directly without communication via the dbus [daemon](https://dbus.freedesktop.org/doc/dbus-daemon.1.html) message bus.-->
+    - The D-Bus bus makes it simple and reliable to code a *single instance* application. That is, a program that limits itself to executing only one instance at a time. In this case, the D-Bus message is a means of passing to the first instance the command line arguments received by the second instance at startup (before it closes).
+
+> [!TIP]
+> Desktop application [GNOME D-Spy](https://gitlab.gnome.org/GNOME/d-spy) is a simple GUI for browsing existing bus names, objects, interfaces, methods and signals in a D-Bus.
 
 <!-- # References -->
 

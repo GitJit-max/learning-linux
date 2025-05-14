@@ -3,7 +3,7 @@
 
 # First steps in learning linux
 
-Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this book be your first step in learning linux. Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
+Have you thought about trying a linux operating system without knowing where to start? Or already tried, but encountered challenges with the new operating system. Let this book guide your steps to learning linux. <!--Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this book be your first step in learning linux. --> Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
 
 ----------------
 
@@ -12,29 +12,29 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 <!-- Start of auto generated content -->
 
 <details>
-<summary>Chapter 1 - Introduction <a href="chapter/01-intro.md">↩</a></summary>
+<summary>Chapter 1 - History of linux <a href="chapter/01-intro.md">↩</a></summary>
 
 - [1.1 Branching](chapter/01-intro.md#branching)
-- [1.2 Free and open-source](chapter/01-intro.md#free-and-open-source)
-- [1.3 How and why open-source works](chapter/01-intro.md#how-and-why-open-source-works)
+- [1.2 Quality of free and open-source](chapter/01-intro.md#quality-of-free-and-open-source)
+- [1.3 Culture of open-source works](chapter/01-intro.md#culture-of-open-source-works)
 - [1.4 Economic sustainability](chapter/01-intro.md#economic-sustainability)
 - [1.5 Time-sharing](chapter/01-intro.md#time-sharing)
-- [1.6 Philosophy of the GNU project](chapter/01-intro.md#gnu-philosophy)
+- [1.6 Philosophy of the GNU project](chapter/01-intro.md#philosophy-of-the-gnu-project)
 - [1.7 The birth of GNU & Linux](chapter/01-intro.md#the-birth)
 - [1.8 Linux distros aren’t just the kernel](chapter/01-intro.md#eight-pieces)
 - [1.9 GNU General Public -license](chapter/01-intro.md#gnu-gpl)
 - [1.10 UNIX or Unix-like](chapter/01-intro.md#unix-or-unix-like)
 - [1.11 The GNU / Linux family](chapter/01-intro.md#distro-family)
-- [1.12 The cost of GNU / Linux](chapter/01-intro.md#the-cost-of-gnu-linux)
-- [1.13 Popularity of GNU / Linux desktop](chapter/01-intro.md#popularity-of-gnu-linux-desktop)
-- [1.14 What's wrong with GNU / Linux](chapter/01-intro.md#whats-wrong-with-gnu-linux)
-- [1.15 Why people switch to GNU / Linux](chapter/01-intro.md#why-switch)
+- [1.12 The cost of GNU/Linux](chapter/01-intro.md#the-cost-of-gnu-linux)
+- [1.13 Popularity of GNU/Linux desktop](chapter/01-intro.md#popularity-of-gnu-linux-desktop)
+- [1.14 What's wrong with GNU/Linux](chapter/01-intro.md#whats-wrong-with-gnu-linux)
+- [1.15 Why people switch to GNU/Linux](chapter/01-intro.md#why-switch)
 - [1.16 Suggested distributions](chapter/01-intro.md#suggested-distributions)
   
 </details>
 
 <details>
-<summary>Chapter 2 - Basics <a href="chapter/02-basic.md">↩</a></summary>
+<summary>Chapter 2 - Basics of linux system design <a href="chapter/02-basic.md">↩</a></summary>
 
 - [2.1 Introduction to the text interface](chapter/02-basic.md#introduction-to-the-text-interface)
 - [2.2 Cut and paste](chapter/02-basic.md#cut-and-paste)
@@ -49,7 +49,7 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 </details>
 
 <details>
-<summary>Chapter 3 - Basic terminal usage <a href="chapter/03-basic-terminal.md">↩</a></summary>
+<summary>Chapter 3 - Commandline crash course <a href="chapter/03-basic-terminal.md">↩</a></summary>
 
 - [3.1 Clear the screen](chapter/03-basic-terminal.md#clear-the-screen)
 - [3.2 Special character: dash (-)](chapter/03-basic-terminal.md#special-character-dash)
@@ -60,7 +60,7 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 - [3.7 Special character: backslash (\\)](chapter/03-basic-terminal.md#special-character-backslash)
 - [3.8 Control characters](chapter/03-basic-terminal.md#control-characters)
 - [3.9 Special character: space ( )](chapter/03-basic-terminal.md#special-character-space)
-- [3.10 File types and extensions](chapter/03-basic-terminal.md#file-types-and-extensions)
+- [3.10 File types and file name extensions](chapter/03-basic-terminal.md#file-types-and-file-name-extensions)
 - [3.11 Autocomplete](chapter/03-basic-terminal.md#autocomplete)
 - [3.12 Some useful shortcuts](chapter/03-basic-terminal.md#some-keyboard-shortcuts)
   
@@ -79,11 +79,11 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 </details>
 
 <details>
-<summary>Chapter 5 - Links <a href="chapter/05-links.md">↩</a></summary>
+<summary>Chapter 5 - Links in the file system <a href="chapter/05-links.md">↩</a></summary>
 
-- [5.1 Drag and Drop](chapter/05-links.md#drag-and-drop)
+- [5.1 Drag and drop](chapter/05-links.md#drag-and-drop)
 - [5.2 Symbolic and hard links](chapter/05-links.md#symbolic-and-hard-links)
-- [5.3 Link examples](chapter/05-links.md#examples-of-links)
+- [5.3 Examples of links](chapter/05-links.md#examples-of-links)
   
 </details>
 
@@ -110,13 +110,13 @@ Do you hear from other people why you aren't using linux? You've been thinking a
 <details>
 <summary>Chapter 8 - Text editors <a href="chapter/08-text-editors.md">↩</a></summary>
 
-- [8.1 CLI text editors](chapter/08-text-editors.md#cli-text-editors)
+- [8.1 Terminal-based text editors](chapter/08-text-editors.md#cli-text-editors)
 - [8.2 Modern text editors](chapter/08-text-editors.md#gui-text-editors)
   
 </details>
 
 <details>
-<summary>Chapter 9 - Multiuser capability <a href="chapter/09-multi-user.md">↩</a></summary>
+<summary>Chapter 9 - Access management <a href="chapter/09-multi-user.md">↩</a></summary>
 
 - [9.1 Introduction to shared computing](chapter/09-multi-user.md#multiuser-intro)
 - [9.2 Identity (user + group)](chapter/09-multi-user.md#indentity)
