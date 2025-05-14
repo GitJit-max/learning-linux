@@ -146,10 +146,12 @@ Have you thought about trying a linux operating system without knowing where to 
 
 | Version | Date | Description |
 | ---:| --- | --- |
-| 1.0.1 | 22.02.2025 | <!--1<sup>st</sup>--> Minor updates to git edition |
-| 1.0 | 28.06.2024 | <!--2<sup>nd</sup>--> [Second pdf edition](https://github.com/GitJit-max/learning-linux/releases/download/v1.0/learning-linux-v1.0.pdf) |
-| 1.0 | 16.06.2024 | <!--1<sup>st</sup>--> First github edition |
-| 0.9 | 13.04.2021 | <!--1<sup>st</sup>--> First pdf edition |
+| 1.0.3 | 15.05.2025 | Major updates to git edition |
+| 1.0.3 | 15.05.2025 | [Second pdf edition](https://github.com/GitJit-max/learning-linux/releases/download/v1.0.3/learning-linux-v1.0.3.pdf) |
+| 1.0.1 | 22.02.2025 | Minor updates to git edition |
+| 1.0 | 28.06.2024 | Second pdf edition |
+| 1.0 | 16.06.2024 | First github edition |
+| 0.9 | 13.04.2021 | First pdf edition |
 
 ### Contribution guidelines
 
