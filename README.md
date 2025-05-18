@@ -4,9 +4,11 @@
 > [!TIP]
 > Within any chapter, the table of contents can be accessed by pressing the unordered list icon ![octicon](asset/octicon-list-unordered.svg) on top the right corner.
 
-# First steps in learning linux
+# First steps in learning Linux
 
-Have you thought about trying a Linux operating system without knowing where to start? Or already tried, but encountered challenges with the new operating system. Let this book guide your steps to learning Linux. <!--Do you hear from other people why you aren't using linux? You've been thinking about trying linux, but don't know where to start or how? Let this book be your first step in learning linux. --> Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of Linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
+Have you thought about trying a Linux operating system without knowing where to start? Or already tried, but encountered challenges with the new operating system. Let this book guide your steps to learning Linux.
+
+Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of Linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
 
 ----------------
 
