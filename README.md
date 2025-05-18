@@ -151,8 +151,8 @@ Knowing about the past helps understand how things are today. Let's start with [
 
 | Version | Date | Description |
 | ---:| --- | --- |
-| 1.0.3 | 15.05.2025 | Major updates to git edition |
 | 1.0.3 | 15.05.2025 | [Second pdf edition updated](https://github.com/GitJit-max/learning-linux/releases/download/v1.0.3/learning-linux-v1.0.3.pdf) |
+| 1.0.3 | 15.05.2025 | Major updates to git edition |
 | 1.0.1 | 22.02.2025 | Minor updates to git edition |
 | 1.0 | 28.06.2024 | Second pdf edition |
 | 1.0 | 16.06.2024 | First github edition |
