@@ -25,19 +25,19 @@ Installation of a GNU/Linux typically starts with the creation of a bootable USB
 
 Creating a bootable USB drive is not trivial, and requires installing a boot drive creation utility such as [Rufus](https://rufus.ie/en/), [Balena Etcher](https://etcher.balena.io) or [Ventoy](https://www.ventoy.net/). In addition, you must download the correct ISO file from the official website of the distribution you want to (see [Chapter 1, Section: Suggested Distributions](01-intro.md#suggested-distributions)). The ISO file must be copied to a USB drive in a way that makes it bootable, using afore mentioned software.
 
-### Boot from a USB drive [^koodikanava]
+### Boot from a USB drive 
 
-[^koodikanava]: [Koodi Kanava, Kimmo Kujansuu - Helpolla komennolla pääset biosiin, accessed 2025](https://www.youtube.com/watch?v=YbKrDbHRsTg)
+Booting a computer from a USB drive may not trivial, as it usually requires changing some UEFI/BIOS system settings. Some GNU/Linux distributions cannot be installed unless the Secure Boot feature is disabled. Installation continues by changing the boot order to favor USB before the computer's internal boot drive. [^koodikanava]
 
-Booting a computer from a USB drive may not trivial, as it usually requires changing some UEFI/BIOS system settings. Some GNU/Linux distributions cannot be installed unless the Secure Boot feature is disabled. Installation continues by changing the boot order to favor USB before the computer's internal boot drive.
+The UEFI/BIOS settings can usually be accessed by pressing a hardware-specific key such as Del, Esc, F2, F10, F12 during boot-up. Ease of access to system settings also depends on the existing UEFI/BIOS settings. You may have the post boot delay time set to zero, during which pressing the hardware-specific key proves impossible - In which case you will never get in. [^koodikanava]
 
-The UEFI/BIOS settings can usually be accessed by pressing a hardware-specific key such as Del, Esc, F2, F10, F12 during boot-up. Ease of access to system settings also depends on the existing UEFI/BIOS settings. You may have the post boot delay time set to zero, during which pressing the hardware-specific key proves impossible - In which case you will never get in.
-
-You can try to instruct an already running computer to boot into UEFI/BIOS from:
+You can try to instruct an already running computer to boot into UEFI/BIOS from: [^koodikanava]
 - The Windows command line ` Win + R ` + ` cmd.exe↵ `:
     - With the command ` shutdown /r /fw↵ `
 - A GNU/Linux terminal:
     - With the command ` $ sudo systemctl reboot --firmware-setup↵ `
+
+[^koodikanava]: [Koodi Kanava, Kimmo Kujansuu - Helpolla komennolla pääset biosiin, accessed 2025](https://www.youtube.com/watch?v=YbKrDbHRsTg)
 
 <a id="disk-partitioning"></a>
 
@@ -60,7 +60,7 @@ The complex disk partitioning traditionally used in GNU/Linux (even single-disk 
 
 In Linux, the swap space has traditionally been located on a separate hard disk partition with its own file system optimized for swap use. The speed advantage achieved in this way is now so marginal that the same can be done well by taking the space available for virtual memory from a standard disk partition.
 
-In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading (see [Chapter 2, Section: RAM-disk](02-basic.md#ram-disk-ramdisk)).
+In addition, the need for swaps has decreased or even disappeared as the amount of main memory increased. At the same time, the opposite of swap is common, in which files in mass memory, which are often needed, are copied to main memory to speed up their reading (see [Chapter 2, Section: RAM-disk](02-basic.md#ram-disk)).
 
 > [!TIP]
 > Partitions can be resized, moved, deleted and created with `$ gparted ` in GNU/Linux and with ` diskmgmt.exe ` in Microsoft Windows (` Win + X ` + Disk Management).
@@ -152,21 +152,19 @@ Hold ` Alt + Tab ` repeatedly = Cycle through open windows.
 
 Any computer system that requires password authentication must contain a database of passwords in some form. Because password databases are vulnerable to theft, storing passwords in plaintext is dangerous. Therefore most databases store only cryptographic hashes of the user's passwords.
 
-### Hashing [^hashing]
+### Hashing 
 
-[^hashing]: [Taylor Hornby - How to Hash Passwords (The Right Way), accessed 2021](https://crackstation.net/hashing-security.htm)
+<!-- Password cryptography uses hashing to confirm data is unchanged (integrity). -->
 
-Passwords stored in the ` /etc/shadow ` file are actually hashes. Even the authentication system can't determine what a user's password is by merely looking at the stored value. Instead authentication is determined, without ever actually decrypting the stored password on the system. 
+Passwords stored in the ` /etc/shadow ` file are actually hashes. Even the authentication system can't determine what a user's password is by merely looking at the stored value. Instead authentication is determined, without ever actually decrypting the stored password on the system. [^hashing]
 
-When a user enters a password for authentication, the system computes the hash value for the provided password, and that hash value is compared to the stored hash for that user. Authentication is successful if the two hashes match.
+When a user enters a password for authentication, the system computes the hash value for the provided password, and that hash value is compared to the stored hash for that user. Authentication is successful if the two hashes match. [^hashing]
 
-<!-- When you sign in to a GNU/Linux, the authentication process compares the stored hash value of your password against a hashed version of the password you typed in. If the two checksums are identical, then the original password and what you typed in are identical. In other words, you entered the correct password. -->
+**Hashing** is a one-way process. The hashed result cannot be reversed to expose the original data. The checksum is a string of output that is a set size. Technically, this means that hashing is not encryption because encryption is intended to be reversed (decrypted). [^hashing]
 
-**Hashing** is a one-way process. The hashed result cannot be reversed to expose the original data. The checksum is a string of output that is a set size. Technically, this means that hashing is not encryption because encryption is intended to be reversed (decrypted).
+The purpose of password hashing is not to protect the system from being breached, but to protect the passwords if a breach does occur. If a password database gets hacked, and the passwords are unprotected, then malicious hackers can use those passwords to compromise users' accounts on other services, as most people use the same password everywhere. [^hashing]
 
-The purpose of password hashing is not to protect the system from being breached, but to protect the passwords if a breach does occur. If a password database gets hacked, and the passwords are unprotected, then malicious hackers can use those passwords to compromise users' accounts on other services, as most people use the same password everywhere.
-
-Cryptography has three goals:
+Cryptography has three goals: [^hashing]
 1. **Authenticity** = to prove where a file originated.
 2. **Integrity** = to prove that a file has not changed unexpectedly.
 3. **Confidentiality** = to keep the file content from being read by unauthorized users.
@@ -176,33 +174,33 @@ In GNU/Linux, you're likely to interact with one of two hashing methods:
 2. **MD5** (message digest algorithm) can be used as a checksum to verify data integrity against unintentional corruption. Historically it was widely used as a cryptographic hash function, however it has been found to suffer from extensive vulnerabilities. It remains suitable for other non-cryptographic purposes. MD5 is still widely used for non-cryptographic tasks such as verifying the integrity of data files (e.g., comparing checksums for downloads), identifying duplicate files, as the hash values can quickly match identical content.
     - Non-cryptographic [XXH64](https://github.com/Cyan4973/xxHash) hash function is a modern alternative for MD5, and is designed for speed and efficiency.
 
-<!-- Password cryptography uses hashing to confirm data is unchanged (integrity). -->
+[^hashing]: [Taylor Hornby - How to Hash Passwords (The Right Way), accessed 2021](https://crackstation.net/hashing-security.htm)
 
-### Salting [^hashing]
+### Salting 
 
 > [!IMPORTANT]
-> Hackers can crack plain hashes very quickly using lookup tables and rainbow tables. Randomizing the hashing using salt is the solution to the problem. And thus hashes in typical GNU/Linux are salted.
+> Hackers can crack plain hashes very quickly using lookup tables and rainbow tables. Randomizing the hashing using salt is the solution to the problem. And thus hashes in typical GNU/Linux are salted. [^hashing]
 
-Salting is an extra step during hashing that adds an additional value to the end of the password, thereby changing the hash value produced. Salting can drastically reduce the chances of an attacker cracking passwords. The premise of salting is to protect and prevent precomputed hash attacks. Even though salts are stored in a database beside the hashes, salting adds another barrier for attackers, essentially complicating the password cracking process. This is useful when users have repeated passwords across multiple applications. The time taken for an attacker to execute a successful cracking is drastically increased with salted hashes.
+Salting is an extra step during hashing that adds an additional value to the end of the password, thereby changing the hash value produced. Salting can drastically reduce the chances of an attacker cracking passwords. The premise of salting is to protect and prevent precomputed hash attacks. Even though salts are stored in a database beside the hashes, salting adds another barrier for attackers, essentially complicating the password cracking process. This is useful when users have repeated passwords across multiple applications. The time taken for an attacker to execute a successful cracking is drastically increased with salted hashes. [^hashing]
 
-**Salting** randomizes each hash, so that when the same password is hashed twice, the hashes are not the same. We can randomize the hashes by appending or prepending a random string, called a salt, to the password before hashing. This makes the same password hash into a completely different string every time. To check if a password is correct, we need the salt, so it is usually stored in the user account database along with the hash, or as part of the hash string itself. The salt does not need to be secret. Just by randomizing the hashes, lookup tables, reverse lookup tables, and rainbow tables become ineffective. An attacker won't know in advance what the salt will be, so they can't pre-compute a lookup table or rainbow table. If each user's password is hashed with a different salt, the reverse lookup table attack won't work either.
+**Salting** randomizes each hash, so that when the same password is hashed twice, the hashes are not the same. We can randomize the hashes by appending or prepending a random string, called a salt, to the password before hashing. This makes the same password hash into a completely different string every time. To check if a password is correct, we need the salt, so it is usually stored in the user account database along with the hash, or as part of the hash string itself. The salt does not need to be secret. Just by randomizing the hashes, lookup tables, reverse lookup tables, and rainbow tables become ineffective. An attacker won't know in advance what the salt will be, so they can't pre-compute a lookup table or rainbow table. If each user's password is hashed with a different salt, the reverse lookup table attack won't work either. [^hashing]
 
-- The salt should be stored in the user account table alongside the hash.
-    - The salt does not need to be secret.
-- The salt needs to be unique per-user per-password. Never reuse a salt.
-    - A new random salt must be generated each time a user creates an account or changes their password.
-    - Every time a user creates an account or changes their password, the password should be hashed using a new random salt.
-- The salt also needs to be long, so that there are many possible salts.
-    - As a rule of thumb, make your salt is at least as long as the hash function's output.
+- The salt should be stored in the user account table alongside the hash. [^hashing]
+    - The salt does not need to be secret. [^hashing]
+- The salt needs to be unique per-user per-password. Never reuse a salt. [^hashing]
+    - A new random salt must be generated each time a user creates an account or changes their password. [^hashing]
+    - Every time a user creates an account or changes their password, the password should be hashed using a new random salt. [^hashing]
+- The salt also needs to be long, so that there are many possible salts. [^hashing]
+    - As a rule of thumb, make your salt is at least as long as the hash function's output. [^hashing]
 - Should the salt come before or after the password?
-    - It doesn't matter, but pick one and stick with it for interoperability's sake.
-    - Having the salt come before the password seems to be more common.
+    - It doesn't matter, but pick one and stick with it for interoperability's sake. [^hashing]
+    - Having the salt come before the password seems to be more common. [^hashing]
 - If you are writing a web application, you might wonder where to hash?
-    - In a Web Application, always hash on the server.
-    - The password should be sent to the server "in the clear" and hashed there, or you can hash twice: once on the client side and then rehash the hash on the server side.
-    - If passwords are hashed only in the user's browser with JavaScript the client-side hash logically becomes the user's password. If a bad guy somehow steals the database of hashes from this hypothetical website, they'll have immediate access to everyone's accounts without having to guess any passwords.
-- One goal is to make the hash function slow enough to impede attacks, but still fast enough to not cause a noticeable delay for the user. Use a standard algorithm like PBKDF2 or bcrypt. These algorithms take a security factor or iteration count as an argument (this value determines how slow the hash function will be).
-- Compares hash strings in a way that takes the same amount of time no matter how much of the strings match (to protect against a timing attack).
+    - In a Web Application, always hash on the server. [^hashing]
+    - The password should be sent to the server "in the clear" and hashed there, or you can hash twice: once on the client side and then rehash the hash on the server side. [^hashing]
+    - If passwords are hashed only in the user's browser with JavaScript the client-side hash logically becomes the user's password. If a bad guy somehow steals the database of hashes from this hypothetical website, they'll have immediate access to everyone's accounts without having to guess any passwords. [^hashing]
+- One goal is to make the hash function slow enough to impede attacks, but still fast enough to not cause a noticeable delay for the user. Use a standard algorithm like PBKDF2 or bcrypt. These algorithms take a security factor or iteration count as an argument (this value determines how slow the hash function will be). [^hashing]
+- Compares hash strings in a way that takes the same amount of time no matter how much of the strings match (to protect against a timing attack). [^hashing]
 
 ### Howto hand edit /etc/shadow
 

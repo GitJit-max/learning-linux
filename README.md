@@ -6,9 +6,9 @@
 
 # First steps in learning Linux
 
-Have you thought about trying a Linux operating system without knowing where to start? Or already tried, but encountered challenges with the new operating system. Let this book guide your steps to learning Linux.
+Have you thought about trying a Linux operating system without knowing where to start? Or already tried, but encountered challenges. Let this book guide your steps to learning Linux as I try to cover the essential vocabulary and concepts in a short and easy way.
 
-Knowing about the past helps understand how things are today. Let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of Linux and the views and opinions of a few selected individuals. Or choose a topic of interest below.
+I strongly believe that knowledge of the past will contribute to a better understanding and acceptance of the design solutions. So let's start with [Chapter&nbsp;1](chapter/01-intro.md), which covers the history of Linux, including the views and opinions of a few selected individuals. Or choose another topic of interest below.
 
 ----------------
 
@@ -151,8 +151,8 @@ Knowing about the past helps understand how things are today. Let's start with [
 
 | Version | Date | Description |
 | ---:| --- | --- |
-| 1.0.3 | 15.05.2025 | [Second pdf edition updated](https://github.com/GitJit-max/learning-linux/releases/download/v1.0.3/learning-linux-v1.0.3.pdf) |
-| 1.0.3 | 15.05.2025 | Major updates to git edition |
+| 1.0.4 | 25.05.2025 | [Second pdf edition updated](https://github.com/GitJit-max/learning-linux/releases/download/pdf/learning-linux.pdf) |
+| 1.0.4 | 25.05.2025 | Major updates to git edition |
 | 1.0.1 | 22.02.2025 | Minor updates to git edition |
 | 1.0 | 28.06.2024 | Second pdf edition |
 | 1.0 | 16.06.2024 | First github edition |

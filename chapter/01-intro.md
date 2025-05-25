@@ -71,25 +71,25 @@ After the breakup of Bell System mandated by the United States Department of Jus
 
 <a id="economic-sustainability"></a>
 
-## 1.4 Economic sustainability [^raymond-problems]
+## 1.4 Economic sustainability
 
-To make open-source development economically sustainable, the choices come down
+To make open-source development economically sustainable, the choices come down [^raymond-problems]
 1. **To singing for your supper:** Getting paid through tips and donations.
 2. **Running a corner shop:** A small, low-overhead service business.
 3. **Finding a wealthy patron:** Some large firm that needs to use and modify open-source software for its business purposes.
 
 > [!IMPORTANT]
-> One important subproblem related to the increasing difficulty of sustaining really large software businesses is how to organize end-user testing. Real end-user testing demands facilities, specialists, and a level of monitoring that are difficult for the distributed volunteer groups characteristic of open-source development to arrange.
+> One important subproblem related to the increasing difficulty of sustaining really large software businesses is how to organize end-user testing. Real end-user testing demands facilities, specialists, and a level of monitoring that are difficult for the distributed volunteer groups characteristic of open-source development to arrange. [^raymond-problems]
 
 <a id="time-sharing"></a>
 
-## 1.5 Time-sharing [^wikitime] <!--update internal links if changed-->
+## 1.5 Time-sharing <!--update internal links if changed-->
+
+Unices emerge from a 1960's to 1970's model of computing called **time-sharing**. That is allowing multiple users to interact concurrently with a single computer by sharing of a computing resource among multiple users at the same time. Time-sharing was born out of the realization that any single user would make inefficient use of a computer. Typically an individual enters bursts of information followed by long pauses. But a large group of users working at the same time would mean that the pauses of one user would be filled by the activity of others. With the rise of microcomputing in the early 1980s, time-sharing became less significant. Individual microprocessors were sufficiently inexpensive that a single person could have all the CPU time dedicated solely to their needs, even when idle. [^wikitime]
 
 [^wikitime]: [Wikipedia - Time-sharing, accessed 2021](https://en.wikipedia.org/wiki/Time-sharing)
 
-Unices emerge from a 1960's to 1970's model of computing called **time-sharing**. That is allowing multiple users to interact concurrently with a single computer by sharing of a computing resource among multiple users at the same time. Time-sharing was born out of the realization that any single user would make inefficient use of a computer. Typically an individual enters bursts of information followed by long pauses. But a large group of users working at the same time would mean that the pauses of one user would be filled by the activity of others. With the rise of microcomputing in the early 1980s, time-sharing became less significant. Individual microprocessors were sufficiently inexpensive that a single person could have all the CPU time dedicated solely to their needs, even when idle.
-
-Internet brought the general concept of time-sharing back into popularity. Expensive corporate server farms costing millions can host thousands of customers all sharing the same common resources. As with the early serial terminals, web sites operate primarily in bursts of activity followed by periods of idle time. This bursting nature permits the service to be used by many customers at once, usually with no perceptible communication delays. For public Internet servers the GNU/Linux family is generally counted as dominant (with 65 % market share), powering well over twice the number of hosts as Windows Server (with 25 % market share). [^server-marketshare] The supercomputer field is completely dominated by GNU/Linux. All 500 of the fastest supercomputers in the world run GNU/Linux. [^top500]
+Internet brought the general concept of time-sharing back into popularity. Expensive corporate server farms costing millions can host thousands of customers all sharing the same common resources. As with the early serial terminals, web sites operate primarily in bursts of activity followed by periods of idle time. This bursting nature permits the service to be used by many customers at once, usually with no perceptible communication delays. [^wikitime] For public Internet servers the GNU/Linux family is generally counted as dominant (with 65 % market share), powering well over twice the number of hosts as Windows Server (with 25 % market share). [^server-marketshare] The supercomputer field is completely dominated by GNU/Linux. All 500 of the fastest supercomputers in the world run GNU/Linux. [^top500]
 
 [^server-marketshare]: [Fortune Business Insights - Server Operating System Market Volume, accessed 2025](https://www.fortunebusinessinsights.com/server-operating-system-market-106601)
 
@@ -97,17 +97,17 @@ Internet brought the general concept of time-sharing back into popularity. Expen
 
 <a id="philosophy-of-the-gnu-project"></a>
 
-## 1.6 Philosophy of the GNU project [^philo] <!--update internal links if changed-->
+## 1.6 Philosophy of the GNU project <!--update internal links if changed-->
+
+Nowadays there are millions using the GNU operating system, but most of them don't know they are using GNU. People call the system Linux. This is a widespread practice which is not nice. Since the Free Software movement wrote the biggest parts of the code, one should give them atleast equal mention, and call the system *GNU+Linux* or *GNU/Linux*. But there is another reason to do this. The reason for developing GNU was unique. GNU is the only operating system developed for the purpose of freedom. Not for technical motivations. Not for commercial motivations. GNU was written for your freedom. A finnish programmer Linus Torvalds, the person who wrote the kernel component for the GNU project (called Linux) doesn't agree with the Free Software movement. He does not state that people deserve freedom. He says he likes convenient, reliable, powerful software and tells people that those are the important values. [^philo]
 
 [^philo]: [Philosophy of the GNU Project, updated 2022](https://www.gnu.org/philosophy/)
 
-Nowadays there are millions using the GNU operating system, but most of them don't know they are using GNU. People call the system Linux. This is a widespread practice which is not nice. Since the Free Software movement wrote the biggest parts of the code, one should give them atleast equal mention, and call the system *GNU+Linux* or *GNU/Linux*. But there is another reason to do this. The reason for developing GNU was unique. GNU is the only operating system developed for the purpose of freedom. Not for technical motivations. Not for commercial motivations. GNU was written for your freedom. A finnish programmer Linus Torvalds, the person who wrote the kernel component for the GNU project (called Linux) doesn't agree with the Free Software movement. He does not state that people deserve freedom. He says he likes convenient, reliable, powerful software and tells people that those are the important values.
-
 ### Digital technology against freedom <!--update internal links if changed-->
 
-Without a free operating system, it's impossible to have freedom (see [Section: Digital society](#digital-society)). And by free software, the Free Software movement, means software that respects users' freedom. Ultimately there are just two possibilities with software: 1) either the users control the program or 2) someone else controls the program (and through it has power over the users). A nonfree program is an instrument of unjust power that nobody should ever have.
+Without a free operating system, it's impossible to have freedom (see [Section: Digital society](#digital-society)). And by free software, the Free Software movement, means software that respects users' freedom. Ultimately there are just two possibilities with software: 1) either the users control the program or 2) someone else controls the program (and through it has power over the users). A nonfree program is an instrument of unjust power that nobody should ever have. [^philo]
 
-The developer who has control of the program often feels tempted to introduce malicious features to further exploit or abuse the users. There are many ways in which our freedom is being attacked by digital technology. 
+The developer who has control of the program often feels tempted to introduce malicious features to further exploit or abuse the users. There are many ways in which our freedom is being attacked by digital technology. [^philo]
 
 #### Addictive by design
 
@@ -139,18 +139,18 @@ DRM means functionalities designed intentionally to [restrict](https://www.gnu.o
 
 #### Designed to monitor the user
 
-[Surveillance](https://www.gnu.org/philosophy/free-digital-society.en.html#surveillance) means snooping and tracking users. Computers are ideal for any tyrant who wants to crush opposition. They are ideal for surveillance. Anything we do with computers, the computers can record. They can record the information in a perfectly indexed searchable form in a central database. Computerized surveillance makes it possible to centralize and index all this information so that an unjust regime can find it all, and find out all about everyone. If a dictator takes power, which could happen anywhere, people realize this and they recognize that they should not communicate with other dissidents in a way that the state could find out about. But if the dictator has several years of stored records of who talks with whom, it's too late to take any precautions. He already has everything he needs to realize: *OK, this guy is a dissident, and he spoke with him. Maybe he is a dissident too. Maybe we should grab him and torture him.*
+[Surveillance](https://www.gnu.org/philosophy/free-digital-society.en.html#surveillance) means snooping and tracking users. Computers are ideal for any tyrant who wants to crush opposition. They are ideal for surveillance. Anything we do with computers, the computers can record. They can record the information in a perfectly indexed searchable form in a central database. Computerized surveillance makes it possible to centralize and index all this information so that an unjust regime can find it all, and find out all about everyone. If a dictator takes power, which could happen anywhere, people realize this and they recognize that they should not communicate with other dissidents in a way that the state could find out about. But if the dictator has several years of stored records of who talks with whom, it's too late to take any precautions. He already has everything he needs to realize: *OK, this guy is a dissident, and he spoke with him. Maybe he is a dissident too. Maybe we should grab him and torture him.* [^philo]
 
 ### Digital society <!--update internal links if changed-->
 
-It is not true to assume that participating in a digital society is good. Being in a digital society can be good or bad, depending on whether that digital society is just or unjust.
+It is not true to assume that participating in a digital society is good. Being in a digital society can be good or bad, depending on whether that digital society is just or unjust. [^philo]
 
-People should campaign to put an end to digital surveillance. One can't wait until there is a dictator and it would really matter. And besides, it doesn't take an outright dictatorship to start attacking human rights. Today we see censorship imposed in countries that are not normally thought of as dictatorships, such as UK, France, Spain, Italy, Denmark. Censorship is not new, it existed long before computers. But 20 years ago, we thought that the Internet would protect us from censorship, that it would defeat censorship. Then the opposite happened. Goverments have went to great lengths to impose censorship on the Internet. We must recognize that a country that imposes censorship on the Internet is not a free country. And is not a legitimate government either.
+People should campaign to put an end to digital surveillance. One can't wait until there is a dictator and it would really matter. And besides, it doesn't take an outright dictatorship to start attacking human rights. Today we see censorship imposed in countries that are not normally thought of as dictatorships, such as UK, France, Spain, Italy, Denmark. Censorship is not new, it existed long before computers. But 20 years ago, we thought that the Internet would protect us from censorship, that it would defeat censorship. Then the opposite happened. Goverments have went to great lengths to impose censorship on the Internet. We must recognize that a country that imposes censorship on the Internet is not a free country. And is not a legitimate government either. [^philo]
 
 > [!IMPORTANT]
-> If we have an unjust digital society, we should cancel these projects for digital inclusion and launch projects for digital extraction.
+> If we have an unjust digital society, we should cancel these projects for digital inclusion and launch projects for digital extraction. [^philo]
 
-The most important point about free software is that schools should teach exclusively free software. There should be nothing proprietary in the education. Proprietary developers offer gratis copies to schools, because they want schools to make children dependent. The idea is to direct students down the path of permanent dependence. To teach people the use of proprietary software, is to teach **dependence** (i.e. the state of needing the help and support of somebody or something in order to survive or be successful). Schools should never do that because it's the opposite of their mission. Some people say: *Let's have the school teach both proprietary software and free software, so the students become familiar with both.* But that's like saying the schools are supposed to teach both good habits and bad ones. 
+The most important point about free software is that schools should teach exclusively free software. There should be nothing proprietary in the education. Proprietary developers offer gratis copies to schools, because they want schools to make children dependent. The idea is to direct students down the path of permanent dependence. To teach people the use of proprietary software, is to teach **dependence** (i.e. the state of needing the help and support of somebody or something in order to survive or be successful). Schools should never do that because it's the opposite of their mission. Some people say: *Let's have the school teach both proprietary software and free software, so the students become familiar with both.* But that's like saying the schools are supposed to teach both good habits and bad ones. [^philo]
 
 <a id="the-birth"></a>
 
@@ -168,13 +168,13 @@ Early versions of Linux had been released under a license written by Torvalds hi
 
 <a id="eight-pieces"></a>
 
-## 1.8 Linux distros aren’t just the kernel [^8pieces] <!--update internal links if changed-->
+## 1.8 Linux distros aren’t just the kernel <!--update internal links if changed-->
+
+The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more. [^8pieces]
 
 [^8pieces]: [Chris Hoffman - 8 Pieces That Make Up Linux Systems, published 2013](https://www.howtogeek.com/177213/linux-isnt-just-linux-8-pieces-of-software-that-make-up-linux-systems/)
 
-The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more.
-
-All these different programs are developed by different, independent development groups (many of which by the GNU project). All these are combined by distributions, where they build on top of each other to make a complete operating system. This is unlike Windows, which is developed entirely by Microsoft.
+All these different programs are developed by different, independent development groups (many of which by the GNU project). All these are combined by distributions, where they build on top of each other to make a complete operating system. This is unlike Windows, which is developed entirely by Microsoft. [^8pieces]
 
 ### Boot loader
 
@@ -184,14 +184,14 @@ The first program to open with any operating system is the *UEFI/BIOS first stag
 
 ### Kernel
 
-The second stage boot loader starts the kernel of the operating system. This is the part of the system that’s actually called Linux. The **kernel** is the core of the system that speaks directly to the hardware. It manages your CPU, memory, and input/output devices such as keyboard, mouse, and display. All other software runs above the kernel. The kernel is the lowest-level piece of software, which interfaces with the hardware. It provides a layer of abstraction above the hardware, dealing with all the different hardware quirks so the rest of the system can care about them as little as possible.
+The second stage boot loader starts the kernel of the operating system. This is the part of the system that’s actually called Linux. The **kernel** is the core of the system that speaks directly to the hardware. It manages your CPU, memory, and input/output devices such as keyboard, mouse, and display. All other software runs above the kernel. The kernel is the lowest-level piece of software, which interfaces with the hardware. It provides a layer of abstraction above the hardware, dealing with all the different hardware quirks so the rest of the system can care about them as little as possible. [^8pieces]
 
 > [!NOTE]
 > The Linux kernel is the operating system’s core, developed by the Finnish programmer Linus Torvalds (**kernel** = the inner part of a nut or seed or the central, most important part of an idea or a subject). <!--In everyday language, Linux has become the name for an operating system family built around the Linux kernel. Officially, we are talking about unix-like GNU/Linux desktop distributions, which form a complete operating system with desktop environments and application libraries, and not just the operating system kernel.-->
 
 ### Background processes
 
-**Background processes** are the next pieces of software loaded after the kernel. This happens before you see the graphical login screen. Windows refers to such processes as services, while unix-like systems refer to them as daemons. Daemons are system-level processes you generally do not notice. For example ` $ crond ` manages scheduled tasks and ` $ syslogd ` manages system log. The letter d at the end stands for daemon.
+**Background processes** are the next pieces of software loaded after the kernel. This happens before you see the graphical login screen. Windows refers to such processes as services, while unix-like systems refer to them as daemons. Daemons are system-level processes you generally do not notice. For example ` $ crond ` manages scheduled tasks and ` $ syslogd ` manages system log. The letter d at the end stands for daemon. [^8pieces]
 
 ### Shell
 
@@ -224,7 +224,7 @@ Desktop environments typically include their own set of **utility programs**, wh
 
 Not all desktop applications are part of a desktop environment. For example, Firefox and Libreoffice are just **software applications** that can be used on top of any desktop environment.
 
-GNU/Linux distributions take all this software, combine it to work well together, and add their own necessary utilities such as **system installers** so you can actually install the operating system, as well as **package managers** for installing additional software and keeping your installed software updated (see [Chapter 4, Section: Package management](04-installing.md#package-management)).
+GNU/Linux distributions take all this software, combine it to work well together, and add their own necessary utilities such as **system installers** so you can actually install the operating system, as well as **package managers** for installing additional software and keeping your installed software updated (see [Chapter 4, Section: Package management](04-installing.md#package-management)). [^8pieces]
 
 <a id="gnu-gpl"></a>
 
@@ -281,7 +281,7 @@ MacOS is a UNIX 03 registered product and conforms to the Single UNIX 03 specifi
 
 MacOS has a very strict set of interface rules, very different from Unix's. Apple's interface guidelines have of course evolved over the years, from the 1992 booklet [Macintosh Human Interface Guidelines](http://interface.free.fr/Archives/Apple_HIGuidelines.pdf) to the up-to-date online [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines). However, a very strong unifying idea is that developers can only create applications that are aligned with Apple's design philosophy. And an app that deviates from them is effectively not allowed to be sold on Apple's app stores [^ei-saa-kauppaan]. The guidelines define in great detail what an app should look like and how it should behave. The guidelines cover such things as layout, typography, colour scheme, navigation and user interaction.
 
-[^ei-saa-kauppaan]: [Juha Metsäkallas - Otsikoimaton artikkeli, julkaistu 2019](https://finnababilejo.fi/artikolo/juha_metsakallas/2019/12/ja-muut-nappylat/)
+[^ei-saa-kauppaan]: [Juha Metsäkallas - Otsikoimaton artikkeli, published 2019](https://finnababilejo.fi/artikolo/juha_metsakallas/2019/12/ja-muut-nappylat/)
 
 The Macintosh's unifying idea is so strong that all programs have a graphical user interface. Most software applications have no command language interface at all (see [Chapter 2, Section: Command Language Interface](02-basic.md#command-language-interface)). Scripting facilities are present but most Mac programmers never learn them (see [Chapter 2, Section: Text interface has retained its utility](02-basic.md#retained-utility)). The consistency of the guidelines influenced the culture of Mac users in significant ways. Ports of programs that did not follow the guidelines have been summarily rejected by the Mac user base and failed in the marketplace.
 
@@ -293,7 +293,7 @@ A major effort in creating a GNU/Linux distribution is designing and creating a 
 
 The Unix-like operating systems, running a Linux kernel, form a plethora of distributions. There are 300 to 700 different distributions, depending on the calculation method. An amount argued to be far greater than is desirable. 
 
-[^apt-or-get]: [Dave McKay - Should you use apt or apt-get?](https://www.howtogeek.com/791055/apt-vs-apt-get-whats-the-difference-on-linux/)
+[^apt-or-get]: [Dave McKay - Should you use apt or apt-get?, published 2023](https://www.howtogeek.com/791055/apt-vs-apt-get-whats-the-difference-on-linux/)
 
 The major branches of popular established GNU/Linux families are:
 1. Debian 1993
@@ -322,15 +322,15 @@ Even free distributions can incur costs. In the workplace, GNU/Linux almost alwa
 
 <a id="popularity-of-gnu-linux-desktop"></a>
 
-## 1.13 Popularity of GNU/Linux desktop [^mckay]
+## 1.13 Popularity of GNU/Linux desktop 
+
+Unix has it's architectural strengths of a server operating system (see [Section: Time-sharing](#time-sharing)), but has proved capable of reinventing itself as a desktop client; One could argue that perhaps even more so than any of its client-operating-system competitors (such as Windows) have been of reinventing themselves as servers. [^mckay]
 
 [^mckay]: [Dave McKay - Why Desktop Linux Still Matters, published 2020](https://www.howtogeek.com/676963/why-desktop-linux-still-matters/)
 
-Unix has it's architectural strengths of a server operating system (see [Section: Time-sharing](#time-sharing)), but has proved capable of reinventing itself as a desktop client; One could argue that perhaps even more so than any of its client-operating-system competitors (such as Windows) have been of reinventing themselves as servers.
+But even though GNU/Linux is great for personal computers, this does not show in user numbers. GNU/Linux accounts only for a tiny percentage of the overall desktop market share. <!--Dirk Hohndel (who was then the chief Linux and open-source technologist at Intel) predicted that in 1999, GNU/Linux would penetrate the PC desktop market and displace Windows. This never happened and it likely never will. The perennial 2 % has been around roughly since 2005 compared to ~ 88 % for Windows and ~ 9 % for macOS (which is a certified Unix by the way). Does that mean Linux on a desktop PC is irrelevant? Not at all!--> It seems the majority of people <!--(even those at a tech talk)--> want to be able to run either the same software as their friends or what they use at work. They either buy a computer or laptop and get Windows by default. Or they buy a Mac because they were told it was simpler to use. Or they got an Apple computer because they like their iPhone. People buy computers like they buy microwaves. They do not care what makes them go, they just want to reheat food. [^mckay]
 
-But even though GNU/Linux is great for personal computers, this does not show in user numbers. GNU/Linux accounts only for a tiny percentage of the overall desktop market share. <!--Dirk Hohndel (who was then the chief Linux and open-source technologist at Intel) predicted that in 1999, GNU/Linux would penetrate the PC desktop market and displace Windows. This never happened and it likely never will. The perennial 2 % has been around roughly since 2005 compared to ~ 88 % for Windows and ~ 9 % for macOS (which is a certified Unix by the way). Does that mean Linux on a desktop PC is irrelevant? Not at all!--> It seems the majority of people <!--(even those at a tech talk)--> want to be able to run either the same software as their friends or what they use at work. They either buy a computer or laptop and get Windows by default. Or they buy a Mac because they were told it was simpler to use. Or they got an Apple computer because they like their iPhone. People buy computers like they buy microwaves. They do not care what makes them go, they just want to reheat food.
-
-Hardware that ships with GNU/Linux preinstalled doesn't really make new converts for the OS. Dell and HP have offered hardware options pre-installed with GNU/Linux (since 2007 and 2004, respectively). And there’s a new wave of both budget-friendly and high-end laptops and computers designed for GNU/Linux. These devices are selling to the established GNU/Linux user base.
+Hardware that ships with GNU/Linux preinstalled doesn't really make new converts for the OS. Dell and HP have offered hardware options pre-installed with GNU/Linux (since 2007 and 2004, respectively). And there’s a new wave of both budget-friendly and high-end laptops and computers designed for GNU/Linux. These devices are selling to the established GNU/Linux user base. [^mckay]
 
 ### Most people do not want a GNU/Linux
 
@@ -340,7 +340,7 @@ When asked from people who understand a bit more about operating systems, the re
 - Reluctance to tinker. They just want to get on with their work.
 - Reluctance to learn something "new" such as the the command line.
 - They do not want to be different. They want to use the same things their friends and family use.
-- They do not have an opinion on personal freedoms (see [Section: Philosophy of the GNU project](#philosophy-of-the-gnu-project-philo).
+- They do not have an opinion on personal freedoms (see [Section: Philosophy of the GNU project](#philosophy-of-the-gnu-project).
 
 ### GNU/Linux desktop is used by
 
@@ -363,23 +363,23 @@ When asked from people who understand a bit more about operating systems, the re
 
 ## 1.14 What's wrong with GNU/Linux
 
-If you can have your full productivity without any problems using GNU/Linux, then by all means, switching to GNU/Linux is a good, smart choice. Alas, for many people, this is science fiction. And stating *just use Linux* for every one is a wishful dream. Many can't cope with the switch. Hardware question is a gamble and at the end of the day, there are applications that you don't get. [^dedo-2019] However compromising for ideology could be worth it (see [Section: Philosophy of the GNU project](#philosophy-of-the-gnu-project-philo)).
+If you can have your full productivity without any problems using GNU/Linux, then by all means, switching to GNU/Linux is a good, smart choice. Alas, for many people, this is science fiction. And stating *just use Linux* for every one is a wishful dream. Many can't cope with the switch. Hardware question is a gamble and at the end of the day, there are applications that you don't get. [^dedo-2019] However compromising for ideology could be worth it (see [Section: Philosophy of the GNU project](#philosophy-of-the-gnu-project)).
 
 [^dedo-2019]: [Igor Ljubuncic - Windows 7 End of Support: What Next?, published 2019](https://www.dedoimedo.com/computers/windows-7-end-of-support-guide.html)
 
-### Toolchains over products [^raymond-culture]
+### Toolchains over products 
 
-Unix people are all about infrastructure. They are plumbers and stonemasons. They design from the inside out, building mighty engines to solve abstractly defined problems like *How do we get reliable packet-stream delivery over unreliable hardware and links?* Unix people then wrap thin and often profoundly ugly interfaces around the engines.
+Unix people are all about infrastructure. They are plumbers and stonemasons. They design from the inside out, building mighty engines to solve abstractly defined problems like *How do we get reliable packet-stream delivery over unreliable hardware and links?* Unix people then wrap thin and often profoundly ugly interfaces around the engines. [^raymond-culture]
 
-By contrast, macOS programmers are all about the user experience. They're architects and decorators. They design from the outside in, asking first *What kind of interaction do we want to support?* And then building the application logic behind it to meet the demands of the user-interface design. This leads to programs that are very pretty, but the infrastructure might be weak and rickety.
+By contrast, macOS programmers are all about the user experience. They're architects and decorators. They design from the outside in, asking first *What kind of interaction do we want to support?* And then building the application logic behind it to meet the demands of the user-interface design. This leads to programs that are very pretty, but the infrastructure might be weak and rickety. [^raymond-culture]
 
-In many ways this kind of parochialism (i.e. only being interested in small issues that happen in your local area, and not being interested in more "important" things) has served the unix people well. They are the keepers of the Internet. Their software and their traditions dominate serious computing (the applications where 24/7 reliability and minimal downtime is a must). There is no other software technical culture that comes anywhere close to the unix track record. And it is one to be proud of.
+In many ways this kind of parochialism (i.e. only being interested in small issues that happen in your local area, and not being interested in more "important" things) has served the unix people well. They are the keepers of the Internet. Their software and their traditions dominate serious computing (the applications where 24/7 reliability and minimal downtime is a must). There is no other software technical culture that comes anywhere close to the unix track record. And it is one to be proud of. [^raymond-culture]
 
-The GNU/Linux developers are extremely good at building solid infrastructure, but the problem is that most of the computers in the world don't live in server rooms, but rather in the hands of end users. In early Unix days, before personal computers, the unix culture defined itself partly as a revolt against the priesthood of the mainframes, the keepers of the big iron. Later, they absorbed the power-to-the-people idealism of the early microcomputer enthusiasts. But today they are the priesthood. They run the networks and the big iron. And the implicit demand is that if one wants to use their software, one must learn to think like them.
+The GNU/Linux developers are extremely good at building solid infrastructure, but the problem is that most of the computers in the world don't live in server rooms, but rather in the hands of end users. In early Unix days, before personal computers, the unix culture defined itself partly as a revolt against the priesthood of the mainframes, the keepers of the big iron. Later, they absorbed the power-to-the-people idealism of the early microcomputer enthusiasts. But today they are the priesthood. They run the networks and the big iron. And the implicit demand is that if one wants to use their software, one must learn to think like them. [^raymond-culture]
 
-There is a deep ambivalence in the unix programmers attitude: A tension between elitism and missionary populism. They want to reach and convert the 92&nbsp;% of the world for whom computing means games and multimedia and glossy GUI interfaces and (at their most technical) light email, word processing and spreadsheets. They are spending major effort on projects like GNOME and KDE designed to give unix a pretty face. But they are still elitists at heart, deeply reluctant and in many cases unable to identify with or listen to the needs of the Aunt Tillies of the world. To non-technical end users, the software the unix people build, tends to be either bewildering and incomprehensible. Or clumsy and condescending. Or both at the same time. Even when the unix people try to do user-friendliness as earnestly as possible, they are woefully inconsistent at it. Many of the attitudes and reflexes they have inherited from old-school Unix are just wrong for the job. Even when they want to listen to and help Aunt Tillie, they don't know how. They give her "solutions" that she finds as daunting as her problems.
+There is a deep ambivalence in the unix programmers attitude: A tension between elitism and missionary populism. They want to reach and convert the 92&nbsp;% of the world for whom computing means games and multimedia and glossy GUI interfaces and (at their most technical) light email, word processing and spreadsheets. They are spending major effort on projects like GNOME and KDE designed to give unix a pretty face. But they are still elitists at heart, deeply reluctant and in many cases unable to identify with or listen to the needs of the Aunt Tillies of the world. To non-technical end users, the software the unix people build, tends to be either bewildering and incomprehensible. Or clumsy and condescending. Or both at the same time. Even when the unix people try to do user-friendliness as earnestly as possible, they are woefully inconsistent at it. Many of the attitudes and reflexes they have inherited from old-school Unix are just wrong for the job. Even when they want to listen to and help Aunt Tillie, they don't know how. They give her "solutions" that she finds as daunting as her problems. [^raymond-culture]
 
-The GNU/Linux people can turn aside from this, and remain a priesthood appealing to a select minority, a geek meritocracy focused on their historical role as the keepers of the software infrastructure and the networks. But if they do this, someone else will serve the people. Someone else will put themselves where the power and the money are. Someone else will own the future of 92&nbsp;% of all software.
+The GNU/Linux people can turn aside from this, and remain a priesthood appealing to a select minority, a geek meritocracy focused on their historical role as the keepers of the software infrastructure and the networks. But if they do this, someone else will serve the people. Someone else will put themselves where the power and the money are. Someone else will own the future of 92&nbsp;% of all software. [^raymond-culture]
 
 ### Too much distribution(s) <!-- Pun intended -->
 
@@ -405,13 +405,13 @@ Lack of resources is always quoted as a big problem in the distro world, when it
 
 ### Too few GUI tools
 
-For serving both casual and expert users, for cooperating with other computer programs, and whether the problem domain is naturally visual or not; Support for both a command language interface (see [Chapter 2, Section: Text interface has retained its utility](02-basic.md#retained-utility)) and a visual interfaces is important. But this not always the case with GNU/Linux.
+For serving both casual and expert users, for cooperating with other computer programs, and whether the problem domain is naturally visual or not; Support for both a command language interface (see [Chapter 2, Section: Text interface has retained its utility](02-basic.md#retained-utility)) and a visual interfaces is important. But this not always the case with GNU/Linux. [^browny]
 
-I am amazed that for example looking for a gui to edit the sudoers file (see [Chapter 9, Section: Visudo](09-multi-user.md#visudo)) I find this: A tread where everybody seems to defend the total lack of such a tool. If you have someone using a GUI tool and another of equal competence using CLI and the CLI user takes longer to accomplish that same action, then things are wrong from me. I don't know all the options of the sudoer file, and the format in which it is written, and so far refused to learn it. I do not use the sudoers file enough to justify the time investment. And if I can use a graphical tool, that spares me the effort? And works equally well? Am I a lazy slob because of not memorizing all command line parameters? Maybe. But I think users deserve a choice, because Linux is supposed to be all about choice. <!--And I don't agree with the statement: Who does not know how to use a text editor should just quit Linux. -->
+I am amazed that for example looking for a gui to edit the sudoers file (see [Chapter 9, Section: Visudo](09-multi-user.md#visudo)) I find this: A tread where everybody seems to defend the total lack of such a tool. If you have someone using a GUI tool and another of equal competence using CLI and the CLI user takes longer to accomplish that same action, then things are wrong from me. I don't know all the options of the sudoer file, and the format in which it is written, and so far refused to learn it. I do not use the sudoers file enough to justify the time investment. And if I can use a graphical tool, that spares me the effort? And works equally well? Am I a lazy slob because of not memorizing all command line parameters? Maybe. But I think users deserve a choice, because Linux is supposed to be all about choice. <!--And I don't agree with the statement: Who does not know how to use a text editor should just quit Linux. --> [^browny]
 
-Many things can be done with the GUI already. And done well. Maybe these users are more Windows type users than true Linux wizzs, but they still further the proliferation of Linux and the nice perks we enjoy thanks to it (such as hardware drivers for so many products). And in my view it was this restrictive hardcore RTFM philosophy that is killing the Linux desktop.
+Many things can be done with the GUI already. And done well. Maybe these users are more Windows type users than true Linux wizzs, but they still further the proliferation of Linux and the nice perks we enjoy thanks to it (such as hardware drivers for so many products). And in my view it was this restrictive hardcore RTFM philosophy that is killing the Linux desktop. [^browny]
 
-Some admins that I have met in my days are just stuck in the 1980's. They don't believe in choice and think somebody is uneducated if they don't (know how to) use vi (see [Chapter 8, Section: Vi](08-text-editors.md#screen-editor-vi)). I don't. I refused to learn such an archaic P.O.S. I don't see my invested time paying off, the hours and hours to memorize what command does what. I believe that a text editor is not a high tech piece of software, not anymore (we are now in 2020). Going to a four day seminar to learn how to edit text files is a thing that some people enjoy, but should never be forced on others or made mandatory. <!--I always chuckle at the outlandishness of statements of admins saying *Well, vi is the only editor installed.*-->
+Some admins that I have met in my days are just stuck in the 1980's. They don't believe in choice and think somebody is uneducated if they don't (know how to) use vi (see [Chapter 8, Section: Vi](08-text-editors.md#screen-editor-vi)). I don't. I refused to learn such an archaic P.O.S. I don't see my invested time paying off, the hours and hours to memorize what command does what. I believe that a text editor is not a high tech piece of software, not anymore (we are now in 2020). Going to a four day seminar to learn how to edit text files is a thing that some people enjoy, but should never be forced on others or made mandatory. <!--I always chuckle at the outlandishness of statements of admins saying *Well, vi is the only editor installed.*--> [^browny]
 
 Anyway, I will keep looking for a true visual editor for sudoers, not meaning visudo (see [Chapter 9, Section: Visudo](09-multi-user.md#visudo)), but visuals that actually work with a window manager and KDE or Gnome. Welcome to the 22nd century. In my view Linux has too few GUI tools. Using a CLI tool can be daunting. [^browny]
 
@@ -454,14 +454,14 @@ Linux generally hasn't been as stable as Windows for me. It took a while to get 
 
 <a id="why-switch"></a>
 
-## 1.15 Why people switch to GNU/Linux [^redd]
-
-[^redd]: [Comments on Reddit - What were your reasons for switching to linux?, accessed 2024](https://www.reddit.com/r/linuxquestions/comments/1c3mn9m/what_were_your_reasons_for_switching_to_linux/)
+## 1.15 Why people switch to GNU/Linux 
 
 ### Windows updating at the most inopportune times
 
 - I switched to Windows almost exclusively for a time after I bought a Surface Pro 3 (released 2014). While it is a great piece of hardware, Windows 10 became slow as it updated at the most inopportune times. There are few things more annoying than getting ready to project for a business meeting, and hoping and waiting the update will finish in time. After this happened on a business trip a few weeks ago, I made up my mind to switch back to Linux.
-- The forced updates on Windows that sometimes took more than an hour when I needed my computer then and there. Linux doesn't update untill I want.
+- The forced updates on Windows that sometimes took more than an hour when I needed my computer then and there. Linux doesn't update untill I want. [^redd]
+
+[^redd]: [Comments on Reddit - What were your reasons for switching to linux?, accessed 2024](https://www.reddit.com/r/linuxquestions/comments/1c3mn9m/what_were_your_reasons_for_switching_to_linux/)
 
 ### Wanting to extend the life of an old device
 
@@ -469,24 +469,24 @@ Linux generally hasn't been as stable as Windows for me. It took a while to get 
 - Around the end of the support for Windows 7, I spend like a week testing different Linux distributions and found the one I like. So when the end life for Windows 7 come, I switched to MX Linux.
 - Windows stopped supporting my pc of that time and I had no money to buy a new one.
 - Couldn't afford the Windows license fee.
-- I was broke and pulling computers out of the trash. It’s amazing the amount of decent hardware is thrown away. I even was able to save a couple of Mac's with fried graphics cards, just by installing Linux, after I discovered I could boot the macs into safemode which bypass the gpu. Dumpster computing kept me going for a few years, and taught me how to build pc's.
+- I was broke and pulling computers out of the trash. It’s amazing the amount of decent hardware is thrown away. I even was able to save a couple of Mac's with fried graphics cards, just by installing Linux, after I discovered I could boot the macs into safemode which bypass the gpu. Dumpster computing kept me going for a few years, and taught me how to build pc's. [^redd]
 
 ### Pricing
 
 - I'm just tired of having to pay to use Mirosoft Office. Constant upgrades and updates, and their increasing progress toward a subscription model for everything.
 - I am able to buy better components because I don't have to pay for Windows.
-- The thing that got me started trying Linux back in the days was it feeling wrong to use pirated Windows when there was a totally free alternative that allegedly worked just the same. And even today the main reason that keeps me from using Windows on any of my machines is having to bother with licensing, payment and activation. It's just too much of a hassle. Need to assemble a new machine or VM, quickly? Just grab some spare parts and slap Linux on it. Nobody cares how many Linux systems I run.
+- The thing that got me started trying Linux back in the days was it feeling wrong to use pirated Windows when there was a totally free alternative that allegedly worked just the same. And even today the main reason that keeps me from using Windows on any of my machines is having to bother with licensing, payment and activation. It's just too much of a hassle. Need to assemble a new machine or VM, quickly? Just grab some spare parts and slap Linux on it. Nobody cares how many Linux systems I run. [^redd]
 
 ### Ad-free, usability, privacy
 
 - Ads on the Windows Desktop and Start menu.
 - Ever increasing number of mouse clicks to do most things.
 - Settings pertaining to privacy reset.
-- AI integration to extract even more telemetry from me.
+- AI integration to extract even more telemetry from me. [^redd]
 
 ### Familiarity from workplace
 
-- I deal with GNU/Linux in my business on a daily basis.
+- I deal with GNU/Linux in my business on a daily basis. [^redd]
 
 ### Curiosity
 
@@ -494,7 +494,7 @@ Linux generally hasn't been as stable as Windows for me. It took a while to get 
 - A mix of boredom and curiosity.
 - I was 16 and wanted to be edgy and unique. 
 - I played with GNU/Linux for decades before I made the permanent switch.
-- I didnt really swtich to GNU/Linux, but more of, learned how to utilize it.
+- I didnt really swtich to GNU/Linux, but more of, learned how to utilize it. [^redd]
 
 ### Features
 
@@ -503,7 +503,7 @@ Linux generally hasn't been as stable as Windows for me. It took a while to get 
 - Reason is that I am a data professional and I do modelling and deep learning, even though there is support for Windows for some of the libraries, GNU/Linux has a lot of support for all the libraries
 - I use Kali, an OS that should only be installed in virtual machines. Not directly on host OS, because you are using semi-trusted tools. Something a DevOps Manager taught me.
 - I'm a programmer. A lot of the things we use are either not available on Windows or you have to jump through some hoops to get there. Everything is divided in well defined modules and programs, that do specific things.
-- Tiling window managers which organise windows into non-overlapping frames, dependant on mathematical formulas. This is opposed to the more common approach used by stacking window managers, which allow users to drag windows around, instead of windows snapping into a position. This allows for a different style of organization, although it departs from the traditional desktop metaphor.
+- Tiling window managers which organise windows into non-overlapping frames, dependant on mathematical formulas. This is opposed to the more common approach used by stacking window managers, which allow users to drag windows around, instead of windows snapping into a position. This allows for a different style of organization, although it departs from the traditional desktop metaphor. [^redd]
 <!-- - There is a learning curve in each OS to be proficient. When you get to this level, I understand that you do not want to let the time investment go away. If you are really efficient with Windows, keep Windows. -->
 
 <a id="suggested-distributions"></a>

@@ -72,28 +72,22 @@ A technique often used with signal IPC is the so-called pidfile. Programs that w
 
 Traditional ability of unix programs to communicate and exchange information relies on passing through simple textual information via **standard streams**. Every program has initially available to it (at least) two I/O data streams called standard **input** and standard **output**. They allow the combined use of commands by first executing one command and then passing the output to the next command as input. There is also a separate channel for errors: the standard **error**. <!--Most shell programs have two I/O data streams available to it: standard input and standard output. -->
 
-### Interface patterns based on standard streams [^raymond-intpatterns]
+### Interface patterns based on standard streams 
 
-<!-- There can be different CLI interface design patterns for a) Novice and nontechnical end-users and b) Those which serve expert users and maximize scriptability. Unix is in many ways better adapted to the needs of power users. -->
-
-<!-- Every program has initially available to it (at least) two I/O data streams called standard input and standard output. -->
-
-<!-- There can be different CLI interface design patterns: -->
-
-- **Source:**
+- **Source:** [^raymond-intpatterns]
     - Requires no input. It's output is controlled only by startup conditions.
     - A classic example would be ` $ who `, ` $ ps ` and ` $ ls `.
-- **Filter:**
+- **Filter:** [^raymond-intpatterns]
     - Takes data on standard input, transforms it in some fashion, and sends the result to standard output.
     - A classic example would be ` $ grep `, which prints only those lines that match the pattern given.
-- **Sink:**
+- **Sink:** [^raymond-intpatterns]
     - Is a filter-like program that consumes standard input, but emits nothing to standard output. <!--This interface pattern is unusual, and there are few examples.-->
-- **Cantrip:**
+- **Cantrip:** [^raymond-intpatterns]
     - Outputs only a numeric exit status (see [Section: Exit status and comparison](#exit-status-and-comparison)).
     - A classic example would be ` $ test `, ` $ rm ` and ` $ touch `.
 
 > [!IMPORTANT]
-> All these patterns have very low interactivity. Programs don't get any more scriptable than this. In addition there are also interactive design patterns and many browser like and editor like programs, but they are not quite so scriptable (as in generating sequences of commands).
+> All these patterns have very low interactivity. Programs don't get any more scriptable than this. In addition there are also interactive design patterns and many browser like and editor like programs, but they are not quite so scriptable (as in generating sequences of commands). [^raymond-intpatterns]
 
 > [!NOTE]
 > Some commands such as ` $ echo ` do not read their standard input.
@@ -343,13 +337,11 @@ The regex syntax is beyond the scope of this tutorial. But those interested to l
 
 <a id="exit-status-and-comparison"></a>
 
-### Exit status and comparison [^shotts]
+### Exit status and comparison 
 
-[^shotts]: [William Shotts - The Linux Command Line, updated 2019](http://linuxcommand.org/tlcl.php)
-
-Commands (including the scripts and shell functions we write) issue a value to the system when they terminate, called an **exit status**. This value, which is an integer in the range of 0 to 255, indicates the success or failure of the command’s execution.
+Commands (including the scripts and shell functions we write) issue a value to the system when they terminate, called an **exit status**. This value, which is an integer in the range of 0 to 255, indicates the success or failure of the command’s execution. [^shotts-ext]
 - By convention, a value of zero always indicates success and any other value indicates failure.
-- Many programs simply exit with a value of 1 upon failure. But some programs (such as RAR for Linux below) use different exit status values to provide diagnostics for errors. Man pages often include a section entitled “Exit Status,” describing what codes are used.
+- Many programs simply exit with a value of 1 upon failure. But some programs (such as RAR for Linux below) use different exit status values to provide diagnostics for errors. Man-pages often include a section entitled *EXIT STATUS* describing what codes are used[^shotts-ext].
 
 | Code | Description |
 | ---:|:--- |
@@ -404,16 +396,16 @@ POSIX sockets are usually the right thing to use for bidirectional IPC no matter
 
 <a id="dee-bus"></a>
 
-### D-Bus [^free-bus]
+### D-Bus 
+
+Many GNU/Linux applications can communicate with each other via D-Bus. **D-Bus** is a message-oriented middleware mechanism that allows communication between multiple processes running concurrently on the same machine.  [^free-bus]
 
 [^free-bus]: [Freedesktop Wiki - What is D-Bus?, accessed 2024](https://www.freedesktop.org/wiki/Software/dbus/)
 
-Many GNU/Linux applications can communicate with each other via D-Bus. **D-Bus** is a message-oriented middleware mechanism that allows communication between multiple processes running concurrently on the same machine. 
-
 > D-Bus is part of the [Freedesktop.org](https://www.freedesktop.org/wiki/Specifications/) project. The goal of Freedesktop.org is to create open standards and interoperability between different GNU/Linux-based desktop environments. Most Freedesktop.org projects are designed to be independent of any specific desktop environment, and improve their compatibility.
 
-a) D-Bus can be a mediator for many programs. For example, information on an incoming voice-call received through Bluetooth or VoIP can be propagated and interpreted by any currently-running music player, which can react by muting the volume or by pausing playback until the call is finished.
-    - Clients should instruct the bus that they are interested in receiving certain signals from a particular object, since a D-Bus bus only passes signals to those processes with a registered interest in them.
+a) D-Bus can be a mediator for many programs. For example, information on an incoming voice-call received through Bluetooth or VoIP can be propagated and interpreted by any currently-running music player, which can react by muting the volume or by pausing playback until the call is finished. [^free-bus]
+    - Clients should instruct the bus that they are interested in receiving certain signals from a particular object, since a D-Bus bus only passes signals to those processes with a registered interest in them. [^free-bus]
 b) In addition, any two applications can use the communication bus to communicate with each other. <!--, directly without communication via the dbus [daemon](https://dbus.freedesktop.org/doc/dbus-daemon.1.html) message bus.-->
     - The D-Bus bus makes it simple and reliable to code a *single instance* application. That is, a program that limits itself to executing only one instance at a time. In this case, the D-Bus message is a means of passing to the first instance the command line arguments received by the second instance at startup (before it closes).
 
@@ -421,6 +413,8 @@ b) In addition, any two applications can use the communication bus to communicat
 > Desktop application [GNOME D-Spy](https://gitlab.gnome.org/GNOME/d-spy) is a simple GUI for browsing existing bus names, objects, interfaces, methods and signals in a D-Bus.
 
 <!-- # References -->
+
+[^shotts-ext]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 27, Section: Exit Status](http://linuxcommand.org/tlcl.php)
 
 [^raymond-shellout]: [<!--Eric Steven Raymond - -->The Art of Unix Programming 2003, Chapter 7<!--. Multiprogramming-->, Section: Handing off Tasks<!-- to Specialist Programs-->](http://www.catb.org/~esr/writings/taoup/html/ch07s02.html)
 

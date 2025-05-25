@@ -60,7 +60,7 @@ Three different ways to open a desktop app (such as ` $ gedit `) from a terminal
 
 ## 7.2 When a program hangs up
 
-Sometimes a computer will become sluggish or an application will stop responding. In this chapter, we will look at some of the tools available at the command line that let us examine what programs are doing and how to terminate misbehaving processes. [^shotts]
+Sometimes a computer will become sluggish or an application will stop responding. In this chapter, we will look at some of the tools available at the command line that let us examine what programs are doing and how to terminate misbehaving processes. [^shotts-misbehave]
 
 <a id="kill-signals"></a>
 
@@ -92,7 +92,7 @@ b) Command **` $ kill -19 <PID>↵ ` immediately suspends the chosen process**. 
 
 ### Process ID
 
-The kernel maintains information about each process to help keep things organized. Each process is assigned a **PID** number (short for Process ID). Like files, processes also have owners and user IDs.
+The kernel maintains information about each process to help keep things organized. Each process is assigned a **PID** number (short for Process ID). Like files, processes also have owners and user IDs. [^shotts-prowork]
 
 #### Graphical user interface to find the PID number
 
@@ -132,11 +132,11 @@ Linux can run a lot of processes at a time, which can slow down the speed of som
 
 ## 7.3 Expansions and quoting
 
-### Word expansions [^tog-expansions]
+### Word expansions 
+
+**Expansions** are mechanisms that allow the shell to interpret and transform input text before executing commands. They make scripts and commands more powerful and flexible. [^tog-expansions]
 
 [^tog-expansions]: [Open Group Base Specifications - Word Expansions, accessed 2025](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_06)
-
-**Expansions** are mechanisms that allow the shell to interpret and transform input text before executing commands. They make scripts and commands more powerful and flexible.
 
 - [Brace expansion](https://pubs.opengroup.org/onlinepubs/9799919799/xrat/V4_xcu_chap01.html#tag_23_02_06) generates a sequence of strings. <!--which expands, for example, file{A,B,C}.c into the fields fileA.c, fileB.c, and fileC.c or file{1..3}.c into the fields file1.c, file2.c, and file3.c. -->
 - [Tilde expansion](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_06_01) expands ` ~ ` to the home directory of the current user or ` ~user ` to another user.
@@ -146,13 +146,11 @@ Linux can run a lot of processes at a time, which can slow down the speed of som
 - [Pathname expansion](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_06_06) expands wildcards (globbing) to match file or directory names.
 
 > [!NOTE]
-> Shells are not required to implement brace expansion. This form of expansion is allowed but not required by IEEE 1003.1 standard. But if brace expansion is supported, it must be performed before all of the standard word expansions.
+> Shells are not required to implement brace expansion. This form of expansion is allowed but not required by IEEE 1003.1 standard. But if brace expansion is supported, it must be performed before all of the standard word expansions. [^tog-expansions]
 
-### Quoting [^tog-quoting]
+### Quoting 
 
-[^tog-quoting]: [Open Group Base Specifications - Quoting, accessed 2025](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_02)
-
-Quoting is used to remove the special meaning of certain characters or words to the shell. Quoting can be used to preserve the literal meaning of the special characters in the next paragraph, prevent reserved words from being recognized as such, and prevent parameter expansion and command substitution.
+Quoting is used to remove the special meaning of certain characters or words to the shell. Quoting can be used to preserve the literal meaning of the special characters in the next paragraph, prevent reserved words from being recognized as such, and prevent parameter expansion and command substitution. [^tog-quoting]
 - Enclosing characters in [single-quotes](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_02_02) ` '...' ` shall preserve the literal value of each character within the quotes and suppress all expansions. 
 - Enclosing characters in [double-quotes](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_02_03) ` "..." ` shall preserve the literal value of all characters within the quotes, with the exception of:
     - Dollar-sign ` $??? ` for parameter expansion
@@ -162,6 +160,8 @@ Quoting is used to remove the special meaning of certain characters or words to 
     - Backquotes `` `...` `` for the other form of command substitution
     - Backslash ` \? ` as escape character
 
+[^tog-quoting]: [Open Group Base Specifications - Quoting, accessed 2025](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_02)
+    
 ### Suppressing expansions
     
 The bash shell can perform expansions and substitutions (as show by examples below), which leads to the need to control it with quoting.
@@ -176,15 +176,6 @@ The bash shell can perform expansions and substitutions (as show by examples bel
 | **Arithmetic<br>expansion:**<br>` $((2+2)) ` | <br><br>**` 4 `** | <br><br>**` 4 `** | <br><br>` $((2+2)) ` |
 | **Parameter<br>expansion:**<br>` $USER `<br>` ${USER} ` | <br><br>**` albert `** | <br><br>**` albert `**<br>**` albert `** | <br><br>` $USER `<br>` ${USER} ` |
 | **Command<br>substitution:**<br>` $(uname ‑o) `<br>`` `uname ‑o` `` | <br><br>**` GNU/Linux `**<br>**` GNU/Linux `** | <br><br>**` GNU/Linux `**<br>**` GNU/Linux `** | <br><br>` $(uname ‑o) `<br>`` `uname ‑o` `` |
-
-<!--|   | Example | Un<br>quoted | "Double" <br>quoted | 'Single' <br>quoted |
-|:--- |:--- |:--- |:--- |:--- |
-| Simple string | text | text | text | text |
-| Filepath and **tilde expansion** | ~/\*.txt | **/home/margaret/\*.txt** | ~/\*.txt | ~/\*.txt |
-| **Brace expansion** | {a,b}<br>{001..003} | **a b**<br>**001 002 003** | {a,b}<br>{001..003} | {a,b}<br>{001..003} |
-| **Command substitution** | $(uname ‑o)<br>\`uname ‑o\` | **GNU/Linux**<br>**GNU/Linux** | **GNU/Linux**<br>**GNU/Linux** | $(uname ‑o)<br>\`uname ‑o\` |
-| **Arithmetic expansion** | $((2+2)) | **4** | **4** | $((2+2)) |
-| **Parameter expansion** | $USER | **margaret** | **margaret** | $USER |-->
 
 > [!TIP]
 > You can use the *display text* commands ` $ echo ` and ` $ printf ` to learn see the world as the shell sees it:
@@ -267,16 +258,14 @@ $ export PS2='\[\033[38;5;081m\]> \[\e[0m\]'↵
 > [!NOTE]
 > Any change to PS1 or PS2 will vanish as the shell session ends. To make the change permanent, add the export command to a new line on ` ~/.bashrc ` for user specific preference, or ` /etc/profile ` for system wide preference.
 
-### Special prompt variables [^ss64]
-
-[^ss64]: [SS64 - How to setup prompt statement variables, accessed 2021](https://ss64.com/bash/syntax-prompt.html)
+### Special prompt variables 
 
 - ` \$ ` = The default bash prompt sign.
     - Dollar sign $ for regular access.
     - Hash mark # for continuous root access.
 - ` \u ` = The username of the current user
-- ` \H ` = The full hostname (such as deckard.SS64.com)
-- ` \h ` = The hostname, up to the first dot (such as deckard)
+- ` \H ` = The full hostname (such as deckard.SS64.com) [^ss64]
+- ` \h ` = The hostname, up to the first dot (such as deckard) [^ss64]
 - ` \w ` = Current directory (full path)
 - ` \W ` = Current directory (without the parent directories)
 - ` \l ` = The basename of the shell's terminal device name
@@ -292,27 +281,29 @@ $ export PS2='\[\033[38;5;081m\]> \[\e[0m\]'↵
 - ` \! ` = History number of this command
 - ` \# ` = Command number of this command
 - ` \D{...} `
-    - ` %a ` = (la) = Day (abbreviated name)
-    - ` %A ` = (lauantai) = Day (full name)
-    - ` %b ` = (helmi) = Month (abbreviated name)
-    - ` %B ` = (helmikuu) = Month (full name)
+    - ` %a ` = (sat) = Day (abbreviated name)
+    - ` %A ` = (saturday) = Day (full name)
+    - ` %b ` = (feb) = Month (abbreviated name)
+    - ` %B ` = (february) = Month (full name)
     - ` %d.%m.%Y ` = (20.02.2021) = Day, Month, Year
     - ` %H:%M:%S ` = (10\:15\:59) = Hours, Minutes, Seconds
     - E.g. ` \D{%H:%M %A %d.%m.%Y} ` = 10\:15 lauantai 20.02.2021
 
+[^ss64]: [SS64 - How to setup prompt statement variables, accessed 2021](https://ss64.com/bash/syntax-prompt.html)
+    
 For more bells and whistles visit:
 - <https://misc.flogisoft.com/bash/tip_colors_and_formatting>
 - <https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences>
 
-### 8-bit (256) colors [^wiki-ansi]
+### 8-bit (256) colors
 
-Most terminal emulators understand the 8-bit color palette:
+Most terminal emulators understand the 8-bit color palette: [^wiki-ansi]
 
 ![Terminal 8-bit color palette](../asset/colors.svg)
 
 [^wiki-ansi]: [Wikipedia - ANSI escape code, accessed 2024](https://en.wikipedia.org/wiki/ANSI_escape_code)
 
-The numbering in 8-bit color palette is arranged so that:
+The numbering in 8-bit color palette is arranged so that: [^wiki-ansi]
 - Range ` 0x00-0x07 ` is for standard 8 colors.
 - Range ` 0x08-0x0F ` is for additional 8 high intensity colors.
 - Range ` 0xE8-0xFF ` is for grayscale from black to white in 24 steps.
@@ -340,7 +331,9 @@ The above foreground and background be combined like so:
 
 <!-- # References -->
 
-[^shotts]: [William Shotts - The Linux Command Line, updated 2019](http://linuxcommand.org/tlcl.php)
+[^shotts-misbehave]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 10, Section: Processes](http://linuxcommand.org/tlcl.php)
+
+[^shotts-prowork]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 10, Section: How a Process Works](http://linuxcommand.org/tlcl.php)
 
 [^raymond-sshheell]: [<!--Eric Steven Raymond - -->The Art of Unix Programming 2003, Chapter 14<!--. Languages-->, Section: Shell](http://www.catb.org/~esr/writings/taoup/html/ch14s04.html)
 

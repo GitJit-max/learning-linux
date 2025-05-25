@@ -45,13 +45,13 @@ If the CLI facilities of an operating system are weak or nonexistent, you'll als
 
 The disadvantage of the CLI style, of course, is that it almost always has high mnemonic load (low ease), and usually has low transparency. Most people (especially non-technical end users) find such interfaces relatively cryptic and difficult to learn. [^raymond-tradeoffs]
 
-#### Resistance tends to decrease [^raymond-tradeoffs]
+#### Resistance tends to decrease 
 
-Resistance to command language interface tends to decrease as users become more expert. In many problem domains, users (especially frequent users) reach a crossover point at which the concision and expressiveness of CLI becomes more valuable than avoiding its mnemonic load.
+Resistance to command language interface tends to decrease as users become more expert. In many problem domains, users (especially frequent users) reach a crossover point at which the concision and expressiveness of CLI becomes more valuable than avoiding its mnemonic load. [^raymond-tradeoffs]
 
-Computing novices prefer the ease of graphical user interface, but experienced users often gradually discover that use of the command interface tends to gain utility as problems scale up and involve more in the way of canned, procedural and repetitive actions.
+Computing novices prefer the ease of graphical user interface, but experienced users often gradually discover that use of the command interface tends to gain utility as problems scale up and involve more in the way of canned, procedural and repetitive actions. [^raymond-tradeoffs]
 
-> For example, software such as Microsoft Word or Libre Office Writer, where the content looks very similar to the end result when edited, is usually the easiest route to composing relatively small and unstructured documents. But for complex book-sized documents that are assembled from sections and which may require many global format changes and structural manipulation during composition, a combination of markup language (such as Markdown) or meta-language (such as XML) with a type-setting system (such as LaTex) is usually a more effective choice.
+> For example, software such as Microsoft Word or Libre Office Writer, where the content looks very similar to the end result when edited, is usually the easiest route to composing relatively small and unstructured documents. But for complex book-sized documents that are assembled from sections and which may require many global format changes and structural manipulation during composition, a combination of markup language (such as Markdown) or meta-language (such as XML) with a type-setting system (such as LaTex) is usually a more effective choice. [^raymond-tradeoffs]
 
 #### Scriptability
 
@@ -85,13 +85,13 @@ Command languages share the domain of lightweight automation with scripting lang
 
 <a id="command-language-interpreter"></a>
 
-### III - Command Language Interpreter [^hoffman]
+### III - Command Language Interpreter 
+
+When you launch a terminal window, or otherwise log in to the command line, the system loads a **shell** program (such as ` $ bash `), which is first and foremost a **command language interpreter** i.e. **command processor**. It executes commands that it reads from a) a command line string, b) a specified file, or c) standard input (see [Chapter 6, Section: Standard streams](06-inter.md#standard-streams)). d) The shell program is also used in the background by various software applications and system services. [^hoffman]
 
 [^hoffman]: [Chris Hoffman - What's the difference between Bash and other shells?, published 2017](https://www.howtogeek.com/68563/htg-explains-what-are-the-differences-between-linux-shells/#:~:text=The%20most%20prominent%20progenitor%20of,worked%20at%20AT%26T's%20Bell%20Labs.)
 
-When you launch a terminal window, or otherwise log in to the command line, the system loads a **shell** program (such as ` $ bash `), which is first and foremost a **command language interpreter** i.e. **command processor**. It executes commands that it reads from a) a command line string, b) a specified file, or c) standard input (see [Chapter 6, Section: Standard streams](06-inter.md#standard-streams)). d) The shell program is also used in the background by various software applications and system services.
-
-The shell program implements the command language interface when it communicates with other parts of the system based on the commands it receives. The shell also often refers to the language it interprets. So they are also **interpreted languages**. Shell programs are also the primary interface for many people, and so many features have been accumulated over the years, that we should refer shells as **shell environments** or **command interpreter environments**.
+The shell program implements the command language interface when it communicates with other parts of the system based on the commands it receives. The shell also often refers to the language it interprets. So they are also **interpreted languages**. Shell programs are also the primary interface for many people, and so many features have been accumulated over the years, that we should refer shells as **shell environments** or **command interpreter environments**. [^hoffman]
 
 <!-- The analogy is with a nut: outside is the shell, inside is the kernel. -->
 
@@ -140,7 +140,7 @@ Alternate shell environments can be installed from the operating system package 
 
 [^wiki-ken-thompson]: [Wikipedia - Ken Thompson, accessed 2025](https://en.wikipedia.org/wiki/Ken_Thompson)
 
-> Shell environments have been building on the concept ever since, adding a variety of new features, functionality, and speed improvements. For example, Bash offers [command and file name completion](03-basic-terminal.md#autocomplete)), advanced scripting features, a [command history](#bash-history), [configurable colors](07-advanced-terminal#bit-256-colors-wiki-ansi), [command aliases](07-advanced-terminal.md#alias), and a variety of other features that were not available back in 1971 when the first shell was released. [^hoffman]
+> Shell environments have been building on the concept ever since, adding a variety of new features, functionality, and speed improvements. For example, Bash offers [command and file name completion](03-basic-terminal.md#autocomplete)), advanced scripting features, a [command history](#bash-history), [configurable colors](07-advanced-terminal#bit-256-colors), [command aliases](07-advanced-terminal.md#alias), and a variety of other features that were not available back in 1971 when the first shell was released. [^hoffman]
 
 #### Alternative shell: Bourne Shell
 
@@ -148,11 +148,11 @@ The most prominent progenitor of modern shells is the **Bourne Shell ` $ sh `** 
 
 [^wiki-bourne-shell]: [Wikipedia - Bourne shell, accessed 2025](https://en.wikipedia.org/wiki/Bourne_shell)
 
-#### Alternative shell: C shell [^wiki-c-shell]
+#### Alternative shell: C shell 
 
-**C Shell ` $ csh `** was developed in the late 1970s by student Bill Joy at the University of California, Berkley. It added many interactive elements such as command history and aliases (i.e. shortcuts for long commands).
+**C Shell ` $ csh `** was developed in the late 1970s by student Bill Joy at the University of California, Berkley. It added many interactive elements such as command history and aliases (i.e. shortcuts for long commands). [^wiki-c-shell]
 
-Over time, lots of people fixed bugs and added features to the *C shell* This culminated in an improved version known as **TENEX C Shell ` $ tcsh `**. Although tcsh started as a branch of the original csh, it is now the main branch of the ongoing development of csh.
+Over time, lots of people fixed bugs and added features to the *C shell* This culminated in an improved version known as **TENEX C Shell ` $ tcsh `**. Although tcsh started as a branch of the original csh, it is now the main branch of the ongoing development of csh. [^wiki-c-shell]
 
 [^wiki-c-shell]: [Wikipedia - C shell, accessed 2025](https://en.wikipedia.org/wiki/C_shell)
 
@@ -162,11 +162,11 @@ Bell Labs employee David Korn worked in the early 1980s to address the limitatio
 
 [^wiki-korn-shell]: [Wikipedia - Korn shell, accessed 2025](https://en.wikipedia.org/wiki/KornShell)
 
-#### Alternative shell: Bourne Again Shell [^wiki-bash-shell] 
+#### Alternative shell: Bourne Again Shell  
 
-The GNU Project developed a shell, under its own free and open source license (see [Chapter 1, Section: GNU General Public -license](chapter/01-intro.md#gnu-gpl)), as part of its free operating system and named it **Bourne Again Shell ` $ bash `**.
+The GNU Project developed a shell, under its own free and open source license (see [Chapter 1, Section: GNU General Public -license](chapter/01-intro.md#gnu-gpl)), as part of its free operating system and named it **Bourne Again Shell ` $ bash `**. [^wiki-bash-shell]
 
-Since its first release in 1989, bash has been improved for decades. And it is still the default shell environment for most GNU/Linux distributions. It was also the default shell for macOS until 2019. However, since macOS Catalina, it has been replaced by **Z Shell ` $ zsh `**. <!--, which is licensed by MIT to better fit the closed source nature of macOS.--> [^apple-zsh]
+Since its first release in 1989, bash has been improved for decades. And it is still the default shell environment for most GNU/Linux distributions. [^wiki-bash-shell] It was also the default shell for macOS until 2019. However, since macOS Catalina, it has been replaced by **Z Shell ` $ zsh `**. <!--, which is licensed by MIT to better fit the closed source nature of macOS.--> [^apple-zsh]
 
 [^wiki-bash-shell]: [Wikipedia - Bash (Unix shell), accessed 2025](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 
@@ -175,13 +175,13 @@ Since its first release in 1989, bash has been improved for decades. And it is s
 > [!NOTE]
 > While the Linux community has settled on bash in the years since, developers did not stop creating new shells.
 
-#### Alternative shell: Almquist Shell [^wiki-almquist-shell]
+#### Alternative shell: Almquist Shell 
 
 <!-- TODO: Lisää vuosiluku -->
 
-Kenneth Almquist created a Bourne Shell clone named **Almquist Shell**, and also known as **A Shell** and **` $ ash `**. It is designed to be POSIX-compatible and lightweight. It is faster than bash because it does not have all its features. It became the default shell in BSD, a different branch of the unix like operating systems. The ash shell is more lightweight than bash, which makes it popular in embedded GNU/Linux systems.
+Kenneth Almquist created a Bourne Shell clone named **Almquist Shell**, and also known as **A Shell** and **` $ ash `**. It is designed to be POSIX-compatible and lightweight. It is faster than bash because it does not have all its features. It became the default shell in BSD, a different branch of the unix like operating systems. The ash shell is more lightweight than bash, which makes it popular in embedded GNU/Linux systems. [^wiki-almquist-shell]
 
-Ash has been ported for the Debian platform, under the name **` $ dash `**. Ubuntu uses dash for non-interactive tasks due to its lightweight nature and low programming library dependencies. This speeds up background tasks, as well as its use as a scripting language. However, Ubuntu still uses bash for interactive shells, so users have the full-featured interactive environment.
+Ash has been ported for the Debian platform, under the name **` $ dash `**. Ubuntu uses dash for non-interactive tasks due to its lightweight nature and low programming library dependencies. This speeds up background tasks, as well as its use as a scripting language. However, Ubuntu still uses bash for interactive shells, so users have the full-featured interactive environment. [^wiki-almquist-shell]
 
 [^wiki-almquist-shell]: [Wikipedia - Almquist shell, accessed 2025](https://en.wikipedia.org/wiki/Almquist_shell)
     
@@ -428,20 +428,14 @@ The ` /usr/ ` directory contains only shareable and read-only data, no settings,
 
 [^gambas-extern]: [Gambas Documentation - How To Interface Gambas With External Libraries, accessed 2024](https://gambaswiki.org/wiki/howto/extern)
 
-#### Environment variable: PATH [^fi-path]
+#### Environment variable: PATH 
 
-[^fi-path]: [Linux.fi ohjesivusto - PATH, accessed 2025](https://www.linux.fi/wiki/PATH)
-
-<!-- Environment variable PATH contains the list of directories that the shell searches when looking for executable commands to match a name (see [Section: Environment variables](#environment-variables)). -->
-
-When the user types a CLI command, the system looks for the requested binary executable(s) in directories specified by an environment variable called PATH (see [Section: Environment variables](#environment-variables)).
+When the user types a CLI command, the system looks for the requested binary executable(s) in directories specified by an environment variable called PATH (see [Section: Environment variables](#environment-variables)). 
 
 > [!IMPORTANT]
 > To run a program or script located elsewhere, the location must be explicitly reported with the command. Even as little as the notation ` ./ ` to refer to the present working directory.
 
 If you want to run an executable located outside of PATH, such as ` ~/.local/bin/somexe `, you have to include the file path in some form for this to work:
-
-<!-- For example, when running a script in the current working directory, one should type something like ` $ ./myscript.sh↵ ` in the terminal. Single period ` . ` refers to the active directory and should not be added to environment variable ` PATH ` (see [Section: Well-known environment variables](#well-known-variables)). -->
 
 ```
 # a) This common mistake will not work:
@@ -494,7 +488,7 @@ Applications must generally not add directories to the top level of ` /var/ `. I
 | **` /var/spool/ `** | Spool data is **application's buffer data which awaits further processing** such as printer queues. Often spool data is deleted after it has been processed. [^fhs-spool] |   |
 | **` /var/tmp/ `** | Available for programs that need **temporary files** or directories, **which are preserved between reboots**. Files and directories in this directory must not be deleted when the system boots. [^fhs-tmp] |   |
 
-[^wiki-cache]: [Wikipedia - Cache (computing)](https://en.wikipedia.org/wiki/Cache_(computing))
+[^wiki-cache]: [Wikipedia - Cache (computing), accessed 2025](https://en.wikipedia.org/wiki/Cache_(computing))
 
 [^sandra]: [Sandra Henry-Stocker - Exploring /run on Linux, published 2019](https://www.networkworld.com/article/967547/exploring-run-on-linux.html)
 
@@ -508,25 +502,25 @@ Applications must generally not add directories to the top level of ` /var/ `. I
 
 [^fhs-lock]: [Filesystem Hierarchy Standard - Lock files](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varlockLockFiles)
 
-[^tldp-var]: [Linux System Administrators Guide - The /var filesystem](https://tldp.org/LDP/sag/html/var-fs.html)
+[^tldp-var]: [Linux System Administrators Guide - The /var filesystem, accessed 2025](https://tldp.org/LDP/sag/html/var-fs.html)
 
 [^fhs-log]: [Filesystem Hierarchy Standard - Log files and directories](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varlogLogFilesAndDirectories)
 
 [^fhs-cache]: [Filesystem Hierarchy Standard - Application cache data](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varcacheApplicationCacheData)
 
-### RAM disk [^ramdisk]
+### RAM disk 
 
-[^ramdisk]: [Riccardo - RAM Disk on Linux, 2011](https://linuxaria.com/pills/ram-disk-on-linux)
-
-All modern GNU/Linux distributions offer some of the volatile random-access memory as a RAM disk, mounted onto **` /dev/shm/ `** (shared memory). It takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage.
+All modern GNU/Linux distributions offer some of the volatile random-access memory as a RAM disk, mounted onto **` /dev/shm/ `** (shared memory). It takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^ramdisk]
 - It can be used just like normal disk space; Creating and manipulating files and directories, but with better performance compared to being stored on hard disk.
 - It is an efficient means of sharing and passing data between programs. One program will create a memory portion, which other processes can access. Hence the name shared memory.
 - A sophisticated image viewer could use it for temporary storage location of files extracted from zip archives to prevent unnecessary wear of the user's internal storage drive.
 - Because the data resides in RAM, it will be cleared in the event of power loss, whether intentional (computer reboot or shutdown) or accidental (power failure or system crash). [^wikiram]
 
+[^ramdisk]: [Riccardo - RAM Disk on Linux, published 2011](https://linuxaria.com/pills/ram-disk-on-linux)
+
 [^wikiram]: [Wikipedia - RAM drive, accessed 2024](https://en.wikipedia.org/wiki/RAM_drive)
 
-> The virtual filesystem types udev and tmpfs, don't take up disk space or occupy more RAM than used. Size and how much is available is just upper limit as to how much RAM it may use.
+> The virtual filesystem types udev and tmpfs, don't take up disk space or occupy more RAM than used. Size and how much is available is just upper limit as to how much RAM it may use. [^ramdisk]
 
 ### Removable media mount points <!--update internal links if changed-->
 
@@ -582,45 +576,46 @@ The ` /dev/ ` directory does not just contain "files" that represent physical de
 
 | File | Use |
 |:--- |:--- |
-| **` /dev/random `** | Is a random number generator you and all the applications can tap into. Truly random numbers are challenging to generate. The ` /dev/random ` kernel feature of Linux can promise up to 256 bits of security, if you wanted a source of randomness for generating cryptographic keys. [^man7-random] |
+| **` /dev/random `** | Is a random number generator you and all the applications can tap into. Truly random numbers are challenging to generate. The ` /dev/random ` kernel feature of Linux can promise up to 256 bits of security, if you wanted a source of randomness for generating cryptographic keys. [^man-ran] |
 | **` /dev/zero `** | A read from ` /dev/zero ` will return as many bytes containing the value zero as was requested. Uses include wiping storage devices to ensure that no data remains, creating large empty files such as disk images, simulating memory or storage scenarios for testing, and benchmarking storage performance. [^fhs-special] |
-| **`/dev/null `** | All data written to `/dev/null ` is discarded. Think of it as a black hole. [^fhs-special] [^hoffman-2016] |
-
-[^man7-random]: [Michael Kerrisk - Linux manual page, accessed 2024](https://www.man7.org/linux/man-pages/man7/random.7.html)
+| **`/dev/null `** | All data written to `/dev/null ` is discarded. [^fhs-special] Think of it as a black hole. [^hoffman-2016] |
 
 > [!TIP]
 > By default terminal commands produce error messages and other output that they print to the standard output (i.e. normally the terminal). If you want to run a command and do not care about its output, you can redirect that output to ` /dev/null `, which immediately discards it. Instead of having every command implement its own *quiet mode* you can use this method with any command like this ` $ somecommand > /dev/null↵ ` [^hoffman-2016]
 
 [^fhs-special]: [Filesystem Hierarchy Standard: Devices and special files](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#devDevicesAndSpecialFiles)
 
-### Everything is a file [^hoffman-2016]
+[^man-ran]: [Michael Kerrisk - Linux manual page, accessed 2024](https://www.man7.org/linux/man-pages/man7/random.7.html)
 
-[^hoffman-2016]: [Chris Hoffman - What does "everything is a file" mean in linux?, published 2016](https://www.howtogeek.com/117939/htg-explains-what-everything-is-a-file-means-on-linux/)
+### Everything is a file 
 
-In unix "everything is a file". Directories are files. Files are files. Printer, mouse and keyboard are files. Your screen is a file. The defining feature that "everything is a file" is an oversimplification. But understanding what it means will help you understand how unix and it's derivatives work. Many things on unix appear in your file system and behave as "files", but they are not actually files. They are special "files" that represent hardware devices, system information, a random number generator and what not. Almost everything in a unix-style file-system appears and behaves as files, to make data and functionality more accessible and manageable.
+In unix "everything is a file". Directories are files. Files are files. Printer, mouse and keyboard are files. Your screen is a file. The defining feature that "everything is a file" is an oversimplification. But understanding what it means will help you understand how unix and it's derivatives work. Many things on unix appear in your file system and behave as "files", but they are not actually files. They are special "files" that represent hardware devices, system information, a random number generator and what not. Almost everything in a unix-style file-system appears and behaves as files, to make data and functionality more accessible and manageable. [^hoffman-2016]
 
 > [!TIP]
-> For example to find information about your CPU, you do not need a special command that tells you your CPU info. You can just read the contents of ` /proc/cpuinfo ` as if it were a text file. You can use standard commands to print this file’s contents to the terminal. Or you can open ` /proc/cpuinfo ` in a text editor to view its contents.
-> Note that ` /proc/cpuinfo ` is not actually a text file. The os kernel and the ` /proc/ ` directory or file system are exposing this information to us as a "file". This allows us to use familiar tools to view and work with the information. The same directory also contains other similar "files" such as ` /proc/uptime ` and ` /proc/version `.
+> For example to find information about your CPU, you do not need a special command that tells you your CPU info. You can just read the contents of ` /proc/cpuinfo ` as if it were a text file. You can use standard commands to print this file’s contents to the terminal. Or you can open ` /proc/cpuinfo ` in a text editor to view its contents. [^hoffman-2016]
+>
+> Note that ` /proc/cpuinfo ` is not actually a text file. The os kernel and the ` /proc/ ` directory or file system are exposing this information to us as a "file". This allows us to use familiar tools to view and work with the information. The same directory also contains other similar "files" such as ` /proc/uptime ` and ` /proc/version `. [^hoffman-2016]
+
+[^hoffman-2016]: [Chris Hoffman - What does "everything is a file" mean in Linux?, published 2016](https://www.howtogeek.com/117939/htg-explains-what-everything-is-a-file-means-on-linux/)
 
 <a id="shell-environment"></a>
 
 ## 2.5 Shell environment
 
-### Control information [^raymond-live]
+### Control information 
 
-Traditionally programs in unix-like environments look for **control information** in five places in their startup-time environment:
+Traditionally programs in unix-like environments look for **control information** in five places in their startup-time environment: [^raymond-live]
 1. System wide [configuration files](#configuration-files) in ` /etc/ `.
 2. System-set [environment variables](#environment-variables).
 3. User specific [configuration files](#configuration-files) in the user's home directory.
 4. User-set [environment variables](#environment-variables).
-5. Switches and arguments passed to the program on the command line that invoked it (see [Chapter 3, Section: Command line options](03-basic-terminal.md#command-line-options-raymond-cmopt)).
+5. Switches and arguments passed to the program on the command line that invoked it (see [Chapter 3, Section: Command line options](03-basic-terminal.md#command-line-options)).
 
-There is a strong convention that well-behaved Unix programs that use more than one of these places should look at them in the order given, allowing later settings to override earlier ones. <!--These queries are usually done in the order listed above. That way, later (more local) settings override earlier (more global) ones. Settings found earlier can help the program compute locations for later retrievals of configuration data.--> In particular, environment settings usually override dotfile settings, but can be overridden by command-line options. Some programs have command-line options that specify where the dotfile should be looked for. <!--It is good practice to provide a command-line option (like ` -e ` of ` $ make `) that can override environment settings or declarations in run-control files. -->This way the program can be scripted with well-defined behavior regardless of the run-control files or environment variables.
+There is a strong convention that well-behaved Unix programs that use more than one of these places should look at them in the order given, allowing later settings to override earlier ones. <!--These queries are usually done in the order listed above. That way, later (more local) settings override earlier (more global) ones. Settings found earlier can help the program compute locations for later retrievals of configuration data.--> In particular, environment settings usually override dotfile settings, but can be overridden by command-line options. Some programs have command-line options that specify where the dotfile should be looked for. <!--It is good practice to provide a command-line option (like ` -e ` of ` $ make `) that can override environment settings or declarations in run-control files. -->This way the program can be scripted with well-defined behavior regardless of the run-control files or environment variables. [^raymond-live]
 
-Which of these places are looked at depends on how much persistent configuration state a program needs to keep around between invocations.
-- Programs designed mainly to be used in a batch mode (such as generators or filters in pipelines) are usually completely configured with command-line options. Good examples of this pattern include ` $ ls `, ` $ grep ` and ` $ sort `.
-- At the other extreme, large programs with complicated interactive behavior may rely entirely on run-control files and environment variables, and normal use involves few command-line options or none at all. Email clients and firewalls are a good example of this pattern.
+Which of these places are looked at depends on how much persistent configuration state a program needs to keep around between invocations. [^raymond-live]
+- Programs designed mainly to be used in a batch mode (such as generators or filters in pipelines) are usually completely configured with command-line options. Good examples of this pattern include ` $ ls `, ` $ grep ` and ` $ sort `. [^raymond-live]
+- At the other extreme, large programs with complicated interactive behavior may rely entirely on run-control files and environment variables, and normal use involves few command-line options or none at all. Email clients and firewalls are a good example of this pattern. [^raymond-live]
 
 ### Configuration files <!--update internal links if changed-->
 
@@ -746,7 +741,7 @@ There are a number of well-known environment variables you can expect to find de
 | ` SHELL ` | File path of the primary shell. Applications use this to launch subroutines. <!--The name of the user's command shell (often used by shellout commands).--> |
 | ` PATH ` | The list of directories that the shell searches when looking for the executable that match the command (see [Section: Software applications](#software-applications)). |
 | ` TERM ` | Type of current terminal session such as ` xterm ` in a graphical desktop environment, ` linux ` in a [TTY virtual terminal](07-advanced-terminal.md#virtual-terminals) or ` vt100 ` on the [1978 video terminal](https://fi.wikipedia.org/wiki/VT100). ` TERM ` is special in that programs that create remote sessions over the network (such as telnet and ssh) are expected to pass it through and set it in the remote session. |
-| ` EDITOR ` | File path of the primary [line editor](08-text-editors.md#line-editors-ed-and-sed-raymond-ed), which should be able to work without advanced terminal functionality (like old `$ ed ` or ex-mode of `$ vi `). But actually, most unix programs first check ` VISUAL `. ` EDITOR ` can be considered a relic of the days when people had different preferences for line-oriented and visual editors. Nowadays, you can leave ` EDITOR ` unset, or set it to ` VISUAL ` by running commands like ` $ export EDITOR="$VISUAL"↵ ` and ` $ export VISUAL="/usr/bin/nano"↵ `. |
+| ` EDITOR ` | File path of the primary [line editor](08-text-editors.md#line-editors-ed-and-sed), which should be able to work without advanced terminal functionality (like old `$ ed ` or ex-mode of `$ vi `). But actually, most unix programs first check ` VISUAL `. ` EDITOR ` can be considered a relic of the days when people had different preferences for line-oriented and visual editors. Nowadays, you can leave ` EDITOR ` unset, or set it to ` VISUAL ` by running commands like ` $ export EDITOR="$VISUAL"↵ ` and ` $ export VISUAL="/usr/bin/nano"↵ `. |
 | ` VISUAL ` | File path of the primary [screen editor](08-text-editors.md#screen-editors). If you invoke the default text editor from the command line with the keyboard shortcut `Ctrl + X, Ctrl + E `, bash will first try ` VISUAL `, and only then, if it fails, bash will try ` EDITOR `. |
 
 > [!NOTE]
@@ -767,7 +762,7 @@ a) **In shared tempfiles**
     - As in file paths known in advance, passed to, or computed by the program.
     - See [Chapter 6, Section: Use of tempfiles](06-inter.md#use-of-tempfiles)
 b) **Through a communication-bus that operate over sockets**
-    - Such as [D-Bus](06-inter.md#d-bus-free-bus); See [Chapter 6, Section: Sockets](06-inter.md#sockets)
+    - Such as [D-Bus](06-inter.md#d-bus); See [Chapter 6, Section: Sockets](06-inter.md#sockets)
 c) **Through standard streams**
     - See [Chapter 6, Section: Standard streams](06-inter.md#standard-streams)
 d) **Through POSIX signals**
@@ -780,9 +775,9 @@ d) **Through POSIX signals**
 
 **Programs can emit results in all the same ways**: to files, over a communication bus, as standard output and standard error. These several competing interface styles, are all still alive for a reason; They're optimized for different situations.
 
-**In addition, programs, commands, scripts and shell functions all issue a value to the system when they terminate**: This value called [exit status](06-inter.md#exit-status-and-comparison) ` $? ` is an integer in the range of 0...255. <!--**In addition, when the program closes, it leaves behind an exit status ` $? `** to indicate any errors that occurred during execution. This value is an integer in the range of 0...255.--> By convention, zero indicates success, and any other value indicates failure. Some commands use different values to provide diagnostics for errors, while many commands simply exit with a value of 1 when they fail. Man-pages often describe what codes are used in the section entitled: EXIT STATUS. However, a zero always indicates success. [^shotts] See [Chapter 6, Section: Exit status and comparison](06-inter.md#exit-status-and-comparison).
+**In addition, programs, commands, scripts and shell functions all issue a value to the system when they terminate**: This value called [exit status](06-inter.md#exit-status-and-comparison) ` $? ` is an integer in the range of 0...255. <!--**In addition, when the program closes, it leaves behind an exit status ` $? `** to indicate any errors that occurred during execution. This value is an integer in the range of 0...255.--> By convention, zero indicates success, and any other value indicates failure. Some commands use different values to provide diagnostics for errors, while many commands simply exit with a value of 1 when they fail. Man-pages often describe what codes are used in the section entitled *EXIT STATUS*. However, a zero always indicates success [^shotts-exit]. See [Chapter 6, Section: Exit status and comparison](06-inter.md#exit-status-and-comparison).
 
-[^shotts]: [William Shotts - The Linux Command Line, updated 2019](http://linuxcommand.org/tlcl.php)
+[^shotts-exit]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 27, Section: Exit Status](http://linuxcommand.org/tlcl.php)
 
 <a id="design-tropes-of-unix"></a>
 
@@ -800,22 +795,13 @@ The initial release of Unix (in the 1960’s) had some important design attribut
 
 **Have all the tools communicate with each other through human readable text:** Plain text is a universal interface by itself. Data is more tractable and discoverable than program logic. If programs do not accept and emit simple text streams, they are much more difficult to debug, and it's much more difficult to hook them together (using binary input formats) [^raymond-composition]
 
-### Terseness [^raymond-silence]
+### Terseness 
 
-**Programs should shut up if there is nothing interesting or surprising to say:** The *singular taste of old Unix* was partly a consequence of poverty. This *silence is golden* rule evolved originally because Unix predates video displays. Younger readers may not be aware that terminals used to print. On paper. Very slowly. On the slow printing terminals of 1969, each line of unnecessary output was a serious drain on the user's time. That constraint is long gone, but **terseness** (i.e. using few words, and often not seeming polite or friendly) has remained a central feature of the style in command-line programs. So don't assume that historical origin specifies current utility. 
+**Programs should shut up if there is nothing interesting or surprising to say:** The *singular taste of old Unix* was partly a consequence of poverty. This *silence is golden* rule evolved originally because Unix predates video displays. Younger readers may not be aware that terminals used to print. On paper. Very slowly. On the slow printing terminals of 1969, each line of unnecessary output was a serious drain on the user's time. That constraint is long gone, but **terseness** (i.e. using few words, and often not seeming polite or friendly) has remained a central feature of the style in command-line programs. So don't assume that historical origin specifies current utility. [^raymond-silence]
 
-<!--It is considered best:
-- Not to emit unrequested data at all.
-- Send only real errors to standard error.-->
+Many unix shell utilities will print a message only if something goes wrong. By default, most programs do not print confirmation messages upon success, nor do they show indication of progress. <!--However, many commands accept the ` -v ` parameter to change this behaviour (v is hort for verbose).--> Most unix shell utilities do not emit unrequested data at all. <!--Often times as you insert a command and hit enter, the command gets executed but you do not see a result. --> A good example of this mechanic is ` $ cp ` which overwrites and ` $ rm ` which removes existing files from the system silently without request for confirmation and without indicating that the operation was successful. [^raymond-silence]
 
-<!-- This topic will be revisited in a later chapter (see [Chapter 6, Section: Standard streams](06-inter.md#standard-streams) and [Chapter 6, Section: Exit status and comparison](06-inter.md#exit-status-and-comparison)). -->
-
-<!--Pyytämätöntä tietoa ei anneta lainkaan...
-It is considered better to send only real errors to standard error, and not to emit unrequested data at all.-->
-
-Many unix shell utilities will print a message only if something goes wrong. By default, most programs do not print confirmation messages upon success, nor do they show indication of progress. <!--However, many commands accept the ` -v ` parameter to change this behaviour (v is hort for verbose).--> Most unix shell utilities do not emit unrequested data at all. <!--Often times as you insert a command and hit enter, the command gets executed but you do not see a result. --> A good example of this mechanic is ` $ cp ` which overwrites and ` $ rm ` which removes existing files from the system silently without request for confirmation and without indicating that the operation was successful. 
-
-If a program wants to support a progress indicator or produce detailed printouts (for error diagnostics, or to help the user), they should be disabled by default. The user is required to turn on such a mode himself with the command line parameter ` -v ` or ` --verbose `, in which case the additional information is provided in the standard output and/or the standard error such as: <!-- - If there are chatty progress messages (for debugging purposes) they are to be disabled by default and being displayed only when a so called **verbosity switch** is on: -->
+If a program wants to support a progress indicator or produce detailed printouts (for error diagnostics, or to help the user), they should be disabled by default. The user is required to turn on such a mode himself with the command line parameter ` -v ` or ` --verbose `, in which case the additional information is provided in the standard output and/or the standard error such as: [^raymond-silence]
 
 ```
 $ mkdir -v Aaaa↵
@@ -826,8 +812,8 @@ rmdir: removing directory, 'Aaaa'
 ```
 
 There are good reasons for this *rule of silence* to have long outlasted the slow teletypes, on which Unix was born: [^raymond-golden]
-- The user's vertical screen space is still precious. Junk messages are a careless waste of the human user's bandwidth. They're one more source of distracting motion on a screen that may be mediating for more important foreground tasks, such as communication with other humans.
-- The Unix principle states that a program should be able to communicate not just  with human users but with other programs. Programs that babble don't tend to play well with other programs. If a CLI program emits status messages to standard output, then programs that try to interpret that output will be put to the trouble of interpreting or discarding those messages, even if nothing went wrong.
+- The user's vertical screen space is still precious. Junk messages are a careless waste of the human user's bandwidth. They're one more source of distracting motion on a screen that may be mediating for more important foreground tasks, such as communication with other humans. [^raymond-golden]
+- The Unix principle states that a program should be able to communicate not just  with human users but with other programs. Programs that babble don't tend to play well with other programs. If a CLI program emits status messages to standard output, then programs that try to interpret that output will be put to the trouble of interpreting or discarding those messages, even if nothing went wrong. [^raymond-golden]
 
 ### Fail loudly
 
@@ -865,18 +851,16 @@ One record per line makes it easy to extract records with text-stream tools. [^r
 
 Less than 80 characters per line makes the format browseable in an ordinary-sized terminal window. [^raymond-textual]
 
-### Colon (:) as field separator [^raymond-textual]
+### Colon (:) as field separator 
 
-In one-record-per-line formats, use colon ` : ` or any run of whitespace as a field separator.
-- Classic examples of the colon-convention include ` /etc/group `, ` /etc/passwd ` and ` /etc/shadow `.
-- Data files in this style are expected to support inclusion of colons (:) in the data fields by backslash escaping ` \: `. <!--More generally, code that reads delimiter separated values is expected to support record continuation by ignoring backslash-escaped newlines.--> Also if your fields must contain instances of the field separator(s), use a backslash ` \\ ` as the prefix to escape them.
-- If many records must be longer than 80 characters, consider a stanza format: Multiple lines per record, with a record separator line of ` %%\n ` or ` %\n `. The separators make useful visual boundaries for humans eyeballing the file.
+In one-record-per-line formats, use colon ` : ` or any run of whitespace as a field separator. [^raymond-textual]
+- Classic examples of the colon-convention include ` /etc/group `, ` /etc/passwd ` and ` /etc/shadow `. [^raymond-textual]
+- Data files in this style are expected to support inclusion of colons (:) in the data fields by backslash escaping ` \: `. <!--More generally, code that reads delimiter separated values is expected to support record continuation by ignoring backslash-escaped newlines.--> Also if your fields must contain instances of the field separator(s), use a backslash ` \\ ` as the prefix to escape them. [^raymond-textual]
+- If many records must be longer than 80 characters, consider a stanza format: Multiple lines per record, with a record separator line of ` %%\n ` or ` %\n `. The separators make useful visual boundaries for humans eyeballing the file. [^raymond-textual]
 
 ### Indifference of alternate whitespace
 
 No distinction should be allowed between space, tab or any number of consecutive whitespace. Anything else has potential for serious headaches, because the tab settings on text editors are different. [^raymond-textual]
-
-<!--Do not allow the distinction between tab and whitespace to be significant. This is a recipe for serious headaches when the tab settings on your users' text editors are different. More generally, it's confusing to the eye.-->
 
 ### Favor hex over octal
 
@@ -892,7 +876,7 @@ Use hash mark ` # ` as an introducer for comments. It is good to have a way to e
     
 ### Support for special characters through backslash notation
 
-#### Unicode and ASCII symbols
+#### Unicode or ASCII symbol
 
 Many languages and fonts contain symbols that could not be condensed on the keyboard. But they can be inserted with the backslash notation:
 
@@ -902,7 +886,7 @@ Many languages and fonts contain symbols that could not be condensed on the keyb
 | ` \x?? ` | an [ASCII-symbol](https://www.ascii-code.com) by its hexadecimal value (base 16)<br>such as ` $ printf "\x40"↵ ` to produce the ` @ ` symbol. |
 | ` \??? ` | an [ASCII-symbol](https://www.ascii-code.com) by its octal value (base 8)<br>such as ` $ printf "\100"↵ ` to produce the ` @ ` symbol. |
 
-#### Control characters
+#### Control character
 
 The basic character set includes **control characters**, which usually have no visible representation, but are intended to trigger some action that controls the hardware or data processing.
 
@@ -920,7 +904,6 @@ The basic character set includes **control characters**, which usually have no v
 
 #### Newline
 
-    
 > [!NOTE]
 > When typing on a computer, you don't usually have to pay attention to how text is divided into lines. If text does not fit on a single line, most software can automatically move the last word after a space to the next line. However, this was not obvious in the early days of word processing.
 
@@ -930,29 +913,29 @@ Only later was it realised that two separate characters were not necessarily nee
 
 [^kirjotuskone]: [Jukka Korpela - Kirjoituskoneista tietokoneisiin, accessed 2025](https://jkorpela.fi/rv/1.1.html).
 
-### XML [^raymond-xml]
+### XML 
 
-XML (extensible markup language) can be a simplifying or a complicating choice:
-- XML is itself rather bulky.
-    - It can be difficult to see the data amidst all the markup.
-- The most serious problem with XML is that it doesn't play well with traditional unix tools. Software that wants to read an XML format needs an XML parser. This means bulky, complicated programs.
+XML (extensible markup language) can be a simplifying or a complicating choice: [^raymond-xml]
+- XML is itself rather bulky. [^raymond-xml]
+    - It can be difficult to see the data amidst all the markup. [^raymond-xml]
+- The most serious problem with XML is that it doesn't play well with traditional unix tools. Software that wants to read an XML format needs an XML parser. This means bulky, complicated programs. [^raymond-xml]
 
-One application area in which XML is clearly winning is in markup formats for document files.
-- Compressed XML (such as \*.docx ja \*.odt) combines space economy with some of the advantages of a textual format. Notably, it avoids many problems that come with binary formats.
+One application area in which XML is clearly winning is in markup formats for document files. [^raymond-xml]
+- Compressed XML (such as \*.docx ja \*.odt) combines space economy with some of the advantages of a textual format. Notably, it avoids many problems that come with binary formats. [^raymond-xml]
 
 <a id="binary-formats"></a>
 
 ## 2.9 Binary formats 
 
-### Textualizers [^raymond-trans]
+### Textualizers 
 
-Whenever you face a design problem that involves editing some kind of complex binary object, the unix tradition encourages asking first off whether you can write a tool <!--analogous to ` $ sng ` or the ` $ tic ` / ` $ infocmp ` pair,--> that can do a **lossless mapping to an editable textual format and back**. <!--There is no established term for programs of this kind, but we'll call them **textualizers**.-->
+Whenever you face a design problem that involves editing some kind of complex binary object, the unix tradition encourages asking first off whether you can write a tool that can do a **lossless mapping to an editable textual format and back**. [^raymond-trans]
 
-### Browser [^raymond-trans]
+### Browser 
 
-If the binary object is dynamically generated or very large, then it may not be practical or possible to capture all the state with a textualizer. In that case, the equivalent task is to write a **browser**.
-- The paradigm example is ` $ fsdb `, the file-system debugger supported under various unixes. There is a Linux kernel equivalent called ` $ debugfs `.
-- Another example would be ` $ psql `, which is used to browse PostgreSQL databases.
+If the binary object is dynamically generated or very large, then it may not be practical or possible to capture all the state with a textualizer. In that case, the equivalent task is to write a **browser**. [^raymond-trans]
+- The paradigm example is ` $ fsdb `, the file-system debugger supported under various unixes. There is a Linux kernel equivalent called ` $ debugfs `. [^raymond-trans]
+- Another example would be ` $ psql `, which is used to browse PostgreSQL databases. [^raymond-trans]
 
 <!--
 > [!IMPORTANT]

@@ -329,7 +329,7 @@ Programs compiled from source usually need additional libraries and packages. Th
     ```
     $ cd ~/Downloads/gambas-stable/↵
     $ ./reconf-all↵
-    $ ./configure -C --disable-qt4 --disable-gtk --disable-gtk3 --disable-    db.sqlite2 --disable-mongodb --disable-pdf↵
+    $ ./configure -C --disable-qt4 --disable-gtk --disable-gtk3 --disable-db.sqlite2 --disable-mongodb --disable-pdf↵
     $ make -j $(nproc)↵   # If configuration succeeded
     $ sudo make install↵  # If compilation succeeded
     ```

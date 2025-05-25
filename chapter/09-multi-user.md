@@ -77,19 +77,19 @@ Like so many things in GNU/Linux, more information can be found from a couple of
 > [!NOTE]
 > The three files above are all **DSV-format** (Delimiter Separated Values) with colon **` : `** as the value separator. Data files in this style are expected to support inclusion of colons in the data fields by backslash escaping. More generally, code that reads them is expected to support record continuation by ignoring backslash-escaped newlines.
 
-### Shadow password system [^miller-shadow]
+### Shadow password system 
 
-[^miller-shadow]: [Scott Miller - The /etc/shadow file in depth, published 2016](http://mangolassi.it/topic/8057/)
-
-Despite the name ` /etc/passwd `, passwords are stored elsewhere in ` /etc/shadow `. In the old days, decades ago, Unix systems kept user passwords stored, in plain text, in the ` /etc/passwd ` file (hence its name.) This, for very obvious reasons, was not at all good. But there was no simple solution to this as any change to an encrypted password system would break backwards compatibility with the ` /etc/passwd ` file and with any tools that depended on it.
+Despite the name ` /etc/passwd `, passwords are stored elsewhere in ` /etc/shadow `. In the old days, decades ago, Unix systems kept user passwords stored, in plain text, in the ` /etc/passwd ` file (hence its name.) This, for very obvious reasons, was not at all good. But there was no simple solution to this as any change to an encrypted password system would break backwards compatibility with the ` /etc/passwd ` file and with any tools that depended on it. [^miller-shadow]
 
 
 > [!IMPORTANT]
-> The solution was to make a new file, the ` /etc/shadow ` file that would "shadow" the ` /etc/passwd ` file and provide a place for a new encrypted password along with some additional password controls (see [Chapter 10, Section: Encrypted password system](10-additional.md#edit-shadow)).
+> The solution was to make a new file, the ` /etc/shadow ` file that would "shadow" the ` /etc/passwd ` file and provide a place for a new encrypted password along with some additional password controls (see [Chapter 10, Section: Encrypted password system](10-additional.md#edit-shadow)). [^miller-shadow]
 
-So while having a separate file is a bit bizarre today, it has an historic context that makes sense. No functionality is lost and the additional complexity is nominal. Unlike the ` /etc/passwd ` and ` /etc/group ` files, ` /etc/shadow ` is protected and normal users cannot see its contents. This provides an additional level of security for it. There is no need for users to see what ` /etc/shadow ` contains, but other files are useful to see what accounts are available, groups exists and who are members of them.
+So while having a separate file is a bit bizarre today, it has an historic context that makes sense. No functionality is lost and the additional complexity is nominal. Unlike the ` /etc/passwd ` and ` /etc/group ` files, ` /etc/shadow ` is protected and normal users cannot see its contents. This provides an additional level of security for it. There is no need for users to see what ` /etc/shadow ` contains, but other files are useful to see what accounts are available, groups exists and who are members of them. [^miller-shadow]
 
-> The shadow password system was first introduced in the mid-1980s by Sun's SunOS UNIX system and by 1990 was widely copied and essentially ubiquitous in Unix systems. So the shadow concept is used in most Unix and has been in GNU/Linux since inception. BSD however uses ` /etc/master.passwd ` instead.
+> The shadow password system was first introduced in the mid-1980s by Sun's SunOS UNIX system and by 1990 was widely copied and essentially ubiquitous in Unix systems. So the shadow concept is used in most Unix and has been in GNU/Linux since inception. BSD however uses ` /etc/master.passwd ` instead. [^miller-shadow]
+
+[^miller-shadow]: [Scott Miller - The /etc/shadow file in depth, published 2016](http://mangolassi.it/topic/8057/)
 
 ### Special user id: root (0)
 
@@ -145,11 +145,11 @@ The regular user does not have write access to a file system other than their ow
 > [!NOTE]
 > Name of the progman: **sudo** stands for *super user do* and originates from the verb *to supervise*, i.e. to be in charge of somebody or something and make sure that everything is done correctly, safely, etc.
 
-#### A better way to grant elevated rights [^sudo-hist]
+#### A better way to grant elevated rights 
 
-In the early 1980's the standard way of executing commands as a superuser was using the ` $ su root↵ ` command, which enables the user to switch to a superuser mode (username root). While this did the trick, it opened a lot of opportunities for human error; It was just too easy to forget you’re in root mode and end up causing inadvertent damage to the system.
+In the early 1980's the standard way of executing commands as a superuser was using the ` $ su root↵ ` command, which enables the user to switch to a superuser mode (username root). While this did the trick, it opened a lot of opportunities for human error; It was just too easy to forget you’re in root mode and end up causing inadvertent damage to the system. [^sudo-hist]
 
-Bob Coggeshall and Cliff Spencer thought of a better way working at the SUNY/Buffalo Computer Science at the time. Instead of constantly switching, why not simply create a tool that enables executing individual commands as a superuser, without changing the actual user id in the shell. The ` $ sudo ` command was born an slowly began to make its way into other research groups and was formally open sourced in 1985. Today sudo counts 9944 lines of code (up from 153 lines in the original release) and is maintained by Todd C. Miller. Over 30 years in age, it still continues to receive code contributions and regularly issues new releases. 
+Bob Coggeshall and Cliff Spencer thought of a better way working at the SUNY/Buffalo Computer Science at the time. Instead of constantly switching, why not simply create a tool that enables executing individual commands as a superuser, without changing the actual user id in the shell. The ` $ sudo ` command was born an slowly began to make its way into other research groups and was formally open sourced in 1985. Today sudo counts 9944 lines of code (up from 153 lines in the original release) and is maintained by Todd C. Miller. Over 30 years in age, it still continues to receive code contributions and regularly issues new releases. [^sudo-hist]
 
 [^sudo-hist]: [Aleksandar Bradic - Inventing the Unix sudo command, published 2014](https://hackaday.com/2014/05/28/interview-inventing-the-unix-sudo-command/)
 
@@ -261,9 +261,9 @@ Only the *user owner* of the file or the root user can change the mode of a file
 3. Group people can not change permission attributes. However write access to the directory containing the file allows you to take the ownership of the file. Assuming that you have read permissions to the file and write permissions to the directory then you can take ownership of a file:
 
 ```
-$ mv tiedosto tiedosto.tmp↵
-$ cp tiedosto.tmp tiedosto↵
-$ rm tiedosto.tmp↵
+$ mv somefile somefile.tmp↵
+$ cp somefile.tmp somefile↵
+$ rm somefile.tmp↵
 ```
 
 > [!NOTE]
@@ -287,13 +287,13 @@ The **` $ chmod `** command stands for change mode. Use this command to make per
    (or any combination of these such as ugo)
 ```
 
-### Special permission attributes (setuid, setgid, sticky) [^shotts]
+### Special permission attributes (setuid, setgid, sticky) 
 
-Though we usually see an octal permission mask expressed as a three digit number, it would be technically more correct to express it in four digits, because (in addition to read, write, and execute permission) there are three other (less used) permission settings.
+Though we usually see an octal permission mask expressed as a three digit number, it would be technically more correct to express it in four digits, because (in addition to read, write, and execute permission) there are three other (less used) permission settings. [^shotts-sperm]
 
 #### Special flag: Sticky
 
-The **sticky bit** (octal 1000) is a holdover from ancient Unix, where it was possible to mark an executable file as *not swappable*. On files, modern unix ignores the sticky bit, but if applied to a directory, it prevents users from deleting or renaming files unless the user is either the owner of the directory, the owner of the file, or the superuser. [^shotts]
+The **sticky bit** (octal 1000) is a holdover from ancient Unix, where it was possible to mark an executable file as *not swappable*. On files, modern unix ignores the sticky bit, but if applied to a directory, it prevents users from deleting or renaming files unless the user is either the owner of the directory, the owner of the file, or the superuser. [^shotts-sperm]
 
 > In the original Unix systems, the sticky bit had a different purpose compared to its modern usage. It was introduced in the Fifth Edition of Unix (1974) and was primarily used for executable files. When the sticky bit was set on an executable, it instructed the operating system to keep the program's text segment (code) in swap space after the program finished running. This allowed the program to load faster the next time it was executed, as it avoided reloading the code from slower storage. This feature was particularly useful in systems with limited memory and frequent use of certain programs, like text editors. However, as operating systems evolved and memory management improved, this functionality became obsolete. [^wiki-sticky]
 
@@ -302,17 +302,17 @@ The **sticky bit** (octal 1000) is a holdover from ancient Unix, where it was po
 
 [^wiki-sticky]: [Wikipedia - Sticky bit, accessed 2025](https://en.wikipedia.org/wiki/Sticky_bit)
 
-#### Special flag: Set group ID [^shotts]
+#### Special flag: Set group ID 
 
-The **setgid bit** (octal 2000) i.e. *Set Group ID* bit has its origins in early Unix systems and serves different purposes depending on whether it's applied to files or directories.
+The **setgid bit** (octal 2000) i.e. *Set Group ID* bit has its origins in early Unix systems and serves different purposes depending on whether it's applied to files or directories. [^shotts-sperm]
 
-> The setgid bit was introduced to allow executables to run with the permissions of the group that owns the file, rather than the group of the user executing it.
+> The setgid bit was introduced to allow executables to run with the permissions of the group that owns the file, rather than the group of the user executing it. [^shotts-sperm]
 
-On most systems, when applied to a directory, setgid bit ensures that any files or subdirectories created within inherit the parent directory's group ownership, rather than the creator's default group. Newly created subdirectories also inherit the Set group ID bit of the parent directory. This is useful in a shared directory when members of a common group need access to all the files in the directory, regardless of the file owner's primary group. Lessening the need to use ` $ chmod ` or ` $ chown ` to share new files.
+On most systems, when applied to a directory, setgid bit ensures that any files or subdirectories created within inherit the parent directory's group ownership, rather than the creator's default group. Newly created subdirectories also inherit the Set group ID bit of the parent directory. This is useful in a shared directory when members of a common group need access to all the files in the directory, regardless of the file owner's primary group. Lessening the need to use ` $ chmod ` or ` $ chown ` to share new files. [^shotts-sperm]
 
-#### Special flag: Set user ID [^shotts]
+#### Special flag: Set user ID 
 
-Today, the **setuid bit** (octal 4000) i.e. *Set user ID* bit remains a critical feature in Unix-like systems, but its use is carefully controlled to minimize security risks. Its primary purpose was (and still is) to allow users to execute programs with the privileges of the owner of the executable, rather than the privileges of the user calling it. This was a groundbreaking feature for enabling secure access to system resources. This feature can be used to give restricted, program-controlled access to things like the password file that non-administrators should not be allowed to modify directly:
+Today, the **setuid bit** (octal 4000) i.e. *Set user ID* bit remains a critical feature in Unix-like systems, but its use is carefully controlled to minimize security risks. Its primary purpose was (and still is) to allow users to execute programs with the privileges of the owner of the executable, rather than the privileges of the user calling it. This was a groundbreaking feature for enabling secure access to system resources. This feature can be used to give restricted, program-controlled access to things like the password file that non-administrators should not be allowed to modify directly. [^shotts-sperm]
 
 > [!NOTE]
 > The setuid bit answers the question: How can a low privilege users change their password, when it is stored in a file only accessible by the root user?
@@ -327,11 +327,13 @@ Today, the **setuid bit** (octal 4000) i.e. *Set user ID* bit remains a critical
 > [!TIP]
 > You may search for other files with setuid permission by typing ` $ sudo find / -user root -perm -4000 -exec ls -ldb {} \;↵ `. The search results include setuid programs such as ` $ mount ` and ` $ umount `.
 
-Every process has two User IDs: 1) **Real User ID (RUID)** which identifies the real owner of a process. 2) **Effective User ID (EUID)** which identifies the privilege of a process. Access control is based on EUID:
+Every process has two User IDs: 1) **Real User ID (RUID)** which identifies the real owner of a process. 2) **Effective User ID (EUID)** which identifies the privilege of a process. Access control is based on EUID: [^ieee-euid]
 
-a) When a normal (non setuid) program is executed: RUID and EUID both equal to the ID of the user who runs the program.
+a) When a normal (non setuid) program is executed: RUID and EUID both equal to the ID of the user who runs the program. [^ieee-euid]
 
-b) When a program is executed with the *Set user ID* bit applied to the executable: RUID still equal to the user ID of the user who runs the program. But EUID equals to the owner ID of the executable file. And if the program is owned by root the program runs with the root privilege.
+b) When a program is executed with the *Set user ID* bit applied to the executable: RUID still equal to the user ID of the user who runs the program. But EUID equals to the owner ID of the executable file. And if the program is owned by root the program runs with the root privilege. [^ieee-euid]
+
+[^ieee-euid]: [IEEE 1003.1 Standard: set user ID, accessed 2025](https://pubs.opengroup.org/onlinepubs/9799919799/functions/setuid.html)
 
 <a id="single-user-mode"></a>
 
@@ -392,9 +394,9 @@ The term **console** or **terminal** refers to a device connected to a computer 
 
 ### Remote access protocol: SSH
 
-Up until the 1990s, before the general adoption of the internet, there were two popular programs used to log in to remote hosts: telnet in the 1970s and rlogin in the 1980s. These insecure programs used to transmit all their communications (including login names and passwords) in cleartext. This made them wholly inappropriate for use in the internet age. [^shotts]
+Up until the 1990s, before the general adoption of the internet, there were two popular programs used to log in to remote hosts: telnet in the 1970s and rlogin in the 1980s. These insecure programs used to transmit all their communications (including login names and passwords) in cleartext. This made them wholly inappropriate for use in the internet age. [^shotts-ssh]
 
-<!-- To address this problem, a new protocol called Secure Shell (SSH) was developed. SSH authenticates that the remote host is who it says it is (thus preventing man-in-the-middle attacks) and encrypts all of the communications. [^shotts] -->
+<!-- To address this problem, a new protocol called Secure Shell (SSH) was developed. SSH authenticates that the remote host is who it says it is (thus preventing man-in-the-middle attacks) and encrypts all of the communications. [^shotts-ssh] -->
 
 In 1995, Finnish-born Tatu Ylönen developed a new encrypted communication protocol, SSH (Secure Shell), to solve the problem by verifying that the remote host is who it says it is, preventing attacks from intermediaries and encrypting all communications. SSH works on the **TOFU** principle (trust on first use), where the server certificate is accepted the first time and the user is warned if it changes. SSH uses keys, so the user does not necessarily have to enter any passwords at all. SSH client software is now part of the default installation of most Unix like operating systems, and is usually accessible from the command line with ` $ ssh `. [^wiki-fi-ssh]
 
@@ -460,4 +462,8 @@ A comment ` # This file MUST be edited with the 'visudo' command ` on the ` /etc
 
 <!-- # References -->
 
-[^shotts]: [William Shotts - The Linux Command Line, updated 2019](http://linuxcommand.org/tlcl.php)
+[^shotts-sperm]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 9, Section: Some Special Permissions](http://linuxcommand.org/tlcl.php)
+
+[^shotts-ssh]: [<!--William Shotts - -->The Linux Command Line 2024, Chapter: 16, Section: Secure Communication<!-- with Remote Hosts-->](http://linuxcommand.org/tlcl.php)
+
+
