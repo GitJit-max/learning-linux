@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   aria-hidden="true"
+   focusable="false"
+   role="img"
+   class="octicon octicon-list-unordered"
+   viewBox="0 0 24 24"
+   width="24"
+   height="24"
+   fill="currentColor"
+   style="overflow:visible"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="octicon-list-unordered.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="13.015625"
+     inkscape:cx="14.751501"
+     inkscape:cy="9.8343337"
+     inkscape:window-width="1385"
+     inkscape:window-height="864"
+     inkscape:window-x="602"
+     inkscape:window-y="76"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <rect
+     style="fill:#eff1f4;fill-opacity:1;stroke-width:5.44199;stop-color:#000000"
+     id="rect883"
+     width="24"
+     height="24"
+     x="0"
+     y="0"
+     ry="4.8858113" />
+  <path
+     d="m 9.75,6.5 h 8.5 a 0.75,0.75 0 0 1 0,1.5 h -8.5 a 0.75,0.75 0 0 1 0,-1.5 z m 0,5 h 8.5 a 0.75,0.75 0 0 1 0,1.5 h -8.5 a 0.75,0.75 0 0 1 0,-1.5 z m 0,5 h 8.5 a 0.75,0.75 0 0 1 0,1.5 h -8.5 a 0.75,0.75 0 0 1 0,-1.5 z M 6,18 a 1,1 0 1 1 0,-2 1,1 0 0 1 0,2 z m 1,-6 a 1,1 0 1 1 -2,0 1,1 0 0 1 2,0 z M 6,8 A 1,1 0 1 1 6,6 1,1 0 0 1 6,8 Z"
+     id="path2"
+     style="fill:#636c76;fill-opacity:1" />
+</svg>
