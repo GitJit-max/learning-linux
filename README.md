@@ -151,7 +151,7 @@ I strongly believe that knowledge of the past will contribute to a better unders
 
 | Version | Date | Description |
 | ---:| --- | --- |
-| 1.0.4 | 25.05.2025 | [Second pdf edition updated](https://github.com/GitJit-max/learning-linux/releases/download/pdf/learning-linux.pdf) |
+| 1.0.4 | 25.05.2025 | [Second pdf edition updated, pending publication on Google Play GGKEY:QWCUZ4J1P8N](https://github.com/GitJit-max/learning-linux/releases/download/pdf/learning-linux.pdf) |
 | 1.0.4 | 25.05.2025 | Major updates to git edition |
 | 1.0.1 | 22.02.2025 | Minor updates to git edition |
 | 1.0 | 28.06.2024 | Second pdf edition |
