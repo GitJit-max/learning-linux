@@ -346,7 +346,7 @@ The bell control character **` BEL \a \x07 `** is suitable for illustrating *ver
 ## 3.9 Special character: space ( )
 
 > [!WARNING]
-> Files systems that are popular in GNU/Linux such as EXT4 and BTRFS have far fewer restrictions on special characters than the Windows NTFS and exFAT file systems. Every character except forward slash ` / ` and NUL ` \0 `, are allowed in filenames. However if you make any use of the shell, you will realize that there are many characters that will create a hassle; Most significantly space ` `, dash ` - `, asterisk ` * `, dollar sign ` $ `, exlamation mark ` ! `, ampersand ` & `, forwardslash ` / `, backslash ` \ `, curly brackets ` {...} `, tilde ` ~ `, at sign ` @ `, backquotes `` `...` ``.
+> Files systems that are popular in GNU/Linux such as EXT4 and BTRFS have far fewer restrictions on special characters than the Windows NTFS and exFAT file systems. Every character except forward slash ` / ` and NUL ` \0 `, are allowed in filenames. However if you make any use of the shell, you will realize that there are many characters that will create a hassle; most significantly space ` `, dash ` - `, asterisk ` * `, dollar sign ` $ `, exlamation mark ` ! `, ampersand ` & `, forwardslash ` / `, backslash ` \ `, curly brackets ` {...} `, tilde ` ~ `, at sign ` @ `, backquotes `` `...` ``.
 
 ### Recommendation to not use space in filenames
 
@@ -544,7 +544,10 @@ $ file /usr/bin/* | cut -c 1-110 | awk '{print $0}' | sort -k2↵
 
 ### Shell builtin commands
 
-Some commands are built into the shell. These **shell builtins** are run directly in the shell, and not as external programs. They are built-in because they are such an essential part of the shell's operation, such as ` $ alias `, ` $ unalias `, ` $ echo `, ` $ printf `, ` $ logout `, ` $ cd `, ` $ pwd ` and ` $ kill `. Use ` $ compgen -b↵ ` to get a list of the all the shell builtin commands. <!-- or visit [GNU Bash Features - Shell Builtin Commands](https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html). -->
+Some commands are built into the shell. These **shell builtins** are run directly in the shell, and not as external programs. They are built-in because they are such an essential part of the shell's operation, such as ` $ alias `, ` $ unalias `, ` $ echo `, ` $ printf `, ` $ logout `, ` $ cd `, ` $ pwd ` and ` $ kill `. 
+
+> [!TIP]
+> Use ` $ compgen -b↵ ` to get a list of the all the shell builtin commands. <!-- or visit [GNU Bash Features - Shell Builtin Commands](https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html). -->
 
 #### User-guides for shell-builtin-commands
 

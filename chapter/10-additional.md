@@ -23,7 +23,7 @@ Installation of a GNU/Linux typically starts with the creation of a bootable USB
 
 ### Create a bootable USB drive 
 
-Creating a bootable USB drive is not trivial, and requires installing a boot drive creation utility such as [Rufus](https://rufus.ie/en/), [Balena Etcher](https://etcher.balena.io) or [Ventoy](https://www.ventoy.net/). In addition, you must download the correct ISO file from the official website of the distribution you want to (see [Chapter 1, Section: Suggested Distributions](01-intro.md#suggested-distributions)). The ISO file must be copied to a USB drive in a way that makes it bootable, using afore mentioned software.
+Creating a bootable USB drive on Windows is not trivial, and requires installing a boot drive creation utility such as [Rufus](https://rufus.ie/en/), [Balena Etcher](https://etcher.balena.io) or [Ventoy](https://www.ventoy.net/). In addition, you must download the correct ISO file from the official website of the distribution you want to (see [Chapter 1, Section: Suggested Distributions](01-intro.md#suggested-distributions)). The ISO file must be copied to a USB drive in a way that makes it bootable, using afore mentioned software.
 
 ### Boot from a USB drive 
 
@@ -54,7 +54,7 @@ After a successful boot with the USB drive, you should arrive to a graphical use
 
 #### Need for swap has decreased
 
-The complex disk partitioning traditionally used in GNU/Linux (even single-disk configurations) is no longer necessary on today's home computers; And it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
+The complex disk partitioning traditionally used in GNU/Linux (even single-disk configurations) is no longer necessary on today's home computers; and it has little use in home use today. If the disk system is partitioned the old style and runs out of space, then in the worst case, the machine may even crash.
 
 > The first function created for Linux at the request of an outsider was the ability to extend main memory with **swap memory**, completed on Christmas Day 1991. Torvalds ’own 386 machine (which was assembled from parts, unbranded) had four megabytes of memory, but users with a smaller number (especially one German user who originally made the request) were in trouble with the lack of main memory. This feature was significant in early 1992 because it played a major role in system performance and contributed positively to the Linux kernel.
 

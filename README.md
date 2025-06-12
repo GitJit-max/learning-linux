@@ -158,6 +158,8 @@ I strongly believe that knowledge of the past will contribute to a better unders
 | 1.0 | 16.06.2024 | First github edition |
 | 0.9 | 13.04.2021 | First pdf edition |
 
+<!-- Corrections thanks to reader feedback -->
+
 ### Contribution guidelines
 
 I would much appreciate any help with spell checking and proofreading.

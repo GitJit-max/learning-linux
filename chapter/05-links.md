@@ -58,7 +58,7 @@ It is possible to have a file referenced by multiple names. The concept of file 
 
 ### Symbolic link by drag and drop
 
-Graphical file managers (such as Nemo) provide an easy and automatic method of creating another type of shortcut. Holding **` Ctrl + Shift `** while dropping a file will create a [symbolic link](#symbolic-and-hard-links), rather than copying or moving the file. In some distributions, a small menu appears whenever a file is dropped; Offering a choice of copying, moving or linking the file. [^shotts-guilink]
+Graphical file managers (such as Nemo) provide an easy and automatic method of creating another type of shortcut. Holding **` Ctrl + Shift `** while dropping a file will create a [symbolic link](#symbolic-and-hard-links), rather than copying or moving the file. In some distributions, a small menu appears whenever a file is dropped; offering a choice of copying, moving or linking the file. [^shotts-guilink]
 
 > In addition, there are so-called [hard links](#symbolic-and-hard-links). It is important to be aware of hard links, because you might encounter them from time to time, even though modern practice prefers symbolic links. [^shotts-hard]
 
@@ -79,13 +79,13 @@ Symbolic links were created to overcome the two disadvantages of hard links: [^s
 
 A **hard link** is a reference to the inode number of a file on physical storage. Hard links must be on the same physical partition as the contents of the file itself, because the inode number is unambiguous only within the file system. A file will always have at least one hardlink because the file's name is created by a hardlink. The ` $ ls ` command has a way to reveal this information when invoked with the ` -i ` option. [^shotts-hard]
 
-The ` $ rm ` command deletes files, including a hard links. However, data is still accessible as long as another hard link exists. As there can be several hard links to the same file, the space occupied by the file on the disk is not released until all the hard links to it have been removed. When one of several hard links is deleted, only the link is removed; Even if you delete the original file, which is a hardlink itself. The contents of the file itself continue to exist (its space is not deallocated) until all links to the file are deleted. To get rid of data you must remove all hard links. A remove command applied to a hard link also deletes the contents of the file when deleting the last hard link. [^shotts-hard]
+The ` $ rm ` command deletes files, including a hard links. However, data is still accessible as long as another hard link exists. As there can be several hard links to the same file, the space occupied by the file on the disk is not released until all the hard links to it have been removed. When one of several hard links is deleted, only the link is removed; even if you delete the original file, which is a hardlink itself. The contents of the file itself continue to exist (its space is not deallocated) until all links to the file are deleted. To get rid of data you must remove all hard links. A remove command applied to a hard link also deletes the contents of the file when deleting the last hard link. [^shotts-hard]
 
 When we list a directory containing a hard link we will see no special indication of the link, unless we know what we are looking for (see [Section: Identifying a hard link is difficult](#identifying-a-hard-link-is-difficult)).
 
 ### Symbolic link
     
-A **symbolic link** can point to any file, including different file systems and destinations that do not exist; This happens also if the destination of a symbolic link is deleted.
+A **symbolic link** can point to any file, including different file systems and destinations that do not exist; this happens also if the destination of a symbolic link is deleted.
 - The remove command ` $ rm ` applied to a symbolic link, or ` Delete ` in a graphical file manager, only removes the symbolic link, never the target file to which the link refers.
 - In most other file processing operations, the links are "decompressed" so that the paths through them work normally. <!--One thing to remember about symbolic links is that -->Most file operations are carried out on the link's target, not the link itself. For example, if we write something to the symbolic link, the referenced file is written to. [^shotts-syml]
 - Symbolic links contain a text pointer to the target file or directory. However, a symlink file cannot be opened in a text editor. Opening a symlink always opens the target file. Reading the destination from a symlink file requires a special system call such as ` $ readlink <file>↵ `.
@@ -106,7 +106,7 @@ $ ln /path/to/existing_file /path/to/new_hardlink↵
 $ ln -sf /path/to/existing_file /path/to/symlink↵
 ```
 
-Graphical file managers (such as Nemo) provide an easy method for creating symbolic links: Holding **` Ctrl + Shift `** while dropping a file will create a symlink, rather than copying or moving the file. In some distributions, a small menu appears whenever a file is dropped; Offering a choice of copying, moving or linking the file.
+Graphical file managers (such as Nemo) provide an easy method for creating symbolic links: Holding **` Ctrl + Shift `** while dropping a file will create a symlink, rather than copying or moving the file. In some distributions, a small menu appears whenever a file is dropped; offering a choice of copying, moving or linking the file.
 
 ### Identifying symbolic links is easy
 

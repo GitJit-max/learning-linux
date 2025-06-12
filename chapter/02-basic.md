@@ -36,7 +36,7 @@ If the CLI facilities of an operating system are weak or nonexistent, you'll als
 - Remote system administration will be sparsely supported, more difficult to use, and more network-intensive.
 - Background processes (i.e. servers and daemons) will probably be difficult to program in any graceful way.
 - Even simple noninteractive programs will incur the overhead of a GUI.
-- Programs will not be designed to cooperate with each other in unexpected ways (see remark below), because they can't be; Outputs aren't usable as inputs.
+- Programs will not be designed to cooperate with each other in unexpected ways (see remark below), because they can't be; outputs aren't usable as inputs.
 
 > [!NOTE]
 > Unix was always agnostic about its intended audience and designers. They expect the output of every program to become the input to another, as yet unknown, program. The implementers never assumed they knew all the potential uses the system could and would be put to. [^raymond-around]
@@ -96,7 +96,7 @@ The shell program implements the command language interface when it communicates
 <!-- The analogy is with a nut: outside is the shell, inside is the kernel. -->
 
 <!--
-A **shell** is first and foremost a **command language interpreter** i.e. **command processor**. A command language interpreter executes commands read from a) a command line string, b) the standard input, or c) a specified file. The shell is implementing a *command language interface*, when it communicates with the OS's kernel through user input commands. A specific shell (such as bash) always refers to the interpreter, but often also to the language that it interprets; As many shells such as bash are also an **interpreted language**.
+A **shell** is first and foremost a **command language interpreter** i.e. **command processor**. A command language interpreter executes commands read from a) a command line string, b) the standard input, or c) a specified file. The shell is implementing a *command language interface*, when it communicates with the OS's kernel through user input commands. A specific shell (such as bash) always refers to the interpreter, but often also to the language that it interprets; as many shells such as bash are also an **interpreted language**.
 
 When you sign in at the command line or launch a terminal window on GNU/Linux, the system launches a shell program. The shell programs are also used in the background by various system services. GNU/Linux distributions include many functions written as shell scripts. These scripts are commands and other advanced functions that run through a shell environment.
 -->
@@ -365,7 +365,7 @@ All applications are not stored at the same location, as each directory serves a
 >  In the old days critical system binaries, or simply default minimal required binaries, would have been in ` /bin/ ` and ` /sbin/ `. Other non critical, additional binaries resided elsewhere such as under ` /usr/ `. That way ` /usr/ ` could reside on something that isn't available right at boot such as a network drive. If you wanted to do this on a modern system, it would end up being a huge hassle because modern distributions no longer properly separate ` /sbin/ ` and ` /bin/ ` from their equivalents under ` /usr/ `.
 
 > [!NOTE] 
-> Here **binary** refers to an executable; A type of binary file (i.e. file composed of something other than human-readable text) that contains machine code for the computer to execute.
+> Here **binary** refers to an executable; a type of binary file (i.e. file composed of something other than human-readable text) that contains machine code for the computer to execute.
 
 #### System binaries
 
@@ -508,20 +508,6 @@ Applications must generally not add directories to the top level of ` /var/ `. I
 
 [^fhs-cache]: [Filesystem Hierarchy Standard - Application cache data](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#varcacheApplicationCacheData)
 
-### RAM disk 
-
-All modern GNU/Linux distributions offer some of the volatile random-access memory as a RAM disk, mounted onto **` /dev/shm/ `** (shared memory). It takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^ramdisk]
-- It can be used just like normal disk space; Creating and manipulating files and directories, but with better performance compared to being stored on hard disk.
-- It is an efficient means of sharing and passing data between programs. One program will create a memory portion, which other processes can access. Hence the name shared memory.
-- A sophisticated image viewer could use it for temporary storage location of files extracted from zip archives to prevent unnecessary wear of the user's internal storage drive.
-- Because the data resides in RAM, it will be cleared in the event of power loss, whether intentional (computer reboot or shutdown) or accidental (power failure or system crash). [^wikiram]
-
-[^ramdisk]: [Riccardo - RAM Disk on Linux, published 2011](https://linuxaria.com/pills/ram-disk-on-linux)
-
-[^wikiram]: [Wikipedia - RAM drive, accessed 2024](https://en.wikipedia.org/wiki/RAM_drive)
-
-> The virtual filesystem types udev and tmpfs, don't take up disk space or occupy more RAM than used. Size and how much is available is just upper limit as to how much RAM it may use. [^ramdisk]
-
 ### Removable media mount points
 
 **Mounting** is a process by which a computer's operating system makes files and directories on a storage device available. Mounting is a prerequisite for displaying the contents of the file system. If the partition of an internal-storage-drive or optical-drive is not mounted, it will only appear as a device file under ` /dev/ `. Playing a DVD movie or writing to a blank DVD does not require mounting, but mounting is required if the contents of the disc are to be handled by the file manager. [^wiki-mount] [^fi-mount]
@@ -549,8 +535,6 @@ All modern GNU/Linux distributions offer some of the volatile random-access memo
 [^fhs-sys]: [Filesystem Hierarchy Standard: Kernel and system information virtual filesystem](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#sysKernelAndSystemInformation)
 
 [^fhs-dev]: [Filesystem Hierarchy Standard: Device files](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#devDeviceFiles)
-
-All modern GNU/Linux distributions offer some of the volatile random-access memory as a RAM disk, mounted onto **` /dev/shm/ `** (shared memory). It takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage.
 
 <a id="device-files"></a>
 
@@ -586,6 +570,20 @@ The ` /dev/ ` directory does not just contain "files" that represent physical de
 [^fhs-special]: [Filesystem Hierarchy Standard: Devices and special files](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.html#devDevicesAndSpecialFiles)
 
 [^man-ran]: [Michael Kerrisk - Linux manual page, accessed 2024](https://www.man7.org/linux/man-pages/man7/random.7.html)
+
+### RAM disk 
+
+All modern GNU/Linux distributions offer some of the volatile random-access memory as a RAM disk, mounted onto **` /dev/shm/ `** (shared memory). It takes on the appearance of a mounted file system to allow it to be more accessible and easier to manage. [^ramdisk]
+- It can be used just like normal disk space; creating and manipulating files and directories, but with better performance compared to being stored on hard disk.
+- It is an efficient means of sharing and passing data between programs. One program will create a memory portion, which other processes can access. Hence the name shared memory.
+- A sophisticated image viewer could use it for temporary storage location of files extracted from zip archives to prevent unnecessary wear of the user's internal storage drive.
+- Because the data resides in RAM, it will be cleared in the event of power loss, whether intentional (computer reboot or shutdown) or accidental (power failure or system crash). [^wikiram]
+
+[^ramdisk]: [Riccardo - RAM Disk on Linux, published 2011](https://linuxaria.com/pills/ram-disk-on-linux)
+
+[^wikiram]: [Wikipedia - RAM drive, accessed 2024](https://en.wikipedia.org/wiki/RAM_drive)
+
+> The virtual filesystem types udev and tmpfs, don't take up disk space or occupy more RAM than used. Size and how much is available is just upper limit as to how much RAM it may use. [^ramdisk]
 
 ### Everything is a file 
 
@@ -921,7 +919,7 @@ XML (extensible markup language) can be a simplifying or a complicating choice: 
 - The most serious problem with XML is that it doesn't play well with traditional unix tools. Software that wants to read an XML format needs an XML parser. This means bulky, complicated programs. [^raymond-xml]
 
 One application area in which XML is clearly winning is in markup formats for document files. [^raymond-xml]
-- Compressed XML (such as \*.docx ja \*.odt) combines space economy with some of the advantages of a textual format. Notably, it avoids many problems that come with binary formats. [^raymond-xml]
+- Compressed XML (such as \*.docx and \*.odt) combines space economy with some of the advantages of a textual format. Notably, it avoids many problems that come with binary formats. [^raymond-xml]
 
 <a id="binary-formats"></a>
 

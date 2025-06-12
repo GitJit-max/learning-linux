@@ -53,8 +53,11 @@ Three different ways to open a desktop app (such as ` $ gedit `) from a terminal
         - ` $ fg %1↵ ` reinstates the program to foreground.
         - ` $ bg %1↵ ` restores execution to background.
 
+> [!IMPORTANT]
+> In your case **` %1 `** may be incorrect. So be sure to double check the correct job number with ` $ jobs↵ `.
+        
 > [!TIP]
-> Moving a process from the foreground to the background is handy, if you launch a graphical program from the command line, but forget to place it in the background by appending the trailing ampersand `  & `.
+> Moving a process from the foreground to the background is handy, if you launch a graphical program from the command line, but forget to place it in the background by appending the trailing ampersand **` ␣& `**.
 
 <a id="program-hangs-up"></a>
 
@@ -124,7 +127,7 @@ The fields are:
     
 ### Process priority
 
-Linux can run a lot of processes at a time, which can slow down the speed of some high priority processes and result in poor performance. To avoid this, you can tell your machine to prioritize processes as per your requirements. This priority is called **niceness** in Linux, and it has a value between -20 to 19. The lower the Niceness index, the higher the priority. The default value of all the processes is 0.
+Linux can run a lot of processes at a time, which can slow down the speed of some high priority processes and result in poor performance. To avoid this, you can tell your machine to prioritize processes as per your requirements. This priority is called **niceness** in Linux, and it has a value between -20 to 19. The lower the niceness value, the higher the priority. The default value of all the processes is 0.
 - To start a process with a niceness value other than the default value use: ` $ nice -n <nice value> process name↵ `
 - If there is some process already running on the system, then you can re-nice: ` $ renice <nice value> -p <PID>↵ `
 

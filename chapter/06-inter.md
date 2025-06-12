@@ -26,7 +26,7 @@ Unix has always provided several ways for processes to communicate relatively ea
 
 ### Numeric exit status
 
-The simplest of all design patterns is having no input and no output; Just a **numeric exit status** (see [Section: Exit status and comparison](#exit-status-and-comparison)). Good examples for use of such mechanic are commands ` $ test `, ` $ rm ` and ` $ touch `
+The simplest of all design patterns is having no input and no output; just a **numeric exit status** (see [Section: Exit status and comparison](#exit-status-and-comparison)). Good examples for use of such mechanic are commands ` $ test `, ` $ rm ` and ` $ touch `
 - ` $ test -r <file>↵ ` = Does the file exist and is it readable?
 - ` $ test -w <file>↵ ` = Does the file exist and is it writable?
 - ` $ test -u <file>↵ ` = Does the file exist and is the setuid bit set?
@@ -44,7 +44,7 @@ The simplest of all design patterns is having no input and no output; Just a **n
 
 ### Text through standard streams
 
-Simple **textual information** can be passed through **standard streams**. Most shell programs have two I/O data streams available to it: standard input and standard output (see [Section: File descriptor](#file-descriptor)). They allow the combined use of commands. One command is executed first, and its output is passed to the next command as input. There is also a separate channel for errors: the standard error.
+Simple **textual information** can be passed through **standard streams**. They allow the combined use of commands by first executing one command and then passing the output to the next command as input. See [Section: Standard streams](#standard-streams).
 
 ### Handing off tasks to specialist programs 
 
@@ -70,7 +70,7 @@ A technique often used with signal IPC is the so-called pidfile. Programs that w
 
 ### Standard streams
 
-Traditional ability of unix programs to communicate and exchange information relies on passing through simple textual information via **standard streams**. Every program has initially available to it (at least) two I/O data streams called standard **input** and standard **output**. They allow the combined use of commands by first executing one command and then passing the output to the next command as input. There is also a separate channel for errors: the standard **error**. <!--Most shell programs have two I/O data streams available to it: standard input and standard output. -->
+Traditional ability of unix programs to communicate and exchange information relies on passing through simple textual information via **standard streams**. Every program has initially available to it (at least) two I/O data streams called standard **input** and standard **output**. They allow the combined use of commands by first executing one command and then passing the output to the next command as input. There is also a separate channel for exceptions called the standard **error**. <!--Most shell programs have two I/O data streams available to it: standard input and standard output. -->
 
 ### Interface patterns based on standard streams 
 
@@ -159,7 +159,7 @@ $ diff -y <(ls -la ~/MyProject/) <(ls -la ~/MyBackup/)↵
 
 #### Pipelines
 
-The the vertical bar **pipe operator** **`  |  `** redirects the standard output of one command into the standard input of another. Piping is analogous to water pipes.
+The vertical bar **pipe operator** **`  |  `** redirects the standard output of one command into the standard input of another. Piping is analogous to water pipes.
 
 Let's approach the topic with an example: ` $ ls -l /usr/bin | less↵ `, where the output of the list command ` $ ls ` is passed to a browser called ` $ less `. Now try up and down arrow keys to scroll through the content. Finally press press ` q ` to quit ` $ less `.
 
@@ -308,12 +308,10 @@ $ _         # You can continue typing here straight away
 
 ### GNU Grep
 
-
 [GNU Grep](https://www.gnu.org/software/grep/) is a command-line tool `$ grep ` that filters standard input (or text file contents) with a regular expression. The expression can be a simple string or a very complex pattern.
 
-
 > [!NOTE]
-> GREP stands for global regular expression print. **Regular expression** (also referred to as regex or regexp) is a notation for creating search, extraction, match and substitution patterns for text. Regex functionality is supported in many programming languages, but also present in some software applications and commandline utilities; Especially with unix text-processing utilities.
+> GREP stands for global regular expression print. **Regular expression** (also referred to as regex or regexp) is a notation for creating search, extraction, match and substitution patterns for text. Regex functionality is supported in many programming languages, but also present in some software applications and commandline utilities; especially with unix text-processing utilities.
 
 GNU Grep supports three regular expression syntaxes: basic, extended and Perl-compatible. Especially when writing multi-system expressions, care must be taken as to which constructs are newer extensions. To interpret an expression as an extended regular expression, use the ` -E ` or ` -P ` command-line options. When writing expressions, care must also be taken as to whether the line break is treated as a regular character, only whether the input is treated line by line like GNU Grep.
 
@@ -369,9 +367,9 @@ The shell provides two extremely simple builtin commands that do nothing except 
 1. The **` $ true↵ `** command always executes successfully: ` $? ` = 0.
 2. The **` $ false↵ `** command always executes unsuccessfully: ` $? ` = 1
 
-There is also an **` $ exit #↵ `** command which accepts a single, optional argument, which becomes the script’s exit status. When no argument is passed, the exit status defaults to the exit status of the last command executed. Using ` $ exit ` command in this way allows a script to indicate failure. The exit command appearing on the last line of the script is a formality though, because when a script runs off the end (i.e. reaches end of file), it terminates with an exit status of the last command executed.
+There is also an **` exit # `** command which accepts a single, optional argument, which becomes the script’s exit status. When no argument is passed, the exit status defaults to the exit status of the last command executed. Using exit in this way allows a script to indicate failure. The exit command appearing on the last line of the script is a formality though, because when a script runs off the end (i.e. reaches end of file), it terminates with an exit status of the last command executed.
 
-Similarly internal functions in shell scripts can return an exit value by including an integer as a parameter to the command **` $ return #↵ `**, which points to the return value of the variable ` $? ` and terminates the function (see [Linuxize.com - Bash Functions: Return Values](https://linuxize.com/post/bash-functions/#return-values)). [^bash-manual-funk]
+Similarly internal functions in shell scripts can return an exit value by including an integer as a parameter to the command **` return # `**, which points to the return value of the variable ` $? ` and terminates the function (see [Linuxize.com - Bash Functions: Return Values](https://linuxize.com/post/bash-functions/#return-values)). [^bash-manual-funk]
 
 [^bash-manual-funk]: [GNU Bash Manual - Shell Functions, accessed 2025](https://www.gnu.org/software/bash/manual/html_node/Shell-Functions.html)
 

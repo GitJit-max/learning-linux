@@ -13,7 +13,7 @@
 
 # Chapter 8 - Text editors
 
-A **text editor** is a simple computer program that allows users to create, change, or edit plain text files. Traditionally text editors were used for creating computer programs, web pages, etc. Today text editors are most commonly used for things like editing configuration files, simple note taking, analyzing log files, middleware for stripping formatting from copy-pasted text and making some quick find and replace operations; Not so much for programming or creating documents, as it was in the past.
+A **text editor** is a simple computer program that allows users to create, change, or edit plain text files. Traditionally text editors were used for creating computer programs, web pages, etc. Today text editors are most commonly used for things like editing configuration files, simple note taking, analyzing log files, middleware for stripping formatting from copy-pasted text and making some quick find and replace operations; not so much for programming or creating documents, as it was in the past.
 
 Traditional [terminal-based text editors](#terminal-based-text-editors) can be categorized in [line oriented](#line-editorsss) and [screen oriented](#screen-editors) text editors. Screen oriented editors, feature the ability to modify any visible text on the screen by moving the cursor to its location. For most purposes, line oriented editors were superseded by screen oriented editors, because line editors were relics from the days of teletypes, when terminals used to print, on paper, very slowly.
 
@@ -63,7 +63,7 @@ $ sed '4d' input.txt > output.txt↵     # Delete 4th line in file
 ```
 
 > [!NOTE]
-> Back in the early years of Unix, ed was used to create, display, modify and otherwise manipulate text files, both interactively and via shell scripts. Then ed became primarily a program-driven editing tool for scripts; A role to which editors with more elaborate modes of interactivity were and still are unsuited. For this reason most unices, still even today, include an implementation of ` $ ed ` and ` $ sed `. [^raymond-ed]
+> Back in the early years of Unix, ed was used to create, display, modify and otherwise manipulate text files, both interactively and via shell scripts. Then ed became primarily a program-driven editing tool for scripts; a role to which editors with more elaborate modes of interactivity were and still are unsuited. For this reason most unices, still even today, include an implementation of ` $ ed ` and ` $ sed `. [^raymond-ed]
 
 <a id="screen-editors"></a>
 
@@ -94,8 +94,8 @@ Any other instruction to use vi(m) is beyond the scope of this book. But those i
 > In 1976 Richard Stallman, Guy Steele, and Dave Moon, while at MIT, release EMACS. [^raymond-emacs]
 
 [**GNU Emacs**](https://www.gnu.org/software/emacs/) stands for Editing MACroS. It was originally written in the late 1970's as a set of macros in an editor called TECO, then reimplemented several times in different ways. Objectives of the Emacs design are far more broad than most other text editors. Emacs wants to be a unified interface to all tools that operate on text. Emacs can give you capabilities resembling those of a conventional integrated development environment and beyond. You're not limited by the imagination of the IDE designer. You can tweak, customize, and add task-related intelligence using Emacs Lisp. [^raymond-emacs]
-- Emacs is a big, feature-laden program with a great deal of customizability. Emacs has an entire programming language (Lisp) inside it that can be used to write arbitrarily powerful editor functions. [^raymond-emacs]
-- Emacs could be considered a virtual machine or framework around a collection of small, sharp tools (the modes) that happen to be written in Lisp. But one doesn't have to learn Lisp to use Emacs. [^raymond-emacs]
+- Emacs is a big, feature-laden program with a great deal of customizability. Emacs has an entire programming language (Elisp) inside it that can be used to write arbitrarily powerful editor functions. [^raymond-emacs]
+- Emacs could be considered a virtual machine or framework around a collection of small, sharp tools (the modes) that happen to be written in Elisp. But one doesn't have to learn Elisp to use Emacs. [^raymond-emacs]
 - Unlike Vi, Emacs doesn't have interface modes; Instead, commands are normally control characters or prefixed with an ` Esc ` i.e. ` ^[ `. [^raymond-emacs]
 - Emacs is correspondingly harder to learn than vi(m). Learning how to customize Emacs is an entire art in itself. [^raymond-emacs]
 

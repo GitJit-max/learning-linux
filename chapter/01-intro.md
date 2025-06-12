@@ -19,7 +19,7 @@ Knowing about the past helps understand how things are today. So let's start by 
 
 ## 1.1 Branching
 
-In 1983 an American programmer and human rights activist Richard Stallman launched the [Free Software movement](https://www.fsf.org), with a plan to develop a complete free operating system named GNU. It was not designed from scratch. It was a free clone of an existing but proprietary operating system called Unix. GNU has the same commands and system calls as a Unix, and all parts of GNU were made compatible with yhe original Unix variants. People who used the an original Unix could switch over with ease.
+In 1983 an American programmer and human rights activist Richard Stallman launched the [Free Software movement](https://www.fsf.org), with a plan to develop a complete free operating system named GNU. It was not designed from scratch. It was a free clone of an existing but proprietary operating system called Unix. GNU has the same commands and system calls as a Unix, and all parts of GNU were made compatible with the original Unix variants. People who used an original Unix could switch over with ease.
 
 > The name **GNU** came from a tradition of the time. If there was an existing program, and you wrote something similar to it, inspired by it, you could give credit by giving your program a name saying it is not the other one (i.e. a recursive acronym). So Stallman gave credit to Unix for the technical ideas with the name GNU, a recursive acronym for *GNU is Not Unix*.
 
@@ -50,7 +50,7 @@ People <!--from outside the GNU/Linux world (especially non-technical people)-->
 
 It is true that open source can not promise better quality, higher reliability, more flexibility. Free software is not always as convenient, as its proprietary competitors. Free software is sometimes low quality, unreliable, inflexible. Developers of proprietary software are not incompetent. Sometimes they produce a program that is powerful and reliable, even though it does not respect the users' freedom. For free software advocates, glitches and missing features are never a source of shame. Any piece of free software that respects users' freedom has a strong inherent advantage over a proprietary competitor that does not. Even if it has other issues, free software always has freedom. [^notsuper]
 
-However in general, open-source software is written by people who care about it, need it, use it themselves, and are putting their individual reputations among their peers on the line by publishing it. They also tend to have less of their time consumed by meetings, retroactive design changes, and bureaucratic overhead. They can therefore be both more motivated and well positioned to do excellent work; Sometimes even more so than wage slaves toiling Dilbert-like to meet impossible deadlines in the cubicles of proprietary software houses. Open-source packages may lack polish and have documentation that assumes much, but the vital parts will usually work quite well. Many mature open-source packages are of high quality, and even functionally superior to proprietary equivalent. In the open-source world developers are never forced (by a deadline) to close their eyes, hold their noses, and ship. [^raymond-best] 
+However in general, open-source software is written by people who care about it, need it, use it themselves, and are putting their individual reputations among their peers on the line by publishing it. They also tend to have less of their time consumed by meetings, retroactive design changes, and bureaucratic overhead. They can therefore be both more motivated and well positioned to do excellent work; sometimes even more so than wage slaves toiling Dilbert-like to meet impossible deadlines in the cubicles of proprietary software houses. Open-source packages may lack polish and have documentation that assumes much, but the vital parts will usually work quite well. Many mature open-source packages are of high quality, and even functionally superior to proprietary equivalent. In the open-source world developers are never forced (by a deadline) to close their eyes, hold their noses, and ship. [^raymond-best] 
 
 [^notsuper]: [Benjamin Mako Hill - Free Software Isn't Practically Superior, updated 2011](https://www.gnu.org/philosophy/when-free-software-isnt-practically-superior.html)
 
@@ -64,7 +64,7 @@ The technique of open-source development evolved as an unconscious folk practice
 
 [^breakup]: [Wikipedia - Breakup of the Bell System, accessed 2021](https://en.wikipedia.org/wiki/Breakup_of_the_Bell_System)
 
-After the breakup of Bell System mandated by the United States Department of Justice in 1982, AT&T promptly rushed to commercialize Unix System V; A move that nearly killed Unix. Most Unix boosters thought that the divestiture (taking money away from where you have invested it) was great news. What none realized at the time was that the productization of Unix would destroy the free exchanges of source code that had nurtured so much of the system's early vitality. Knowing no other model than secrecy for collecting profits from software and no other model than centralized control for developing a commercial product, AT&T clamped down hard on source-code distribution. Bootleg Unix tapes became far less interesting in the knowledge that the threat of lawsuit might come with them. Contributions from universities began to dry up. No individual could afford Unix, not with the \$40,000 price-tag on a source-code license. To make matters worse, the big new players in the Unix market promptly committed major strategic blunders. One was to seek advantage by product differentiation; A tactic which resulted in the interfaces of different Unixes diverging. This threw away cross-platform compatibility and fragmented the Unix market. AT&T, fixated on minicomputers and mainframes, tried several different strategies to become a major player in computers, and badly botched all of them. A dozen small companies formed to support Unix on PCs. All were underfunded, focused on selling to developers and engineers, and never aimed at the business and home market that Microsoft was targeting. [^raymond-wars]
+After the breakup of Bell System mandated by the United States Department of Justice in 1982, AT&T promptly rushed to commercialize Unix System V; a move that nearly killed Unix. Most Unix boosters thought that the divestiture (taking money away from where you have invested it) was great news. What none realized at the time was that the productization of Unix would destroy the free exchanges of source code that had nurtured so much of the system's early vitality. Knowing no other model than secrecy for collecting profits from software and no other model than centralized control for developing a commercial product, AT&T clamped down hard on source-code distribution. Bootleg Unix tapes became far less interesting in the knowledge that the threat of lawsuit might come with them. Contributions from universities began to dry up. No individual could afford Unix, not with the \$40,000 price-tag on a source-code license. To make matters worse, the big new players in the Unix market promptly committed major strategic blunders. One was to seek advantage by product differentiation; A tactic which resulted in the interfaces of different Unixes diverging. This threw away cross-platform compatibility and fragmented the Unix market. AT&T, fixated on minicomputers and mainframes, tried several different strategies to become a major player in computers, and badly botched all of them. A dozen small companies formed to support Unix on PCs. All were underfunded, focused on selling to developers and engineers, and never aimed at the business and home market that Microsoft was targeting. [^raymond-wars]
 
 > [!IMPORTANT]
 > To sum up: Unix flourished when its practices most closely approximated open source, and stagnated when they did not. Fortunately the old-time unix culture has largely reinvented itself in the open-source movement. [^raymond-new]
@@ -170,7 +170,7 @@ Early versions of Linux had been released under a license written by Torvalds hi
 
 ## 1.8 Linux distros aren’t just the kernel
 
-The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more. [^8pieces]
+The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd-boot or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more. [^8pieces]
 
 [^8pieces]: [Chris Hoffman - 8 Pieces That Make Up Linux Systems, published 2013](https://www.howtogeek.com/177213/linux-isnt-just-linux-8-pieces-of-software-that-make-up-linux-systems/)
 
@@ -205,8 +205,11 @@ The shell provides some basic [built-in commands](03-basic-terminal.md#shell-bui
 
 The graphical system is run by a **graphical server** (typically X.Org, Mutter, KWin), which interfaces with your video card, monitor, mouse, and other devices. The graphical server does not provide the full desktop environment, just a graphical system that desktop environments and toolkits can build on top of.
 
-> [!NOTE]
-> **Wayland** and **X11** are display server protocol standards. **Weston** is an reference server compositor that implements Wayland, but various desktop environments, such as GNOME (Mutter) and KDE (KWin) Plasma, have their own Wayland-based compositors instead of using Weston. **X.Org** is the most widely used server compositor that implements X11, but there have been other implementations over time such as TinyX for embedded systems.
+> **Wayland** and **X11** are display server protocol standards.
+>
+> **X.Org** is the most widely used server compositor that implements X11. Over time there have been other implementations such as TinyX for embedded systems.
+>
+> **Weston** is an reference server compositor that implements Wayland. However various desktop environments have their own Wayland-based compositors instead of using Weston, such as GNOME has **Mutter**, and KDE Plasma has **KWin**.
 
 ### Widget toolkit
 
@@ -238,7 +241,7 @@ Richard Stallman, the founder of the Free Software Movement:
 
 **Copyleft** says that anyone who redistributes the software, with or without changes, must pass along the freedom to further copy and change it. Copyleft guarantees that every user has freedom. To copyleft a program, one first state that it is copyrighted. Then one adds distribution terms, which are a legal instrument that gives everyone the rights to use, modify, and redistribute the program's code, or any program derived from it, but only if the distribution terms are unchanged. Thus, the code and the freedoms become legally inseparable.
 
-Proprietary software developers use copyright to take away the users' freedom. The Free Software movement use copyright to guarantee freedom. That's why they reversed the name, changing copy*right* into copy*left*. The *left* in copyleft is not a reference to the verb leave; Only to the direction which is the mirror image of right.
+Proprietary software developers use copyright to take away the users' freedom. The Free Software movement use copyright to guarantee freedom. That's why they reversed the name, changing copy*right* into copy*left*. The *left* in copyleft is not a reference to the verb leave; only to the direction which is the mirror image of right.
 
 > [!NOTE]
 > Once software is licensed under the GNU GPL, a commercial operator cannot, for example, buy it to stop the development, to exclude a competitor.
@@ -289,9 +292,9 @@ The Macintosh's unifying idea is so strong that all programs have a graphical us
 
 ## 1.11 The GNU/Linux family
 
-A major effort in creating a GNU/Linux distribution is designing and creating a package management system. Users need a way to install and uninstall software. That requires applications to retrieve files from a software repository, and to install them correctly on the users' computers. This is no small undertaking. Even putting the software engineering aside, hosting the software repository takes time, effort, and expense. That's one of the reasons so many "new" distributions are derivations of an existing distribution. This leads to families or genealogies of distributions. [^apt-or-get]
+The Unix-like operating systems, running a Linux kernel, form a plethora of distributions. There are roughly 300 to 700 different GNU/Linux distributions (depending on the calculation method).
 
-The Unix-like operating systems, running a Linux kernel, form a plethora of distributions. There are 300 to 700 different distributions, depending on the calculation method. An amount argued to be far greater than is desirable. 
+Many distributions are derivations of an existing distribution. This is mainly because the major effort in creating a distribution is designing and creating a package management system, the default way for users to install and uninstall software from a software repository. This is no small undertaking. Even putting the software engineering aside, hosting a software repository takes time, effort, and expense. This leads to families or genealogies of distributions. [^apt-or-get] ![Linux Distributions Timeline](https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg)
 
 [^apt-or-get]: [Dave McKay - Should you use apt or apt-get?, published 2023](https://www.howtogeek.com/791055/apt-vs-apt-get-whats-the-difference-on-linux/)
 
@@ -308,7 +311,8 @@ The major branches of popular established GNU/Linux families are:
 4. Gentoo 1999 (formerly Enoch)
 5. Arch 2002
 
-![Linux Distributions Timeline](https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg)
+> [!NOTE]
+> It doesn't make things any easier for newcomers when there is so much choice. But newcomers can concentrate on a handful of disributions (see [Section: Suggested distributions](#suggested-distributions)).
 
 <a id="the-cost-of-gnu-linux"></a>
 
@@ -324,7 +328,7 @@ Even free distributions can incur costs. In the workplace, GNU/Linux almost alwa
 
 ## 1.13 Popularity of GNU/Linux desktop 
 
-Unix has it's architectural strengths of a server operating system (see [Section: Time-sharing](#time-sharing)), but has proved capable of reinventing itself as a desktop client; One could argue that perhaps even more so than any of its client-operating-system competitors (such as Windows) have been of reinventing themselves as servers. [^mckay]
+Unix has it's architectural strengths of a server operating system (see [Section: Time-sharing](#time-sharing)), but has proved capable of reinventing itself as a desktop client; one could argue that perhaps even more so than any of its client-operating-system competitors (such as Windows) have been of reinventing themselves as servers. [^mckay]
 
 [^mckay]: [Dave McKay - Why Desktop Linux Still Matters, published 2020](https://www.howtogeek.com/676963/why-desktop-linux-still-matters/)
 

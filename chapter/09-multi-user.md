@@ -99,7 +99,7 @@ Calling the uid 0 account on any unix system root is a very strongly held conven
 
 #### Modern systems have no root password 
 
-Modern GNU/Linux distributions do not have a root password set (by default). Modern systems use the [sudo program](https://www.sudo.ws/about/intro/) to allow (regular) users to run commands as root (see [Section: Sudo program](#sudo-program)). And when the sudo program asks for password authentication, every one supply their own password. After authentication, the system will invoke the requested command as root. Thus no specific root password is needed, which would have to be shared by many users; And thus pose a security risk.
+Modern GNU/Linux distributions do not have a root password set (by default). Modern systems use the [sudo program](https://www.sudo.ws/about/intro/) to allow (regular) users to run commands as root (see [Section: Sudo program](#sudo-program)). And when the sudo program asks for password authentication, every one supply their own password. After authentication, the system will invoke the requested command as root. Thus no specific root password is needed, which would have to be shared by many users; and thus pose a security risk.
 
 ### Change user-identity
 
@@ -111,12 +111,10 @@ The command **` $ su `** stands for Switch User.
 - ` $ exit↵ ` = Log out of another user's account.
 
 > [!IMPORTANT]
-> The right to login as another or the root user comes from the rights granted in the ` /etc/sudoers ` file or a configuration file under ` /etc/sudoers.d/ ` directory (see [Section: Editing sudo configuration](#editing-sudo-configuration)). When using ` $ sudo `, no specific root password is asked for; Instead every user use their own password.
+> The right to login as another or the root user comes from the rights granted in the ` /etc/sudoers ` file or a configuration file under ` /etc/sudoers.d/ ` directory (see [Section: Editing sudo configuration](#editing-sudo-configuration)). When using ` $ sudo `, no specific root password is asked for; instead every user use their own password.
 
 > [!NOTE]
 > By running the ` $ sudo su↵ ` command once will switch the shell to continuous root access. This removes the need to type in ` $ sudo ` repeatedly before commands. Only the ` # exit↵ ` command logs you out of root mode. This may be convenient, but may also increase the risk of causing accidental damage in certain situations.
-> 
-> To reduce temptation, sudo comes with a ticketing system. Sudo allows a user to run privileged commands for a period of time without the need to repeatedly authenticate. When a user invokes sudo and enters their password, they are granted a ticket for 5 minutes. Each subsequent sudo command updates the ticket for another 5 minutes.
 
 <!-- https://sysadminsage.com/linux-list-of-groups/
 ### Change group-identity = $ newgrp
@@ -143,11 +141,11 @@ $ getent group↵     # View all groups on the system
 The regular user does not have write access to a file system other than their own home directory. Maintenance operations, such as updating programs, are performed with the root account via the command ` $ sudo ... ` or ` $ sudo su root↵ `. Such a system is good for data security, as it reduces the possibility of unitended damage and makes misuse more difficult.
 
 > [!NOTE]
-> Name of the progman: **sudo** stands for *super user do* and originates from the verb *to supervise*, i.e. to be in charge of somebody or something and make sure that everything is done correctly, safely, etc.
+> Name of the program: **sudo** stands for *super user do* and originates from the verb *to supervise*, i.e. to be in charge of somebody or something and make sure that everything is done correctly, safely, etc.
 
 #### A better way to grant elevated rights 
 
-In the early 1980's the standard way of executing commands as a superuser was using the ` $ su root↵ ` command, which enables the user to switch to a superuser mode (username root). While this did the trick, it opened a lot of opportunities for human error; It was just too easy to forget you’re in root mode and end up causing inadvertent damage to the system. [^sudo-hist]
+In the early 1980's the standard way of executing commands as a superuser was using the ` $ su root↵ ` command, which enables the user to switch to a superuser mode (username root). While this did the trick, it opened a lot of opportunities for human error; it was just too easy to forget you’re in root mode and end up causing inadvertent damage to the system. [^sudo-hist]
 
 Bob Coggeshall and Cliff Spencer thought of a better way working at the SUNY/Buffalo Computer Science at the time. Instead of constantly switching, why not simply create a tool that enables executing individual commands as a superuser, without changing the actual user id in the shell. The ` $ sudo ` command was born an slowly began to make its way into other research groups and was formally open sourced in 1985. Today sudo counts 9944 lines of code (up from 153 lines in the original release) and is maintained by Todd C. Miller. Over 30 years in age, it still continues to receive code contributions and regularly issues new releases. [^sudo-hist]
 
@@ -171,7 +169,7 @@ The **` $ sudo `** program allows an administrator to set up configuration files
 
 #### Sudo ticketing system
 
-Sudo comes with a ticketing system, that allows a user to run privileged commands for a period of time without the need to repeatedly authenticate. When a user invokes sudo and enters their password, sudo caches the credentials for 5 minutes, per user, per terminal session. Each subsequent sudo command updates the ticket for another 5 minutes. This timeout is configurable at compile-time only.
+Sudo comes with a ticketing system, that allows a user to run privileged commands for a period of time without the need to repeatedly authenticate. When a user invokes sudo and enters their password, sudo caches the credentials for 5 minutes, per user, per terminal session. Each subsequent sudo command updates the ticket for another 5 minutes. <!--This timeout is configurable at compile-time only.-->
 
 #### Sudo command history
 
