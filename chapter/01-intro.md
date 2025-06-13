@@ -516,11 +516,16 @@ Linux generally hasn't been as stable as Windows for me. It took a while to get 
 
 Recommending the best GNU/Linux distribution is a highly subjective, a biased view based on a person's personal interpretation and perception. But even within the scope of this book we cannot refrain from listing even some GNU/Linux distributions worth considering, such as:
 - [Solus Budgie](https://getsol.us/) is good for home users migrating from Windows.
-- [Fedora Workstation](https://fedoraproject.org/en/workstation/) is a long standing choice by Linus Torvalds.
-- [Clear Linux](https://clearlinux.org/) by Intel Corporation boasts many performance optimizations.
+- [Fedora Workstation](https://fedoraproject.org/en/workstation/) is a long standing choice by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds).
+- [Trisquel](https://trisquel.info) is a long standing choice by [Richard Matthew Stallman](https://en.wikipedia.org/wiki/Richard_Stallman). [^rms-computing]
 - [Ubuntu LTS](https://ubuntu.com/download/desktop) is used by many educational institutions.
-- [Debian](https://www.debian.org/) and [Red Hat Enterprise Linux](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) are used by many companies.
+- [Debian](https://www.debian.org/) is used by many companies.
+- [Clear Linux](https://clearlinux.org/) by Intel Corporation boasts many performance optimizations.
 - [Tiny Core Linux](http://www.tinycorelinux.net/) is ultra small and designed to run from RAM.
+
+<!--- [Debian](https://www.debian.org/) and [Red Hat Enterprise Linux](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) are used by many companies.-->
+
+[^rms-computing]: [Stallman.org - How I do my computing, accessed 2025](https://www.stallman.org/stallman-computing.html)
 
 > [!IMPORTANT]
 > Some companies and institutions have their own in-house distribution unavailable to outsiders.

@@ -307,9 +307,28 @@ Still even today some users might encounter instances when they cannot use the m
 
 Bash remembers the commands you type, and by default stores them in a history file ` ~/.bash_history ` which persists between sessions.
 
-Old commands can be retrieved for reuse with the arrow keys:
-- The up arrow key ` ▲ ` will scroll through the old commands.
-- The down arrow key ` ▼ ` will return to the newer commands.
+Old commands can be retrieved for reuse
+
+a) With the arrow keys
+    - ` Up arrow ` will scroll through the old commands.
+    - ` Down arrow ` will return to the newer commands.
+b) Through reverse-incremental-search
+    - The feature is activated by pressing ` Ctrl + R `. Once you see the prompt ` (reverse-i-search)': _ ` start typing any part of a previous command, and bash will instantly show the most recent match. You should be able to cycle through alternatives by repeatedly hitting ` Ctrl + R `. Once you find the command you want, press ` Enter ` to run it again, or use ` Left arrow ` or ` Right arrow ` keys to edit it first.
+
+> [!NOTE]
+> Reverse-incremental-search is a feature borrowed from [screen editor Emacs](08-text-editors.md#screen-editor-emacs), where the same terminology is used for searching through text buffers: [^gorg-com] [^gorg-his] [^gorg-inc]
+>
+> **Reverse:** Because it searches backward through your command history; from the most recent command to older ones.
+>
+> **Incremental:** Because the search happens as you type, character by character. Each new keystroke refines the search in real time. Non-incremental search would read the entire search-string before starting to look for matching lines.
+> 
+> **Search:** Because you’re looking for a match in your history.
+
+[^gorg-com]: [Gnu.org - Commands For Manipulating The History, accessed 2025](https://www.gnu.org/software/bash/manual/html_node/Commands-For-History.html)
+
+[^gorg-his]: [Gnu.org - Searching for Commands in the History, accessed 2025](https://www.gnu.org/software/bash/manual/html_node/Searching.html)
+
+[^gorg-inc]: [Gnu.org - Emacs Incremental Search, accessed 2025](https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.html)
 
 <!--- To walk backwards through the commands you've used press ` Up ` arrow key multiple times
 - To walk forwards through the commands you've used press ` Down ` arrow key multiple times-->

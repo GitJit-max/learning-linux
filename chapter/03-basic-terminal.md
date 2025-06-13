@@ -45,7 +45,11 @@ The whole command-line is considered as a space delimited list of **command-line
 - **Single dash ` -? `** is used to specify <ins>one or more</ins> command-line options.
 
 > [!NOTE]
-> A file path as part of a shell command is not a command-line option, but an argument and a parameter.
+> Some command-line options require a value directly following them, often referred to as a **parameter**. These are typically options that configure something specific such as input or output file paths, as shown in the example below; which generates an eBook from markup and cover art:
+>
+> ```
+> $ pandoc input.md -o output.epub --epub-cover-image=cover-page.jpg↵
+> ```
 
 ### Dash as a reference to standard input
 
