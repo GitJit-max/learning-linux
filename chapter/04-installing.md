@@ -371,7 +371,7 @@ Programs compiled from source usually need additional libraries and packages. Th
 
 I have been thoroughly impressed by Gambas. It is a remarkably user-friendly development environment that feels like an enhanced version of Visual Basic 2008, complete with modern features that make it especially comfortable for self-learners. It captures the spirit of classic BASIC while going far beyond it in capability. One of its standout strengths is its refreshingly lightweight debugger; quick to launch, easy to use, and seamlessly integrated into the code editor. This makes it perfect for rapid, iterative development, offering a streamlined experience that emphasizes speed, simplicity, and clarity; qualities that are increasingly rare and welcome today.
 
-### Beginners' programming language
+#### Beginners' language
 
 The BASIC programming language stands for **Beginners' All-purpose Symbolic Instruction Code**. BASIC syntax is clear and English-like, making it approachable and readable. BASIC is excellent for teaching fundamental programming logic. Its commands often resemble plain English, making code more readable and less intimidating, especially for students and self-taught coders. [^wiki-basic]
 
