@@ -60,7 +60,11 @@ However in general, open-source software is written by people who care about it,
 
 The technique of open-source development evolved as an unconscious folk practice in the Unix community for more than a quarter century, many years before it was analyzed and labeled in the late 1990s. The early Unix community was a paradigmatic example of open source in action before the AT&T divestiture in 1983 (see remark below). While the pre-divestiture Unix code was technically and legally proprietary, it was treated as a commons within its user and developer community. Volunteer efforts were self-directed by the people most strongly motivated to solve problems. The Berkeley campus of the University of California emerged early as the single most important academic hot-spot in Unix development. Unix research had begun there in 1974, and was given a substantial impetus when Ken Thompson (the designer of the original Unix operating system at Bell Labs) taught at the University during a 1975-76 sabbatical. The first BSD release had been in 1977 from a lab run by a then-unknown grad student named Bill Joy. By 1980 Berkeley was the hub of a sub-network of universities actively contributing to their variant of Unix. Ideas and code from Berkeley Unix were feeding back from Berkeley to Bell Labs. [^raymond-origins]
 
-> This divestiture was initiated by the filing in 1974 by the United States Department of Justice of an antitrust lawsuit against AT&T. AT&T was, at the time, the sole provider of telephone service throughout most of the United States. Furthermore, most telephonic equipment in the United States was produced by its subsidiary, Western Electric. This vertical integration led AT&T to have almost total control over communication technology in the country, which led to the antitrust case, United States versus AT&T. The plaintiff in the court complaint asked the court to order AT&T to divest ownership of Western Electric. [^breakup]
+<!--The idea of open-source software started in the Unix community long before people gave it a name in the late 1990s. Even though the early Unix code was owned by AT&T, the users and developers shared it freely and worked together like it belonged to everyone. People helped out because they wanted to solve problems, not because they were told to. One of the most active places for this work was the University of California, Berkeley, where Unix research took off in the 1970s. Ken Thompson, who helped create Unix, spent a year teaching there, which helped push things forward. In 1977, a graduate student named Bill Joy released the first version of BSD Unix from a Berkeley lab. By 1980, Berkeley had become a key center where many universities worked together to build and improve their own version of Unix—and their work even made its way back to the original developers at Bell Labs. [^raymond-origins]-->
+
+<!--> This divestiture was initiated by the filing in 1974 by the United States Department of Justice of an antitrust lawsuit against AT&T. AT&T was, at the time, the sole provider of telephone service throughout most of the United States. Furthermore, most telephonic equipment in the United States was produced by its subsidiary, Western Electric. This vertical integration led AT&T to have almost total control over communication technology in the country, which led to the antitrust case, United States versus AT&T. The plaintiff in the court complaint asked the court to order AT&T to divest ownership of Western Electric. [^breakup]-->
+
+> The U.S. government wanted AT&T to give up part of its business because it had too much control over phone services. In 1974, the Department of Justice filed a lawsuit against AT&T. At that time, AT&T was the only company providing phone service in most of the country. It also owned Western Electric, which made most of the phone equipment in the U.S. Because AT&T handled both phone services and equipment, it had too much power in the communications market. The lawsuit asked the court to make AT&T sell Western Electric. [^breakup]
 
 [^breakup]: [Wikipedia - Breakup of the Bell System, accessed 2021](https://en.wikipedia.org/wiki/Breakup_of_the_Bell_System)
 
@@ -166,11 +170,13 @@ The development of Linux began in part with Torvalds' dissatisfaction with the M
 
 Early versions of Linux had been released under a license written by Torvalds himself, which did not allow the kernel to be distributed for money. Thanks to open source, people around the world were able to take part on the development of Linux. The current license is GPL2 and Torvalds has said he opposes the transition to version 3 (due to the usage restrictions it added). Torvalds continues to lead Linux programming and has described his decision to release the Linux kernel under the GPL license as the best thing he has ever done.
 
-<a id="eight-pieces"></a>
+<a id="ensemble"></a>
 
 ## 1.8 Linux distros aren’t just the kernel
 
-The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd-boot or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more. [^8pieces]
+While most people simply call it "Linux", a full Linux distribution includes far more than just the kernel. Behind the scenes, each distro bundles together essential components such as a bootloader (such as systemd-boot or GRUB), a command shell (such as Bash), shell utilities (such as ls, mkdir, echo), background services (called daemons), a graphical server to manage display output (such as X.Org, Mutter, or KWin), a desktop environment (such as Budgie, Gnome, KDE Plasma), a software package management tool (such as apt, rpm, dpkg, yum, pacman, eopkg), and many more. In short, the "Linux" you use is really a well-orchestrated ensemble of software working in harmony. [^8pieces]
+
+<!--The general populace has gravitated to the name Linux and this name has largely stuck. However Linux distributions are not just the Linux kernel. They all contain other critical software such as a bootloader (systemd-boot or grub), a shell (such as bash), shell utilities (such as ls, mkdir, echo), daemons (i.e. background processes), a graphical server (such as x.org, mutter, kwin), a desktop environment (such as budgie, gnome, kde, unity) and more. [^8pieces]-->
 
 [^8pieces]: [Chris Hoffman - 8 Pieces That Make Up Linux Systems, published 2013](https://www.howtogeek.com/177213/linux-isnt-just-linux-8-pieces-of-software-that-make-up-linux-systems/)
 
@@ -223,11 +229,20 @@ In some cases, the desktop environment can be switched each time the user logs o
 
 Desktop environments typically include their own set of **utility programs**, which are built to fit the desktop environment as a whole. For example, GNOME includes the ` $ nautilus ` file manager developed as part of GNOME, KDE Plasma includes the ` $ dolphin ` file manager developed as part of the KDE project, and Linux Mint Cinnamon includes the ` $ nemo ` file manager developed as part of Linux Mint. Many of these applications have a good reputation and can be used in other desktop environments.
 
+### System installer
+
+The **system installer** that walks through installing the system in a clear and guided way.
+
+### Package manager
+
+The **package manager** (such as apt, rpm, dpkg, yum, pacman, eopkg) helps you install, remove, and update software. Instead of manually downloading apps, it connects to trusted sources online to manage a majority of the software on your GNU/Linux system, with little effort. See [Chapter 4, Section: Package management](04-installing.md#package-management)
+
 ### Additional applications
 
-Not all desktop applications are part of a desktop environment. For example, Firefox and Libreoffice are just **software applications** that can be used on top of any desktop environment.
+While some software is tightly integrated into the system and desktop environment, many applications stand on their own and work across any setup. Programs like Firefox and LibreOffice, for instance, are just **software applications**, and can be used on top of any desktop environment.
 
-GNU/Linux distributions take all this software, combine it to work well together, and add their own necessary utilities such as **system installers** so you can actually install the operating system, as well as **package managers** for installing additional software and keeping your installed software updated (see [Chapter 4, Section: Package management](04-installing.md#package-management)). [^8pieces]
+> [!NOTE]
+> GNU/Linux distributions bring together all these independent software components, ensuring they function smoothly as a whole.
 
 <a id="gnu-gpl"></a>
 
@@ -266,7 +281,7 @@ While the software used in a GNU/Linux distribution may be run on genuine certif
 
 **Android®** is a trademark of Google LLC.
 
-Google's Android operating system is based on the Linux kernel, for smartphones and tablets, but it is not Unix-like. Linux makes up the core part of Android, but Google has not added all the typical software and libraries (see [Section: Linux distros aren’t just the kernel](#eight-pieces)) you’d find on a Linux distribution like Ubuntu. <!--Android does not include an X server (like Xorg), so--> You cannot run standard graphical GNU/Linux applications on Android.
+Google's Android operating system is based on the Linux kernel, for smartphones and tablets, but it is not Unix-like. Linux makes up the core part of Android, but Google has not added all the typical software and libraries (see [Section: Linux distros aren’t just the kernel](#ensemble)) you’d find on a Linux distribution like Ubuntu. <!--Android does not include an X server (like Xorg), so--> You cannot run standard graphical GNU/Linux applications on Android.
 
 ### UNIX
 
@@ -409,9 +424,9 @@ Lack of resources is always quoted as a big problem in the distro world, when it
 
 ### Too few GUI tools
 
-For serving both casual and expert users, for cooperating with other computer programs, and whether the problem domain is naturally visual or not; Support for both a command language interface (see [Chapter 2, Section: Text interface has retained its utility](02-basic.md#retained-utility)) and a visual interfaces is important. But this not always the case with GNU/Linux. [^browny]
+For serving both casual and expert users, for cooperating with other computer programs, and whether the problem domain is naturally visual or not; Support for both a command language interface (see [Chapter 2, Section: Text interface has retained its utility](02-basic.md#retained-utility)) and a visual interfaces is important. But this is not always the case with GNU/Linux. [^browny]
 
-I am amazed that for example looking for a gui to edit the sudoers file (see [Chapter 9, Section: Visudo](09-multi-user.md#visudo)) I find this: A tread where everybody seems to defend the total lack of such a tool. If you have someone using a GUI tool and another of equal competence using CLI and the CLI user takes longer to accomplish that same action, then things are wrong from me. I don't know all the options of the sudoer file, and the format in which it is written, and so far refused to learn it. I do not use the sudoers file enough to justify the time investment. And if I can use a graphical tool, that spares me the effort? And works equally well? Am I a lazy slob because of not memorizing all command line parameters? Maybe. But I think users deserve a choice, because Linux is supposed to be all about choice. <!--And I don't agree with the statement: Who does not know how to use a text editor should just quit Linux. --> [^browny]
+I am amazed that for example looking for a GUI to edit the sudoers file (see [Chapter 9, Section: Visudo](09-multi-user.md#visudo)) I find this: A tread where everybody seems to defend the total lack of such a tool. If you have someone using a GUI tool and another of equal competence using CLI and the CLI user takes longer to accomplish that same action, then things are wrong from me. I don't know all the options of the sudoer file, and the format in which it is written, and so far refused to learn it. I do not use the sudoers file enough to justify the time investment. And if I can use a graphical tool, that spares me the effort? And works equally well? Am I a lazy slob because of not memorizing all command line parameters? Maybe. But I think users deserve a choice, because Linux is supposed to be all about choice. <!--And I don't agree with the statement: Who does not know how to use a text editor should just quit Linux. --> [^browny]
 
 Many things can be done with the GUI already. And done well. Maybe these users are more Windows type users than true Linux wizzs, but they still further the proliferation of Linux and the nice perks we enjoy thanks to it (such as hardware drivers for so many products). And in my view it was this restrictive hardcore RTFM philosophy that is killing the Linux desktop. [^browny]
 

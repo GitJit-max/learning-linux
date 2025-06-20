@@ -366,3 +366,33 @@ Programs compiled from source usually need additional libraries and packages. Th
     $ make -j $(nproc)↵   # If configuration succeeded
     $ sudo make install↵  # If compilation succeeded
     ```
+
+### Gambas is one of the most comfortable options for self-learners
+
+I have been thoroughly impressed by Gambas. It is a remarkably user-friendly development environment that feels like an enhanced version of Visual Basic 2008, complete with modern features that make it especially comfortable for self-learners. It captures the spirit of classic BASIC while going far beyond it in capability. One of its standout strengths is its refreshingly lightweight debugger; quick to launch, easy to use, and seamlessly integrated into the code editor. This makes it perfect for rapid, iterative development, offering a streamlined experience that emphasizes speed, simplicity, and clarity; qualities that are increasingly rare and welcome today.
+
+### Beginners' programming language
+
+The BASIC programming language stands for **Beginners' All-purpose Symbolic Instruction Code**. BASIC syntax is clear and English-like, making it approachable and readable. BASIC is excellent for teaching fundamental programming logic. Its commands often resemble plain English, making code more readable and less intimidating, especially for students and self-taught coders. [^wiki-basic]
+
+> Microsoft helped popularize BASIC by combining an updated version of BASIC with a *visual forms builder* by releasing Microsoft Visual Basic in 1991. This reignited use of the language. This push continued with the release of Visual Basic .NET in 2002, marking a significant evolution in the language's capabilities. These innovations sparked renewed interest in BASIC. Visual Basic was once a cornerstone of Windows application development. However, its popularity has gradually declined, especially after Visual Studio 2010. In 2020, Microsoft announced that no major new features would be added to VB.NET; although support would continue in form of security updates and bug fixes. [^wiki-basic]
+
+#### BASIC is considered a family of programming languages
+
+However, Microsoft did not invent the BASIC programming language. The original version was created at Dartmouth College in 1964. At the time, nearly all computers required writing custom software, which only scientists and mathematicians tended to learn. The original creators wanted to enable students in non-scientific fields to use computers. The language was designed to be easy to learn and use, and has helped people take their first steps into programming without needing a computer science degree. [^wiki-basic]
+
+> [!NOTE]
+> Since its creation BASIC has evolved into a wide array of dialects and implementations tailored for different platforms, purposes, and user communities.
+
+#### Hobbyist scene for BASIC continues to exist
+
+Despite shift in developer preference and industry trends, BASIC is not gone. Microsoft continues to support it in Visual Studio. And a hobbyist scene for BASIC continues to exist on other platforms aswell. [^wiki-basic]
+
+BASIC and especially Gambas IDE (integrated development environment) can be a great fit for computer hobbyists; particularly those who are new to programming. Its readable syntax and drag-and-drop interface via visual forms builder makes it beginner-friendly. Gambas is well-suited for building GUI applications using Qt and GTK widgets. The language is also handy for automating tasks in LibreOffice via BASIC macros.
+
+[^wiki-basic]: [Wikipedia - BASIC, accessed 2025](https://en.wikipedia.org/wiki/BASIC)
+
+
+
+
+    

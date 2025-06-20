@@ -275,7 +275,7 @@ Earlier Windows versions (1.x and 2.x), as well as IBM OS/2, only supported the 
 ### Middle mouse button
 
 In GNU/Linux there is also an alternative way to paste content, the click of the middle mouse button.
-- You can select text in one program and insert it using the middle mouse button, even without any explicit copy action. Give it a try if you can. Some desktop environments such as Ubuntu's Unity no longer support it though.
+- You can select text in one program and insert it using the middle mouse button, even without any explicit copy action.<!-- Give it a try if you can. Some desktop environments such as Ubuntu's Unity no longer support it though.-->
 - Elements in a window will be able to receive input even when the parent window is not focused on the foreground. The focus follows the mouse so to speak.
 
 <!--

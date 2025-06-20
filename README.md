@@ -26,7 +26,7 @@ I strongly believe that knowledge of the past will contribute to a better unders
 - [1.5 Time-sharing](chapter/01-intro.md#time-sharing)
 - [1.6 Philosophy of the GNU project](chapter/01-intro.md#philosophy-of-the-gnu-project)
 - [1.7 The birth of GNU & Linux](chapter/01-intro.md#the-birth)
-- [1.8 Linux distros aren’t just the kernel](chapter/01-intro.md#eight-pieces)
+- [1.8 Linux distros aren’t just the kernel](chapter/01-intro.md#ensemble)
 - [1.9 GNU General Public -license](chapter/01-intro.md#gnu-gpl)
 - [1.10 UNIX or Unix-like](chapter/01-intro.md#unix-or-unix-like)
 - [1.11 The GNU/Linux family](chapter/01-intro.md#distro-family)
