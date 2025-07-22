@@ -539,8 +539,9 @@ Recommending the best GNU/Linux distribution is a highly subjective, a biased vi
 - [Trisquel](https://trisquel.info) is a long standing choice by [Richard Matthew Stallman](https://en.wikipedia.org/wiki/Richard_Stallman). [^rms-computing]
 - [Ubuntu LTS](https://ubuntu.com/download/desktop) is used by many educational institutions.
 - [Debian](https://www.debian.org/) is used by many companies.
-- [Clear Linux](https://clearlinux.org/) by Intel Corporation boasts many performance optimizations.
 - [Tiny Core Linux](http://www.tinycorelinux.net/) is ultra small and designed to run from RAM.
+
+<!--- [Clear Linux](https://clearlinux.org/) by Intel Corporation boasts many performance optimizations.-->
 
 <!--- [Debian](https://www.debian.org/) and [Red Hat Enterprise Linux](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) are used by many companies.-->
 
